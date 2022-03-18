@@ -39,6 +39,13 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         sceneView.scene = scene
         sceneView.allowsCameraControl = true
         view.addSubview(sceneView)
+        
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.numberOfTouchesRequired = 1
+        
+        tapRecognizer.addTarget(self, action: #selector(groundCellTapped))
+        sceneView.addGestureRecognizer(tapRecognizer)
     }
     
     func initNodes() {
@@ -51,19 +58,6 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     }
     
     func createGround(size: Int) {
-        
-        for i in 0..<size {
-            
-            
-            
-            
-            
-            
-            
-//            ground.append(groundCell)
-            
-        }
-        
         for x in 0..<size {
             var row: [SCNNode] = []
             for z in 0..<size {
@@ -72,6 +66,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
                 ((x % 2) != 0 && (z % 2) != 0) || (x % 2) != 1 && (z % 2) != 1 ? (geometry = lightGround.geometry) : (geometry = darkGround.geometry)
                 groundCell.geometry = geometry
                 groundCell.name = "\(x), \(z)"
+//                groundCell.name = "groundCell"
                 groundCell.position = SCNVector3(Float(x)/2, 0, Float(z)/2)
                 scene.rootNode.addChildNode(groundCell)
                 row.append(groundCell)
@@ -80,6 +75,27 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         }
     }
     
+    func createTowerAt(position: SCNVector3) {
+        let tower = magicTower.clone()
+        tower.position = position
+        scene.rootNode.addChildNode(tower)
+    }
+    
+    @objc func groundCellTapped (recognizer:UITapGestureRecognizer) {
+        let location = recognizer.location(in: sceneView)
+        
+        let hitResults = sceneView.hitTest(location, options: nil)
+        
+        if hitResults.count > 0 {
+            let result = hitResults.first
+            if let node = result?.node {
+                if node.geometry == darkGround.geometry ||
+                    node.geometry == lightGround.geometry {
+                    createTowerAt(position: node.position)
+                }
+            }
+        }
+    }
 
     
 }
