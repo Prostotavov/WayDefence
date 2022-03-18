@@ -24,6 +24,18 @@
 		AA78020227E20291002C57E1 /* HomePageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7801F727E20291002C57E1 /* HomePageRouter.swift */; };
 		AA78022427E2043D002C57E1 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78022327E2043D002C57E1 /* HomePageView.swift */; };
 		AA78022627E207C2002C57E1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78022527E207C2002C57E1 /* DataManager.swift */; };
+		AA78023A27E20B8E002C57E1 /* BattleFieldAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78022B27E20B8D002C57E1 /* BattleFieldAssembly.swift */; };
+		AA78023B27E20B8E002C57E1 /* BattleFieldAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78022C27E20B8D002C57E1 /* BattleFieldAssemblyProtocol.swift */; };
+		AA78023C27E20B8E002C57E1 /* BattleFieldPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78022E27E20B8D002C57E1 /* BattleFieldPresenter.swift */; };
+		AA78023D27E20B8E002C57E1 /* BattleFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023027E20B8D002C57E1 /* BattleFieldViewController.swift */; };
+		AA78023E27E20B8E002C57E1 /* BattleFieldViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023127E20B8D002C57E1 /* BattleFieldViewOutput.swift */; };
+		AA78023F27E20B8E002C57E1 /* BattleFieldViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023227E20B8D002C57E1 /* BattleFieldViewInput.swift */; };
+		AA78024027E20B8E002C57E1 /* BattleFieldInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023427E20B8D002C57E1 /* BattleFieldInteractorInput.swift */; };
+		AA78024127E20B8E002C57E1 /* BattleFieldInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023527E20B8D002C57E1 /* BattleFieldInteractorOutput.swift */; };
+		AA78024227E20B8E002C57E1 /* BattleFieldInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023627E20B8D002C57E1 /* BattleFieldInteractor.swift */; };
+		AA78024327E20B8E002C57E1 /* BattleFieldRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023827E20B8D002C57E1 /* BattleFieldRouterInput.swift */; };
+		AA78024427E20B8E002C57E1 /* BattleFieldRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023927E20B8D002C57E1 /* BattleFieldRouter.swift */; };
+		AAFD65EA27E4FFC500450C52 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = AAFD65E927E4FFC500450C52 /* art.scnassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +77,18 @@
 		AA7801F727E20291002C57E1 /* HomePageRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageRouter.swift; sourceTree = "<group>"; };
 		AA78022327E2043D002C57E1 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		AA78022527E207C2002C57E1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		AA78022B27E20B8D002C57E1 /* BattleFieldAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldAssembly.swift; sourceTree = "<group>"; };
+		AA78022C27E20B8D002C57E1 /* BattleFieldAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldAssemblyProtocol.swift; sourceTree = "<group>"; };
+		AA78022E27E20B8D002C57E1 /* BattleFieldPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldPresenter.swift; sourceTree = "<group>"; };
+		AA78023027E20B8D002C57E1 /* BattleFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldViewController.swift; sourceTree = "<group>"; };
+		AA78023127E20B8D002C57E1 /* BattleFieldViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldViewOutput.swift; sourceTree = "<group>"; };
+		AA78023227E20B8D002C57E1 /* BattleFieldViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldViewInput.swift; sourceTree = "<group>"; };
+		AA78023427E20B8D002C57E1 /* BattleFieldInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldInteractorInput.swift; sourceTree = "<group>"; };
+		AA78023527E20B8D002C57E1 /* BattleFieldInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldInteractorOutput.swift; sourceTree = "<group>"; };
+		AA78023627E20B8D002C57E1 /* BattleFieldInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldInteractor.swift; sourceTree = "<group>"; };
+		AA78023827E20B8D002C57E1 /* BattleFieldRouterInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldRouterInput.swift; sourceTree = "<group>"; };
+		AA78023927E20B8D002C57E1 /* BattleFieldRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldRouter.swift; sourceTree = "<group>"; };
+		AAFD65E927E4FFC500450C52 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +141,7 @@
 				AA7801B427E200B6002C57E1 /* AppDelegate.swift */,
 				AA78022527E207C2002C57E1 /* DataManager.swift */,
 				AA7801B627E200B6002C57E1 /* SceneDelegate.swift */,
+				AAFD65E927E4FFC500450C52 /* art.scnassets */,
 				AA7801BD27E200BA002C57E1 /* Assets.xcassets */,
 				AA7801BF27E200BA002C57E1 /* LaunchScreen.storyboard */,
 				AA7801C227E200BA002C57E1 /* Info.plist */,
@@ -128,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				AA7801E727E20291002C57E1 /* HomePage */,
+				AA78022927E20B8D002C57E1 /* BattleField */,
 			);
 			path = "VIPER Modules";
 			sourceTree = "<group>";
@@ -187,6 +213,64 @@
 			children = (
 				AA7801F627E20291002C57E1 /* HomePageRouterInput.swift */,
 				AA7801F727E20291002C57E1 /* HomePageRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		AA78022927E20B8D002C57E1 /* BattleField */ = {
+			isa = PBXGroup;
+			children = (
+				AA78022A27E20B8D002C57E1 /* Assembly */,
+				AA78022D27E20B8D002C57E1 /* Presenter */,
+				AA78022F27E20B8D002C57E1 /* View */,
+				AA78023327E20B8D002C57E1 /* Interactor */,
+				AA78023727E20B8D002C57E1 /* Router */,
+			);
+			path = BattleField;
+			sourceTree = "<group>";
+		};
+		AA78022A27E20B8D002C57E1 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				AA78022B27E20B8D002C57E1 /* BattleFieldAssembly.swift */,
+				AA78022C27E20B8D002C57E1 /* BattleFieldAssemblyProtocol.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		AA78022D27E20B8D002C57E1 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				AA78022E27E20B8D002C57E1 /* BattleFieldPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		AA78022F27E20B8D002C57E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA78023027E20B8D002C57E1 /* BattleFieldViewController.swift */,
+				AA78023127E20B8D002C57E1 /* BattleFieldViewOutput.swift */,
+				AA78023227E20B8D002C57E1 /* BattleFieldViewInput.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AA78023327E20B8D002C57E1 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				AA78023427E20B8D002C57E1 /* BattleFieldInteractorInput.swift */,
+				AA78023527E20B8D002C57E1 /* BattleFieldInteractorOutput.swift */,
+				AA78023627E20B8D002C57E1 /* BattleFieldInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		AA78023727E20B8D002C57E1 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				AA78023827E20B8D002C57E1 /* BattleFieldRouterInput.swift */,
+				AA78023927E20B8D002C57E1 /* BattleFieldRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -296,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA7801C127E200BA002C57E1 /* LaunchScreen.storyboard in Resources */,
+				AAFD65EA27E4FFC500450C52 /* art.scnassets in Resources */,
 				AA7801BE27E200BA002C57E1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,21 +406,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA78024027E20B8E002C57E1 /* BattleFieldInteractorInput.swift in Sources */,
 				AA7801FB27E20291002C57E1 /* HomePageViewInput.swift in Sources */,
 				AA78020127E20291002C57E1 /* HomePageRouterInput.swift in Sources */,
+				AA78024427E20B8E002C57E1 /* BattleFieldRouter.swift in Sources */,
+				AA78024127E20B8E002C57E1 /* BattleFieldInteractorOutput.swift in Sources */,
 				AA7801FE27E20291002C57E1 /* HomePageInteractor.swift in Sources */,
+				AA78023C27E20B8E002C57E1 /* BattleFieldPresenter.swift in Sources */,
 				AA7801FD27E20291002C57E1 /* HomePageViewController.swift in Sources */,
+				AA78023A27E20B8E002C57E1 /* BattleFieldAssembly.swift in Sources */,
 				AA7801F827E20291002C57E1 /* HomePageAssemblyProtocol.swift in Sources */,
+				AA78024227E20B8E002C57E1 /* BattleFieldInteractor.swift in Sources */,
 				AA78022427E2043D002C57E1 /* HomePageView.swift in Sources */,
+				AA78024327E20B8E002C57E1 /* BattleFieldRouterInput.swift in Sources */,
 				AA7801FA27E20291002C57E1 /* HomePagePresenter.swift in Sources */,
 				AA7801B527E200B6002C57E1 /* AppDelegate.swift in Sources */,
 				AA78020227E20291002C57E1 /* HomePageRouter.swift in Sources */,
 				AA78020027E20291002C57E1 /* HomePageInteractorOutput.swift in Sources */,
 				AA7801FC27E20291002C57E1 /* HomePageViewOutput.swift in Sources */,
+				AA78023B27E20B8E002C57E1 /* BattleFieldAssemblyProtocol.swift in Sources */,
 				AA7801F927E20291002C57E1 /* HomePageAssembly.swift in Sources */,
 				AA7801FF27E20291002C57E1 /* HomePageInteractorInput.swift in Sources */,
 				AA78022627E207C2002C57E1 /* DataManager.swift in Sources */,
+				AA78023F27E20B8E002C57E1 /* BattleFieldViewInput.swift in Sources */,
 				AA7801B727E200B6002C57E1 /* SceneDelegate.swift in Sources */,
+				AA78023E27E20B8E002C57E1 /* BattleFieldViewOutput.swift in Sources */,
+				AA78023D27E20B8E002C57E1 /* BattleFieldViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

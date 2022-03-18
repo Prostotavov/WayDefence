@@ -6,8 +6,15 @@
 //
 
 import UIKit
+import SceneKit
 
 class HomePageRouter: HomePageRouterInput {
     
     weak var view: UIViewController!
+    
+    func showBattleField() {
+        let battleFieldVC = BattleFieldViewController()
+        battleFieldVC.modalPresentationStyle = .fullScreen
+        view.present(battleFieldVC, animated: true)
+    }
 }

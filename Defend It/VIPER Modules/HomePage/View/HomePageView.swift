@@ -23,6 +23,7 @@ class HomePageView: UIView {
         super.init(frame: frame)
         backgroundColor = .lightGray
         setStartButton()
+        startButton.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
