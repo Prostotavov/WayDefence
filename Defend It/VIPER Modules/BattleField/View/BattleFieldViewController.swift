@@ -13,6 +13,8 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     var output: BattleFieldViewOutput!
     var assembler: BattleFieldAssemblyProtocol = BattleFieldAssembly()
     
+    let size: Int = 7
+    
     
     var sceneView: SCNView!
     var scene: SCNScene!
@@ -22,6 +24,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     var elphTower: SCNNode!
     var magicTower: SCNNode!
     var ground: [[SCNNode]] = []
+    var fence: SCNNode!
     
     var towerSelectionPanel: SCNNode!
     var cameraNode: SCNNode!
@@ -32,7 +35,8 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         setupScene()
         initNodes()
         setupCameraAt(position: SCNVector3(x: 1.5, y: 4, z: 1.5))
-        createGround(size: 7)
+        createGround(size: size)
+        createFence(size: size)
         
         
     }
@@ -70,6 +74,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         elphTower = allElementsScene.rootNode.childNode(withName: "elphTower", recursively: true)!
         magicTower = allElementsScene.rootNode.childNode(withName: "magicTower", recursively: true)!
         towerSelectionPanel = allElementsScene.rootNode.childNode(withName: "towerSelectionPanel", recursively: true)!
+        fence = allElementsScene.rootNode.childNode(withName: "fence", recursively: true)!
 
     }
     
@@ -106,7 +111,33 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         scene.rootNode.addChildNode(towerSelectionPanel)
     }
     
-    
+    func createFence(size: Int) {
+        for i in 0..<size {
+            let fence = fence.clone()
+            fence.position = SCNVector3(CGFloat(i)/2, 0, 3.25)
+            fence.eulerAngles = SCNVector3(0, 3.14/2, 0)
+            scene.rootNode.addChildNode(fence)
+        }
+        for i in 0..<size {
+            let fence = fence.clone()
+            fence.position = SCNVector3(CGFloat(i)/2, 0, -0.25)
+            fence.eulerAngles = SCNVector3(0, 3.14/2, 0)
+            scene.rootNode.addChildNode(fence)
+        }
+        for i in 0..<size {
+            if ( i == Int(size/2)) { continue }
+            let fence = fence.clone()
+            fence.position = SCNVector3(3.25, 0, CGFloat(i)/2)
+            scene.rootNode.addChildNode(fence)
+        }
+        for i in 0..<size {
+            if ( i == Int(size/2)) { continue }
+            let fence = fence.clone()
+            fence.position = SCNVector3(-0.25, 0, CGFloat(i)/2)
+            scene.rootNode.addChildNode(fence)
+        }
+        
+    }
     
     @objc func groundCellTapped (recognizer:UITapGestureRecognizer) {
         let location = recognizer.location(in: sceneView)
