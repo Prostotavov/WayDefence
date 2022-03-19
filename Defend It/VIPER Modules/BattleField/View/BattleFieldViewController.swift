@@ -15,17 +15,17 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     
     let size: Int = 7
     
+    var buildings: [Building] = []
+    var availableBuildings: [Building] = []
+    
     
     var sceneView: SCNView!
     var scene: SCNScene!
     var allElementsScene: SCNScene!
-    var lightGround: SCNNode!
-    var darkGround: SCNNode!
     var elphTower: SCNNode!
     var magicTower: SCNNode!
-    var ground: [[SCNNode]] = []
-    var fence: SCNNode!
     var enemy: SCNNode!
+    
     
     var towerSelectionPanel: SCNNode!
     var cameraNode: SCNNode!
@@ -36,11 +36,26 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         setupScene()
         initNodes()
         setupCameraAt(position: SCNVector3(x: 1.5, y: 4, z: 1.5))
+        print("before createGround in init")
         createGround(size: size)
+        print("after createGround in init")
         createFence(size: size)
-        createEnemy()
+//        createEnemy()
+//        setupAvailableBuildings()
+    }
+    
+    func setupAvailableBuildings() {
+        allElementsScene = SCNScene(named: "art.scnassets/allElements.scn")!
         
+        var magicTower = MagicTowerFactory.defaultFactory.createFirstLevelBuildings()
+        let magicTowerNode = allElementsScene.rootNode.childNode(withName: "magicTower", recursively: true)!
+        magicTower.scnNode = magicTowerNode
+        availableBuildings.append(magicTower)
         
+        var elphTower = MagicTowerFactory.defaultFactory.createFirstLevelBuildings()
+        let elphTowerNode = allElementsScene.rootNode.childNode(withName: "elphTower", recursively: true)!
+        elphTower.scnNode = elphTowerNode
+        availableBuildings.append(elphTower)
     }
     
     func setupScene() {
@@ -71,30 +86,20 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     
     func initNodes() {
         allElementsScene = SCNScene(named: "art.scnassets/allElements.scn")!
-        lightGround = allElementsScene.rootNode.childNode(withName: "lightGround", recursively: true)!
-        darkGround = allElementsScene.rootNode.childNode(withName: "darkGround", recursively: true)!
         elphTower = allElementsScene.rootNode.childNode(withName: "elphTower", recursively: true)!
         magicTower = allElementsScene.rootNode.childNode(withName: "magicTower", recursively: true)!
         towerSelectionPanel = allElementsScene.rootNode.childNode(withName: "towerSelectionPanel", recursively: true)!
-        fence = allElementsScene.rootNode.childNode(withName: "fence", recursively: true)!
         enemy = allElementsScene.rootNode.childNode(withName: "enemy", recursively: true)!
     }
     
     func createGround(size: Int) {
-        for x in 0..<size {
-            var row: [SCNNode] = []
-            for z in 0..<size {
-                let groundCell = SCNNode()
-                var geometry: SCNGeometry!
-                ((x % 2) != 0 && (z % 2) != 0) || (x % 2) != 1 && (z % 2) != 1 ? (geometry = lightGround.geometry) : (geometry = darkGround.geometry)
-                groundCell.geometry = geometry
-                groundCell.name = "\(x), \(z)"
-                groundCell.position = SCNVector3(Float(x)/2, 0, Float(z)/2)
-                scene.rootNode.addChildNode(groundCell)
-                row.append(groundCell)
+        let ground = output.createGround(size: size)
+        for row in ground {
+            for cell in row {
+                scene.rootNode.addChildNode(cell.scnGroundNode)
             }
-            ground.append(row)
         }
+        
     }
     
     func create(_ name: String, At position: SCNVector3) {
@@ -114,31 +119,10 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     }
     
     func createFence(size: Int) {
-        for i in 0..<size {
-            let fence = fence.clone()
-            fence.position = SCNVector3(CGFloat(i)/2, 0, 3.25)
-            fence.eulerAngles = SCNVector3(0, 3.14/2, 0)
-            scene.rootNode.addChildNode(fence)
+        let fence = output.createFence(size: size)
+        for fenceCell in fence {
+            scene.rootNode.addChildNode(fenceCell.scnFenceCellNode)
         }
-        for i in 0..<size {
-            let fence = fence.clone()
-            fence.position = SCNVector3(CGFloat(i)/2, 0, -0.25)
-            fence.eulerAngles = SCNVector3(0, 3.14/2, 0)
-            scene.rootNode.addChildNode(fence)
-        }
-        for i in 0..<size {
-            if ( i == Int(size/2)) { continue }
-            let fence = fence.clone()
-            fence.position = SCNVector3(3.25, 0, CGFloat(i)/2)
-            scene.rootNode.addChildNode(fence)
-        }
-        for i in 0..<size {
-            if ( i == Int(size/2)) { continue }
-            let fence = fence.clone()
-            fence.position = SCNVector3(-0.25, 0, CGFloat(i)/2)
-            scene.rootNode.addChildNode(fence)
-        }
-        
     }
     
     func createEnemy() {
@@ -155,11 +139,6 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         if hitResults.count > 0 {
             let result = hitResults.first
             if let node = result?.node {
-                if node.geometry == darkGround.geometry ||
-                    node.geometry == lightGround.geometry {
-                    createTowerSelectionPanelAt(node.position)
-                }
-                print(node.name)
                 if node.name == "magicTower" {
                     create("magicTower", At: node.parent!.position)
                 }

@@ -13,4 +13,11 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     var interactor: BattleFieldInteractorInput!
     var router: BattleFieldRouterInput!
     
+    func createGround(size: Int) -> [[GroundCell]] {
+        return interactor.createGround(size: size)
+    }
+    
+    func createFence(size: Int) -> [FenceCell] {
+        return interactor.createFence(size: size)
+    }
 }

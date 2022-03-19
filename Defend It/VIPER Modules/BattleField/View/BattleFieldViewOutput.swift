@@ -8,5 +8,7 @@
 import Foundation
 
 protocol BattleFieldViewOutput: AnyObject {
+    func createGround(size: Int) -> [[GroundCell]]
+    func createFence(size: Int) -> [FenceCell]
     
 }
