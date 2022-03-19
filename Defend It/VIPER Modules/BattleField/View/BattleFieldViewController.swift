@@ -25,6 +25,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     var magicTower: SCNNode!
     var ground: [[SCNNode]] = []
     var fence: SCNNode!
+    var enemy: SCNNode!
     
     var towerSelectionPanel: SCNNode!
     var cameraNode: SCNNode!
@@ -37,6 +38,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         setupCameraAt(position: SCNVector3(x: 1.5, y: 4, z: 1.5))
         createGround(size: size)
         createFence(size: size)
+        createEnemy()
         
         
     }
@@ -75,7 +77,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         magicTower = allElementsScene.rootNode.childNode(withName: "magicTower", recursively: true)!
         towerSelectionPanel = allElementsScene.rootNode.childNode(withName: "towerSelectionPanel", recursively: true)!
         fence = allElementsScene.rootNode.childNode(withName: "fence", recursively: true)!
-
+        enemy = allElementsScene.rootNode.childNode(withName: "enemy", recursively: true)!
     }
     
     func createGround(size: Int) {
@@ -137,6 +139,12 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
             scene.rootNode.addChildNode(fence)
         }
         
+    }
+    
+    func createEnemy() {
+        let enemy = enemy.clone()
+        enemy.position = SCNVector3(-0.25, 0, CGFloat(size/4)+0.5)
+        scene.rootNode.addChildNode(enemy)
     }
     
     @objc func groundCellTapped (recognizer:UITapGestureRecognizer) {
