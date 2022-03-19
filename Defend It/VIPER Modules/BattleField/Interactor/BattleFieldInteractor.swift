@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SceneKit
 
 class BattleFieldInteractor: BattleFieldInteractorInput {
     
@@ -14,6 +15,8 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     
     var ground: Ground = GroundImpl()
     var fence: Fence = FenceImpl()
+    var camera: Camera = CameraImpl()
+    var towerSelectionPanel: TowerSelectionPanel = TowerSelectionPanelImpl()
     
     func createGround(size: Int) -> [[GroundCell]] {
         return ground.createGround(size: size)
@@ -21,6 +24,18 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     
     func createFence(size: Int) -> [FenceCell] {
         return fence.createFence(size: size)
+    }
+    
+    func getEnemy(size: Int) -> Enemy {
+        return EnemyImpl(size: size)
+    }
+    
+    func setupCamera() -> SCNNode {
+        return camera.setupCamera()
+    }
+    
+    func getTowerSelectionPanel(position: SCNVector3) -> SCNNode {
+        return towerSelectionPanel.createTowerSelectionPanel(position: position)
     }
     
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SceneKit
 
 class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
 
@@ -19,5 +20,17 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     
     func createFence(size: Int) -> [FenceCell] {
         return interactor.createFence(size: size)
+    }
+    
+    func getEnemy(size: Int) -> Enemy {
+        return interactor.getEnemy(size: size)
+    }
+    
+    func setupCamera() -> SCNNode {
+        interactor.setupCamera()
+    }
+    
+    func getTowerSelectionPanel(position: SCNVector3) -> SCNNode {
+        interactor.getTowerSelectionPanel(position: position)
     }
 }

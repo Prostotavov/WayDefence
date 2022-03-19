@@ -6,8 +6,12 @@
 //
 
 import Foundation
+import SceneKit
 
 protocol BattleFieldViewInput: AnyObject {
     func createGround(size: Int)
     func createFence(size: Int)
+    func setupEnemy(size: Int)
+    func setupCamera()
+    func showTowerSelectionPanel(position: SCNVector3)
 }

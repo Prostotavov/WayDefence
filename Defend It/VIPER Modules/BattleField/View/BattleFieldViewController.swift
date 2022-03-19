@@ -15,47 +15,22 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     
     let size: Int = 7
     
-    var buildings: [Building] = []
-    var availableBuildings: [Building] = []
-    
-    
     var sceneView: SCNView!
     var scene: SCNScene!
     var allElementsScene: SCNScene!
     var elphTower: SCNNode!
     var magicTower: SCNNode!
-    var enemy: SCNNode!
     
-    
-    var towerSelectionPanel: SCNNode!
-    var cameraNode: SCNNode!
-
     override func loadView() {
         super.loadView()
         assembler.assembly(with: self)
         setupScene()
         initNodes()
-        setupCameraAt(position: SCNVector3(x: 1.5, y: 4, z: 1.5))
-        print("before createGround in init")
+        setupCamera()
         createGround(size: size)
-        print("after createGround in init")
         createFence(size: size)
-//        createEnemy()
-//        setupAvailableBuildings()
-    }
-    
-    func setupAvailableBuildings() {
-        allElementsScene = SCNScene(named: "art.scnassets/allElements.scn")!
-        
-        var magicTower = MagicTowerFactory.defaultFactory.createFirstLevelBuildings()
-        let magicTowerNode = allElementsScene.rootNode.childNode(withName: "magicTower", recursively: true)!
-        magicTower.scnNode = magicTowerNode
-        availableBuildings.append(magicTower)
-        
-        var elphTower = MagicTowerFactory.defaultFactory.createFirstLevelBuildings()
-        let elphTowerNode = allElementsScene.rootNode.childNode(withName: "elphTower", recursively: true)!
-        elphTower.scnNode = elphTowerNode
-        availableBuildings.append(elphTower)
+        setupEnemy(size: size)
+//        showTowerSelectionPanel(position:SCNVector3(2, 1, 2))
     }
     
     func setupScene() {
@@ -73,23 +48,15 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         sceneView.addGestureRecognizer(tapRecognizer)
     }
     
-    func setupCameraAt(position: SCNVector3) {
-        cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()
-        cameraNode.position = position
-//        cameraNode.position = SCNVector3(0, 3, -3)
-        let xAngle = Float(-180 * Float(180 / 3.14))
-        cameraNode.eulerAngles = SCNVector3Make(xAngle, 0, 0)
+    func setupCamera() {
+        let cameraNode = output.setupCamera()
         scene.rootNode.addChildNode(cameraNode)
-        
     }
     
     func initNodes() {
         allElementsScene = SCNScene(named: "art.scnassets/allElements.scn")!
         elphTower = allElementsScene.rootNode.childNode(withName: "elphTower", recursively: true)!
         magicTower = allElementsScene.rootNode.childNode(withName: "magicTower", recursively: true)!
-        towerSelectionPanel = allElementsScene.rootNode.childNode(withName: "towerSelectionPanel", recursively: true)!
-        enemy = allElementsScene.rootNode.childNode(withName: "enemy", recursively: true)!
     }
     
     func createGround(size: Int) {
@@ -110,11 +77,8 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         scene.rootNode.childNode(withName: "towerSelectionPanel", recursively: true)?.removeFromParentNode()
     }
     
-    func createTowerSelectionPanelAt(_ position: SCNVector3) {
-        let billboardConstraint = SCNBillboardConstraint()
-        billboardConstraint.freeAxes = .all
-        towerSelectionPanel.constraints = [billboardConstraint]
-        towerSelectionPanel.position = position
+    func showTowerSelectionPanel(position: SCNVector3) {
+        let towerSelectionPanel = output.getTowerSelectionPanel(position: position)
         scene.rootNode.addChildNode(towerSelectionPanel)
     }
     
@@ -125,10 +89,9 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         }
     }
     
-    func createEnemy() {
-        let enemy = enemy.clone()
-        enemy.position = SCNVector3(-0.25, 0, CGFloat(size/4)+0.5)
-        scene.rootNode.addChildNode(enemy)
+    func setupEnemy(size: Int) {
+        let enemy = output.getEnemy(size: size)
+        scene.rootNode.addChildNode(enemy.scnEnemyNode)
     }
     
     @objc func groundCellTapped (recognizer:UITapGestureRecognizer) {
@@ -151,7 +114,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
             }
         }
     }
-
+    
     
 }
 

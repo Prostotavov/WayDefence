@@ -17,6 +17,9 @@
 		AA0B68CC27E5BDFD0078003D /* ElphTowerSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68CB27E5BDFD0078003D /* ElphTowerSL.swift */; };
 		AA0B68CE27E5D8C10078003D /* Ground.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68CD27E5D8C10078003D /* Ground.swift */; };
 		AA0B68D227E5E7BD0078003D /* Fence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68D127E5E7BD0078003D /* Fence.swift */; };
+		AA0B68D427E5F3E00078003D /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68D327E5F3E00078003D /* Enemy.swift */; };
+		AA0B68D627E5FA450078003D /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68D527E5FA450078003D /* Camera.swift */; };
+		AA0B68D827E5FD7F0078003D /* TowerSelectionPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68D727E5FD7F0078003D /* TowerSelectionPanel.swift */; };
 		AA7801B527E200B6002C57E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7801B427E200B6002C57E1 /* AppDelegate.swift */; };
 		AA7801B727E200B6002C57E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7801B627E200B6002C57E1 /* SceneDelegate.swift */; };
 		AA7801BE27E200BA002C57E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA7801BD27E200BA002C57E1 /* Assets.xcassets */; };
@@ -76,6 +79,9 @@
 		AA0B68CB27E5BDFD0078003D /* ElphTowerSL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElphTowerSL.swift; sourceTree = "<group>"; };
 		AA0B68CD27E5D8C10078003D /* Ground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ground.swift; sourceTree = "<group>"; };
 		AA0B68D127E5E7BD0078003D /* Fence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fence.swift; sourceTree = "<group>"; };
+		AA0B68D327E5F3E00078003D /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
+		AA0B68D527E5FA450078003D /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		AA0B68D727E5FD7F0078003D /* TowerSelectionPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerSelectionPanel.swift; sourceTree = "<group>"; };
 		AA7801B127E200B6002C57E1 /* Defend It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Defend It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7801B427E200B6002C57E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA7801B627E200B6002C57E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -332,6 +338,9 @@
 				AA78023627E20B8D002C57E1 /* BattleFieldInteractor.swift */,
 				AA0B68CD27E5D8C10078003D /* Ground.swift */,
 				AA0B68D127E5E7BD0078003D /* Fence.swift */,
+				AA0B68D327E5F3E00078003D /* Enemy.swift */,
+				AA0B68D527E5FA450078003D /* Camera.swift */,
+				AA0B68D727E5FD7F0078003D /* TowerSelectionPanel.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -476,6 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0B68D427E5F3E00078003D /* Enemy.swift in Sources */,
 				AA0B68C027E5BA7D0078003D /* MagicTowerFactory.swift in Sources */,
 				AA78024027E20B8E002C57E1 /* BattleFieldInteractorInput.swift in Sources */,
 				AA0B68CA27E5BDF10078003D /* MagicTowerSL.swift in Sources */,
@@ -487,6 +497,7 @@
 				AA0B68BE27E5B95C0078003D /* AbstactFactoryBuildings.swift in Sources */,
 				AA0B68CE27E5D8C10078003D /* Ground.swift in Sources */,
 				AA78024127E20B8E002C57E1 /* BattleFieldInteractorOutput.swift in Sources */,
+				AA0B68D627E5FA450078003D /* Camera.swift in Sources */,
 				AA7801FE27E20291002C57E1 /* HomePageInteractor.swift in Sources */,
 				AA78023C27E20B8E002C57E1 /* BattleFieldPresenter.swift in Sources */,
 				AA7801FD27E20291002C57E1 /* HomePageViewController.swift in Sources */,
@@ -509,6 +520,7 @@
 				AA78022627E207C2002C57E1 /* DataManager.swift in Sources */,
 				AA78023F27E20B8E002C57E1 /* BattleFieldViewInput.swift in Sources */,
 				AA7801B727E200B6002C57E1 /* SceneDelegate.swift in Sources */,
+				AA0B68D827E5FD7F0078003D /* TowerSelectionPanel.swift in Sources */,
 				AA78023E27E20B8E002C57E1 /* BattleFieldViewOutput.swift in Sources */,
 				AA78023D27E20B8E002C57E1 /* BattleFieldViewController.swift in Sources */,
 				AA0B68D227E5E7BD0078003D /* Fence.swift in Sources */,
