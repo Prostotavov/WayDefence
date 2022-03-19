@@ -14,4 +14,5 @@ protocol BattleFieldViewInput: AnyObject {
     func setupEnemy(size: Int)
     func setupCamera()
     func showTowerSelectionPanel(position: SCNVector3)
+    func create(_ building: Buildings, On position: SCNVector3)
 }

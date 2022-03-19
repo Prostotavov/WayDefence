@@ -9,12 +9,16 @@ import SceneKit
 
 protocol Ground {
     mutating func createGround(size: Int) -> [[GroundCell]]
+    mutating func create(_ building: Buildings, On position: SCNVector3) ->  SCNNode
 }
 
 struct GroundImpl: Ground {
     var allElementsScene: SCNScene!
     var lightGroundCell: SCNNode!
     var darkGroundCell: SCNNode!
+    var magicTower: SCNNode!
+    var elphTower: SCNNode!
+    var ground: [[GroundCell]] = []
     
     init() {
         setupScene()
@@ -28,11 +32,12 @@ struct GroundImpl: Ground {
     mutating func setupNodes() {
         lightGroundCell = allElementsScene.rootNode.childNode(withName: "lightGround", recursively: true)!
         darkGroundCell = allElementsScene.rootNode.childNode(withName: "darkGround", recursively: true)!
+        magicTower = allElementsScene.rootNode.childNode(withName: "magicTower", recursively: true)!
+        elphTower = allElementsScene.rootNode.childNode(withName: "elphTower", recursively: true)!
     }
     
     mutating func createGround(size: Int) -> [[GroundCell]] {
-        print("createGround in GroundImpl")
-        var ground: [[GroundCell]] = []
+
         for x in 0..<size {
             var row: [GroundCell] = []
             for z in 0..<size {
@@ -48,6 +53,17 @@ struct GroundImpl: Ground {
             ground.append(row)
         }
         return ground
+    }
+    
+    mutating func create(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
+        let tower: SCNNode
+        switch building {
+        case .magicTower: tower = magicTower.clone()
+        case .elphTower: tower = elphTower.clone()
+        }
+        tower.position = position
+//        ground[cell.coordinate.0][cell.coordinate.1].scnBuildingNode = magicTower
+        return tower
     }
     
 }

@@ -33,4 +33,8 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     func getTowerSelectionPanel(position: SCNVector3) -> SCNNode {
         interactor.getTowerSelectionPanel(position: position)
     }
+    
+    func create(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
+        interactor.create(building, On: position)
+    }
 }

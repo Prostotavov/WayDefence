@@ -12,7 +12,7 @@ protocol TowerSelectionPanel {
     func createTowerSelectionPanel(position: SCNVector3) -> SCNNode
 }
 
-struct TowerSelectionPanelImpl: TowerSelectionPanel {
+class TowerSelectionPanelImpl: TowerSelectionPanel {
     
     func createTowerSelectionPanel(position: SCNVector3) -> SCNNode {
         let allElementsScene = SCNScene(named: "art.scnassets/allElements.scn")!

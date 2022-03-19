@@ -38,4 +38,8 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
         return towerSelectionPanel.createTowerSelectionPanel(position: position)
     }
     
+    func create(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
+        ground.create(building, On: position)
+    }
+    
 }

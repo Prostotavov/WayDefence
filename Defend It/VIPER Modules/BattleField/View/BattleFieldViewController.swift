@@ -17,20 +17,15 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     
     var sceneView: SCNView!
     var scene: SCNScene!
-    var allElementsScene: SCNScene!
-    var elphTower: SCNNode!
-    var magicTower: SCNNode!
     
     override func loadView() {
         super.loadView()
         assembler.assembly(with: self)
         setupScene()
-        initNodes()
         setupCamera()
         createGround(size: size)
         createFence(size: size)
         setupEnemy(size: size)
-//        showTowerSelectionPanel(position:SCNVector3(2, 1, 2))
     }
     
     func setupScene() {
@@ -53,12 +48,6 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         scene.rootNode.addChildNode(cameraNode)
     }
     
-    func initNodes() {
-        allElementsScene = SCNScene(named: "art.scnassets/allElements.scn")!
-        elphTower = allElementsScene.rootNode.childNode(withName: "elphTower", recursively: true)!
-        magicTower = allElementsScene.rootNode.childNode(withName: "magicTower", recursively: true)!
-    }
-    
     func createGround(size: Int) {
         let ground = output.createGround(size: size)
         for row in ground {
@@ -66,18 +55,16 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
                 scene.rootNode.addChildNode(cell.scnGroundNode)
             }
         }
-        
     }
     
-    func create(_ name: String, At position: SCNVector3) {
-        var tower: SCNNode!
-        (name == "magicTower") ? (tower = magicTower.clone()) : (tower = elphTower.clone())
-        tower.position = position
-        scene.rootNode.addChildNode(tower)
-        scene.rootNode.childNode(withName: "towerSelectionPanel", recursively: true)?.removeFromParentNode()
+    func create(_ building: Buildings, On position: SCNVector3) {
+        deleteTowerSelectionPanel()
+        let building = output.create(building, On: position)
+        scene.rootNode.addChildNode(building)
     }
     
     func showTowerSelectionPanel(position: SCNVector3) {
+        deleteTowerSelectionPanel()
         let towerSelectionPanel = output.getTowerSelectionPanel(position: position)
         scene.rootNode.addChildNode(towerSelectionPanel)
     }
@@ -94,6 +81,10 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         scene.rootNode.addChildNode(enemy.scnEnemyNode)
     }
     
+    func deleteTowerSelectionPanel() {
+        scene.rootNode.childNode(withName: "towerSelectionPanel", recursively: true)?.removeFromParentNode()
+    }
+    
     @objc func groundCellTapped (recognizer:UITapGestureRecognizer) {
         let location = recognizer.location(in: sceneView)
         
@@ -102,14 +93,17 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         if hitResults.count > 0 {
             let result = hitResults.first
             if let node = result?.node {
-                if node.name == "magicTower" {
-                    create("magicTower", At: node.parent!.position)
-                }
-                if node.name == "elphTower" {
-                    create("elphTower", At: node.parent!.position)
+                if node.name == "groundCell" {
+                    showTowerSelectionPanel(position: node.position)
                 }
                 if node.name == "floor" {
-                    scene.rootNode.childNode(withName: "towerSelectionPanel", recursively: true)?.removeFromParentNode()
+                    deleteTowerSelectionPanel()
+                }
+                if node.name == "selectedElphTower" {
+                    create(.elphTower, On: node.parent!.position)
+                }
+                if node.name == "selectedMagicTower" {
+                    create(.magicTower, On: node.parent!.position)
                 }
             }
         }

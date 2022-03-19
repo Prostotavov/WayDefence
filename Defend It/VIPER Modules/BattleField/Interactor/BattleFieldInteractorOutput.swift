@@ -14,4 +14,5 @@ protocol BattleFieldInteractorOutput: AnyObject {
     func getEnemy(size: Int) -> Enemy
     func setupCamera() -> SCNNode
     func getTowerSelectionPanel(position: SCNVector3) -> SCNNode
+    func create(_ building: Buildings, On position: SCNVector3) ->  SCNNode
 }
