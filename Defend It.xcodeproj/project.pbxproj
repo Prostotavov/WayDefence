@@ -48,10 +48,14 @@
 		AA78024227E20B8E002C57E1 /* BattleFieldInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023627E20B8D002C57E1 /* BattleFieldInteractor.swift */; };
 		AA78024327E20B8E002C57E1 /* BattleFieldRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023827E20B8D002C57E1 /* BattleFieldRouterInput.swift */; };
 		AA78024427E20B8E002C57E1 /* BattleFieldRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023927E20B8D002C57E1 /* BattleFieldRouter.swift */; };
-		AAF4C9A827E8513F00D5B6F8 /* EnemyPathManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9A727E8513F00D5B6F8 /* EnemyPathManager.swift */; };
 		AAF4C9AC27E855D700D5B6F8 /* HashedHeap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9AA27E855D700D5B6F8 /* HashedHeap.swift */; };
 		AAF4C9AD27E855D700D5B6F8 /* AStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9AB27E855D700D5B6F8 /* AStar.swift */; };
 		AAF4C9B027E856D600D5B6F8 /* BattleFieldGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9AF27E856D600D5B6F8 /* BattleFieldGraph.swift */; };
+		AAF4C9D527E8D9B700D5B6F8 /* DecorationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9D427E8D9B600D5B6F8 /* DecorationsManager.swift */; };
+		AAF4C9D727E8D9E500D5B6F8 /* EnemiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9D627E8D9E500D5B6F8 /* EnemiesManager.swift */; };
+		AAF4C9D927E8DA0300D5B6F8 /* BuildingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9D827E8DA0300D5B6F8 /* BuildingsManager.swift */; };
+		AAF4C9DB27E8DB0E00D5B6F8 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9DA27E8DB0E00D5B6F8 /* Converter.swift */; };
+		AAF4C9DD27E8E6A200D5B6F8 /* GroundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9DC27E8E6A200D5B6F8 /* GroundCell.swift */; };
 		AAFD65EA27E4FFC500450C52 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = AAFD65E927E4FFC500450C52 /* art.scnassets */; };
 /* End PBXBuildFile section */
 
@@ -118,10 +122,14 @@
 		AA78023627E20B8D002C57E1 /* BattleFieldInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldInteractor.swift; sourceTree = "<group>"; };
 		AA78023827E20B8D002C57E1 /* BattleFieldRouterInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldRouterInput.swift; sourceTree = "<group>"; };
 		AA78023927E20B8D002C57E1 /* BattleFieldRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldRouter.swift; sourceTree = "<group>"; };
-		AAF4C9A727E8513F00D5B6F8 /* EnemyPathManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyPathManager.swift; sourceTree = "<group>"; };
 		AAF4C9AA27E855D700D5B6F8 /* HashedHeap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashedHeap.swift; sourceTree = "<group>"; };
 		AAF4C9AB27E855D700D5B6F8 /* AStar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AStar.swift; sourceTree = "<group>"; };
 		AAF4C9AF27E856D600D5B6F8 /* BattleFieldGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleFieldGraph.swift; sourceTree = "<group>"; };
+		AAF4C9D427E8D9B600D5B6F8 /* DecorationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationsManager.swift; sourceTree = "<group>"; };
+		AAF4C9D627E8D9E500D5B6F8 /* EnemiesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesManager.swift; sourceTree = "<group>"; };
+		AAF4C9D827E8DA0300D5B6F8 /* BuildingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingsManager.swift; sourceTree = "<group>"; };
+		AAF4C9DA27E8DB0E00D5B6F8 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		AAF4C9DC27E8E6A200D5B6F8 /* GroundCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundCell.swift; sourceTree = "<group>"; };
 		AAFD65E927E4FFC500450C52 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,6 +229,7 @@
 				AA0B68B627E5B8750078003D /* AbstractFactory */,
 				AA7801E427E2011C002C57E1 /* VIPER Modules */,
 				AA7801B427E200B6002C57E1 /* AppDelegate.swift */,
+				AAF4C9DA27E8DB0E00D5B6F8 /* Converter.swift */,
 				AA78022527E207C2002C57E1 /* DataManager.swift */,
 				AA7801B627E200B6002C57E1 /* SceneDelegate.swift */,
 				AAFD65E927E4FFC500450C52 /* art.scnassets */,
@@ -302,6 +311,7 @@
 		AA78022927E20B8D002C57E1 /* BattleField */ = {
 			isa = PBXGroup;
 			children = (
+				AAF4C9CF27E8D6D300D5B6F8 /* Managers */,
 				AA78022A27E20B8D002C57E1 /* Assembly */,
 				AA78022D27E20B8D002C57E1 /* Presenter */,
 				AA78022F27E20B8D002C57E1 /* View */,
@@ -344,12 +354,7 @@
 				AA78023427E20B8D002C57E1 /* BattleFieldInteractorInput.swift */,
 				AA78023527E20B8D002C57E1 /* BattleFieldInteractorOutput.swift */,
 				AA78023627E20B8D002C57E1 /* BattleFieldInteractor.swift */,
-				AA0B68CD27E5D8C10078003D /* Ground.swift */,
-				AA0B68D127E5E7BD0078003D /* Fence.swift */,
-				AA0B68D327E5F3E00078003D /* Enemy.swift */,
 				AA0B68D527E5FA450078003D /* Camera.swift */,
-				AA0B68D727E5FD7F0078003D /* TowerSelectionPanel.swift */,
-				AAF4C9A727E8513F00D5B6F8 /* EnemyPathManager.swift */,
 				AAF4C9A927E855BB00D5B6F8 /* AStar  */,
 			);
 			path = Interactor;
@@ -372,6 +377,45 @@
 				AAF4C9AF27E856D600D5B6F8 /* BattleFieldGraph.swift */,
 			);
 			path = "AStar ";
+			sourceTree = "<group>";
+		};
+		AAF4C9CF27E8D6D300D5B6F8 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				AAF4C9D327E8D99800D5B6F8 /* DecorationsManager */,
+				AAF4C9D227E8D98800D5B6F8 /* EnemiesManagers */,
+				AAF4C9D027E8D6D900D5B6F8 /* BuildingsManagers */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		AAF4C9D027E8D6D900D5B6F8 /* BuildingsManagers */ = {
+			isa = PBXGroup;
+			children = (
+				AAF4C9D827E8DA0300D5B6F8 /* BuildingsManager.swift */,
+				AA0B68D727E5FD7F0078003D /* TowerSelectionPanel.swift */,
+				AA0B68CD27E5D8C10078003D /* Ground.swift */,
+				AAF4C9DC27E8E6A200D5B6F8 /* GroundCell.swift */,
+			);
+			path = BuildingsManagers;
+			sourceTree = "<group>";
+		};
+		AAF4C9D227E8D98800D5B6F8 /* EnemiesManagers */ = {
+			isa = PBXGroup;
+			children = (
+				AAF4C9D627E8D9E500D5B6F8 /* EnemiesManager.swift */,
+				AA0B68D327E5F3E00078003D /* Enemy.swift */,
+			);
+			path = EnemiesManagers;
+			sourceTree = "<group>";
+		};
+		AAF4C9D327E8D99800D5B6F8 /* DecorationsManager */ = {
+			isa = PBXGroup;
+			children = (
+				AAF4C9D427E8D9B600D5B6F8 /* DecorationsManager.swift */,
+				AA0B68D127E5E7BD0078003D /* Fence.swift */,
+			);
+			path = DecorationsManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -518,10 +562,11 @@
 				AA0B68BE27E5B95C0078003D /* AbstactFactoryBuildings.swift in Sources */,
 				AA0B68CE27E5D8C10078003D /* Ground.swift in Sources */,
 				AA78024127E20B8E002C57E1 /* BattleFieldInteractorOutput.swift in Sources */,
+				AAF4C9DB27E8DB0E00D5B6F8 /* Converter.swift in Sources */,
 				AA0B68D627E5FA450078003D /* Camera.swift in Sources */,
+				AAF4C9DD27E8E6A200D5B6F8 /* GroundCell.swift in Sources */,
 				AA7801FE27E20291002C57E1 /* HomePageInteractor.swift in Sources */,
 				AA78023C27E20B8E002C57E1 /* BattleFieldPresenter.swift in Sources */,
-				AAF4C9A827E8513F00D5B6F8 /* EnemyPathManager.swift in Sources */,
 				AA7801FD27E20291002C57E1 /* HomePageViewController.swift in Sources */,
 				AA78023A27E20B8E002C57E1 /* BattleFieldAssembly.swift in Sources */,
 				AA7801F827E20291002C57E1 /* HomePageAssemblyProtocol.swift in Sources */,
@@ -544,8 +589,11 @@
 				AA78022627E207C2002C57E1 /* DataManager.swift in Sources */,
 				AA78023F27E20B8E002C57E1 /* BattleFieldViewInput.swift in Sources */,
 				AA7801B727E200B6002C57E1 /* SceneDelegate.swift in Sources */,
+				AAF4C9D727E8D9E500D5B6F8 /* EnemiesManager.swift in Sources */,
 				AA0B68D827E5FD7F0078003D /* TowerSelectionPanel.swift in Sources */,
+				AAF4C9D927E8DA0300D5B6F8 /* BuildingsManager.swift in Sources */,
 				AA78023E27E20B8E002C57E1 /* BattleFieldViewOutput.swift in Sources */,
+				AAF4C9D527E8D9B700D5B6F8 /* DecorationsManager.swift in Sources */,
 				AA78023D27E20B8E002C57E1 /* BattleFieldViewController.swift in Sources */,
 				AA0B68D227E5E7BD0078003D /* Fence.swift in Sources */,
 			);

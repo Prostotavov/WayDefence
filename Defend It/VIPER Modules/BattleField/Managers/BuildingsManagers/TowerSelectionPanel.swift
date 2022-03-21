@@ -9,12 +9,12 @@ import Foundation
 import SceneKit
 
 protocol TowerSelectionPanel {
-    func createTowerSelectionPanel(position: SCNVector3) -> SCNNode
+    func show(on position: SCNVector3) -> SCNNode
 }
 
 class TowerSelectionPanelImpl: TowerSelectionPanel {
     
-    func createTowerSelectionPanel(position: SCNVector3) -> SCNNode {
+    func show(on position: SCNVector3) -> SCNNode {
         let allElementsScene = SCNScene(named: "art.scnassets/allElements.scn")!
         let scnNode = allElementsScene.rootNode.childNode(withName: "towerSelectionPanel", recursively: true)!
         let billboardConstraint = SCNBillboardConstraint()

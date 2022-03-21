@@ -9,12 +9,12 @@ import Foundation
 import SceneKit
 
 protocol BattleFieldViewOutput: AnyObject {
-    func createGround(size: Int) -> [[GroundCell]]
-    func createFence(size: Int) -> [FenceCell]
-    func getEnemy(size: Int) -> Enemy
+    func createGround() -> [[GroundCell]]
+    func createFence() -> [FenceCell]
+    func getEnemy() -> Enemy
     func setupCamera() -> SCNNode
-    func getTowerSelectionPanel(position: SCNVector3) -> SCNNode
-    func create(_ building: Buildings, On position: SCNVector3) ->  SCNNode
-    func runToCastle()
+    func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode
+    func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode
+    func run()
     
 }

@@ -14,7 +14,10 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         let presenter = BattleFieldPresenter()
         let interactor = BattleFieldInteractor()
         let router = BattleFieldRouter()
-        let enemyPathManager = EnemyPathManagerImpl()
+        let dataManager = DataManagerImpl()
+        let buildingsManager = BuildingsManagerImpl(dataManager.battleFieldSize)
+        let enemiesManager = EnemiesManagerImpl(dataManager.battleFieldSize)
+        let decorationManager = DecorationsManagerImpl(dataManager.battleFieldSize)
         
         viewController.output = presenter
         
@@ -22,7 +25,9 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         presenter.router = router
         presenter.interactor = interactor
         
-        interactor.enemyPathManager = enemyPathManager
+        interactor.buildingsManager = buildingsManager
+        interactor.enemiesManager = enemiesManager
+        interactor.decorationsManager = decorationManager
         interactor.output = presenter
         
         router.view = viewController

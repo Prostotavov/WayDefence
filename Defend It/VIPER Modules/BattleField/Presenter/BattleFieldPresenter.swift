@@ -14,31 +14,31 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     var interactor: BattleFieldInteractorInput!
     var router: BattleFieldRouterInput!
     
-    func createGround(size: Int) -> [[GroundCell]] {
-        return interactor.createGround(size: size)
+    func createGround() -> [[GroundCell]] {
+        return interactor.createGround()
     }
     
-    func createFence(size: Int) -> [FenceCell] {
-        return interactor.createFence(size: size)
+    func createFence() -> [FenceCell] {
+        return interactor.createFence()
     }
     
-    func getEnemy(size: Int) -> Enemy {
-        return interactor.getEnemy(size: size)
+    func getEnemy() -> Enemy {
+        return interactor.getEnemy()
     }
     
     func setupCamera() -> SCNNode {
         interactor.setupCamera()
     }
     
-    func getTowerSelectionPanel(position: SCNVector3) -> SCNNode {
-        interactor.getTowerSelectionPanel(position: position)
+    func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode {
+        interactor.showTowerSelectionPanel(On: position)
     }
     
-    func create(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
-        interactor.create(building, On: position)
+    func build(_ building: Buildings, On position: SCNVector3) -> SCNNode {
+        interactor.build(building, On: position)
     }
-    
-    func runToCastle() {
-        interactor.runToCastle()
+
+    func run() {
+        interactor.run()
     }
 }

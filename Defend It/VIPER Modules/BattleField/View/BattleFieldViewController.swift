@@ -23,9 +23,9 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         assembler.assembly(with: self)
         setupScene()
         setupCamera()
-        createGround(size: size)
+        createGround()
         //        createFence(size: size)
-        setupEnemy(size: size)
+        setupEnemy()
     }
     
     func setupScene() {
@@ -48,8 +48,8 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         scene.rootNode.addChildNode(cameraNode)
     }
     
-    func createGround(size: Int) {
-        let ground = output.createGround(size: size)
+    func createGround() {
+        let ground = output.createGround()
         for row in ground {
             for cell in row {
                 scene.rootNode.addChildNode(cell.scnGroundNode)
@@ -57,36 +57,36 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         }
     }
     
-    func create(_ building: Buildings, On position: SCNVector3) {
-        deleteTowerSelectionPanel()
-        let building = output.create(building, On: position)
+    func build(_ building: Buildings, On position: SCNVector3) {
+        hideTowerSelectionPanel()
+        let building = output.build(building, On: position)
         scene.rootNode.addChildNode(building)
     }
     
-    func showTowerSelectionPanel(position: SCNVector3) {
-        deleteTowerSelectionPanel()
-        let towerSelectionPanel = output.getTowerSelectionPanel(position: position)
+    func showTowerSelectionPanel(On position: SCNVector3) {
+        hideTowerSelectionPanel()
+        let towerSelectionPanel = output.showTowerSelectionPanel(On: position)
         scene.rootNode.addChildNode(towerSelectionPanel)
     }
     
-    func createFence(size: Int) {
-        let fence = output.createFence(size: size)
+    func createFence() {
+        let fence = output.createFence()
         for fenceCell in fence {
             scene.rootNode.addChildNode(fenceCell.scnFenceCellNode)
         }
     }
     
-    func setupEnemy(size: Int) {
-        let enemy = output.getEnemy(size: size)
+    func setupEnemy() {
+        let enemy = output.getEnemy()
         scene.rootNode.addChildNode(enemy.scnEnemyNode)
     }
     
-    func deleteTowerSelectionPanel() {
+    func hideTowerSelectionPanel() {
         scene.rootNode.childNode(withName: "towerSelectionPanel", recursively: true)?.removeFromParentNode()
     }
     
-    func runToCastle() {
-        output.runToCastle()
+    func run() {
+        output.run()
     }
     
     @objc func groundCellTapped (recognizer:UITapGestureRecognizer) {
@@ -98,19 +98,19 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
             let result = hitResults.first
             if let node = result?.node {
                 if node.name == "groundCell" {
-                    showTowerSelectionPanel(position: node.position)
+                    showTowerSelectionPanel(On: node.position)
                 }
                 if node.name == "floor" {
-                    deleteTowerSelectionPanel()
+                    hideTowerSelectionPanel()
                 }
                 if node.name == "selectedElphTower" {
-                    create(.elphTower, On: node.parent!.position)
+                    build(.elphTower, On: node.parent!.position)
                 }
                 if node.name == "selectedMagicTower" {
-                    create(.magicTower, On: node.parent!.position)
+                    build(.magicTower, On: node.parent!.position)
                 }
                 if node.name == "enemy" {
-                    runToCastle()
+                    run()
                 }
             }
         }

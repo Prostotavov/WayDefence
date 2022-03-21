@@ -8,9 +8,10 @@
 import Foundation
 
 protocol DataManager {
-
+    var battleFieldSize: Int {get set}
 }
 
 class DataManagerImpl: DataManager {
     
+    var battleFieldSize: Int = 7
 }

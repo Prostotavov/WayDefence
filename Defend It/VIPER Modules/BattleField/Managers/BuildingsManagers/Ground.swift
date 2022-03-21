@@ -10,7 +10,7 @@ import SceneKit
 protocol Ground {
     var ground: [[GroundCell]] {get set}
     mutating func createGround(size: Int) -> [[GroundCell]]
-    mutating func create(_ building: Buildings, On position: SCNVector3, And coordinate: (Int, Int)) ->  SCNNode
+    mutating func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode
 }
 
 struct GroundImpl: Ground {
@@ -49,6 +49,7 @@ struct GroundImpl: Ground {
                 cell.scnGroundNode.geometry = geometry
                 cell.scnGroundNode.name = "groundCell"
                 cell.coordinate = (x, z)
+                cell.scnGroundNode.position = Converter.toPosition(From: (x, z))
                 row.append(cell)
             }
             ground.append(row)
@@ -56,27 +57,18 @@ struct GroundImpl: Ground {
         return ground
     }
     
-    mutating func create(_ building: Buildings, On position: SCNVector3, And coordinate: (Int, Int)) ->  SCNNode {
+    mutating func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
         let tower: SCNNode
         switch building {
         case .magicTower: tower = magicTower.clone()
         case .elphTower: tower = elphTower.clone()
         }
         tower.position = position
+        let coordinate = Converter.toCoordination(From: position)
         ground[coordinate.0][coordinate.1].scnBuildingNode = magicTower
         return tower
     }
     
 }
 
-protocol GroundCell {
-    var coordinate: (Int, Int) {get set}
-    var scnGroundNode: SCNNode {get set}
-    var scnBuildingNode: SCNNode? {get set}
-}
 
-struct GroundCellImpl: GroundCell {
-    var coordinate: (Int, Int) = (0, 0)
-    var scnGroundNode: SCNNode = SCNNode()
-    var scnBuildingNode: SCNNode?
-}
