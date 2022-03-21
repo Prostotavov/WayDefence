@@ -8,6 +8,7 @@
 import SceneKit
 
 protocol Ground {
+    var ground: [[GroundCell]] {get set}
     mutating func createGround(size: Int) -> [[GroundCell]]
     mutating func create(_ building: Buildings, On position: SCNVector3, And coordinate: (Int, Int)) ->  SCNNode
 }

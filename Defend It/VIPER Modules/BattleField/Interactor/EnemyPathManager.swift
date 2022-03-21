@@ -9,25 +9,33 @@ import Foundation
 import SceneKit
 
 protocol EnemyPathManager {
-    func calculatePath() -> [SCNVector3]
+    func calculatePathAStar(ground: [[GroundCell]]) -> [(Int, Int)]
 }
 
 class EnemyPathManagerImpl: EnemyPathManager {
     
-    var startCoordinate: (Int, Int)!
-    var targetCoordinate: (Int, Int)!
-    var currentCoordinate: (Int, Int)!
+    var graph: BattleFieldGraph!
     
-    func calculatePath() -> [SCNVector3] {
-        var testPath: [SCNVector3] = []
-        let step1 = SCNVector3(0, 0, 0)
-        let step2 = SCNVector3(1, 0, 0)
-        let step3 = SCNVector3(1, 0, 1)
-        let step4 = SCNVector3(1, 0, 2)
-        testPath.append(step1)
-        testPath.append(step2)
-        testPath.append(step3)
-        testPath.append(step4)
-        return testPath
+    func manhattanDistance(_ s: BattleFieldGraph.Vertex, _ t: BattleFieldGraph.Vertex) -> Double {
+        return Double(abs(s.x - t.x) + abs(s.y - t.y))
+    }
+    
+    func createBattleFieldGraph(ground: [[GroundCell]]) {
+        graph = BattleFieldGraph(size: ground.count / 2)
+        for (x, row) in ground.enumerated() {
+            for (z, cell) in row.enumerated() {
+                if cell.scnBuildingNode != nil {
+                    graph.battleField[x][z].isWalkable = false
+                }
+            }
+        }
+    }
+    
+    func calculatePathAStar(ground: [[GroundCell]]) -> [(Int, Int)] {
+        createBattleFieldGraph(ground: ground)
+        let aStarGraph = AStar(graph: graph, heuristic: manhattanDistance)
+        let start = BattleFieldGraph.Vertex(x: 3, y: 0)
+        let target = BattleFieldGraph.Vertex(x: 3, y: 6)
+        return aStarGraph.path(start: start, target: target).map{($0.x, $0.y)}
     }
 }

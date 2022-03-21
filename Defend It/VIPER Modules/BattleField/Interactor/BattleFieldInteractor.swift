@@ -61,10 +61,6 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
         return SCNVector3(-0.25 + CGFloat(size) / 4, 0, -0.25)
     }
     
-    func calculateTargetPosotionForEnemy(size: Int) -> SCNVector3 {
-        return SCNVector3(-0.25 + CGFloat(size) / 4, 0, -0.25 + CGFloat(size) / 2)
-    }
-    
     func calculatePositionFor(coordinate: (Int, Int)) -> SCNVector3 {
         return SCNVector3(Float(coordinate.0)/2, 0, Float(coordinate.1)/2)
     }
@@ -73,8 +69,17 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
         return (Int(position.x * 2), Int(position.z * 2))
     }
     
-    func calculatePathForEnemy() -> [SCNVector3]{
-        enemyPathManager.calculatePath()
+    func calculatePathFromCoorToPosinion(coorPath: [(Int, Int)]) -> [SCNVector3]{
+        var path: [SCNVector3] = []
+        for step in coorPath {
+            path.append(calculatePositionFor(coordinate: step))
+        }
+        return path
     }
+    
+    func calculatePathForEnemy() -> [SCNVector3]{
+        return calculatePathFromCoorToPosinion(coorPath: enemyPathManager.calculatePathAStar(ground: ground.ground))
+    }
+    
     
 }
