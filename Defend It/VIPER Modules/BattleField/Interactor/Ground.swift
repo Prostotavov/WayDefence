@@ -9,7 +9,7 @@ import SceneKit
 
 protocol Ground {
     mutating func createGround(size: Int) -> [[GroundCell]]
-    mutating func create(_ building: Buildings, On position: SCNVector3) ->  SCNNode
+    mutating func create(_ building: Buildings, On position: SCNVector3, And coordinate: (Int, Int)) ->  SCNNode
 }
 
 struct GroundImpl: Ground {
@@ -43,10 +43,10 @@ struct GroundImpl: Ground {
             for z in 0..<size {
                 var cell = GroundCellImpl()
                 var geometry: SCNGeometry!
+                
                 ((x + z) % 2 == 0) ? (geometry = lightGroundCell.geometry) : (geometry = darkGroundCell.geometry)
                 cell.scnGroundNode.geometry = geometry
                 cell.scnGroundNode.name = "groundCell"
-                cell.scnGroundNode.position = SCNVector3(Float(x)/2, 0, Float(z)/2)
                 cell.coordinate = (x, z)
                 row.append(cell)
             }
@@ -55,14 +55,14 @@ struct GroundImpl: Ground {
         return ground
     }
     
-    mutating func create(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
+    mutating func create(_ building: Buildings, On position: SCNVector3, And coordinate: (Int, Int)) ->  SCNNode {
         let tower: SCNNode
         switch building {
         case .magicTower: tower = magicTower.clone()
         case .elphTower: tower = elphTower.clone()
         }
         tower.position = position
-//        ground[cell.coordinate.0][cell.coordinate.1].scnBuildingNode = magicTower
+        ground[coordinate.0][coordinate.1].scnBuildingNode = magicTower
         return tower
     }
     

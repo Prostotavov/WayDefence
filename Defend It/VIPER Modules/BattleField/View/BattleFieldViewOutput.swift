@@ -15,6 +15,6 @@ protocol BattleFieldViewOutput: AnyObject {
     func setupCamera() -> SCNNode
     func getTowerSelectionPanel(position: SCNVector3) -> SCNNode
     func create(_ building: Buildings, On position: SCNVector3) ->  SCNNode
-    func runToCastle(path: [SCNVector3])
+    func runToCastle()
     
 }

@@ -13,7 +13,6 @@ protocol Enemy {
     var scene: SCNScene {get set}
     var scnEnemyNode: SCNNode {get set}
     func runToCastle(path: [SCNVector3])
-    
 }
 
 struct EnemyImpl: Enemy {
@@ -21,10 +20,10 @@ struct EnemyImpl: Enemy {
     var scene: SCNScene
     var scnEnemyNode: SCNNode
     
-    init(size: Int) {
+    init(position: SCNVector3) {
         scene = SCNScene(named: "art.scnassets/allElements.scn")!
         scnEnemyNode = scene.rootNode.childNode(withName: "enemy", recursively: true)!
-        scnEnemyNode.position = SCNVector3(-0.25, 0, CGFloat(size/4) + 0.5)
+        scnEnemyNode.position = position
     }
     
     func runOneSquare(with location: SCNVector3) {

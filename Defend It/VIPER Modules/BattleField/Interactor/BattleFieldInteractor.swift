@@ -11,7 +11,7 @@ import SceneKit
 class BattleFieldInteractor: BattleFieldInteractorInput {
     
     weak var output: BattleFieldInteractorOutput!
-    var dataManager: DataManager!
+    var enemyPathManager: EnemyPathManager!
     
     var ground: Ground = GroundImpl()
     var fence: Fence = FenceImpl()
@@ -20,6 +20,11 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     var enemy: Enemy!
     
     func createGround(size: Int) -> [[GroundCell]] {
+        for row in ground.createGround(size: size) {
+            for cell in row {
+                cell.scnGroundNode.position = calculatePositionFor(coordinate: cell.coordinate)
+            }
+        }
         return ground.createGround(size: size)
     }
     
@@ -28,9 +33,11 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     }
     
     func getEnemy(size: Int) -> Enemy {
-        enemy = EnemyImpl(size: size)
+        let position = calculateStartPosotionForEnemy(size: size)
+        enemy = EnemyImpl(position: position)
         return enemy
     }
+    
     
     func setupCamera() -> SCNNode {
         return camera.setupCamera()
@@ -41,11 +48,33 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     }
     
     func create(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
-        ground.create(building, On: position)
+        let coordinate = calculateCoordinateFor(position: position)
+        return ground.create(building, On: position, And: coordinate)
+
     }
     
-    func runToCastle(path: [SCNVector3]) {
-    enemy.runToCastle(path: path)
+    func runToCastle() {
+    enemy.runToCastle(path: calculatePathForEnemy())
+    }
+    
+    func calculateStartPosotionForEnemy(size: Int) -> SCNVector3 {
+        return SCNVector3(-0.25 + CGFloat(size) / 4, 0, -0.25)
+    }
+    
+    func calculateTargetPosotionForEnemy(size: Int) -> SCNVector3 {
+        return SCNVector3(-0.25 + CGFloat(size) / 4, 0, -0.25 + CGFloat(size) / 2)
+    }
+    
+    func calculatePositionFor(coordinate: (Int, Int)) -> SCNVector3 {
+        return SCNVector3(Float(coordinate.0)/2, 0, Float(coordinate.1)/2)
+    }
+    
+    func calculateCoordinateFor(position: SCNVector3) -> (Int, Int) {
+        return (Int(position.x * 2), Int(position.z * 2))
+    }
+    
+    func calculatePathForEnemy() -> [SCNVector3]{
+        enemyPathManager.calculatePath()
     }
     
 }

@@ -38,7 +38,7 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
         interactor.create(building, On: position)
     }
     
-    func runToCastle(path: [SCNVector3]) {
-        interactor.runToCastle(path: path)
+    func runToCastle() {
+        interactor.runToCastle()
     }
 }
