@@ -17,6 +17,7 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     var fence: Fence = FenceImpl()
     var camera: Camera = CameraImpl()
     var towerSelectionPanel: TowerSelectionPanel = TowerSelectionPanelImpl()
+    var enemy: Enemy!
     
     func createGround(size: Int) -> [[GroundCell]] {
         return ground.createGround(size: size)
@@ -27,7 +28,8 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     }
     
     func getEnemy(size: Int) -> Enemy {
-        return EnemyImpl(size: size)
+        enemy = EnemyImpl(size: size)
+        return enemy
     }
     
     func setupCamera() -> SCNNode {
@@ -40,6 +42,10 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     
     func create(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
         ground.create(building, On: position)
+    }
+    
+    func runToCastle(path: [SCNVector3]) {
+    enemy.runToCastle(path: path)
     }
     
 }

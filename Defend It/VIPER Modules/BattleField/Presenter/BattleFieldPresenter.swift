@@ -37,4 +37,8 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     func create(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
         interactor.create(building, On: position)
     }
+    
+    func runToCastle(path: [SCNVector3]) {
+        interactor.runToCastle(path: path)
+    }
 }

@@ -18,14 +18,26 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     var sceneView: SCNView!
     var scene: SCNScene!
     
+    var testPath: [SCNVector3] = []
+    
     override func loadView() {
         super.loadView()
         assembler.assembly(with: self)
         setupScene()
         setupCamera()
         createGround(size: size)
-        createFence(size: size)
+        //        createFence(size: size)
         setupEnemy(size: size)
+        
+        let step1 = SCNVector3(0, 0, 0)
+        let step2 = SCNVector3(1, 0, 0)
+        let step3 = SCNVector3(1, 0, 1)
+        let step4 = SCNVector3(1, 0, 2)
+        
+        testPath.append(step1)
+        testPath.append(step2)
+        testPath.append(step3)
+        testPath.append(step4)
     }
     
     func setupScene() {
@@ -85,6 +97,10 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         scene.rootNode.childNode(withName: "towerSelectionPanel", recursively: true)?.removeFromParentNode()
     }
     
+    func runToCastle(path: [SCNVector3]) {
+        output.runToCastle(path: path)
+    }
+    
     @objc func groundCellTapped (recognizer:UITapGestureRecognizer) {
         let location = recognizer.location(in: sceneView)
         
@@ -104,6 +120,9 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
                 }
                 if node.name == "selectedMagicTower" {
                     create(.magicTower, On: node.parent!.position)
+                }
+                if node.name == "enemy" {
+                    runToCastle(path: testPath)
                 }
             }
         }
