@@ -30,7 +30,7 @@ struct EnemyImpl: Enemy {
     
     func runOneSquare(to location: SCNVector3) {
         scnEnemyNode.removeAllActions()
-        let time = 2.0
+        let time = 1.0
         let action = SCNAction.move(to: location, duration: time)
         scnEnemyNode.runAction(action)
     }

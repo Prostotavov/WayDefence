@@ -10,6 +10,8 @@ import SceneKit
 protocol EnemiesManager {
     var enemy: Enemy {get set}
     mutating func run()
+    mutating func prohibitWalking(On coordination: (Int, Int))
+    mutating func allowWalking(On coordination: (Int, Int))
 }
 
 struct EnemiesManagerImpl: EnemiesManager {
@@ -38,6 +40,16 @@ struct EnemiesManagerImpl: EnemiesManager {
     mutating func createBattleFieldGraph() {
         graph = BattleFieldGraph(size: battleFieldSize)
     }
+    
+    mutating func prohibitWalking(On coordination: (Int, Int)) {
+        graph.battleField[coordination.0][coordination.1].isWalkable = false
+    }
+    
+    mutating func allowWalking(On coordination: (Int, Int)) {
+        graph.battleField[coordination.0][coordination.1].isWalkable = true
+    }
+    
+    
     
     mutating func calculatePath() -> [(Int, Int)] {
         let aStarGraph = AStar(graph: graph, heuristic: manhattanDistance)

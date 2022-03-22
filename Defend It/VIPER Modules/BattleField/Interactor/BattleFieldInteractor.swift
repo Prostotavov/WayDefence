@@ -39,7 +39,8 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     }
     
     func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
-        buildingsManager.build(building, On: position)
+        enemiesManager.prohibitWalking(On: Converter.toCoordination(From: position))
+        return buildingsManager.build(building, On: position)
     }
     
     func run() {
