@@ -12,7 +12,7 @@ protocol Enemy {
     
     var scene: SCNScene {get set}
     var scnEnemyNode: SCNNode {get set}
-    func run(by path: [SCNVector3])
+    mutating func run(by path: [SCNVector3])
     var coordinate: (Int, Int) {get set}
 }
 
@@ -21,6 +21,9 @@ struct EnemyImpl: Enemy {
     var scene: SCNScene
     var scnEnemyNode: SCNNode
     var coordinate: (Int, Int) = (3, 0)
+    
+    var enemyRunQueue = OperationQueue()
+    var enemyRunOperation : EnemyRunOperation!
     
     init() {
         scene = SCNScene(named: "art.scnassets/allElements.scn")!
@@ -35,13 +38,9 @@ struct EnemyImpl: Enemy {
         scnEnemyNode.runAction(action)
     }
     
-    func run(by path: [SCNVector3]) {
-        for (i, location) in path.enumerated() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0 * Double(i)) {
-                print(location)
-                runOneSquare(to: location)
-            }
-        }
+    mutating func run(by path: [SCNVector3]) {
+        enemyRunOperation = EnemyRunOperation(by: path, runOneSquare: runOneSquare)
+        enemyRunQueue.addOperation(enemyRunOperation)
     }
 
 }
