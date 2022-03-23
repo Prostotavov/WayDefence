@@ -9,12 +9,12 @@ import SceneKit
 
 protocol EnemiesManager {
     var enemy: Enemy {get set}
-    mutating func run()
-    mutating func prohibitWalking(On coordination: (Int, Int))
-    mutating func allowWalking(On coordination: (Int, Int))
+    func run()
+    func prohibitWalking(On coordination: (Int, Int))
+    func allowWalking(On coordination: (Int, Int))
 }
 
-struct EnemiesManagerImpl: EnemiesManager {
+class EnemiesManagerImpl: EnemiesManager, EnemyDelegate {
     var battleFieldSize: Int!
     var graph: BattleFieldGraph!
     var enemy: Enemy = EnemyImpl()
@@ -23,13 +23,14 @@ struct EnemiesManagerImpl: EnemiesManager {
         self.battleFieldSize = battleFieldSize
         enemy.scnEnemyNode.position = calculateStartPosition()
         createBattleFieldGraph()
+        enemy.delegate = self
     }
     
     func calculateStartPosition() -> SCNVector3 {
-        SCNVector3(-0.25 + CGFloat(battleFieldSize)/4, 0, -0.75)
+        SCNVector3(-0.25 + CGFloat(battleFieldSize)/4, 0, -0.25)
     }
     
-    mutating func run() {
+    func run() {
         enemy.run(by: Converter.toPositions(From: calculatePath()))
     }
     
@@ -37,24 +38,29 @@ struct EnemiesManagerImpl: EnemiesManager {
         return Double(abs(s.x - t.x) + abs(s.y - t.y))
     }
     
-    mutating func createBattleFieldGraph() {
+    func createBattleFieldGraph() {
         graph = BattleFieldGraph(size: battleFieldSize)
     }
     
-    mutating func prohibitWalking(On coordination: (Int, Int)) {
+    func prohibitWalking(On coordination: (Int, Int)) {
         graph.battleField[coordination.0][coordination.1].isWalkable = false
     }
     
-    mutating func allowWalking(On coordination: (Int, Int)) {
+    func allowWalking(On coordination: (Int, Int)) {
         graph.battleField[coordination.0][coordination.1].isWalkable = true
     }
     
     
     
-    mutating func calculatePath() -> [(Int, Int)] {
+    func calculatePath() -> [(Int, Int)] {
+        enemy.coordinate = Converter.toCoordination(From: enemy.scnEnemyNode.position)
+        if enemy.coordinate.0 < 0 || enemy.coordinate.1 < 0 {
+            enemy.coordinate = (3, 0)
+        }
         let aStarGraph = AStar(graph: graph, heuristic: manhattanDistance)
         let start = BattleFieldGraph.Vertex(x: enemy.coordinate.0, y: enemy.coordinate.1)
         let target = BattleFieldGraph.Vertex(x: 3, y: 6)
-        return aStarGraph.path(start: start, target: target).map{($0.x, $0.y)}
+        let path = aStarGraph.path(start: start, target: target).dropFirst().map{($0.x, $0.y)}
+        return path
     }
 }

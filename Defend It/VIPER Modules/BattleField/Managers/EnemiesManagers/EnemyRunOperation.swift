@@ -24,6 +24,9 @@ class EnemyRunOperation: Operation {
     
     func run(by path: [SCNVector3], runOneSquare: @escaping (SCNVector3)->()) {
         for (i, location) in path.enumerated() {
+            if self.isCancelled{
+                break
+            }
             DispatchQueue.main.async {
                 print("\(i). \(location)")
                 runOneSquare(location)

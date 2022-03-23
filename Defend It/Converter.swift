@@ -10,7 +10,7 @@ import SceneKit
 struct Converter {
     
     static func toCoordination(From position: SCNVector3) -> (Int, Int) {
-        (Int(position.x * 2), Int(position.z * 2))
+        (Int(round(position.x * 2)), Int(round(position.z * 2)))
     }
     
     static func toPosition(From coordinate: (Int, Int)) -> SCNVector3 {

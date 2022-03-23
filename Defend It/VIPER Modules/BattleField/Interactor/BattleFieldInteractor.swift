@@ -40,6 +40,7 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     
     func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
         enemiesManager.prohibitWalking(On: Converter.toCoordination(From: position))
+        NotificationCenter.default.post(name: Notification.Name("test"), object: nil)
         return buildingsManager.build(building, On: position)
     }
     

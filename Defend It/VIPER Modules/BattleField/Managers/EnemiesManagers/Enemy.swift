@@ -10,17 +10,25 @@ import SceneKit
 
 protocol Enemy {
     
+    var delegate: EnemyDelegate! {get set}
     var scene: SCNScene {get set}
     var scnEnemyNode: SCNNode {get set}
-    mutating func run(by path: [SCNVector3])
+    func run(by path: [SCNVector3])
     var coordinate: (Int, Int) {get set}
 }
 
-struct EnemyImpl: Enemy {
+protocol EnemyDelegate {
+    func calculatePath() -> [(Int, Int)]
+    var graph: BattleFieldGraph! {get set}
+}
+
+class EnemyImpl: Enemy {
     
     var scene: SCNScene
     var scnEnemyNode: SCNNode
     var coordinate: (Int, Int) = (3, 0)
+    
+    var delegate: EnemyDelegate!
     
     var enemyRunQueue = OperationQueue()
     var enemyRunOperation : EnemyRunOperation!
@@ -29,6 +37,20 @@ struct EnemyImpl: Enemy {
         scene = SCNScene(named: "art.scnassets/allElements.scn")!
         scnEnemyNode = scene.rootNode.childNode(withName: "enemy", recursively: true)!
         scnEnemyNode.position = Converter.toPosition(From: coordinate)
+        NotificationCenter.default.addObserver(self, selector: #selector(stopEnemyAndRunNewPath), name: Notification.Name("test"), object: nil)
+    }
+    
+    @objc
+    func stopEnemyAndRunNewPath() {
+        if enemyRunOperation != nil {
+            enemyRunOperation.cancel()
+            scnEnemyNode.removeAllActions()
+            run(by: Converter.toPositions(From:delegate.calculatePath()))
+        }
+        print()
+        print("delegate")
+        print(delegate.graph)
+        print()
     }
     
     func runOneSquare(to location: SCNVector3) {
@@ -38,7 +60,8 @@ struct EnemyImpl: Enemy {
         scnEnemyNode.runAction(action)
     }
     
-    mutating func run(by path: [SCNVector3]) {
+    func run(by path: [SCNVector3]) {
+        print("Start Run")
         enemyRunOperation = EnemyRunOperation(by: path, runOneSquare: runOneSquare)
         enemyRunQueue.addOperation(enemyRunOperation)
     }
