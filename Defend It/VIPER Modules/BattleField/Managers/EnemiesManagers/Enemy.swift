@@ -47,10 +47,6 @@ class EnemyImpl: Enemy {
             scnEnemyNode.removeAllActions()
             run(by: Converter.toPositions(From:delegate.calculatePath()))
         }
-        print()
-        print("delegate")
-        print(delegate.graph)
-        print()
     }
     
     func runOneSquare(to location: SCNVector3) {
