@@ -89,6 +89,11 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         output.run()
     }
     
+    func deleteBuilding(with name: String) {
+        output.deleteBuilding(with: name)
+        scene.rootNode.childNode(withName: name, recursively: true)?.removeFromParentNode()
+    }
+    
     @objc func groundCellTapped (recognizer:UITapGestureRecognizer) {
         let location = recognizer.location(in: sceneView)
         
@@ -112,7 +117,10 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
                 if node.name == "enemy" {
                     run()
                 }
-            }
+                if node.name!.contains("builtTower") {
+                    deleteBuilding(with: node.name!)
+                }
+             }
         }
     }
     

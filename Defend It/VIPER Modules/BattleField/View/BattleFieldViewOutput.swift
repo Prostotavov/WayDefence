@@ -16,5 +16,6 @@ protocol BattleFieldViewOutput: AnyObject {
     func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode
     func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode
     func run()
+    func deleteBuilding(with name: String)
     
 }

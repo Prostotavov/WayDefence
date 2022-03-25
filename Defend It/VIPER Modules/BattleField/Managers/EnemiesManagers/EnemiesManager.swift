@@ -55,7 +55,7 @@ class EnemiesManagerImpl: EnemiesManager {
     }
     
     func calculatePath() -> [SCNVector3] {
-        enemy.coordinate = Converter.toCoordination(From: enemy.scnEnemyNode.position)
+        enemy.coordinate = Converter.toCoordinate(from: enemy.scnEnemyNode.position)
         if enemy.coordinate.0 < 0 || enemy.coordinate.1 < 0 {
             enemy.coordinate = (3, 0)
         }
@@ -63,6 +63,6 @@ class EnemiesManagerImpl: EnemiesManager {
         let start = BattleFieldGraph.Vertex(x: enemy.coordinate.0, y: enemy.coordinate.1)
         let target = BattleFieldGraph.Vertex(x: 3, y: 6)
         let path = aStarGraph.path(start: start, target: target).dropFirst().map{($0.x, $0.y)}
-        return Converter.toPositions(From: path)
+        return Converter.toPositions(from: path)
     }
 }

@@ -11,6 +11,7 @@ protocol BuildingsManager {
     mutating func createGround() -> [[GroundCell]]
     func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode
     mutating func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode
+    mutating func deleteBuilding(with name: String)
 }
 
 struct BuildingsManagerImpl: BuildingsManager {
@@ -32,6 +33,11 @@ struct BuildingsManagerImpl: BuildingsManager {
     }
     
     mutating func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
-        ground.build(building, On: position)
+        var tower = ground.build(building, On: position)
+        return tower
+    }
+    
+    mutating func deleteBuilding(with name: String) {
+        ground.deleteBuilding(with: name)
     }
 }

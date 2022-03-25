@@ -11,6 +11,7 @@ protocol Ground {
     var ground: [[GroundCell]] {get set}
     mutating func createGround(size: Int) -> [[GroundCell]]
     mutating func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode
+    mutating func deleteBuilding(with name: String)
 }
 
 struct GroundImpl: Ground {
@@ -49,7 +50,7 @@ struct GroundImpl: Ground {
                 cell.scnGroundNode.geometry = geometry
                 cell.scnGroundNode.name = "groundCell"
                 cell.coordinate = (x, z)
-                cell.scnGroundNode.position = Converter.toPosition(From: (x, z))
+                cell.scnGroundNode.position = Converter.toPosition(from: (x, z))
                 row.append(cell)
             }
             ground.append(row)
@@ -64,9 +65,16 @@ struct GroundImpl: Ground {
         case .elphTower: tower = elphTower.clone()
         }
         tower.position = position
-        let coordinate = Converter.toCoordination(From: position)
-        ground[coordinate.0][coordinate.1].scnBuildingNode = magicTower
+        let coordinate = Converter.toCoordinate(from: position)
+        let newName = "builtTower(\(coordinate.0),\(coordinate.1))"
+        tower.childNode(withName: "tower", recursively: true)?.name = newName
+        ground[coordinate.0][coordinate.1].scnBuildingNode = tower
         return tower
+    }
+    
+    mutating func deleteBuilding(with name: String) {
+        let coordinate = Converter.toCoordinate(from: name)
+        ground[coordinate.0][coordinate.1].scnBuildingNode = nil
     }
     
 }

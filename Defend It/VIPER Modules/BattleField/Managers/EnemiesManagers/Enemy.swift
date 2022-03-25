@@ -29,7 +29,7 @@ class EnemyImpl: Enemy {
     init() {
         scene = SCNScene(named: "art.scnassets/allElements.scn")!
         scnEnemyNode = scene.rootNode.childNode(withName: "enemy", recursively: true)!
-        scnEnemyNode.position = Converter.toPosition(From: coordinate)
+        scnEnemyNode.position = Converter.toPosition(from: coordinate)
     }
     
     func stopEnemyAndRunNewPath(by path: [SCNVector3]) {
