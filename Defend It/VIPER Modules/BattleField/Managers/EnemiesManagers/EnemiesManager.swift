@@ -12,9 +12,10 @@ protocol EnemiesManager {
     func run()
     func prohibitWalking(On coordination: (Int, Int))
     func allowWalking(On coordination: (Int, Int))
+    func stopEnemyAndRunNewPath()
 }
 
-class EnemiesManagerImpl: EnemiesManager, EnemyDelegate {
+class EnemiesManagerImpl: EnemiesManager {
     var battleFieldSize: Int!
     var graph: BattleFieldGraph!
     var enemy: Enemy = EnemyImpl()
@@ -23,7 +24,6 @@ class EnemiesManagerImpl: EnemiesManager, EnemyDelegate {
         self.battleFieldSize = battleFieldSize
         enemy.scnEnemyNode.position = calculateStartPosition()
         createBattleFieldGraph()
-        enemy.delegate = self
     }
     
     func calculateStartPosition() -> SCNVector3 {
@@ -31,7 +31,7 @@ class EnemiesManagerImpl: EnemiesManager, EnemyDelegate {
     }
     
     func run() {
-        enemy.run(by: Converter.toPositions(From: calculatePath()))
+        enemy.run(by: calculatePath())
     }
     
     func manhattanDistance(_ s: BattleFieldGraph.Vertex, _ t: BattleFieldGraph.Vertex) -> Double {
@@ -50,9 +50,11 @@ class EnemiesManagerImpl: EnemiesManager, EnemyDelegate {
         graph.battleField[coordination.0][coordination.1].isWalkable = true
     }
     
+    func stopEnemyAndRunNewPath() {
+        enemy.stopEnemyAndRunNewPath(by: calculatePath())
+    }
     
-    
-    func calculatePath() -> [(Int, Int)] {
+    func calculatePath() -> [SCNVector3] {
         enemy.coordinate = Converter.toCoordination(From: enemy.scnEnemyNode.position)
         if enemy.coordinate.0 < 0 || enemy.coordinate.1 < 0 {
             enemy.coordinate = (3, 0)
@@ -61,6 +63,6 @@ class EnemiesManagerImpl: EnemiesManager, EnemyDelegate {
         let start = BattleFieldGraph.Vertex(x: enemy.coordinate.0, y: enemy.coordinate.1)
         let target = BattleFieldGraph.Vertex(x: 3, y: 6)
         let path = aStarGraph.path(start: start, target: target).dropFirst().map{($0.x, $0.y)}
-        return path
+        return Converter.toPositions(From: path)
     }
 }
