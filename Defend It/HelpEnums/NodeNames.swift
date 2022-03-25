@@ -8,6 +8,7 @@
 import Foundation
 
 enum NodeNames: String {
+    case floor = "floor"
     case groundCell = "groundCellNode"
     case magicTower = "magicTowerBuildingNode"
     case elphTower = "elphTowerBuildingNode"

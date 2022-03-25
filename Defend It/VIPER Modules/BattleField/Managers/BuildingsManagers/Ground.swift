@@ -12,6 +12,7 @@ protocol Ground {
     mutating func createGround(size: Int) -> [[GroundCell]]
     mutating func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode
     mutating func deleteBuilding(with name: String)
+    func get(_ building: Buildings) -> SCNNode
 }
 
 struct GroundImpl: Ground {
@@ -76,6 +77,15 @@ struct GroundImpl: Ground {
     mutating func deleteBuilding(with name: String) {
         let coordinate = Converter.toCoordinate(from: name)
         ground[coordinate.0][coordinate.1].scnBuildingNode = nil
+    }
+    
+    func get(_ building: Buildings) -> SCNNode {
+        let tower: SCNNode
+        switch building {
+        case .magicTower: tower = magicTowerNode.clone()
+        case .elphTower: tower = elphTowerNode.clone()
+        }
+        return tower
     }
     
 }

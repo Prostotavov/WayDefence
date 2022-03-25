@@ -17,11 +17,19 @@ protocol BuildingsManager {
 struct BuildingsManagerImpl: BuildingsManager {
     
     var ground: Ground = GroundImpl()
-    var towerSelectionPanel: TowerSelectionPanel = TowerSelectionPanelImpl()
+    var towerSelectionPanel: TowerSelectionPanel!
     var battleFieldSize: Int!
     
     init(_ battleFieldSize: Int) {
         self.battleFieldSize = battleFieldSize
+        setupBuildingSelectionPanel()
+        
+    }
+    
+    mutating func setupBuildingSelectionPanel() {
+        var selectionItems: [SCNNode] = []
+        selectionItems.append(ground.get(.elphTower))
+        towerSelectionPanel = TowerSelectionPanelImpl(selectionItems: selectionItems)
     }
     
     func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode {

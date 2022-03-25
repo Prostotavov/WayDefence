@@ -82,7 +82,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     }
     
     func hideTowerSelectionPanel() {
-        scene.rootNode.childNode(withName: "towerSelectionPanel", recursively: true)?.removeFromParentNode()
+        scene.rootNode.childNode(withName: NodeNames.buildingSelectionPanel.rawValue, recursively: true)?.removeFromParentNode()
     }
     
     func run() {
@@ -103,20 +103,21 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
             let result = hitResults.first
             if let node = result?.node {
                 
-                if node.name == "floor" {
+                if node.name == NodeNames.floor.rawValue {
                     hideTowerSelectionPanel()
                 }
                 if node.name == "groundCell" {
                     showTowerSelectionPanel(On: node.parent!.position)
                 }
-                if node.name == "selectedElphTower" {
-                    build(.elphTower, On: node.parent!.position)
-                }
                 if node.name == "selectedMagicTower" {
                     build(.magicTower, On: node.parent!.position)
                 }
                 if node.parent != nil && node.parent!.name != nil {
-                    if node.parent!.name == "enemyNode" {
+                    if node.parent!.name == "selectedElphTower" {
+                                            ///arch   tower        board        panel
+                        build(.elphTower, On: node.parent!.parent!.parent!.position)
+                    }
+                    if node.parent!.name == NodeNames.enemy.rawValue {
                         run()
                     }
                     if node.parent != nil &&
@@ -125,6 +126,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
                         deleteBuilding(with: node.parent!.name!)
                     }
                 }
+                print(node.name)
  
             }
         }
