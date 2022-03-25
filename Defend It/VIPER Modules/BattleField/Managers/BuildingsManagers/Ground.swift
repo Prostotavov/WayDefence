@@ -15,11 +15,15 @@ protocol Ground {
 }
 
 struct GroundImpl: Ground {
-    var allElementsScene: SCNScene!
-    var lightGroundCell: SCNNode!
-    var darkGroundCell: SCNNode!
-    var magicTower: SCNNode!
-    var elphTower: SCNNode!
+    var groundCellScene: SCNScene!
+    var groundCellNode: SCNNode!
+    
+    var elphTowerScene: SCNScene!
+    var elphTowerNode: SCNNode!
+    
+    var magicTowerScene: SCNScene!
+    var magicTowerNode: SCNNode!
+    
     var ground: [[GroundCell]] = []
     
     init() {
@@ -28,14 +32,16 @@ struct GroundImpl: Ground {
     }
     
     mutating func setupScene() {
-        allElementsScene = SCNScene(named: "art.scnassets/allElements.scn")!
+        groundCellScene = SCNScene(named: ScenePaths.groundCellScene.rawValue)!
+        elphTowerScene = SCNScene(named: ScenePaths.elphTowerScene.rawValue)!
+        magicTowerScene = SCNScene(named: ScenePaths.magicTowerScene.rawValue)!
     }
     
     mutating func setupNodes() {
-        lightGroundCell = allElementsScene.rootNode.childNode(withName: "lightGround", recursively: true)!
-        darkGroundCell = allElementsScene.rootNode.childNode(withName: "darkGround", recursively: true)!
-        magicTower = allElementsScene.rootNode.childNode(withName: "magicTower", recursively: true)!
-        elphTower = allElementsScene.rootNode.childNode(withName: "elphTower", recursively: true)!
+        groundCellNode = groundCellScene.rootNode.childNode(withName: NodeNames.groundCell.rawValue, recursively: true)!
+        elphTowerNode = elphTowerScene.rootNode.childNode(withName: NodeNames.elphTower.rawValue, recursively: true)!
+        magicTowerNode = magicTowerScene.rootNode.childNode(withName: NodeNames.magicTower.rawValue, recursively: true)!
+        
     }
     
     mutating func createGround(size: Int) -> [[GroundCell]] {
@@ -44,11 +50,7 @@ struct GroundImpl: Ground {
             var row: [GroundCell] = []
             for z in 0..<size {
                 var cell = GroundCellImpl()
-                var geometry: SCNGeometry!
-                
-                ((x + z) % 2 == 0) ? (geometry = lightGroundCell.geometry) : (geometry = darkGroundCell.geometry)
-                cell.scnGroundNode.geometry = geometry
-                cell.scnGroundNode.name = "groundCell"
+                cell.scnGroundNode = groundCellNode.clone()
                 cell.coordinate = (x, z)
                 cell.scnGroundNode.position = Converter.toPosition(from: (x, z))
                 row.append(cell)
@@ -61,13 +63,12 @@ struct GroundImpl: Ground {
     mutating func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
         let tower: SCNNode
         switch building {
-        case .magicTower: tower = magicTower.clone()
-        case .elphTower: tower = elphTower.clone()
+        case .magicTower: tower = magicTowerNode.clone()
+        case .elphTower: tower = elphTowerNode.clone()
         }
         tower.position = position
         let coordinate = Converter.toCoordinate(from: position)
-        let newName = "builtTower(\(coordinate.0),\(coordinate.1))"
-        tower.childNode(withName: "tower", recursively: true)?.name = newName
+        tower.name = "builtTower(\(coordinate.0),\(coordinate.1))"
         ground[coordinate.0][coordinate.1].scnBuildingNode = tower
         return tower
     }

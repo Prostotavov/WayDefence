@@ -27,7 +27,7 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     }
     
     func getEnemy() -> Enemy {
-        enemiesManager.enemy
+        return enemiesManager.enemy
     }
     
     func setupCamera() -> SCNNode {

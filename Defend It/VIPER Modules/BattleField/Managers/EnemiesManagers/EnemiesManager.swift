@@ -22,7 +22,7 @@ class EnemiesManagerImpl: EnemiesManager {
     
     init(_ battleFieldSize: Int) {
         self.battleFieldSize = battleFieldSize
-        enemy.scnEnemyNode.position = calculateStartPosition()
+        enemy.enemyNode.position = calculateStartPosition()
         createBattleFieldGraph()
     }
     
@@ -55,7 +55,7 @@ class EnemiesManagerImpl: EnemiesManager {
     }
     
     func calculatePath() -> [SCNVector3] {
-        enemy.coordinate = Converter.toCoordinate(from: enemy.scnEnemyNode.position)
+        enemy.coordinate = Converter.toCoordinate(from: enemy.enemyNode.position)
         if enemy.coordinate.0 < 0 || enemy.coordinate.1 < 0 {
             enemy.coordinate = (3, 0)
         }
