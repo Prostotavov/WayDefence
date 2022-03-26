@@ -14,4 +14,16 @@ enum NodeNames: String {
     case elphTower = "elphTowerBuildingNode"
     case enemy = "enemyNode"
     case buildingSelectionPanel = "buildingSelectionPanelNode"
+    
+    case goblinFL = "goblinFLNode"
+    case goblinSL = "goblinSLNode"
+    case goblinTL = "goblinTLNode"
+    
+    case orcFL = "orcFLNode"
+    case orcSL = "orcSLNode"
+    case orcTL = "orcTLNode"
+    
+    case trollFL = "trollFLNode"
+    case trollSL = "trollSLNode"
+    case trollTL = "trollTLNode"
 }
