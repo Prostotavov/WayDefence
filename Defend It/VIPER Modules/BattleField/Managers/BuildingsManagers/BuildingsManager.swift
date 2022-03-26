@@ -8,7 +8,6 @@
 import SceneKit
 
 protocol BuildingsManager {
-    func createGround() -> [[GroundCell]]
     func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode
     func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode
     func deleteBuilding(with name: String)
@@ -16,7 +15,7 @@ protocol BuildingsManager {
 
 class BuildingsManagerImpl: BuildingsManager {
     
-    var ground: Ground = GroundImpl()
+    var towerBuilder = TowerBuilderImpl()
     var towerSelectionPanel: TowerSelectionPanel!
     var battleFieldSize: Int!
     
@@ -28,7 +27,7 @@ class BuildingsManagerImpl: BuildingsManager {
     
     func setupBuildingSelectionPanel() {
         var selectionItems: [SCNNode] = []
-        selectionItems.append(ground.get(.elphTower))
+        selectionItems.append(ElphTowerFactory.defaultFactory.createFirstLevelBuildings().buildingNode.clone())
         towerSelectionPanel = TowerSelectionPanelImpl(selectionItems: selectionItems)
     }
     
@@ -36,16 +35,11 @@ class BuildingsManagerImpl: BuildingsManager {
         towerSelectionPanel.show(on: position)
     }
     
-    func createGround() -> [[GroundCell]] {
-        ground.createGround(size: battleFieldSize)
-    }
-    
     func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
-        var tower = ground.build(building, On: position)
-        return tower
+        towerBuilder.build(building, On: position)
     }
     
     func deleteBuilding(with name: String) {
-        ground.deleteBuilding(with: name)
+        towerBuilder.deleteBuilding(with: name)
     }
 }

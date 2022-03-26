@@ -11,6 +11,7 @@ import SceneKit
 class BattleFieldInteractor: BattleFieldInteractorInput {
     
     weak var output: BattleFieldInteractorOutput!
+    var meadowManager: MeadowManager!
     var buildingsManager: BuildingsManager!
     var enemiesManager: EnemiesManager!
     var decorationsManager: DecorationsManager!
@@ -19,7 +20,7 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
 
     
     func createGround() -> [[GroundCell]] {
-        buildingsManager.createGround()
+        meadowManager.createGround()
     }
     
     func createFence() -> [FenceCell] {
