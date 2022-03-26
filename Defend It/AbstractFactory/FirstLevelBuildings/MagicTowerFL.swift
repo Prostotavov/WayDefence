@@ -8,13 +8,13 @@
 import UIKit
 import SceneKit
 
-struct MagicTowerFL: Building {
+class MagicTowerFL: Building {
     
     var type: Buildings = .magicTower
-    var coordinate: (Int, Int) = (0, 0)
-    var scnNode: SCNNode = SCNNode()
+    var level: Levels = .firstLevel
+    var buildingNode: SCNNode
     
-    init() {
-        
+    required init(_ buildingNode: SCNNode) {
+        self.buildingNode = buildingNode
     }
 }

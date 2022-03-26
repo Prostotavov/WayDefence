@@ -12,9 +12,9 @@ protocol Camera {
     mutating func setupCamera() -> SCNNode
 }
 
-struct CameraImpl: Camera {
+class CameraImpl: Camera {
     
-    mutating func setupCamera() -> SCNNode {
+    func setupCamera() -> SCNNode {
         let scnCameraNode = SCNNode()
         scnCameraNode.camera = SCNCamera()
         

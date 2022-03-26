@@ -13,7 +13,7 @@ protocol GroundCell {
     var scnBuildingNode: SCNNode? {get set}
 }
 
-struct GroundCellImpl: GroundCell {
+class GroundCellImpl: GroundCell {
     var coordinate: (Int, Int)!
     var scnGroundNode: SCNNode!
     var scnBuildingNode: SCNNode?

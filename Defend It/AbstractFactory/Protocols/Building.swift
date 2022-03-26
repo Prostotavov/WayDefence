@@ -11,8 +11,8 @@ import SceneKit
 protocol Building {
     
     var type: Buildings {get set}
-    var coordinate: (Int, Int) {get set}
-    var scnNode: SCNNode {get set}
+    var level: Levels {get set}
+    var buildingNode: SCNNode {get set}
     
-    init()
+    init(_ buildingNode: SCNNode)
 }

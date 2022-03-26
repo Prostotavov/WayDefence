@@ -8,13 +8,13 @@
 import UIKit
 import SceneKit
 
-struct ElphTowerSL: Building {
+class ElphTowerSL: Building {
     
     var type: Buildings = .elphTower
-    var coordinate: (Int, Int) = (0, 0)
-    var scnNode: SCNNode = SCNNode()
+    var level: Levels = .secondLevel
+    var buildingNode: SCNNode
     
-    init() {
-        
+    required init(_ buildingNode: SCNNode) {
+        self.buildingNode = buildingNode
     }
 }
