@@ -1,5 +1,5 @@
 //
-//  MagicTowerSL.swift
+//  MagicTowerFL.swift
 //  Defend It
 //
 //  Created by MacBook Pro on 19.03.22.
@@ -8,10 +8,10 @@
 import UIKit
 import SceneKit
 
-class MagicTowerSL: Building {
+class MagicTowerFL: Building {
     
     var type: Buildings = .magicTower
-    var level: Levels = .secondLevel
+    var level: BuildingLevels = .firstLevel
     var buildingNode: SCNNode
     
     required init(_ buildingNode: SCNNode) {

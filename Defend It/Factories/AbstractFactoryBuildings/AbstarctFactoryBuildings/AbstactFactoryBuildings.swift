@@ -12,7 +12,7 @@ enum Buildings: String, CaseIterable {
     case elphTower
 }
 
-enum Levels: String, CaseIterable {
+enum BuildingLevels: String, CaseIterable {
     case firstLevel
     case secondLevel
 }

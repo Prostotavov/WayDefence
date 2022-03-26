@@ -11,7 +11,7 @@ import SceneKit
 class ElphTowerFL: Building {
     
     var type: Buildings = .elphTower
-    var level: Levels = .firstLevel
+    var level: BuildingLevels = .firstLevel
     var buildingNode: SCNNode
     
     required init(_ buildingNode: SCNNode) {
