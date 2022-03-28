@@ -38,8 +38,8 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
         interactor.build(building, On: position)
     }
 
-    func run() {
-        interactor.run()
+    func runEnemy() {
+        interactor.runEnemy()
     }
     
     func deleteBuilding(with name: String) {

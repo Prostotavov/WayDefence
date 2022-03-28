@@ -8,27 +8,32 @@
 import SceneKit
 
 protocol EnemiesManager {
-    var enemy: Enemy {get set}
-    func run()
+    
+    var enemy: Enemy {get}
+    func sendEnemy()
+    func sendEnemyByNewPath()
     func prohibitWalking(On coordination: (Int, Int))
     func allowWalking(On coordination: (Int, Int))
-    func stopEnemyAndRunNewPath()
 }
 
 class EnemiesManagerImpl: EnemiesManager {
     var battleFieldSize: Int!
-    var graph: BattleFieldGraph!
-    var enemy: Enemy = EnemyImpl()
+    var enemy: Enemy = TrollFactory.defaultFactory.createSecondLevelEnemy()
     var enemyPositionManager: EnemyPositionManager!
     
     init(_ battleFieldSize: Int) {
         self.battleFieldSize = battleFieldSize
         enemyPositionManager = EnemyPositionManagerImpl(battleFieldSize)
-        enemy.enemyNode.position = enemyPositionManager.calculateStartPosition()
+        enemy.enemyNode.position = enemyPositionManager.culculateStartPosition()
+    }
+
+    
+    func sendEnemy() {
+        enemyPositionManager.run(enemy)
     }
     
-    func run() {
-        enemy.run(by: calculatePath())
+    func sendEnemyByNewPath() {
+        enemyPositionManager.runByNewPath(enemy)
     }
     
     func prohibitWalking(On coordination: (Int, Int)) {
@@ -37,17 +42,5 @@ class EnemiesManagerImpl: EnemiesManager {
     
     func allowWalking(On coordination: (Int, Int)) {
         enemyPositionManager.allowWalking(On: coordination)
-    }
-    
-    func stopEnemyAndRunNewPath() {
-        enemy.stopEnemyAndRunNewPath(by: calculatePath())
-    }
-    
-    func calculatePath() -> [SCNVector3] {
-        enemy.coordinate = Converter.toCoordinate(from: enemy.enemyNode.position)
-        if enemy.coordinate.0 < 0 || enemy.coordinate.1 < 0 {
-            enemy.coordinate = (3, 0)
-        }
-        return enemyPositionManager.calculatePath(for: enemy.coordinate)
     }
 }

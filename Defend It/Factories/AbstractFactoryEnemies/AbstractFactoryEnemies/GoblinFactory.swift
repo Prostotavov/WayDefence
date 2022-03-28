@@ -9,27 +9,36 @@ import SceneKit
 
 class GoblinFactory: AbstractFactoryEnemies {
     
-    private let goblinScene: SCNScene!
-    private let goblinNode: SCNNode!
+    private let goblinSceneFL: SCNScene!
+    private let goblinSceneSL: SCNScene!
+    private let goblinSceneTL: SCNScene!
+    
+    private let goblinNodeFL: SCNNode!
+    private let goblinNodeSL: SCNNode!
+    private let goblinNodeTL: SCNNode!
     
     init() {
-        goblinScene = SCNScene(named: ScenePaths.magicTowerScene.rawValue)
-        goblinNode = goblinScene.rootNode.childNode(withName: NodeNames.magicTower.rawValue, recursively: true)
+        goblinSceneFL = SCNScene(named: ScenePaths.goblinFLScene.rawValue)
+        goblinSceneSL = SCNScene(named: ScenePaths.goblinSLScene.rawValue)
+        goblinSceneTL = SCNScene(named: ScenePaths.goblinTLScene.rawValue)
+        
+        goblinNodeFL = goblinSceneFL.rootNode.childNode(withName: NodeNames.goblinFL.rawValue, recursively: true)
+        goblinNodeSL = goblinSceneSL.rootNode.childNode(withName: NodeNames.goblinSL.rawValue, recursively: true)
+        goblinNodeTL = goblinSceneTL.rootNode.childNode(withName: NodeNames.goblinTL.rawValue, recursively: true)
     }
     
-    static let defaultFactory = OrcFactory()
+    static let defaultFactory = GoblinFactory()
     
-    
-    func createFirstLevelEnemy() -> EnemyTest {
-        return GoblinFL(goblinNode)
+    func createFirstLevelEnemy() -> Enemy {
+        return GoblinFL(goblinNodeFL)
     }
     
-    func createSecondLevelEnemy() -> EnemyTest {
-        return GoblinSL(goblinNode)
+    func createSecondLevelEnemy() -> Enemy {
+        return GoblinSL(goblinNodeSL)
     }
     
-    func createThirdLevelEnemy() -> EnemyTest {
-        return GoblinTL(goblinNode)
+    func createThirdLevelEnemy() -> Enemy {
+        return GoblinTL(goblinNodeTL)
     }
 
 }

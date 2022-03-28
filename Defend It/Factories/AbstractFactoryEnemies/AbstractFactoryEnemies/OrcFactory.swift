@@ -9,27 +9,36 @@ import SceneKit
 
 class OrcFactory: AbstractFactoryEnemies {
     
-    private let orcScene: SCNScene!
-    private let orcNode: SCNNode!
+    private let orcSceneFL: SCNScene!
+    private let orcSceneSL: SCNScene!
+    private let orcSceneTL: SCNScene!
+    
+    private let orcNodeFL: SCNNode!
+    private let orcNodeSL: SCNNode!
+    private let orcNodeTL: SCNNode!
     
     init() {
-        orcScene = SCNScene(named: ScenePaths.magicTowerScene.rawValue)
-        orcNode = orcScene.rootNode.childNode(withName: NodeNames.magicTower.rawValue, recursively: true)
+        orcSceneFL = SCNScene(named: ScenePaths.orcFLScene.rawValue)
+        orcSceneSL = SCNScene(named: ScenePaths.orcSLScene.rawValue)
+        orcSceneTL = SCNScene(named: ScenePaths.orcTLScene.rawValue)
+        
+        orcNodeFL = orcSceneFL.rootNode.childNode(withName: NodeNames.orcFL.rawValue, recursively: true)
+        orcNodeSL = orcSceneSL.rootNode.childNode(withName: NodeNames.orcSL.rawValue, recursively: true)
+        orcNodeTL = orcSceneTL.rootNode.childNode(withName: NodeNames.orcTL.rawValue, recursively: true)
     }
     
     static let defaultFactory = OrcFactory()
     
-    
-    func createFirstLevelEnemy() -> EnemyTest {
-        return OrcFL(orcNode)
+    func createFirstLevelEnemy() -> Enemy {
+        return OrcFL(orcNodeFL)
     }
     
-    func createSecondLevelEnemy() -> EnemyTest {
-        return OrcSL(orcNode)
+    func createSecondLevelEnemy() -> Enemy {
+        return OrcSL(orcNodeSL)
     }
     
-    func createThirdLevelEnemy() -> EnemyTest {
-        return OrcTL(orcNode)
+    func createThirdLevelEnemy() -> Enemy {
+        return OrcTL(orcNodeTL)
     }
 
 }

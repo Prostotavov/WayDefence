@@ -85,8 +85,8 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         scene.rootNode.childNode(withName: NodeNames.buildingSelectionPanel.rawValue, recursively: true)?.removeFromParentNode()
     }
     
-    func run() {
-        output.run()
+    func runEnemy() {
+        output.runEnemy()
     }
     
     func deleteBuilding(with name: String) {
@@ -117,8 +117,9 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
                                             ///arch   tower        board        panel
                         build(.elphTower, On: node.parent!.parent!.parent!.position)
                     }
-                    if node.parent!.name == NodeNames.enemy.rawValue {
-                        run()
+                    if node.parent!.name == NodeNames.trollSL.rawValue {
+                        runEnemy()
+                        print("run vc")
                     }
                     if node.parent != nil &&
                     node.parent!.name != nil &&

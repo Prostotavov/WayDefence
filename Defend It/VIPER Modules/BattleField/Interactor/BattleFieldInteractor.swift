@@ -41,17 +41,18 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     
     func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
         enemiesManager.prohibitWalking(On: Converter.toCoordinate(from: position))
-        enemiesManager.stopEnemyAndRunNewPath()
+        enemiesManager.sendEnemyByNewPath()
         return buildingsManager.build(building, On: position)
     }
     
-    func run() {
-        enemiesManager.run()
+    func runEnemy() {
+        print("rum interactor")
+        enemiesManager.sendEnemy()
     }
     
     func deleteBuilding(with name: String) {
         enemiesManager.allowWalking(On: Converter.toCoordinate(from: name))
-        enemiesManager.stopEnemyAndRunNewPath()
+        enemiesManager.sendEnemyByNewPath()
         buildingsManager.deleteBuilding(with: name)
     }
 

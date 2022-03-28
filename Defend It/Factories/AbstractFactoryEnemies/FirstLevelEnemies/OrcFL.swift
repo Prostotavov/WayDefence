@@ -7,10 +7,11 @@
 
 import SceneKit
 
-class OrcFL: EnemyTest {
+class OrcFL: Enemy {
     
     var race: EnemyRaces = .orc
     var level: EnemyLevels = .firstLevel
+    var speed: CGFloat = 7
     var enemyNode: SCNNode
     
     required init(_ enemyNode: SCNNode) {

@@ -7,10 +7,11 @@
 
 import SceneKit
 
-class TrollSL: EnemyTest {
+class TrollSL: Enemy {
     
     var race: EnemyRaces = .orc
     var level: EnemyLevels = .firstLevel
+    var speed: CGFloat = 5
     var enemyNode: SCNNode
     
     required init(_ enemyNode: SCNNode) {

@@ -17,8 +17,6 @@ struct Converter {
         SCNVector3(Float(coordinate.0)/2, 0, Float(coordinate.1)/2)
     }
     
-    // for arrays
-    
     static func toCoordinates(from positions: [SCNVector3]) -> [(Int, Int)] {
         positions.map{ toCoordinate(from: $0) }
     }
@@ -46,5 +44,14 @@ struct Converter {
         return (x, z)
     }
     
+    // speed 10 = 1 square per second
+    
+    static func toSecond(from speed: CGFloat) -> CGFloat {
+        10.0 / speed
+    }
+    
+    static func toUsecond(from speed: CGFloat) -> UInt32 {
+        UInt32(10/speed * 1000000)
+    }
 }
 
