@@ -29,16 +29,16 @@ class OrcFactory: AbstractFactoryEnemies {
     
     static let defaultFactory = OrcFactory()
     
-    func createFirstLevelEnemy() -> Enemy {
-        return OrcFL(orcNodeFL)
+    func createFirstLevelEnemy() -> AnyEnemy {
+        AnyEnemy(OrcFL(orcNodeFL.clone()))
     }
     
-    func createSecondLevelEnemy() -> Enemy {
-        return OrcSL(orcNodeSL)
+    func createSecondLevelEnemy() -> AnyEnemy {
+        AnyEnemy(OrcSL(orcNodeSL.clone()))
     }
     
-    func createThirdLevelEnemy() -> Enemy {
-        return OrcTL(orcNodeTL)
+    func createThirdLevelEnemy() -> AnyEnemy {
+        AnyEnemy(OrcTL(orcNodeTL.clone()))
     }
 
 }

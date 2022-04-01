@@ -7,14 +7,27 @@
 
 import SceneKit
 
-class OrcTL: Enemy {
+struct OrcTL: Enemy, Hashable {
     
+    var ID: UUID
     var race: EnemyRaces = .orc
     var level: EnemyLevels = .firstLevel
-    var speed: CGFloat = 7
+    var speed: Int = 40
     var enemyNode: SCNNode
+    var path: [SCNVector3]?
     
-    required init(_ enemyNode: SCNNode) {
+    init(_ enemyNode: SCNNode) {
         self.enemyNode = enemyNode
+        ID = UUID()
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(ID)
+        hasher.combine(race)
+        hasher.combine(level)
+    }
+    
+    static func ==(lhs: OrcTL, rhs: OrcTL) -> Bool {
+        lhs.ID == rhs.ID
     }
 }

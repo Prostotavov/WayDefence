@@ -25,7 +25,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         setupCamera()
         createGround()
         //        createFence(size: size)
-        setupEnemy()
+        setupEnemies()
     }
     
     func setupScene() {
@@ -76,17 +76,18 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         }
     }
     
-    func setupEnemy() {
-        let enemy = output.getEnemy()
-        scene.rootNode.addChildNode(enemy.enemyNode)
+    func setupEnemies() {
+        for enemy in output.getEnemies() {
+            scene.rootNode.addChildNode(enemy.enemyNode)
+        }
     }
     
     func hideTowerSelectionPanel() {
         scene.rootNode.childNode(withName: NodeNames.buildingSelectionPanel.rawValue, recursively: true)?.removeFromParentNode()
     }
     
-    func runEnemy() {
-        output.runEnemy()
+    func runEnemies() {
+        output.runEnemies()
     }
     
     func deleteBuilding(with name: String) {
@@ -118,7 +119,15 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
                         build(.elphTower, On: node.parent!.parent!.parent!.position)
                     }
                     if node.parent!.name == NodeNames.trollSL.rawValue {
-                        runEnemy()
+                        runEnemies()
+                        print("run vc")
+                    }
+                    if node.parent!.name == NodeNames.trollFL.rawValue {
+                        runEnemies()
+                        print("run vc")
+                    }
+                    if node.parent!.name == NodeNames.trollTL.rawValue {
+                        runEnemies()
                         print("run vc")
                     }
                     if node.parent != nil &&

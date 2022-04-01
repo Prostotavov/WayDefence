@@ -10,10 +10,9 @@ import SceneKit
 protocol EnemyPositionManager {
     
     func culculateStartPosition() -> SCNVector3
-    func run(_ enemy: Enemy)
-    func runByNewPath(_ enemy: Enemy)
     func prohibitWalking(On coordination: (Int, Int))
     func allowWalking(On coordination: (Int, Int))
+    func calculatePath<T: Enemy>(for enemy: T) -> [SCNVector3]
 }
 
 class EnemyPositionManagerImpl: EnemyPositionManager {
@@ -21,8 +20,6 @@ class EnemyPositionManagerImpl: EnemyPositionManager {
     private var graph: BattleFieldGraph!
     private let start: (Int, Int) = (3, 0)
     private let target: (Int, Int) = (3, 6)
-    private var enemyRunQueue = OperationQueue()
-    private var sendOperation : RunEnemyOperation!
     
     init(_ battleFieldSize: Int) {
         self.battleFieldSize = battleFieldSize
@@ -30,31 +27,13 @@ class EnemyPositionManagerImpl: EnemyPositionManager {
     }
     
     func culculateStartPosition() -> SCNVector3 {
-        SCNVector3(-0.25 + CGFloat(battleFieldSize)/4, 0, -0.25)
+        SCNVector3(-0.25 + CGFloat(battleFieldSize)/4, 0, 0)
     }
     
     // need func -start-
-    private func runOneSquare(_ enemy: Enemy, to location: SCNVector3) {
-        enemy.enemyNode.removeAllActions()
-        let time = Converter.toSecond(from: enemy.speed)
-        let action = SCNAction.move(to: location, duration: time)
-        enemy.enemyNode.runAction(action)
-    }
+
     
-    func run(_ enemy: Enemy) {
-        sendOperation = RunEnemyOperation(enemy, by: calculatePath(for: enemy), for: runOneSquare)
-        enemyRunQueue.addOperation(sendOperation)
-    }
-    
-    func runByNewPath(_ enemy: Enemy) {
-        if sendOperation != nil {
-            sendOperation.cancel()
-            enemy.enemyNode.removeAllActions()
-            run(enemy)
-        }
-    }
-    
-    private func calculatePath(for enemy: Enemy) -> [SCNVector3] {
+    func calculatePath<T: Enemy>(for enemy: T) -> [SCNVector3] {
         var coordinate = Converter.toCoordinate(from: enemy.enemyNode.position)
         if coordinate.0 < 0 || coordinate.1 < 0 {
             coordinate = start

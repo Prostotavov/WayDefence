@@ -21,7 +21,7 @@ enum EnemyLevels: String {
 
 protocol AbstractFactoryEnemies {
     
-    func createFirstLevelEnemy() -> Enemy
-    func createSecondLevelEnemy() -> Enemy
-    func createThirdLevelEnemy() -> Enemy
+    func createFirstLevelEnemy() -> AnyEnemy
+    func createSecondLevelEnemy() -> AnyEnemy
+    func createThirdLevelEnemy() -> AnyEnemy
 }

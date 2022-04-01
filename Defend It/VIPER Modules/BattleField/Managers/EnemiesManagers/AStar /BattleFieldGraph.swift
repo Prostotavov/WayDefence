@@ -52,7 +52,7 @@ struct BattleFieldGraph: Graph {
         let right = vertex.x - 1
         let left = vertex.x + 1
         
-        print("cor \(x), \(y)")
+//        print("cor \(x), \(y)")
         
         if up >= 0 && up < size && battleField[x][up].isWalkable {
             edges.append(Edge(cost: 1, target: battleField[x][up]))

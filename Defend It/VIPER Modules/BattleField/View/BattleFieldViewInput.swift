@@ -11,10 +11,11 @@ import SceneKit
 protocol BattleFieldViewInput: AnyObject {
     func createGround()
     func createFence()
-    func setupEnemy()
     func setupCamera()
     func showTowerSelectionPanel(On position: SCNVector3)
     func build(_ building: Buildings, On position: SCNVector3)
-    func runEnemy()
+    func runEnemies()
     func deleteBuilding(with name: String)
+    
+    func setupEnemies()
 }

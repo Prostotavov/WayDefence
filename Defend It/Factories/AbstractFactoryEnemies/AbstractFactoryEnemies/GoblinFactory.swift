@@ -29,16 +29,16 @@ class GoblinFactory: AbstractFactoryEnemies {
     
     static let defaultFactory = GoblinFactory()
     
-    func createFirstLevelEnemy() -> Enemy {
-        return GoblinFL(goblinNodeFL)
+    func createFirstLevelEnemy() -> AnyEnemy {
+        AnyEnemy(GoblinFL(goblinNodeFL.clone()))
     }
     
-    func createSecondLevelEnemy() -> Enemy {
-        return GoblinSL(goblinNodeSL)
+    func createSecondLevelEnemy() -> AnyEnemy {
+        AnyEnemy(GoblinSL(goblinNodeSL.clone()))
     }
     
-    func createThirdLevelEnemy() -> Enemy {
-        return GoblinTL(goblinNodeTL)
+    func createThirdLevelEnemy() -> AnyEnemy {
+        AnyEnemy(GoblinTL(goblinNodeTL.clone()))
     }
 
 }

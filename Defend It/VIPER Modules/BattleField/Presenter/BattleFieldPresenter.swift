@@ -22,10 +22,6 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
         return interactor.createFence()
     }
     
-    func getEnemy() -> Enemy {
-        return interactor.getEnemy()
-    }
-    
     func setupCamera() -> SCNNode {
         interactor.setupCamera()
     }
@@ -38,11 +34,15 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
         interactor.build(building, On: position)
     }
 
-    func runEnemy() {
-        interactor.runEnemy()
+    func runEnemies() {
+        interactor.runEnemies()
     }
     
     func deleteBuilding(with name: String) {
         interactor.deleteBuilding(with: name)
+    }
+    
+    func getEnemies() -> Set<AnyEnemy> {
+        interactor.getEnemies()
     }
 }

@@ -27,8 +27,8 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
         decorationsManager.createFence()
     }
     
-    func getEnemy() -> Enemy {
-        return enemiesManager.enemy
+    func getEnemies() -> Set<AnyEnemy> {
+        enemiesManager.enemies
     }
     
     func setupCamera() -> SCNNode {
@@ -41,18 +41,15 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     
     func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
         enemiesManager.prohibitWalking(On: Converter.toCoordinate(from: position))
-        enemiesManager.sendEnemyByNewPath()
         return buildingsManager.build(building, On: position)
     }
     
-    func runEnemy() {
-        print("rum interactor")
-        enemiesManager.sendEnemy()
+    func runEnemies() {
+        enemiesManager.runEnemies()
     }
     
     func deleteBuilding(with name: String) {
         enemiesManager.allowWalking(On: Converter.toCoordinate(from: name))
-        enemiesManager.sendEnemyByNewPath()
         buildingsManager.deleteBuilding(with: name)
     }
 

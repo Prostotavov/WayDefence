@@ -29,16 +29,16 @@ class TrollFactory: AbstractFactoryEnemies {
     
     static let defaultFactory = TrollFactory()
     
-    func createFirstLevelEnemy() -> Enemy {
-        return TrollFL(trollNodeFL)
+    func createFirstLevelEnemy() -> AnyEnemy {
+        AnyEnemy(TrollFL(trollNodeFL.clone()))
     }
     
-    func createSecondLevelEnemy() -> Enemy {
-        return TrollSL(trollNodeSL)
+    func createSecondLevelEnemy() -> AnyEnemy {
+        AnyEnemy(TrollSL(trollNodeSL.clone()))
     }
     
-    func createThirdLevelEnemy() -> Enemy {
-        return TrollTL(trollNodeTL)
+    func createThirdLevelEnemy() -> AnyEnemy {
+        AnyEnemy(TrollTL(trollNodeTL.clone()))
     }
 
 }

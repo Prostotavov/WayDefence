@@ -44,14 +44,25 @@ struct Converter {
         return (x, z)
     }
     
-    // speed 10 = 1 square per second
-    
-    static func toSecond(from speed: CGFloat) -> CGFloat {
-        10.0 / speed
+    // enemy speed = count of squares completed per minute
+    static func toTimeInterval(from speed: Int) -> TimeInterval {
+        TimeInterval(Float(60/Float(speed)))
     }
     
-    static func toUsecond(from speed: CGFloat) -> UInt32 {
-        UInt32(10/speed * 1000000)
+    static func toCounter(from speed: Int) -> Int {
+        600 / speed
+    }
+    
+    static func toDistination(between position: SCNVector3, and target: SCNVector3) -> Double {
+        // the enemy only moves up or down, which means that:
+        // position.z = target.z or position.x = target.x
+        let xDist = abs(position.z - target.z)
+        let zDist = abs(position.x - target.x)
+        return Double(sqrt((pow(xDist, 2) + pow(zDist, 2))))
+    }
+    
+    static func toCounter(from timeInterval: TimeInterval) -> Int {
+        Int(timeInterval * 10)
     }
 }
 
