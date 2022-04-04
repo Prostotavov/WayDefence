@@ -50,6 +50,17 @@
 		AA78024427E20B8E002C57E1 /* BattleFieldRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023927E20B8D002C57E1 /* BattleFieldRouter.swift */; };
 		AACC7BD227FAE9CD0022384E /* BuildingIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BD127FAE9CD0022384E /* BuildingIcons.swift */; };
 		AACC7BD627FB01F10022384E /* BuildingIconPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BD527FB01F10022384E /* BuildingIconPlaces.swift */; };
+		AACC7BD927FB28000022384E /* MagicTowerTL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BD827FB28000022384E /* MagicTowerTL.swift */; };
+		AACC7BDB27FB28200022384E /* ElphTowerTL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BDA27FB28200022384E /* ElphTowerTL.swift */; };
+		AACC7BDD27FB2C1A0022384E /* BallistaFL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BDC27FB2C1A0022384E /* BallistaFL.swift */; };
+		AACC7BDF27FB2C5D0022384E /* WallFL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BDE27FB2C5D0022384E /* WallFL.swift */; };
+		AACC7BE127FB2C850022384E /* BallistaSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BE027FB2C850022384E /* BallistaSL.swift */; };
+		AACC7BE327FB2C8C0022384E /* BallistaTL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BE227FB2C8C0022384E /* BallistaTL.swift */; };
+		AACC7BE527FB2C940022384E /* WallSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BE427FB2C940022384E /* WallSL.swift */; };
+		AACC7BE727FB2C9B0022384E /* WallTL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BE627FB2C9B0022384E /* WallTL.swift */; };
+		AACC7BE927FB2CFF0022384E /* BallistaFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BE827FB2CFF0022384E /* BallistaFactory.swift */; };
+		AACC7BEB27FB2D0B0022384E /* WallFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BEA27FB2D0B0022384E /* WallFactory.swift */; };
+		AACC7BEF27FB36D30022384E /* BuiltTowers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BEE27FB36D30022384E /* BuiltTowers.swift */; };
 		AAE886D327EE0FC800CA4E5D /* ScenePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886D227EE0FC800CA4E5D /* ScenePaths.swift */; };
 		AAE886D627EE115A00CA4E5D /* NodeNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886D527EE115A00CA4E5D /* NodeNames.swift */; };
 		AAE886EA27EEFF9800CA4E5D /* GroundTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886E827EEFF9800CA4E5D /* GroundTest.swift */; };
@@ -145,6 +156,17 @@
 		AA78023927E20B8D002C57E1 /* BattleFieldRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldRouter.swift; sourceTree = "<group>"; };
 		AACC7BD127FAE9CD0022384E /* BuildingIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingIcons.swift; sourceTree = "<group>"; };
 		AACC7BD527FB01F10022384E /* BuildingIconPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingIconPlaces.swift; sourceTree = "<group>"; };
+		AACC7BD827FB28000022384E /* MagicTowerTL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicTowerTL.swift; sourceTree = "<group>"; };
+		AACC7BDA27FB28200022384E /* ElphTowerTL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElphTowerTL.swift; sourceTree = "<group>"; };
+		AACC7BDC27FB2C1A0022384E /* BallistaFL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallistaFL.swift; sourceTree = "<group>"; };
+		AACC7BDE27FB2C5D0022384E /* WallFL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallFL.swift; sourceTree = "<group>"; };
+		AACC7BE027FB2C850022384E /* BallistaSL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallistaSL.swift; sourceTree = "<group>"; };
+		AACC7BE227FB2C8C0022384E /* BallistaTL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallistaTL.swift; sourceTree = "<group>"; };
+		AACC7BE427FB2C940022384E /* WallSL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallSL.swift; sourceTree = "<group>"; };
+		AACC7BE627FB2C9B0022384E /* WallTL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallTL.swift; sourceTree = "<group>"; };
+		AACC7BE827FB2CFF0022384E /* BallistaFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallistaFactory.swift; sourceTree = "<group>"; };
+		AACC7BEA27FB2D0B0022384E /* WallFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallFactory.swift; sourceTree = "<group>"; };
+		AACC7BEE27FB36D30022384E /* BuiltTowers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltTowers.swift; sourceTree = "<group>"; };
 		AAE886D227EE0FC800CA4E5D /* ScenePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenePaths.swift; sourceTree = "<group>"; };
 		AAE886D527EE115A00CA4E5D /* NodeNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeNames.swift; sourceTree = "<group>"; };
 		AAE886E827EEFF9800CA4E5D /* GroundTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroundTest.swift; sourceTree = "<group>"; };
@@ -206,6 +228,7 @@
 				AA0B68B827E5B8990078003D /* AbstarctFactoryBuildings */,
 				AA0B68BA27E5B9040078003D /* FirstLevelBuildings */,
 				AA0B68BC27E5B9270078003D /* SecondLevelBuildings */,
+				AACC7BD727FB03C90022384E /* ThirdLevelBuildings */,
 				AA0B68B727E5B8920078003D /* Protocols */,
 			);
 			path = AbstractFactoryBuildings;
@@ -225,6 +248,8 @@
 				AA0B68BD27E5B95C0078003D /* AbstactFactoryBuildings.swift */,
 				AA0B68BF27E5BA7D0078003D /* MagicTowerFactory.swift */,
 				AA0B68C127E5BB150078003D /* ElphTowerFactory.swift */,
+				AACC7BE827FB2CFF0022384E /* BallistaFactory.swift */,
+				AACC7BEA27FB2D0B0022384E /* WallFactory.swift */,
 			);
 			path = AbstarctFactoryBuildings;
 			sourceTree = "<group>";
@@ -234,6 +259,8 @@
 			children = (
 				AA0B68C527E5BD1E0078003D /* MagicTowerFL.swift */,
 				AA0B68C727E5BDC20078003D /* ElphTowerFL.swift */,
+				AACC7BDC27FB2C1A0022384E /* BallistaFL.swift */,
+				AACC7BDE27FB2C5D0022384E /* WallFL.swift */,
 			);
 			path = FirstLevelBuildings;
 			sourceTree = "<group>";
@@ -243,6 +270,8 @@
 			children = (
 				AA0B68C927E5BDF10078003D /* MagicTowerSL.swift */,
 				AA0B68CB27E5BDFD0078003D /* ElphTowerSL.swift */,
+				AACC7BE027FB2C850022384E /* BallistaSL.swift */,
+				AACC7BE427FB2C940022384E /* WallSL.swift */,
 			);
 			path = SecondLevelBuildings;
 			sourceTree = "<group>";
@@ -412,6 +441,17 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		AACC7BD727FB03C90022384E /* ThirdLevelBuildings */ = {
+			isa = PBXGroup;
+			children = (
+				AACC7BD827FB28000022384E /* MagicTowerTL.swift */,
+				AACC7BDA27FB28200022384E /* ElphTowerTL.swift */,
+				AACC7BE227FB2C8C0022384E /* BallistaTL.swift */,
+				AACC7BE627FB2C9B0022384E /* WallTL.swift */,
+			);
+			path = ThirdLevelBuildings;
+			sourceTree = "<group>";
+		};
 		AAE886D427EE112200CA4E5D /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,6 +459,7 @@
 				AAE886D527EE115A00CA4E5D /* NodeNames.swift */,
 				AACC7BD127FAE9CD0022384E /* BuildingIcons.swift */,
 				AACC7BD527FB01F10022384E /* BuildingIconPlaces.swift */,
+				AACC7BEE27FB36D30022384E /* BuiltTowers.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -696,12 +737,15 @@
 				AA78020127E20291002C57E1 /* HomePageRouterInput.swift in Sources */,
 				AACC7BD627FB01F10022384E /* BuildingIconPlaces.swift in Sources */,
 				AA78024427E20B8E002C57E1 /* BattleFieldRouter.swift in Sources */,
+				AACC7BDB27FB28200022384E /* ElphTowerTL.swift in Sources */,
 				AA0B68BE27E5B95C0078003D /* AbstactFactoryBuildings.swift in Sources */,
 				AA0B68CE27E5D8C10078003D /* TowerBuilder.swift in Sources */,
 				AA78024127E20B8E002C57E1 /* BattleFieldInteractorOutput.swift in Sources */,
 				AAF4C9DB27E8DB0E00D5B6F8 /* Converter.swift in Sources */,
+				AACC7BDF27FB2C5D0022384E /* WallFL.swift in Sources */,
 				AA0B68D627E5FA450078003D /* Camera.swift in Sources */,
 				AAF4C9DD27E8E6A200D5B6F8 /* GroundCell.swift in Sources */,
+				AACC7BE527FB2C940022384E /* WallSL.swift in Sources */,
 				AAE8870B27EF35AF00CA4E5D /* TrollFactory.swift in Sources */,
 				AA7801FE27E20291002C57E1 /* HomePageInteractor.swift in Sources */,
 				AAE8870527EF34FA00CA4E5D /* GoblinFL.swift in Sources */,
@@ -732,24 +776,32 @@
 				AAE8870D27EF35F400CA4E5D /* TrollFL.swift in Sources */,
 				AA0B68C427E5BC140078003D /* Building.swift in Sources */,
 				AA78023B27E20B8E002C57E1 /* BattleFieldAssemblyProtocol.swift in Sources */,
+				AACC7BEF27FB36D30022384E /* BuiltTowers.swift in Sources */,
 				AAE8870327EF342D00CA4E5D /* GoblinFactory.swift in Sources */,
 				AA0B68C827E5BDC20078003D /* ElphTowerFL.swift in Sources */,
 				AAE8871127EF360600CA4E5D /* TrollTL.swift in Sources */,
 				AAE886D627EE115A00CA4E5D /* NodeNames.swift in Sources */,
+				AACC7BE727FB2C9B0022384E /* WallTL.swift in Sources */,
+				AACC7BE927FB2CFF0022384E /* BallistaFactory.swift in Sources */,
 				AA7801F927E20291002C57E1 /* HomePageAssembly.swift in Sources */,
 				AA7801FF27E20291002C57E1 /* HomePageInteractorInput.swift in Sources */,
 				AAE886FB27EF317400CA4E5D /* Enemy.swift in Sources */,
+				AACC7BD927FB28000022384E /* MagicTowerTL.swift in Sources */,
 				AA78022627E207C2002C57E1 /* DataManager.swift in Sources */,
 				AAE886EE27EEFFE000CA4E5D /* EnemyPositionManager.swift in Sources */,
 				AA78023F27E20B8E002C57E1 /* BattleFieldViewInput.swift in Sources */,
+				AACC7BEB27FB2D0B0022384E /* WallFactory.swift in Sources */,
 				AA7801B727E200B6002C57E1 /* SceneDelegate.swift in Sources */,
+				AACC7BDD27FB2C1A0022384E /* BallistaFL.swift in Sources */,
 				AAF4C9D727E8D9E500D5B6F8 /* EnemiesManager.swift in Sources */,
 				AAE886FF27EF33A600CA4E5D /* OrcSL.swift in Sources */,
 				AACC7BD227FAE9CD0022384E /* BuildingIcons.swift in Sources */,
 				AA0B68D827E5FD7F0078003D /* TowerSelectionPanel.swift in Sources */,
 				AAF4C9D927E8DA0300D5B6F8 /* BuildingsManager.swift in Sources */,
 				AA78023E27E20B8E002C57E1 /* BattleFieldViewOutput.swift in Sources */,
+				AACC7BE127FB2C850022384E /* BallistaSL.swift in Sources */,
 				AAF4C9D527E8D9B700D5B6F8 /* DecorationsManager.swift in Sources */,
+				AACC7BE327FB2C8C0022384E /* BallistaTL.swift in Sources */,
 				AA78023D27E20B8E002C57E1 /* BattleFieldViewController.swift in Sources */,
 				AA0B68D227E5E7BD0078003D /* Fence.swift in Sources */,
 			);

@@ -110,7 +110,7 @@ extension TowerSelectionPanelImpl {
         add(.elphTowerIcon, to: .upLeftPlace)       // 0
         add(.magicTowerIcon, to: .upRightPlace)     // 2
         add(.wallIcon, to: .downLeftPlace)          // 4
-        add(.balistaIcon, to: .downRightPlace)      // 6
+        add(.ballistaIcon, to: .downRightPlace)     // 6
     }
     
     func getPositionFor(_ place: BuildingIconPlaces) -> SCNVector3 {

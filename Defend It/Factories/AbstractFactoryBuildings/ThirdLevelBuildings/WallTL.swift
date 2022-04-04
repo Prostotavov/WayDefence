@@ -1,16 +1,16 @@
 //
-//  ElphTowerFL.swift
+//  WallTL.swift
 //  Defend It
 //
-//  Created by MacBook Pro on 19.03.22.
+//  Created by MacBook Pro on 4.04.22.
 //
 
 import SceneKit
 
-class ElphTowerFL: Building {
+class WallTL: Building {
     
-    var type: Buildings = .elphTower
-    var level: BuildingLevels = .firstLevel
+    var type: Buildings = .wall
+    var level: BuildingLevels = .thirdLevel
     var buildingNode: SCNNode
     var radius: CGFloat = 2.5
     

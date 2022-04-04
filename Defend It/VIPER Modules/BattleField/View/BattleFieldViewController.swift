@@ -104,6 +104,36 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
             let result = hitResults.first
             if let node = result?.node {
                 
+                // buildings -start-
+                if node.name == BuildingIcons.elphTowerIcon.rawValue {
+                    build(.elphTower, On: node.parent!.parent!.position)
+                }
+                if node.name == BuildingIcons.magicTowerIcon.rawValue {
+                    build(.magicTower, On: node.parent!.parent!.position)
+                }
+                if node.name == BuildingIcons.ballistaIcon.rawValue {
+                    build(.ballista, On: node.parent!.parent!.position)
+                }
+                if node.name == BuildingIcons.wallIcon.rawValue {
+                    build(.wall, On: node.parent!.parent!.position)
+                }
+                // buildings -end-
+                
+                //upgrades -start-
+                if node.name == BuiltTowers.elphTowerFL.rawValue {
+                    print("up elph")
+                }
+                if node.name == BuiltTowers.magicTowerFL.rawValue {
+                    print("up magic")
+                }
+                if node.name == BuiltTowers.ballistaFL.rawValue {
+                    print("up ballista")
+                }
+                if node.name == BuiltTowers.wallFL.rawValue {
+                    print("up wall")
+                }
+                //upgrades -end-
+                
                 if node.name == NodeNames.floor.rawValue {
                     hideTowerSelectionPanel()
                 }
@@ -115,7 +145,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
                 }
                 if node.parent != nil && node.parent!.name != nil {
                     if node.parent!.name == "selectedElphTower" {
-                                            ///arch   tower        board        panel
+                        ///arch   tower        board        panel
                         build(.elphTower, On: node.parent!.parent!.parent!.position)
                     }
                     if node.parent!.name == NodeNames.trollSL.rawValue {
@@ -130,14 +160,14 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
                         runEnemies()
                         print("run vc")
                     }
-                    if node.parent != nil &&
-                    node.parent!.name != nil &&
-                    node.parent!.name!.contains("built"){
-                        deleteBuilding(with: node.parent!.name!)
-                    }
+                    //                    if node.parent != nil &&
+                    //                    node.parent!.name != nil &&
+                    //                    node.parent!.name!.contains("built"){
+                    //                        deleteBuilding(with: node.parent!.name!)
+                    //                    }
                 }
                 print(node.name)
- 
+                
             }
         }
     }

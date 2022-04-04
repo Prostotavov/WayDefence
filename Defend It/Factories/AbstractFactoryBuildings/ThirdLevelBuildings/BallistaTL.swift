@@ -1,16 +1,16 @@
 //
-//  ElphTowerFL.swift
+//  BallistaTL.swift
 //  Defend It
 //
-//  Created by MacBook Pro on 19.03.22.
+//  Created by MacBook Pro on 4.04.22.
 //
 
 import SceneKit
 
-class ElphTowerFL: Building {
+class BallistaTL: Building {
     
-    var type: Buildings = .elphTower
-    var level: BuildingLevels = .firstLevel
+    var type: Buildings = .ballista
+    var level: BuildingLevels = .thirdLevel
     var buildingNode: SCNNode
     var radius: CGFloat = 2.5
     

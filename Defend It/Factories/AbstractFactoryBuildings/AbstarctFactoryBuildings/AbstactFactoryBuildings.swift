@@ -10,15 +10,19 @@ import Foundation
 enum Buildings: String, CaseIterable {
     case magicTower
     case elphTower
+    case ballista
+    case wall
 }
 
 enum BuildingLevels: String, CaseIterable {
     case firstLevel
     case secondLevel
+    case thirdLevel
 }
 
 protocol AbstactFactoryBuildings {
         
     func createFirstLevelBuildings() -> Building
     func createSecondLevelBuildings() -> Building
+    func createThirdLevelBuildings() -> Building
 }

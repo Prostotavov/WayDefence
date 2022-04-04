@@ -1,18 +1,18 @@
 //
-//  MagicTowerSL.swift
+//  WallSL.swift
 //  Defend It
 //
-//  Created by MacBook Pro on 19.03.22.
+//  Created by MacBook Pro on 4.04.22.
 //
 
 import SceneKit
 
-class MagicTowerSL: Building {
+class WallSL: Building {
     
-    var type: Buildings = .magicTower
+    var type: Buildings = .wall
     var level: BuildingLevels = .secondLevel
     var buildingNode: SCNNode
-    var radius: CGFloat = 4
+    var radius: CGFloat = 2.5
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode

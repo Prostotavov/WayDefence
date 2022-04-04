@@ -13,12 +13,14 @@ protocol TowerBuilder {
 }
 
 class TowerBuilderImpl: TowerBuilder {
-
+    
     func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
         let tower: SCNNode
         switch building {
-        case .magicTower: tower = MagicTowerFactory.defaultFactory.createFirstLevelBuildings().buildingNode.clone()
-        case .elphTower: tower = ElphTowerFactory.defaultFactory.createFirstLevelBuildings().buildingNode.clone()
+        case .magicTower: tower = MagicTowerFactory.defaultFactory.createFirstLevelBuildings().buildingNode
+        case .elphTower: tower = ElphTowerFactory.defaultFactory.createFirstLevelBuildings().buildingNode
+        case .ballista : tower = BallistaFactory.defaultFactory.createFirstLevelBuildings().buildingNode
+        case .wall : tower = WallFactory.defaultFactory.createFirstLevelBuildings().buildingNode
         }
         tower.position = position
         let coordinate = Converter.toCoordinate(from: position)
@@ -27,10 +29,10 @@ class TowerBuilderImpl: TowerBuilder {
     }
     
     func deleteBuilding(with name: String) {
-//        let coordinate = Converter.toCoordinate(from: name)
-//        ground[coordinate.0][coordinate.1].scnBuildingNode = nil
+        //        let coordinate = Converter.toCoordinate(from: name)
+        //        ground[coordinate.0][coordinate.1].scnBuildingNode = nil
     }
-
+    
     
 }
 

@@ -1,18 +1,18 @@
 //
-//  MagicTowerFL.swift
+//  MagicTowerTL.swift
 //  Defend It
 //
-//  Created by MacBook Pro on 19.03.22.
+//  Created by MacBook Pro on 4.04.22.
 //
 
 import SceneKit
 
-class MagicTowerFL: Building {
+class MagicTowerTL: Building {
     
     var type: Buildings = .magicTower
-    var level: BuildingLevels = .firstLevel
+    var level: BuildingLevels = .thirdLevel
     var buildingNode: SCNNode
-    var radius: CGFloat = 3
+    var radius: CGFloat = 5
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode
