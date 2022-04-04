@@ -26,9 +26,7 @@ class BuildingsManagerImpl: BuildingsManager {
     }
     
     func setupBuildingSelectionPanel() {
-        var selectionItems: [SCNNode] = []
-        selectionItems.append(ElphTowerFactory.defaultFactory.createFirstLevelBuildings().buildingNode.clone())
-        towerSelectionPanel = TowerSelectionPanelImpl(selectionItems: selectionItems)
+        towerSelectionPanel = TowerSelectionPanelImpl()
     }
     
     func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode {

@@ -13,6 +13,7 @@ class ElphTowerSL: Building {
     var type: Buildings = .elphTower
     var level: BuildingLevels = .secondLevel
     var buildingNode: SCNNode
+    var radius: CGFloat = 3.5
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode

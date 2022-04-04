@@ -12,6 +12,7 @@ protocol Building {
     
     var type: Buildings {get set}
     var level: BuildingLevels {get set}
+    var radius: CGFloat {get set}
     var buildingNode: SCNNode {get set}
     
     init(_ buildingNode: SCNNode)

@@ -17,7 +17,6 @@ class TowerSelectionPanelImpl: TowerSelectionPanel {
     var panelScene: SCNScene!
     var panelNode: SCNNode!
     var boardNode: SCNNode!
-    var selectionItems: [SCNNode] = []
     
     let boardWidth: CGFloat = 1
     let boardHeight: CGFloat = 1
@@ -27,13 +26,28 @@ class TowerSelectionPanelImpl: TowerSelectionPanel {
     let flagHeight: CGFloat = 0.4
     
     let distanceFromGround: CGFloat = 1.3
-
     
-    init(selectionItems: [SCNNode]) {
-        self.selectionItems = selectionItems
+    init() {
         setupScene()
         setupNode()
         setupPanel()
+    }
+    
+    func createIconFor(_ icon: BuildingIcons) -> SCNNode {
+        let planeNode = SCNNode()
+        let plane = SCNPlane(width: 0.5, height: 0.5)
+        plane.cornerRadius = 1
+        planeNode.geometry = plane
+        
+        let planeMaterial = SCNMaterial()
+        
+        planeMaterial.diffuse.contents = UIImage(named: icon.rawValue)
+        plane.materials = [planeMaterial]
+        planeNode.name = icon.rawValue
+        
+        planeNode.position = SCNVector3(0, 0, 0)
+        
+        return planeNode
     }
     
     func show(on position: SCNVector3) -> SCNNode {
@@ -49,9 +63,8 @@ class TowerSelectionPanelImpl: TowerSelectionPanel {
     
     func addBoard() {
         boardNode = SCNNode()
-        boardNode.geometry = SCNBox(width: boardWidth, height: boardHeight, length: boardLength, chamferRadius: 0)
         boardNode.position = SCNVector3(0, 1.3, 0)
-        addDefaultTowersToBoard(selectionItems: selectionItems)
+        addDefaultTowersToBoard()
         panelNode.addChildNode(boardNode)
     }
     
@@ -60,10 +73,6 @@ class TowerSelectionPanelImpl: TowerSelectionPanel {
         flagNode.geometry = SCNBox(width: flagWidth, height: flagHeight, length: boardLength, chamferRadius: 0)
         flagNode.position = SCNVector3(0, 0.2, 0)
         panelNode.addChildNode(flagNode)
-    }
-    
-    func addToBoard() {
-
     }
     
     func setupConstraints() {
@@ -97,69 +106,38 @@ extension TowerSelectionPanelImpl {
     
     // this function is called when the player wants to build a tower on empty groundCell
     // default locations 0, 2, 4, 6
-    func addDefaultTowersToBoard(selectionItems: [SCNNode]) {
-        selectionItems[0].scale = SCNVector3(2, 2, 2)
-        selectionItems[0].eulerAngles = SCNVector3(-CGFloat.pi/4, CGFloat.pi, CGFloat.pi/12)
-        selectionItems[0].name = "selectedElphTower"
-        addToUpLeftPlace(selectionItem: selectionItems[0])          // 0
-        addToUpRightPlace(selectionItem: selectionItems[0])         // 2
-        addToDownLeftPlace(selectionItem: selectionItems[0])        // 4
-        addToDownRightPlace(selectionItem: selectionItems[0])       // 6
+    func addDefaultTowersToBoard() {
+        add(.elphTowerIcon, to: .upLeftPlace)       // 0
+        add(.magicTowerIcon, to: .upRightPlace)     // 2
+        add(.wallIcon, to: .downLeftPlace)          // 4
+        add(.balistaIcon, to: .downRightPlace)      // 6
     }
     
-    // This function is called when the player wants to build, improve, sell or repair a tower
-    // location - custom ;)
-    func addCustomTowersToBoard(selectionItems: [SCNNode]) {
-        
+    func getPositionFor(_ place: BuildingIconPlaces) -> SCNVector3 {
+        switch place {
+        case .upLeftPlace:
+            return SCNVector3(-boardWidth/3, boardWidth/3, boardWidth/3)
+        case .upMiddlePlace:
+            return SCNVector3(0, boardWidth/3, boardWidth/3)
+        case .upRightPlace:
+            return SCNVector3(boardWidth/3, boardWidth/3, boardWidth/3)
+        case .deleteTowerButton:
+            return SCNVector3(-boardWidth, -boardWidth/3, boardWidth/3)
+        case .downLeftPlace:
+            return SCNVector3(-boardWidth/3, -boardWidth/3, boardWidth/3)
+        case .downMiddlePlace:
+            return SCNVector3(0, -boardWidth/3, boardWidth/3)
+        case .downRightPlace:
+            return SCNVector3(boardWidth/3, -boardWidth/3, boardWidth/3)
+        case .repairTowerButton:
+            return SCNVector3(boardWidth, -boardWidth/3, boardWidth/3)
+        }
     }
     
-    // 0 place
-    func addToUpLeftPlace(selectionItem: SCNNode) {
-        selectionItem.position = SCNVector3(-boardWidth/4, boardWidth/4, boardWidth/4)
-        boardNode.addChildNode(selectionItem.clone())
+    func add(_ icon: BuildingIcons, to place: BuildingIconPlaces) {
+        let node = createIconFor(icon)
+        node.position = getPositionFor(place)
+        boardNode.addChildNode(node)
     }
     
-    // 1 place
-    func addToUpMiddlePlace(selectionItem: SCNNode) {
-        selectionItem.position = SCNVector3(0, boardWidth/4, boardWidth/4)
-        boardNode.addChildNode(selectionItem.clone())
-    }
-    
-    // 2 place
-    func addToUpRightPlace(selectionItem: SCNNode) {
-        selectionItem.position = SCNVector3(boardWidth/4, boardWidth/4, boardWidth/4)
-        boardNode.addChildNode(selectionItem.clone())
-    }
-    
-    // 3 place
-    func addToDeletePlace(selectionItem: SCNNode) {
-        selectionItem.position = SCNVector3(-boardWidth/2, -boardWidth/4, boardWidth/4)
-        boardNode.addChildNode(selectionItem.clone())
-    }
-    
-    // 4 place
-    func addToDownLeftPlace(selectionItem: SCNNode) {
-        selectionItem.position = SCNVector3(-boardWidth/4, -boardWidth/4, boardWidth/4)
-        boardNode.addChildNode(selectionItem.clone())
-    }
-    
-    // 5 place
-    func addToDownMiddlePlace(selectionItem: SCNNode) {
-        selectionItem.position = SCNVector3(0, -boardWidth/4, boardWidth/4)
-        boardNode.addChildNode(selectionItem.clone())
-    }
-    
-    // 6 place
-    func addToDownRightPlace(selectionItem: SCNNode) {
-        selectionItem.position = SCNVector3(boardWidth/4, -boardWidth/4, boardWidth/4)
-        boardNode.addChildNode(selectionItem.clone())
-    }
-    
-    // 7 place
-    func addToRepairPlace(selectionItem: SCNNode) {
-        selectionItem.position = SCNVector3(boardWidth/4, -boardWidth/4, boardWidth/4)
-        boardNode.addChildNode(selectionItem.clone())
-    }
-
-
 }

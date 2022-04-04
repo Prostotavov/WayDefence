@@ -48,6 +48,8 @@
 		AA78024227E20B8E002C57E1 /* BattleFieldInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023627E20B8D002C57E1 /* BattleFieldInteractor.swift */; };
 		AA78024327E20B8E002C57E1 /* BattleFieldRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023827E20B8D002C57E1 /* BattleFieldRouterInput.swift */; };
 		AA78024427E20B8E002C57E1 /* BattleFieldRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023927E20B8D002C57E1 /* BattleFieldRouter.swift */; };
+		AACC7BD227FAE9CD0022384E /* BuildingIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BD127FAE9CD0022384E /* BuildingIcons.swift */; };
+		AACC7BD627FB01F10022384E /* BuildingIconPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BD527FB01F10022384E /* BuildingIconPlaces.swift */; };
 		AAE886D327EE0FC800CA4E5D /* ScenePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886D227EE0FC800CA4E5D /* ScenePaths.swift */; };
 		AAE886D627EE115A00CA4E5D /* NodeNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886D527EE115A00CA4E5D /* NodeNames.swift */; };
 		AAE886EA27EEFF9800CA4E5D /* GroundTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886E827EEFF9800CA4E5D /* GroundTest.swift */; };
@@ -141,6 +143,8 @@
 		AA78023627E20B8D002C57E1 /* BattleFieldInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldInteractor.swift; sourceTree = "<group>"; };
 		AA78023827E20B8D002C57E1 /* BattleFieldRouterInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldRouterInput.swift; sourceTree = "<group>"; };
 		AA78023927E20B8D002C57E1 /* BattleFieldRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldRouter.swift; sourceTree = "<group>"; };
+		AACC7BD127FAE9CD0022384E /* BuildingIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingIcons.swift; sourceTree = "<group>"; };
+		AACC7BD527FB01F10022384E /* BuildingIconPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingIconPlaces.swift; sourceTree = "<group>"; };
 		AAE886D227EE0FC800CA4E5D /* ScenePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenePaths.swift; sourceTree = "<group>"; };
 		AAE886D527EE115A00CA4E5D /* NodeNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeNames.swift; sourceTree = "<group>"; };
 		AAE886E827EEFF9800CA4E5D /* GroundTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroundTest.swift; sourceTree = "<group>"; };
@@ -413,6 +417,8 @@
 			children = (
 				AAE886D227EE0FC800CA4E5D /* ScenePaths.swift */,
 				AAE886D527EE115A00CA4E5D /* NodeNames.swift */,
+				AACC7BD127FAE9CD0022384E /* BuildingIcons.swift */,
+				AACC7BD527FB01F10022384E /* BuildingIconPlaces.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -688,6 +694,7 @@
 				AAE886F527EF2EDC00CA4E5D /* OrcFactory.swift in Sources */,
 				AA0B68C227E5BB150078003D /* ElphTowerFactory.swift in Sources */,
 				AA78020127E20291002C57E1 /* HomePageRouterInput.swift in Sources */,
+				AACC7BD627FB01F10022384E /* BuildingIconPlaces.swift in Sources */,
 				AA78024427E20B8E002C57E1 /* BattleFieldRouter.swift in Sources */,
 				AA0B68BE27E5B95C0078003D /* AbstactFactoryBuildings.swift in Sources */,
 				AA0B68CE27E5D8C10078003D /* TowerBuilder.swift in Sources */,
@@ -738,6 +745,7 @@
 				AA7801B727E200B6002C57E1 /* SceneDelegate.swift in Sources */,
 				AAF4C9D727E8D9E500D5B6F8 /* EnemiesManager.swift in Sources */,
 				AAE886FF27EF33A600CA4E5D /* OrcSL.swift in Sources */,
+				AACC7BD227FAE9CD0022384E /* BuildingIcons.swift in Sources */,
 				AA0B68D827E5FD7F0078003D /* TowerSelectionPanel.swift in Sources */,
 				AAF4C9D927E8DA0300D5B6F8 /* BuildingsManager.swift in Sources */,
 				AA78023E27E20B8E002C57E1 /* BattleFieldViewOutput.swift in Sources */,

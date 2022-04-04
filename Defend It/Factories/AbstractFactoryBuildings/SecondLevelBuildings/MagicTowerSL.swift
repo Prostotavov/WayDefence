@@ -13,6 +13,7 @@ class MagicTowerSL: Building {
     var type: Buildings = .magicTower
     var level: BuildingLevels = .secondLevel
     var buildingNode: SCNNode
+    var radius: CGFloat = 4
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode
