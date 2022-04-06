@@ -9,7 +9,6 @@ import Foundation
 
 enum ScenePaths: String {
     
-    case allElements = "art.scnassets/allElements.scn"
     case battleField = "art.scnassets/battleField.scn"
     case buildingSelectionPanelScene = "art.scnassets/buildingSelectionPanel/buildingSelectionPanelScene.scn"
     case enemyScene = "art.scnassets/enemy/enemyScene.scn"

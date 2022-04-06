@@ -9,10 +9,11 @@ import SceneKit
 
 class MagicTowerTL: Building {
     
-    var type: Buildings = .magicTower
+    var type: BuildingTypes = .magicTower
     var level: BuildingLevels = .thirdLevel
     var buildingNode: SCNNode
     var radius: CGFloat = 5
+    var upgradeSelection: [BuildingIcons] = [.magicTowerSelectionIcon]
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode

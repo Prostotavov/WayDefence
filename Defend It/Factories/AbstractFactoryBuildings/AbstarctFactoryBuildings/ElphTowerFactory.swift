@@ -22,9 +22,9 @@ class ElphTowerFactory: AbstactFactoryBuildings {
         elphTowerSceneSL = SCNScene(named: ScenePaths.elphTowerSLScene.rawValue)
         elphTowerSceneTL = SCNScene(named: ScenePaths.elphTowerTLScene.rawValue)
         
-        elphTowerNodeFL = elphTowerSceneFL.rootNode.childNode(withName: NodeNames.elphTowerFL.rawValue, recursively: true)
-        elphTowerNodeSL = elphTowerSceneSL.rootNode.childNode(withName: NodeNames.elphTowerSL.rawValue, recursively: true)
-        elphTowerNodeTL = elphTowerSceneTL.rootNode.childNode(withName: NodeNames.elphTowerTL.rawValue, recursively: true)
+        elphTowerNodeFL = elphTowerSceneFL.rootNode.childNode(withName: BuildingNodes.elphTowerFL.rawValue, recursively: true)
+        elphTowerNodeSL = elphTowerSceneSL.rootNode.childNode(withName: BuildingNodes.elphTowerSL.rawValue, recursively: true)
+        elphTowerNodeTL = elphTowerSceneTL.rootNode.childNode(withName: BuildingNodes.elphTowerTL.rawValue, recursively: true)
     }
     
     static let defaultFactory = ElphTowerFactory()

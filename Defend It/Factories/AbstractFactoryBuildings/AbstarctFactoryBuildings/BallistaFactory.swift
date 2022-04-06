@@ -22,9 +22,9 @@ class BallistaFactory: AbstactFactoryBuildings {
         ballistaSceneSL = SCNScene(named: ScenePaths.ballistaSLScene.rawValue)
         ballistaSceneTL = SCNScene(named: ScenePaths.ballistaTLScene.rawValue)
         
-        ballistaNodeFL = ballistaSceneFL.rootNode.childNode(withName: NodeNames.ballistaFL.rawValue, recursively: true)
-        ballistaNodeSL = ballistaSceneSL.rootNode.childNode(withName: NodeNames.ballistaSL.rawValue, recursively: true)
-        ballistaNodeTL = ballistaSceneTL.rootNode.childNode(withName: NodeNames.ballistaTL.rawValue, recursively: true)
+        ballistaNodeFL = ballistaSceneFL.rootNode.childNode(withName: BuildingNodes.ballistaFL.rawValue, recursively: true)
+        ballistaNodeSL = ballistaSceneSL.rootNode.childNode(withName: BuildingNodes.ballistaSL.rawValue, recursively: true)
+        ballistaNodeTL = ballistaSceneTL.rootNode.childNode(withName: BuildingNodes.ballistaTL.rawValue, recursively: true)
     }
     
     static let defaultFactory = BallistaFactory()

@@ -13,9 +13,13 @@ protocol BattleFieldInteractorInput: AnyObject {
     func createFence() -> [FenceCell]
     func setupCamera() -> SCNNode
     func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode
-    func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode
+    func showTowerSelectionPanel(for buildingName: String) -> SCNNode
+    
+    func build(_ building: BuildingTypes, On position: SCNVector3) ->  SCNNode
     func runEnemies()
     func deleteBuilding(with name: String)
     
     func getEnemies() -> Set<AnyEnemy>
+    
+    func getBuildingName(with coordinate: (Int, Int)) -> String
 }

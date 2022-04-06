@@ -33,7 +33,7 @@ struct Converter {
         
         // stringCoordinate = 5,6
         let stringCoordinate = buildingName[bracketIndex...].dropFirst().dropLast()
-
+        
         // commaIndex = 1
         let commaIndex = stringCoordinate.firstIndex(of: ",")!
         
@@ -64,5 +64,58 @@ struct Converter {
     static func toCounter(from timeInterval: TimeInterval) -> Int {
         Int(timeInterval * 10)
     }
+    
+    static func toBuildingType(from nodeName: String) -> BuildingTypes? {
+        switch nodeName {
+        case _ where nodeName.contains(BuildingTypes.elphTower.rawValue) :
+            return .elphTower
+        case _ where nodeName.contains(BuildingTypes.magicTower.rawValue) :
+            return .magicTower
+        case _ where nodeName.contains(BuildingTypes.ballista.rawValue) :
+            return .ballista
+        case _ where nodeName.contains(BuildingTypes.wall.rawValue) :
+            return .wall
+        default: return nil
+        }
+    }
+    
+    static func toBuildingLevel(from nodeName: String) -> BuildingLevels? {
+        if nodeName.contains("FL") {return .firstLevel}
+        if nodeName.contains("SL") {return .secondLevel}
+        if nodeName.contains("TL") {return .thirdLevel}
+        return nil
+    }
+    
+    static func toBuilding(from nodeName: String) -> BuiltTowers {
+        let type = toBuildingType(from: nodeName)!
+        let level = toBuildingLevel(from: nodeName)!
+        switch type {
+        case .elphTower:
+            switch level {
+            case .firstLevel : return .elphTowerFL
+            case .secondLevel : return .elphTowerSL
+            case .thirdLevel : return .elphTowerTL
+            }
+        case .magicTower:
+            switch level {
+            case .firstLevel : return .magicTowerFL
+            case .secondLevel : return .magicTowerSL
+            case .thirdLevel : return .magicTowerTL
+            }
+        case .ballista:
+            switch level {
+            case .firstLevel : return .ballistaFL
+            case .secondLevel : return .ballistaSL
+            case .thirdLevel : return .ballistaTL
+            }
+        case .wall:
+            switch level {
+            case .firstLevel : return .wallFL
+            case .secondLevel : return .wallSL
+            case .thirdLevel : return .wallTL
+            }
+        }
+    }
+    
 }
 

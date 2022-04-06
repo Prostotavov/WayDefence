@@ -22,9 +22,9 @@ class MagicTowerFactory: AbstactFactoryBuildings {
         magicTowerSceneSL = SCNScene(named: ScenePaths.magicTowerSLScene.rawValue)
         magicTowerSceneTL = SCNScene(named: ScenePaths.magicTowerTLScene.rawValue)
         
-        magicTowerNodeFL = magicTowerSceneFL.rootNode.childNode(withName: NodeNames.magicTowerFL.rawValue, recursively: true)
-        magicTowerNodeSL = magicTowerSceneSL.rootNode.childNode(withName: NodeNames.magicTowerSL.rawValue, recursively: true)
-        magicTowerNodeTL = magicTowerSceneTL.rootNode.childNode(withName: NodeNames.magicTowerTL.rawValue, recursively: true)
+        magicTowerNodeFL = magicTowerSceneFL.rootNode.childNode(withName: BuildingNodes.magicTowerFL.rawValue, recursively: true)
+        magicTowerNodeSL = magicTowerSceneSL.rootNode.childNode(withName: BuildingNodes.magicTowerSL.rawValue, recursively: true)
+        magicTowerNodeTL = magicTowerSceneTL.rootNode.childNode(withName: BuildingNodes.magicTowerTL.rawValue, recursively: true)
     }
     
     static let defaultFactory = MagicTowerFactory()

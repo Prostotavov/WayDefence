@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Buildings: String, CaseIterable {
+enum BuildingTypes: String, CaseIterable {
     case magicTower
     case elphTower
     case ballista

@@ -30,7 +30,11 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
         interactor.showTowerSelectionPanel(On: position)
     }
     
-    func build(_ building: Buildings, On position: SCNVector3) -> SCNNode {
+    func showTowerSelectionPanel(for buildingName: String ) -> SCNNode {
+        interactor.showTowerSelectionPanel(for: buildingName)
+    }
+    
+    func build(_ building: BuildingTypes, On position: SCNVector3) -> SCNNode {
         interactor.build(building, On: position)
     }
 
@@ -44,5 +48,9 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     
     func getEnemies() -> Set<AnyEnemy> {
         interactor.getEnemies()
+    }
+    
+    func getBuildingName(with coordinate: (Int, Int)) -> String {
+        interactor.getBuildingName(with: coordinate)
     }
 }

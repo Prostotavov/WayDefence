@@ -22,9 +22,9 @@ class GoblinFactory: AbstractFactoryEnemies {
         goblinSceneSL = SCNScene(named: ScenePaths.goblinSLScene.rawValue)
         goblinSceneTL = SCNScene(named: ScenePaths.goblinTLScene.rawValue)
         
-        goblinNodeFL = goblinSceneFL.rootNode.childNode(withName: NodeNames.goblinFL.rawValue, recursively: true)
-        goblinNodeSL = goblinSceneSL.rootNode.childNode(withName: NodeNames.goblinSL.rawValue, recursively: true)
-        goblinNodeTL = goblinSceneTL.rootNode.childNode(withName: NodeNames.goblinTL.rawValue, recursively: true)
+        goblinNodeFL = goblinSceneFL.rootNode.childNode(withName: EnemyNodes.goblinFL.rawValue, recursively: true)
+        goblinNodeSL = goblinSceneSL.rootNode.childNode(withName: EnemyNodes.goblinSL.rawValue, recursively: true)
+        goblinNodeTL = goblinSceneTL.rootNode.childNode(withName: EnemyNodes.goblinTL.rawValue, recursively: true)
     }
     
     static let defaultFactory = GoblinFactory()

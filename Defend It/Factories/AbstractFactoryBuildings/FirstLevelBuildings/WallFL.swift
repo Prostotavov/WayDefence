@@ -9,10 +9,11 @@ import SceneKit
 
 class WallFL: Building {
     
-    var type: Buildings = .wall
+    var type: BuildingTypes = .wall
     var level: BuildingLevels = .firstLevel
     var buildingNode: SCNNode
     var radius: CGFloat = 2.5
+    var upgradeSelection: [BuildingIcons] = [.wallSelectionIcon]
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode

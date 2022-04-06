@@ -61,6 +61,8 @@
 		AACC7BE927FB2CFF0022384E /* BallistaFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BE827FB2CFF0022384E /* BallistaFactory.swift */; };
 		AACC7BEB27FB2D0B0022384E /* WallFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BEA27FB2D0B0022384E /* WallFactory.swift */; };
 		AACC7BEF27FB36D30022384E /* BuiltTowers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BEE27FB36D30022384E /* BuiltTowers.swift */; };
+		AACC7BF127FB66B20022384E /* BuildingNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BF027FB66B20022384E /* BuildingNodes.swift */; };
+		AACC7BF327FB66D00022384E /* EnemyNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BF227FB66D00022384E /* EnemyNodes.swift */; };
 		AAE886D327EE0FC800CA4E5D /* ScenePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886D227EE0FC800CA4E5D /* ScenePaths.swift */; };
 		AAE886D627EE115A00CA4E5D /* NodeNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886D527EE115A00CA4E5D /* NodeNames.swift */; };
 		AAE886EA27EEFF9800CA4E5D /* GroundTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886E827EEFF9800CA4E5D /* GroundTest.swift */; };
@@ -167,6 +169,8 @@
 		AACC7BE827FB2CFF0022384E /* BallistaFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallistaFactory.swift; sourceTree = "<group>"; };
 		AACC7BEA27FB2D0B0022384E /* WallFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallFactory.swift; sourceTree = "<group>"; };
 		AACC7BEE27FB36D30022384E /* BuiltTowers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltTowers.swift; sourceTree = "<group>"; };
+		AACC7BF027FB66B20022384E /* BuildingNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingNodes.swift; sourceTree = "<group>"; };
+		AACC7BF227FB66D00022384E /* EnemyNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyNodes.swift; sourceTree = "<group>"; };
 		AAE886D227EE0FC800CA4E5D /* ScenePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenePaths.swift; sourceTree = "<group>"; };
 		AAE886D527EE115A00CA4E5D /* NodeNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeNames.swift; sourceTree = "<group>"; };
 		AAE886E827EEFF9800CA4E5D /* GroundTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroundTest.swift; sourceTree = "<group>"; };
@@ -460,6 +464,8 @@
 				AACC7BD127FAE9CD0022384E /* BuildingIcons.swift */,
 				AACC7BD527FB01F10022384E /* BuildingIconPlaces.swift */,
 				AACC7BEE27FB36D30022384E /* BuiltTowers.swift */,
+				AACC7BF027FB66B20022384E /* BuildingNodes.swift */,
+				AACC7BF227FB66D00022384E /* EnemyNodes.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -736,6 +742,7 @@
 				AA0B68C227E5BB150078003D /* ElphTowerFactory.swift in Sources */,
 				AA78020127E20291002C57E1 /* HomePageRouterInput.swift in Sources */,
 				AACC7BD627FB01F10022384E /* BuildingIconPlaces.swift in Sources */,
+				AACC7BF127FB66B20022384E /* BuildingNodes.swift in Sources */,
 				AA78024427E20B8E002C57E1 /* BattleFieldRouter.swift in Sources */,
 				AACC7BDB27FB28200022384E /* ElphTowerTL.swift in Sources */,
 				AA0B68BE27E5B95C0078003D /* AbstactFactoryBuildings.swift in Sources */,
@@ -755,6 +762,7 @@
 				AAE8870127EF33AE00CA4E5D /* OrcTL.swift in Sources */,
 				AA7801FD27E20291002C57E1 /* HomePageViewController.swift in Sources */,
 				AA78023A27E20B8E002C57E1 /* BattleFieldAssembly.swift in Sources */,
+				AACC7BF327FB66D00022384E /* EnemyNodes.swift in Sources */,
 				AA7801F827E20291002C57E1 /* HomePageAssemblyProtocol.swift in Sources */,
 				AAF4C9AC27E855D700D5B6F8 /* HashedHeap.swift in Sources */,
 				AA78024227E20B8E002C57E1 /* BattleFieldInteractor.swift in Sources */,

@@ -22,9 +22,9 @@ class TrollFactory: AbstractFactoryEnemies {
         trollSceneSL = SCNScene(named: ScenePaths.trollSLScene.rawValue)
         trollSceneTL = SCNScene(named: ScenePaths.trollTLScene.rawValue)
         
-        trollNodeFL = trollSceneFL.rootNode.childNode(withName: NodeNames.trollFL.rawValue, recursively: true)
-        trollNodeSL = trollSceneSL.rootNode.childNode(withName: NodeNames.trollSL.rawValue, recursively: true)
-        trollNodeTL = trollSceneTL.rootNode.childNode(withName: NodeNames.trollTL.rawValue, recursively: true)
+        trollNodeFL = trollSceneFL.rootNode.childNode(withName: EnemyNodes.trollFL.rawValue, recursively: true)
+        trollNodeSL = trollSceneSL.rootNode.childNode(withName: EnemyNodes.trollSL.rawValue, recursively: true)
+        trollNodeTL = trollSceneTL.rootNode.childNode(withName: EnemyNodes.trollTL.rawValue, recursively: true)
     }
     
     static let defaultFactory = TrollFactory()

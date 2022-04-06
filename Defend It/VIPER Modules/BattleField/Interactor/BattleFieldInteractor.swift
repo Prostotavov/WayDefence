@@ -39,7 +39,11 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
         buildingsManager.showTowerSelectionPanel(On: position)
     }
     
-    func build(_ building: Buildings, On position: SCNVector3) ->  SCNNode {
+    func showTowerSelectionPanel(for buildingName: String) -> SCNNode {
+        buildingsManager.showTowerSelectionPanel(for: buildingName)
+    }
+    
+    func build(_ building: BuildingTypes, On position: SCNVector3) ->  SCNNode {
         enemiesManager.prohibitWalking(On: Converter.toCoordinate(from: position))
         return buildingsManager.build(building, On: position)
     }
@@ -51,6 +55,10 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     func deleteBuilding(with name: String) {
         enemiesManager.allowWalking(On: Converter.toCoordinate(from: name))
         buildingsManager.deleteBuilding(with: name)
+    }
+    
+    func getBuildingName(with coordinate: (Int, Int)) -> String {
+        buildingsManager.getBuildingName(with: coordinate)
     }
 
 }

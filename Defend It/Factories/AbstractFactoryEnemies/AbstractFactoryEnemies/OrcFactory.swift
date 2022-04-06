@@ -22,9 +22,9 @@ class OrcFactory: AbstractFactoryEnemies {
         orcSceneSL = SCNScene(named: ScenePaths.orcSLScene.rawValue)
         orcSceneTL = SCNScene(named: ScenePaths.orcTLScene.rawValue)
         
-        orcNodeFL = orcSceneFL.rootNode.childNode(withName: NodeNames.orcFL.rawValue, recursively: true)
-        orcNodeSL = orcSceneSL.rootNode.childNode(withName: NodeNames.orcSL.rawValue, recursively: true)
-        orcNodeTL = orcSceneTL.rootNode.childNode(withName: NodeNames.orcTL.rawValue, recursively: true)
+        orcNodeFL = orcSceneFL.rootNode.childNode(withName: EnemyNodes.orcFL.rawValue, recursively: true)
+        orcNodeSL = orcSceneSL.rootNode.childNode(withName: EnemyNodes.orcSL.rawValue, recursively: true)
+        orcNodeTL = orcSceneTL.rootNode.childNode(withName: EnemyNodes.orcTL.rawValue, recursively: true)
     }
     
     static let defaultFactory = OrcFactory()

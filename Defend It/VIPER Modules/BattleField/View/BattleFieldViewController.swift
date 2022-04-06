@@ -57,7 +57,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         }
     }
     
-    func build(_ building: Buildings, On position: SCNVector3) {
+    func build(_ building: BuildingTypes, On position: SCNVector3) {
         hideTowerSelectionPanel()
         let building = output.build(building, On: position)
         scene.rootNode.addChildNode(building)
@@ -95,83 +95,52 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         scene.rootNode.childNode(withName: name, recursively: true)?.removeFromParentNode()
     }
     
-    @objc func groundCellTapped (recognizer:UITapGestureRecognizer) {
-        let location = recognizer.location(in: sceneView)
-        
-        let hitResults = sceneView.hitTest(location, options: nil)
-        
-        if hitResults.count > 0 {
-            let result = hitResults.first
-            if let node = result?.node {
-                
-                // buildings -start-
-                if node.name == BuildingIcons.elphTowerIcon.rawValue {
-                    build(.elphTower, On: node.parent!.parent!.position)
-                }
-                if node.name == BuildingIcons.magicTowerIcon.rawValue {
-                    build(.magicTower, On: node.parent!.parent!.position)
-                }
-                if node.name == BuildingIcons.ballistaIcon.rawValue {
-                    build(.ballista, On: node.parent!.parent!.position)
-                }
-                if node.name == BuildingIcons.wallIcon.rawValue {
-                    build(.wall, On: node.parent!.parent!.position)
-                }
-                // buildings -end-
-                
-                //upgrades -start-
-                if node.name == BuiltTowers.elphTowerFL.rawValue {
-                    print("up elph")
-                }
-                if node.name == BuiltTowers.magicTowerFL.rawValue {
-                    print("up magic")
-                }
-                if node.name == BuiltTowers.ballistaFL.rawValue {
-                    print("up ballista")
-                }
-                if node.name == BuiltTowers.wallFL.rawValue {
-                    print("up wall")
-                }
-                //upgrades -end-
-                
-                if node.name == NodeNames.floor.rawValue {
-                    hideTowerSelectionPanel()
-                }
-                if node.name == "groundCell" {
-                    showTowerSelectionPanel(On: node.parent!.position)
-                }
-                if node.name == "selectedMagicTower" {
-                    build(.magicTower, On: node.parent!.position)
-                }
-                if node.parent != nil && node.parent!.name != nil {
-                    if node.parent!.name == "selectedElphTower" {
-                        ///arch   tower        board        panel
-                        build(.elphTower, On: node.parent!.parent!.parent!.position)
-                    }
-                    if node.parent!.name == NodeNames.trollSL.rawValue {
-                        runEnemies()
-                        print("run vc")
-                    }
-                    if node.parent!.name == NodeNames.trollFL.rawValue {
-                        runEnemies()
-                        print("run vc")
-                    }
-                    if node.parent!.name == NodeNames.trollTL.rawValue {
-                        runEnemies()
-                        print("run vc")
-                    }
-                    //                    if node.parent != nil &&
-                    //                    node.parent!.name != nil &&
-                    //                    node.parent!.name!.contains("built"){
-                    //                        deleteBuilding(with: node.parent!.name!)
-                    //                    }
-                }
-                print(node.name)
-                
-            }
-        }
+    func deleteBuilding(with coordinate: (Int, Int)) {
+        let name = output.getBuildingName(with: coordinate)
+        deleteBuilding(with: name)
+        hideTowerSelectionPanel()
     }
     
+    func showTowerSelectionPanel(for buildingName: String ) {
+        hideTowerSelectionPanel()
+        let towerSelectionPanel = output.showTowerSelectionPanel(for: buildingName)
+        scene.rootNode.addChildNode(towerSelectionPanel)
+    }
     
+    @objc func groundCellTapped (recognizer:UITapGestureRecognizer) {
+        let location = recognizer.location(in: sceneView)
+        let hitResults = sceneView.hitTest(location, options: nil)
+        guard let node = hitResults.first?.node else {return}
+
+        switch node.name {
+            
+        case _ where node.name! == RecognitionNodes.cellSelectionIcon.rawValue:
+            deleteBuilding(with:Converter.toCoordinate(from: node.parent!.parent!.position))
+        case _ where node.name!.contains(RecognitionNodes.floor.rawValue):
+            hideTowerSelectionPanel()
+        case _ where node.name!.contains(RecognitionNodes.groundCell.rawValue):
+            showTowerSelectionPanel(On: node.parent!.position)
+        case _ where node.name!.contains(RecognitionNodes.selectionIcon.rawValue):
+            guard let buildingType = Converter.toBuildingType(from: node.name!) else {return}
+            build(buildingType, On: node.parent!.parent!.position)
+        case _ where node.name!.contains(RecognitionNodes.builtTower.rawValue):
+            print(Converter.toBuilding(from: node.parent!.name!))
+            showTowerSelectionPanel(for: node.parent!.name!)
+        case .none:
+            break
+        case .some(_):
+            runEnemies()
+            break
+        }
+    }
+}
+
+enum RecognitionNodes: String  {
+    case floor = "floor"
+    case groundCell = "groundCell"
+    case selectionIcon = "SelectionIcon"
+    case builtTower = "builtTower"
+    case cellSelectionIcon = "cellSelectionIcon"
+    case repairSelectionIcon = "repairSelectionIcon"
 }
 

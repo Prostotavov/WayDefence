@@ -9,10 +9,11 @@ import SceneKit
 
 class ElphTowerTL: Building {
     
-    var type: Buildings = .elphTower
+    var type: BuildingTypes = .elphTower
     var level: BuildingLevels = .thirdLevel
     var buildingNode: SCNNode
     var radius: CGFloat = 4.5
+    var upgradeSelection: [BuildingIcons] = [.elphTowerSelectionIcon]
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode

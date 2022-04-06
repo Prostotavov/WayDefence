@@ -22,9 +22,9 @@ class WallFactory: AbstactFactoryBuildings {
         wallSceneSL = SCNScene(named: ScenePaths.wallSLScene.rawValue)
         wallSceneTL = SCNScene(named: ScenePaths.wallTLScene.rawValue)
         
-        wallNodeFL = wallSceneFL.rootNode.childNode(withName: NodeNames.wallFL.rawValue, recursively: true)
-        wallNodeSL = wallSceneSL.rootNode.childNode(withName: NodeNames.wallSL.rawValue, recursively: true)
-        wallNodeTL = wallSceneTL.rootNode.childNode(withName: NodeNames.wallTL.rawValue, recursively: true)
+        wallNodeFL = wallSceneFL.rootNode.childNode(withName: BuildingNodes.wallFL.rawValue, recursively: true)
+        wallNodeSL = wallSceneSL.rootNode.childNode(withName: BuildingNodes.wallSL.rawValue, recursively: true)
+        wallNodeTL = wallSceneTL.rootNode.childNode(withName: BuildingNodes.wallTL.rawValue, recursively: true)
     }
     
     static let defaultFactory = WallFactory()

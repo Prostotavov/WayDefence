@@ -10,6 +10,7 @@ import SceneKit
 
 protocol TowerSelectionPanel {
     func show(on position: SCNVector3) -> SCNNode
+    func show(for building: Building) -> SCNNode
 }
 
 class TowerSelectionPanelImpl: TowerSelectionPanel {
@@ -52,6 +53,16 @@ class TowerSelectionPanelImpl: TowerSelectionPanel {
     
     func show(on position: SCNVector3) -> SCNNode {
         panelNode.position = position
+        boardNode.childNodes.map{$0.removeFromParentNode()}
+        addDefaultTowersToBoard()
+        return panelNode
+    }
+    
+    func show(for building: Building) -> SCNNode {
+        boardNode.childNodes.map{$0.removeFromParentNode()}
+        let coordinate = Converter.toCoordinate(from: building.buildingNode.name!)
+        panelNode.position = Converter.toPosition(from: coordinate)
+        addTowerToBoard(for: building)
         return panelNode
     }
     
@@ -64,7 +75,6 @@ class TowerSelectionPanelImpl: TowerSelectionPanel {
     func addBoard() {
         boardNode = SCNNode()
         boardNode.position = SCNVector3(0, 1.3, 0)
-        addDefaultTowersToBoard()
         panelNode.addChildNode(boardNode)
     }
     
@@ -107,10 +117,16 @@ extension TowerSelectionPanelImpl {
     // this function is called when the player wants to build a tower on empty groundCell
     // default locations 0, 2, 4, 6
     func addDefaultTowersToBoard() {
-        add(.elphTowerIcon, to: .upLeftPlace)       // 0
-        add(.magicTowerIcon, to: .upRightPlace)     // 2
-        add(.wallIcon, to: .downLeftPlace)          // 4
-        add(.ballistaIcon, to: .downRightPlace)     // 6
+        add(.elphTowerSelectionIcon, to: .upLeftPlace)       // 0
+        add(.magicTowerSelectionIcon, to: .upRightPlace)     // 2
+        add(.wallSelectionIcon, to: .downLeftPlace)          // 4
+        add(.ballistaSelectionIcon, to: .downRightPlace)     // 6
+    }
+    
+    func addTowerToBoard(for building: Building) {
+        add(.repairSelectionIcon, to: .repairTowerButton)
+        add(.cellSelectionIcon, to: .deleteTowerButton)
+        add(building.upgradeSelection[0], to: .upMiddlePlace)
     }
     
     func getPositionFor(_ place: BuildingIconPlaces) -> SCNVector3 {
@@ -122,7 +138,7 @@ extension TowerSelectionPanelImpl {
         case .upRightPlace:
             return SCNVector3(boardWidth/3, boardWidth/3, boardWidth/3)
         case .deleteTowerButton:
-            return SCNVector3(-boardWidth, -boardWidth/3, boardWidth/3)
+            return SCNVector3(-boardWidth/2, -boardWidth/3, boardWidth/3)
         case .downLeftPlace:
             return SCNVector3(-boardWidth/3, -boardWidth/3, boardWidth/3)
         case .downMiddlePlace:
@@ -130,8 +146,12 @@ extension TowerSelectionPanelImpl {
         case .downRightPlace:
             return SCNVector3(boardWidth/3, -boardWidth/3, boardWidth/3)
         case .repairTowerButton:
-            return SCNVector3(boardWidth, -boardWidth/3, boardWidth/3)
+            return SCNVector3(boardWidth/2, -boardWidth/3, boardWidth/3)
         }
+    }
+    
+    func testAddIcons(for building: BuildingTypes) {
+//        testAddIcons(for: .)
     }
     
     func add(_ icon: BuildingIcons, to place: BuildingIconPlaces) {

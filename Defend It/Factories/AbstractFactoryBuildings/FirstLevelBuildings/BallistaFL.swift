@@ -9,10 +9,11 @@ import SceneKit
 
 class BallistaFL: Building {
     
-    var type: Buildings = .ballista
+    var type: BuildingTypes = .ballista
     var level: BuildingLevels = .firstLevel
     var buildingNode: SCNNode
     var radius: CGFloat = 2.5
+    var upgradeSelection: [BuildingIcons] = [.ballistaSelectionIcon]
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode
