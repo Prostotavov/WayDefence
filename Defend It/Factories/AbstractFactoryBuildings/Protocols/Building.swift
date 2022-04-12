@@ -14,6 +14,7 @@ protocol Building {
     var radius: CGFloat {get set}
     var buildingNode: SCNNode {get set}
     var upgradeSelection: [BuildingIcons] {get set}
+    var upgrades: [BuiltTowers] {get set}
     
     init(_ buildingNode: SCNNode)
 }

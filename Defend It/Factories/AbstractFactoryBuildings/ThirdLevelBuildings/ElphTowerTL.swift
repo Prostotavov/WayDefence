@@ -14,6 +14,7 @@ class ElphTowerTL: Building {
     var buildingNode: SCNNode
     var radius: CGFloat = 4.5
     var upgradeSelection: [BuildingIcons] = [.elphTowerSelectionIcon]
+    var upgrades: [BuiltTowers] = []
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode

@@ -14,25 +14,20 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     var meadowManager: MeadowManager!
     var buildingsManager: BuildingsManager!
     var enemiesManager: EnemiesManager!
-    var decorationsManager: DecorationsManager!
     
     var camera: Camera = CameraImpl()
 
     
-    func createGround() -> [[GroundCell]] {
-        meadowManager.createGround()
-    }
-    
-    func createFence() -> [FenceCell] {
-        decorationsManager.createFence()
+    func getGroundSquares() -> [[GroundSquareImpl]] {
+        meadowManager.getGroundSquares()
     }
     
     func getEnemies() -> Set<AnyEnemy> {
         enemiesManager.enemies
     }
     
-    func setupCamera() -> SCNNode {
-        return camera.setupCamera()
+    func getCamera() -> SCNNode {
+        camera.scnNode
     }
     
     func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode {
@@ -52,7 +47,7 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
         enemiesManager.runEnemies()
     }
     
-    func deleteBuilding(with name: String) {
+    func sellBuilding(with name: String) {
         enemiesManager.allowWalking(On: Converter.toCoordinate(from: name))
         buildingsManager.deleteBuilding(with: name)
     }

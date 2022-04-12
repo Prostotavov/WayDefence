@@ -9,16 +9,19 @@ import Foundation
 import SceneKit
 
 protocol BattleFieldViewInput: AnyObject {
-    func createGround()
-    func createFence()
+    func setupGround()
     func setupCamera()
-    func showTowerSelectionPanel(On position: SCNVector3)
-    func build(_ building: BuildingTypes, On position: SCNVector3)
-    func runEnemies()
-    func deleteBuilding(with name: String)
-    
     func setupEnemies()
     
+    func showTowerSelectionPanel(on position: SCNVector3)
     func showTowerSelectionPanel(for buildingName: String)
+    
+    func enemyPressed()
+    func floorPressed()
+    func sellIconPressed(with coordinate: (Int, Int))
+    func groundSquarePressed(on position: SCNVector3)
+    func buildingIconPressed(with name: String, and position: SCNVector3)
+    func builtTowerPressed(with name: String)
+    
     
 }

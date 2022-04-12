@@ -13,8 +13,6 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     var output: BattleFieldViewOutput!
     var assembler: BattleFieldAssemblyProtocol = BattleFieldAssembly()
     
-    let size: Int = 7
-    
     var sceneView: SCNView!
     var scene: SCNScene!
     
@@ -23,11 +21,93 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         assembler.assembly(with: self)
         setupScene()
         setupCamera()
-        createGround()
-        //        createFence(size: size)
+        setupGround()
         setupEnemies()
     }
     
+    func showTowerSelectionPanel(on position: SCNVector3) {
+        hideTowerSelectionPanel()
+        let towerSelectionPanel = output.showTowerSelectionPanel(On: position)
+        scene.rootNode.addChildNode(towerSelectionPanel)
+    }
+    
+    func showTowerSelectionPanel(for buildingName: String ) {
+        hideTowerSelectionPanel()
+        let towerSelectionPanel = output.showTowerSelectionPanel(for: buildingName)
+        scene.rootNode.addChildNode(towerSelectionPanel)
+    }
+    
+    func hideTowerSelectionPanel() {
+        scene.rootNode.childNode(withName: NodeNames.buildingSelectionPanel.rawValue, recursively: true)?.removeFromParentNode()
+    }
+}
+
+// pressed functions
+extension BattleFieldViewController {
+    
+    func enemyPressed() {
+        output.enemyPressed()
+    }
+    
+    func sellIconPressed(with coordinate: (Int, Int)) {
+        let name = output.getBuildingName(with: coordinate)
+        output.sellIconPressed(for: name)
+        scene.rootNode.childNode(withName: name, recursively: true)?.removeFromParentNode()
+        hideTowerSelectionPanel()
+    }
+    
+    func floorPressed() {
+        hideTowerSelectionPanel()
+    }
+    
+    func groundSquarePressed(on position: SCNVector3) {
+        showTowerSelectionPanel(on: position)
+    }
+    
+    func buildingIconPressed(with name: String, and position: SCNVector3) {
+        hideTowerSelectionPanel()
+        guard let buildingType = Converter.toBuildingType(from: name) else {return}
+        let building = output.buildingIconPressed(buildingType, On: position)
+        scene.rootNode.addChildNode(building)
+    }
+    
+    func builtTowerPressed(with name: String) {
+        showTowerSelectionPanel(for: name)
+    }
+    
+    @objc func groundCellTapped (recognizer:UITapGestureRecognizer) {
+        let location = recognizer.location(in: sceneView)
+        let hitResults = sceneView.hitTest(location, options: nil)
+        guard let node = hitResults.first?.node else {return}
+
+        switch node.name {
+            
+        case _ where node.name! == RecognitionNodes.sellSelectionIcon.rawValue:
+            sellIconPressed(with:Converter.toCoordinate(from: node.parent!.parent!.position))
+
+        case _ where node.name!.contains(RecognitionNodes.floor.rawValue):
+            floorPressed()
+            
+        case _ where node.name!.contains(RecognitionNodes.groundSquare.rawValue):
+            groundSquarePressed(on: node.parent!.position)
+            
+        case _ where node.name!.contains(RecognitionNodes.selectionIcon.rawValue):
+            buildingIconPressed(with: node.name!, and: node.parent!.parent!.position)
+            
+        case _ where node.name!.contains(RecognitionNodes.builtTower.rawValue):
+            builtTowerPressed(with: node.parent!.name!)
+            
+        case .none:
+            break
+        case .some:
+            enemyPressed()
+            break
+        }
+    }
+}
+
+// for setup functions
+extension BattleFieldViewController {
     func setupScene() {
         sceneView = SCNView(frame: view.frame)
         scene = SCNScene(named: "art.scnassets/battleField.scn")!
@@ -44,35 +124,16 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     }
     
     func setupCamera() {
-        let cameraNode = output.setupCamera()
+        let cameraNode = output.getCamera()
         scene.rootNode.addChildNode(cameraNode)
     }
     
-    func createGround() {
-        let ground = output.createGround()
-        for row in ground {
-            for cell in row {
-                scene.rootNode.addChildNode(cell.scnGroundNode)
+    func setupGround() {
+        let squares = output.getGroundSquares()
+        for squareRow in squares {
+            for square in squareRow {
+                scene.rootNode.addChildNode(square.scnNode)
             }
-        }
-    }
-    
-    func build(_ building: BuildingTypes, On position: SCNVector3) {
-        hideTowerSelectionPanel()
-        let building = output.build(building, On: position)
-        scene.rootNode.addChildNode(building)
-    }
-    
-    func showTowerSelectionPanel(On position: SCNVector3) {
-        hideTowerSelectionPanel()
-        let towerSelectionPanel = output.showTowerSelectionPanel(On: position)
-        scene.rootNode.addChildNode(towerSelectionPanel)
-    }
-    
-    func createFence() {
-        let fence = output.createFence()
-        for fenceCell in fence {
-            scene.rootNode.addChildNode(fenceCell.scnFenceCellNode)
         }
     }
     
@@ -81,66 +142,14 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
             scene.rootNode.addChildNode(enemy.enemyNode)
         }
     }
-    
-    func hideTowerSelectionPanel() {
-        scene.rootNode.childNode(withName: NodeNames.buildingSelectionPanel.rawValue, recursively: true)?.removeFromParentNode()
-    }
-    
-    func runEnemies() {
-        output.runEnemies()
-    }
-    
-    func deleteBuilding(with name: String) {
-        output.deleteBuilding(with: name)
-        scene.rootNode.childNode(withName: name, recursively: true)?.removeFromParentNode()
-    }
-    
-    func deleteBuilding(with coordinate: (Int, Int)) {
-        let name = output.getBuildingName(with: coordinate)
-        deleteBuilding(with: name)
-        hideTowerSelectionPanel()
-    }
-    
-    func showTowerSelectionPanel(for buildingName: String ) {
-        hideTowerSelectionPanel()
-        let towerSelectionPanel = output.showTowerSelectionPanel(for: buildingName)
-        scene.rootNode.addChildNode(towerSelectionPanel)
-    }
-    
-    @objc func groundCellTapped (recognizer:UITapGestureRecognizer) {
-        let location = recognizer.location(in: sceneView)
-        let hitResults = sceneView.hitTest(location, options: nil)
-        guard let node = hitResults.first?.node else {return}
-
-        switch node.name {
-            
-        case _ where node.name! == RecognitionNodes.cellSelectionIcon.rawValue:
-            deleteBuilding(with:Converter.toCoordinate(from: node.parent!.parent!.position))
-        case _ where node.name!.contains(RecognitionNodes.floor.rawValue):
-            hideTowerSelectionPanel()
-        case _ where node.name!.contains(RecognitionNodes.groundCell.rawValue):
-            showTowerSelectionPanel(On: node.parent!.position)
-        case _ where node.name!.contains(RecognitionNodes.selectionIcon.rawValue):
-            guard let buildingType = Converter.toBuildingType(from: node.name!) else {return}
-            build(buildingType, On: node.parent!.parent!.position)
-        case _ where node.name!.contains(RecognitionNodes.builtTower.rawValue):
-            print(Converter.toBuilding(from: node.parent!.name!))
-            showTowerSelectionPanel(for: node.parent!.name!)
-        case .none:
-            break
-        case .some(_):
-            runEnemies()
-            break
-        }
-    }
 }
 
 enum RecognitionNodes: String  {
     case floor = "floor"
-    case groundCell = "groundCell"
+    case groundSquare = "groundSquare"
     case selectionIcon = "SelectionIcon"
     case builtTower = "builtTower"
-    case cellSelectionIcon = "cellSelectionIcon"
+    case sellSelectionIcon = "sellSelectionIcon"
     case repairSelectionIcon = "repairSelectionIcon"
 }
 

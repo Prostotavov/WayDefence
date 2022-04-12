@@ -16,7 +16,6 @@
 		AA0B68CA27E5BDF10078003D /* MagicTowerSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68C927E5BDF10078003D /* MagicTowerSL.swift */; };
 		AA0B68CC27E5BDFD0078003D /* ElphTowerSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68CB27E5BDFD0078003D /* ElphTowerSL.swift */; };
 		AA0B68CE27E5D8C10078003D /* TowerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68CD27E5D8C10078003D /* TowerBuilder.swift */; };
-		AA0B68D227E5E7BD0078003D /* Fence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68D127E5E7BD0078003D /* Fence.swift */; };
 		AA0B68D627E5FA450078003D /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68D527E5FA450078003D /* Camera.swift */; };
 		AA0B68D827E5FD7F0078003D /* TowerSelectionPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68D727E5FD7F0078003D /* TowerSelectionPanel.swift */; };
 		AA1B66BF27F624E60092F6C8 /* TestFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B66BE27F624E60092F6C8 /* TestFunctions.swift */; };
@@ -65,7 +64,7 @@
 		AACC7BF327FB66D00022384E /* EnemyNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BF227FB66D00022384E /* EnemyNodes.swift */; };
 		AAE886D327EE0FC800CA4E5D /* ScenePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886D227EE0FC800CA4E5D /* ScenePaths.swift */; };
 		AAE886D627EE115A00CA4E5D /* NodeNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886D527EE115A00CA4E5D /* NodeNames.swift */; };
-		AAE886EA27EEFF9800CA4E5D /* GroundTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886E827EEFF9800CA4E5D /* GroundTest.swift */; };
+		AAE886EA27EEFF9800CA4E5D /* Ground.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886E827EEFF9800CA4E5D /* Ground.swift */; };
 		AAE886EB27EEFF9800CA4E5D /* MeadowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886E927EEFF9800CA4E5D /* MeadowManager.swift */; };
 		AAE886EE27EEFFE000CA4E5D /* EnemyPositionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886ED27EEFFE000CA4E5D /* EnemyPositionManager.swift */; };
 		AAE886F327EF2DC500CA4E5D /* AbstractFactoryEnemies.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886F227EF2DC500CA4E5D /* AbstractFactoryEnemies.swift */; };
@@ -85,11 +84,10 @@
 		AAF4C9AC27E855D700D5B6F8 /* HashedHeap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9AA27E855D700D5B6F8 /* HashedHeap.swift */; };
 		AAF4C9AD27E855D700D5B6F8 /* AStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9AB27E855D700D5B6F8 /* AStar.swift */; };
 		AAF4C9B027E856D600D5B6F8 /* BattleFieldGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9AF27E856D600D5B6F8 /* BattleFieldGraph.swift */; };
-		AAF4C9D527E8D9B700D5B6F8 /* DecorationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9D427E8D9B600D5B6F8 /* DecorationsManager.swift */; };
 		AAF4C9D727E8D9E500D5B6F8 /* EnemiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9D627E8D9E500D5B6F8 /* EnemiesManager.swift */; };
 		AAF4C9D927E8DA0300D5B6F8 /* BuildingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9D827E8DA0300D5B6F8 /* BuildingsManager.swift */; };
 		AAF4C9DB27E8DB0E00D5B6F8 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9DA27E8DB0E00D5B6F8 /* Converter.swift */; };
-		AAF4C9DD27E8E6A200D5B6F8 /* GroundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9DC27E8E6A200D5B6F8 /* GroundCell.swift */; };
+		AAF4C9DD27E8E6A200D5B6F8 /* GroundSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4C9DC27E8E6A200D5B6F8 /* GroundSquare.swift */; };
 		AAFD65EA27E4FFC500450C52 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = AAFD65E927E4FFC500450C52 /* art.scnassets */; };
 /* End PBXBuildFile section */
 
@@ -120,7 +118,6 @@
 		AA0B68C927E5BDF10078003D /* MagicTowerSL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicTowerSL.swift; sourceTree = "<group>"; };
 		AA0B68CB27E5BDFD0078003D /* ElphTowerSL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElphTowerSL.swift; sourceTree = "<group>"; };
 		AA0B68CD27E5D8C10078003D /* TowerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerBuilder.swift; sourceTree = "<group>"; };
-		AA0B68D127E5E7BD0078003D /* Fence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fence.swift; sourceTree = "<group>"; };
 		AA0B68D527E5FA450078003D /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		AA0B68D727E5FD7F0078003D /* TowerSelectionPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerSelectionPanel.swift; sourceTree = "<group>"; };
 		AA1B66BE27F624E60092F6C8 /* TestFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFunctions.swift; sourceTree = "<group>"; };
@@ -173,7 +170,7 @@
 		AACC7BF227FB66D00022384E /* EnemyNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyNodes.swift; sourceTree = "<group>"; };
 		AAE886D227EE0FC800CA4E5D /* ScenePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenePaths.swift; sourceTree = "<group>"; };
 		AAE886D527EE115A00CA4E5D /* NodeNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeNames.swift; sourceTree = "<group>"; };
-		AAE886E827EEFF9800CA4E5D /* GroundTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroundTest.swift; sourceTree = "<group>"; };
+		AAE886E827EEFF9800CA4E5D /* Ground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ground.swift; sourceTree = "<group>"; };
 		AAE886E927EEFF9800CA4E5D /* MeadowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeadowManager.swift; sourceTree = "<group>"; };
 		AAE886ED27EEFFE000CA4E5D /* EnemyPositionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyPositionManager.swift; sourceTree = "<group>"; };
 		AAE886F227EF2DC500CA4E5D /* AbstractFactoryEnemies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractFactoryEnemies.swift; sourceTree = "<group>"; };
@@ -193,11 +190,10 @@
 		AAF4C9AA27E855D700D5B6F8 /* HashedHeap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashedHeap.swift; sourceTree = "<group>"; };
 		AAF4C9AB27E855D700D5B6F8 /* AStar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AStar.swift; sourceTree = "<group>"; };
 		AAF4C9AF27E856D600D5B6F8 /* BattleFieldGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleFieldGraph.swift; sourceTree = "<group>"; };
-		AAF4C9D427E8D9B600D5B6F8 /* DecorationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationsManager.swift; sourceTree = "<group>"; };
 		AAF4C9D627E8D9E500D5B6F8 /* EnemiesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesManager.swift; sourceTree = "<group>"; };
 		AAF4C9D827E8DA0300D5B6F8 /* BuildingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingsManager.swift; sourceTree = "<group>"; };
 		AAF4C9DA27E8DB0E00D5B6F8 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
-		AAF4C9DC27E8E6A200D5B6F8 /* GroundCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundCell.swift; sourceTree = "<group>"; };
+		AAF4C9DC27E8E6A200D5B6F8 /* GroundSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundSquare.swift; sourceTree = "<group>"; };
 		AAFD65E927E4FFC500450C52 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -474,8 +470,8 @@
 			isa = PBXGroup;
 			children = (
 				AAE886E927EEFF9800CA4E5D /* MeadowManager.swift */,
-				AAF4C9DC27E8E6A200D5B6F8 /* GroundCell.swift */,
-				AAE886E827EEFF9800CA4E5D /* GroundTest.swift */,
+				AAE886E827EEFF9800CA4E5D /* Ground.swift */,
+				AAF4C9DC27E8E6A200D5B6F8 /* GroundSquare.swift */,
 			);
 			path = MeadowManager;
 			sourceTree = "<group>";
@@ -564,7 +560,6 @@
 			isa = PBXGroup;
 			children = (
 				AAE886E727EEFF9800CA4E5D /* MeadowManager */,
-				AAF4C9D327E8D99800D5B6F8 /* DecorationsManager */,
 				AAF4C9D227E8D98800D5B6F8 /* EnemiesManagers */,
 				AAF4C9D027E8D6D900D5B6F8 /* BuildingsManagers */,
 			);
@@ -589,15 +584,6 @@
 				AAF4C9A927E855BB00D5B6F8 /* AStar  */,
 			);
 			path = EnemiesManagers;
-			sourceTree = "<group>";
-		};
-		AAF4C9D327E8D99800D5B6F8 /* DecorationsManager */ = {
-			isa = PBXGroup;
-			children = (
-				AAF4C9D427E8D9B600D5B6F8 /* DecorationsManager.swift */,
-				AA0B68D127E5E7BD0078003D /* Fence.swift */,
-			);
-			path = DecorationsManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -751,7 +737,7 @@
 				AAF4C9DB27E8DB0E00D5B6F8 /* Converter.swift in Sources */,
 				AACC7BDF27FB2C5D0022384E /* WallFL.swift in Sources */,
 				AA0B68D627E5FA450078003D /* Camera.swift in Sources */,
-				AAF4C9DD27E8E6A200D5B6F8 /* GroundCell.swift in Sources */,
+				AAF4C9DD27E8E6A200D5B6F8 /* GroundSquare.swift in Sources */,
 				AACC7BE527FB2C940022384E /* WallSL.swift in Sources */,
 				AAE8870B27EF35AF00CA4E5D /* TrollFactory.swift in Sources */,
 				AA7801FE27E20291002C57E1 /* HomePageInteractor.swift in Sources */,
@@ -776,7 +762,7 @@
 				AA7801FA27E20291002C57E1 /* HomePagePresenter.swift in Sources */,
 				AA7801B527E200B6002C57E1 /* AppDelegate.swift in Sources */,
 				AAE886F327EF2DC500CA4E5D /* AbstractFactoryEnemies.swift in Sources */,
-				AAE886EA27EEFF9800CA4E5D /* GroundTest.swift in Sources */,
+				AAE886EA27EEFF9800CA4E5D /* Ground.swift in Sources */,
 				AA78020227E20291002C57E1 /* HomePageRouter.swift in Sources */,
 				AA78020027E20291002C57E1 /* HomePageInteractorOutput.swift in Sources */,
 				AAE886F827EF30B300CA4E5D /* OrcFL.swift in Sources */,
@@ -808,10 +794,8 @@
 				AAF4C9D927E8DA0300D5B6F8 /* BuildingsManager.swift in Sources */,
 				AA78023E27E20B8E002C57E1 /* BattleFieldViewOutput.swift in Sources */,
 				AACC7BE127FB2C850022384E /* BallistaSL.swift in Sources */,
-				AAF4C9D527E8D9B700D5B6F8 /* DecorationsManager.swift in Sources */,
 				AACC7BE327FB2C8C0022384E /* BallistaTL.swift in Sources */,
 				AA78023D27E20B8E002C57E1 /* BattleFieldViewController.swift in Sources */,
-				AA0B68D227E5E7BD0078003D /* Fence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

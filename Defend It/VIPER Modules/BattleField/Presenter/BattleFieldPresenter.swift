@@ -14,18 +14,6 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     var interactor: BattleFieldInteractorInput!
     var router: BattleFieldRouterInput!
     
-    func createGround() -> [[GroundCell]] {
-        return interactor.createGround()
-    }
-    
-    func createFence() -> [FenceCell] {
-        return interactor.createFence()
-    }
-    
-    func setupCamera() -> SCNNode {
-        interactor.setupCamera()
-    }
-    
     func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode {
         interactor.showTowerSelectionPanel(On: position)
     }
@@ -33,17 +21,33 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     func showTowerSelectionPanel(for buildingName: String ) -> SCNNode {
         interactor.showTowerSelectionPanel(for: buildingName)
     }
-    
-    func build(_ building: BuildingTypes, On position: SCNVector3) -> SCNNode {
+
+}
+
+
+// pressed functions
+extension BattleFieldPresenter {
+    func buildingIconPressed(_ building: BuildingTypes, On position: SCNVector3) -> SCNNode {
         interactor.build(building, On: position)
     }
 
-    func runEnemies() {
+    func enemyPressed() {
         interactor.runEnemies()
     }
     
-    func deleteBuilding(with name: String) {
-        interactor.deleteBuilding(with: name)
+    func sellIconPressed(for name: String) {
+        interactor.sellBuilding(with: name)
+    }
+}
+
+//get functions
+extension BattleFieldPresenter {
+    func getGroundSquares() -> [[GroundSquareImpl]] {
+        interactor.getGroundSquares()
+    }
+    
+    func getCamera() -> SCNNode {
+        interactor.getCamera()
     }
     
     func getEnemies() -> Set<AnyEnemy> {

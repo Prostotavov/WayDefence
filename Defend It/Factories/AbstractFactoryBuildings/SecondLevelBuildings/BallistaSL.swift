@@ -14,6 +14,7 @@ class BallistaSL: Building {
     var buildingNode: SCNNode
     var radius: CGFloat = 2.5
     var upgradeSelection: [BuildingIcons] = [.ballistaSelectionIcon]
+    var upgrades: [BuiltTowers] = [.ballistaTL]
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode

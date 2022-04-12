@@ -11,10 +11,7 @@ enum ScenePaths: String {
     
     case battleField = "art.scnassets/battleField.scn"
     case buildingSelectionPanelScene = "art.scnassets/buildingSelectionPanel/buildingSelectionPanelScene.scn"
-    case enemyScene = "art.scnassets/enemy/enemyScene.scn"
-    case groundCellScene = "art.scnassets/groundCell/groundCellScene.scn"
-    case magicTowerScene = "art.scnassets/magicTower/magicTowerScene.scn"
-    case elphTowerScene = "art.scnassets/elphTower/elphTowerScene.scn"
+    case groundSquareScene = "art.scnassets/groundSquare/groundSquareScene.scn"
     
     // for enemies -start-
     case goblinFLScene = "art.scnassets/enemies/goblins/goblinFLScene.scn"

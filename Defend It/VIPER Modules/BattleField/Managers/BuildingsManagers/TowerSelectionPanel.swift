@@ -111,10 +111,10 @@ extension TowerSelectionPanelImpl {
     //       |          |           |
     //       3    4     5     6     7   4 - downLeftPlace, 5 - downMiddlePlace, 6 - downRightPlace
     //       |          |           |
-    //        ——————————————————————    3 - deleteTowerButton, 7 - repairTowerButton
+    //        ——————————————————————    3 - sellTowerButton, 7 - repairTowerButton
     
     
-    // this function is called when the player wants to build a tower on empty groundCell
+    // this function is called when the player wants to build a tower on empty groundSquare
     // default locations 0, 2, 4, 6
     func addDefaultTowersToBoard() {
         add(.elphTowerSelectionIcon, to: .upLeftPlace)       // 0
@@ -125,7 +125,7 @@ extension TowerSelectionPanelImpl {
     
     func addTowerToBoard(for building: Building) {
         add(.repairSelectionIcon, to: .repairTowerButton)
-        add(.cellSelectionIcon, to: .deleteTowerButton)
+        add(.sellSelectionIcon, to: .sellTowerButton)
         add(building.upgradeSelection[0], to: .upMiddlePlace)
     }
     
@@ -137,7 +137,7 @@ extension TowerSelectionPanelImpl {
             return SCNVector3(0, boardWidth/3, boardWidth/3)
         case .upRightPlace:
             return SCNVector3(boardWidth/3, boardWidth/3, boardWidth/3)
-        case .deleteTowerButton:
+        case .sellTowerButton:
             return SCNVector3(-boardWidth/2, -boardWidth/3, boardWidth/3)
         case .downLeftPlace:
             return SCNVector3(-boardWidth/3, -boardWidth/3, boardWidth/3)

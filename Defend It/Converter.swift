@@ -86,7 +86,7 @@ struct Converter {
         return nil
     }
     
-    static func toBuilding(from nodeName: String) -> BuiltTowers {
+    static func toBuiltTower(from nodeName: String) -> BuiltTowers {
         let type = toBuildingType(from: nodeName)!
         let level = toBuildingLevel(from: nodeName)!
         switch type {
@@ -116,6 +116,8 @@ struct Converter {
             }
         }
     }
+    
+    
     
 }
 

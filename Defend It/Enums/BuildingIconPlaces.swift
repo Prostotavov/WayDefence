@@ -11,7 +11,7 @@ enum BuildingIconPlaces {
     case upLeftPlace
     case upMiddlePlace
     case upRightPlace
-    case deleteTowerButton
+    case sellTowerButton
     case downLeftPlace
     case downMiddlePlace
     case downRightPlace
@@ -27,4 +27,4 @@ enum BuildingIconPlaces {
 //       |          |           |
 //       3    4     5     6     7   4 - downLeftPlace, 5 - downMiddlePlace, 6 - downRightPlace
 //       |          |           |
-//        ——————————————————————    3 - deleteTowerButton, 7 - repairTowerButton
+//        ——————————————————————    3 - sellTowerButton, 7 - repairTowerButton

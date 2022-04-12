@@ -8,18 +8,23 @@
 import Foundation
 
 protocol MeadowManager {
-    func createGround() -> [[GroundCell]]
+    func getGroundSquares() -> [[GroundSquareImpl]]
 }
 
 class MeadowManagerImpl: MeadowManager {
-    var ground: GroundTest = GroundTestImpl()
+    var ground: Ground!
     var battleFieldSize: Int!
     
     init(_ battleFieldSize: Int) {
         self.battleFieldSize = battleFieldSize
+        createGround(size: battleFieldSize)
     }
     
-    func createGround() -> [[GroundCell]] {
-        ground.createGround(size: battleFieldSize)
+    private func createGround(size: Int) {
+        ground = GroundImpl(size: size)
+    }
+    
+    func getGroundSquares() ->  [[GroundSquareImpl]] {
+        ground.squares
     }
 }
