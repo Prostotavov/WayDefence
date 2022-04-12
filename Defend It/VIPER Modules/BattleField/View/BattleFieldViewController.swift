@@ -40,6 +40,15 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     func hideTowerSelectionPanel() {
         scene.rootNode.childNode(withName: NodeNames.buildingSelectionPanel.rawValue, recursively: true)?.removeFromParentNode()
     }
+    
+    func addBuilding(with node: SCNNode) {
+        scene.rootNode.addChildNode(node)
+    }
+    
+    func removeBuilding(with coordinate: (Int, Int)) {
+        let name = output.getBuildingName(with: coordinate)
+        scene.rootNode.childNode(withName: name, recursively: true)?.removeFromParentNode()
+    }
 }
 
 // pressed functions
@@ -65,10 +74,10 @@ extension BattleFieldViewController {
     }
     
     func buildingIconPressed(with name: String, and position: SCNVector3) {
-        hideTowerSelectionPanel()
+        hideTowerSelectionPanel()        
         guard let buildingType = Converter.toBuildingType(from: name) else {return}
         let building = output.buildingIconPressed(buildingType, On: position)
-        scene.rootNode.addChildNode(building)
+        addBuilding(with: building)
     }
     
     func builtTowerPressed(with name: String) {

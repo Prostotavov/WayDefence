@@ -570,8 +570,8 @@
 			isa = PBXGroup;
 			children = (
 				AAF4C9D827E8DA0300D5B6F8 /* BuildingsManager.swift */,
-				AA0B68D727E5FD7F0078003D /* TowerSelectionPanel.swift */,
 				AA0B68CD27E5D8C10078003D /* TowerBuilder.swift */,
+				AA0B68D727E5FD7F0078003D /* TowerSelectionPanel.swift */,
 			);
 			path = BuildingsManagers;
 			sourceTree = "<group>";

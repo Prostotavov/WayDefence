@@ -150,10 +150,6 @@ extension TowerSelectionPanelImpl {
         }
     }
     
-    func testAddIcons(for building: BuildingTypes) {
-//        testAddIcons(for: .)
-    }
-    
     func add(_ icon: BuildingIcons, to place: BuildingIconPlaces) {
         let node = createIconFor(icon)
         node.position = getPositionFor(place)

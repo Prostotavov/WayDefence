@@ -11,8 +11,10 @@ protocol BuildingsManager {
     func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode
     func showTowerSelectionPanel(for buildingName: String) -> SCNNode
     func build(_ building: BuildingTypes, On position: SCNVector3) ->  SCNNode
+    func upgradeBuilding(with coordinate: (Int, Int)) -> SCNNode
     func deleteBuilding(with name: String)
     func getBuildingName(with coordinate: (Int, Int)) -> String
+    func isExistBuiling(on coordinate: (Int, Int)) -> Bool
 }
 
 class BuildingsManagerImpl: BuildingsManager {
@@ -28,12 +30,12 @@ class BuildingsManagerImpl: BuildingsManager {
         setupBuildingSelectionPanel()
     }
     
-    func createBuildingsArray() {
+    private func createBuildingsArray() {
         let row: [Building?] = Array(repeating: nil, count: battleFieldSize)
         buildings = Array(repeating: row, count: battleFieldSize)
     }
     
-    func setupBuildingSelectionPanel() {
+    private func setupBuildingSelectionPanel() {
         towerSelectionPanel = TowerSelectionPanelImpl()
     }
     
@@ -53,6 +55,28 @@ class BuildingsManagerImpl: BuildingsManager {
         return building.buildingNode
     }
     
+    func upgradeBuilding(with coordinate: (Int, Int)) -> SCNNode {
+        let building = buildings[coordinate.0][coordinate.1]!
+        let type = building.type
+        let level = getUpLevel(for: building.level)
+        let upgradeBuilding = AbstactFactoryBuildingsImpl.defaultFactory.create(type, with: level)
+        upgradeBuilding.buildingNode.position = buildings[coordinate.0][coordinate.1]!.buildingNode.position
+        upgradeBuilding.buildingNode.name! += "(\(coordinate.0),\(coordinate.1))"
+        buildings[coordinate.0][coordinate.1] = upgradeBuilding
+        return upgradeBuilding.buildingNode
+    }
+    
+    private func getUpLevel(for level: BuildingLevels) -> BuildingLevels {
+        switch level {
+        case .firstLevel:
+            return .secondLevel
+        case .secondLevel:
+            return .thirdLevel
+        case .thirdLevel:
+            return .thirdLevel
+        }
+    }
+    
     func deleteBuilding(with name: String) {
         let coordinate = Converter.toCoordinate(from: name)
         buildings[coordinate.0][coordinate.1] = nil
@@ -61,4 +85,9 @@ class BuildingsManagerImpl: BuildingsManager {
     func getBuildingName(with coordinate: (Int, Int)) -> String {
         buildings[coordinate.0][coordinate.1]!.buildingNode.name!
     }
+    
+    func isExistBuiling(on coordinate: (Int, Int)) -> Bool {
+        buildings[coordinate.0][coordinate.1] != nil
+    }
+    
 }

@@ -21,6 +21,10 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     func showTowerSelectionPanel(for buildingName: String ) -> SCNNode {
         interactor.showTowerSelectionPanel(for: buildingName)
     }
+    
+    func isExistBuiling(on coordinate: (Int, Int)) -> Bool {
+        interactor.isExistBuiling(on: coordinate)
+    }
 
 }
 
@@ -28,7 +32,14 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
 // pressed functions
 extension BattleFieldPresenter {
     func buildingIconPressed(_ building: BuildingTypes, On position: SCNVector3) -> SCNNode {
-        interactor.build(building, On: position)
+        let coordinate = Converter.toCoordinate(from: position)
+        if interactor.isExistBuiling(on: coordinate) {
+            view.removeBuilding(with: coordinate)
+            return interactor.getUpgradeBuilding(with: coordinate)
+        } else {
+            return interactor.build(building, On: position)
+        }
+        
     }
 
     func enemyPressed() {

@@ -43,6 +43,10 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
         return buildingsManager.build(building, On: position)
     }
     
+    func getUpgradeBuilding(with coordinate: (Int, Int)) -> SCNNode {
+        buildingsManager.upgradeBuilding(with: coordinate)
+    }
+    
     func runEnemies() {
         enemiesManager.runEnemies()
     }
@@ -54,6 +58,10 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     
     func getBuildingName(with coordinate: (Int, Int)) -> String {
         buildingsManager.getBuildingName(with: coordinate)
+    }
+    
+    func isExistBuiling(on coordinate: (Int, Int)) -> Bool {
+        buildingsManager.isExistBuiling(on: coordinate)
     }
 
 }

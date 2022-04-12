@@ -24,4 +24,6 @@ protocol BattleFieldViewInput: AnyObject {
     func builtTowerPressed(with name: String)
     
     
+    func removeBuilding(with coordinate: (Int, Int))
+    func addBuilding(with node: SCNNode)
 }

@@ -19,9 +19,11 @@ protocol BattleFieldViewOutput: AnyObject {
     func enemyPressed()
     func sellIconPressed(for name: String)
     
+    
     func getEnemies() -> Set<AnyEnemy>
     
     
     func getBuildingName(with coordinate: (Int, Int)) -> String
-    
+    func isExistBuiling(on coordinate: (Int, Int)) -> Bool
+
 }
