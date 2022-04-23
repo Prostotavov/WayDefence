@@ -21,6 +21,7 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
         setupCamera()
         setupMeadow()
         setupEnemies()
+        loadFactories()
     }
     
     func setupCamera() {
@@ -39,6 +40,13 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
         for enemy in enemiesManager.enemies {
             output.add(enemy.enemyNode)
         }
+    }
+    
+    func loadFactories() {
+        MagicTowerFactory.defaultFactory
+        ElphTowerFactory.defaultFactory
+        BallistaFactory.defaultFactory
+        WallFactory.defaultFactory
     }
     
     func handlePressed(_ node: SCNNode) {
