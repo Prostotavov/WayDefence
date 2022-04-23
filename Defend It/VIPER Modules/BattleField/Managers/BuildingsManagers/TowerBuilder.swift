@@ -8,12 +8,12 @@
 import SceneKit
 
 protocol TowerBuilder {
-    func build(_ building: BuildingTypes, On position: SCNVector3) ->  Building
+    func create(_ building: BuildingTypes, On position: SCNVector3) ->  Building
 }
 
 class TowerBuilderImpl: TowerBuilder {
     
-    func build(_ building: BuildingTypes, On position: SCNVector3) ->  Building {
+    func create(_ building: BuildingTypes, On position: SCNVector3) ->  Building {
         let tower: Building
         switch building {
         case .magicTower: tower = MagicTowerFactory.defaultFactory.createFirstLevelBuildings()
@@ -22,8 +22,6 @@ class TowerBuilderImpl: TowerBuilder {
         case .wall : tower = WallFactory.defaultFactory.createFirstLevelBuildings()
         }
         tower.buildingNode.position = position
-        let coordinate = Converter.toCoordinate(from: position)
-        tower.buildingNode.name! += "(\(coordinate.0),\(coordinate.1))"
         return tower
     }
     

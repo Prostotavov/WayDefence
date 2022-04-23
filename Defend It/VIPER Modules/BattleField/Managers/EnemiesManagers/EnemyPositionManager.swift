@@ -30,9 +30,6 @@ class EnemyPositionManagerImpl: EnemyPositionManager {
         SCNVector3(-0.25 + CGFloat(battleFieldSize)/4, 0, 0)
     }
     
-    // need func -start-
-
-    
     func calculatePath<T: Enemy>(for enemy: T) -> [SCNVector3] {
         var coordinate = Converter.toCoordinate(from: enemy.enemyNode.position)
         if coordinate.0 < 0 || coordinate.1 < 0 {

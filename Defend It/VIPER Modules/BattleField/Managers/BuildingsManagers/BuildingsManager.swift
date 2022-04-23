@@ -9,12 +9,14 @@ import SceneKit
 
 protocol BuildingsManager {
     func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode
-    func showTowerSelectionPanel(for buildingName: String) -> SCNNode
-    func build(_ building: BuildingTypes, On position: SCNVector3) ->  SCNNode
-    func upgradeBuilding(with coordinate: (Int, Int)) -> SCNNode
-    func deleteBuilding(with name: String)
+
+    func create(_ buildingType: BuildingTypes, with level: BuildingLevels, and position: SCNVector3) -> Building
+    func getUpgradeBuilding(for coordinate: (Int, Int)) -> Building
+    
     func getBuildingName(with coordinate: (Int, Int)) -> String
     func isExistBuiling(on coordinate: (Int, Int)) -> Bool
+    
+    func deleteBuilding(with coordinate: (Int, Int))
 }
 
 class BuildingsManagerImpl: BuildingsManager {
@@ -40,33 +42,36 @@ class BuildingsManagerImpl: BuildingsManager {
     }
     
     func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode {
-        towerSelectionPanel.show(on: position)
-    }
-    
-    func showTowerSelectionPanel(for buildingName: String) -> SCNNode {
-        let coordinate = Converter.toCoordinate(from: buildingName)
-        return towerSelectionPanel.show(for: buildings[coordinate.0][coordinate.1]!)
-    }
-    
-    func build(_ building: BuildingTypes, On position: SCNVector3) ->  SCNNode {
         let coordinate = Converter.toCoordinate(from: position)
-        let building = towerBuilder.build(building, On: position)
-        buildings[coordinate.0][coordinate.1] = building
-        return building.buildingNode
+        if isExistBuiling(on: coordinate) {
+            return towerSelectionPanel.show(for: buildings[coordinate.0][coordinate.1]!)
+        } else {
+            return towerSelectionPanel.show(on: position)
+        }
     }
     
-    func upgradeBuilding(with coordinate: (Int, Int)) -> SCNNode {
+    func create(_ buildingType: BuildingTypes, with level: BuildingLevels, and position: SCNVector3) -> Building {
+        let coordinate = Converter.toCoordinate(from: position)
+        let building = AbstactFactoryBuildingsImpl.defaultFactory.create(buildingType, with: level)
+        building.buildingNode.position = position
+        building.buildingNode.name = "building(\(coordinate.0),\(coordinate.1))"
+        buildings[coordinate.0][coordinate.1] = building
+        return building
+    }
+    
+    func getUpgradeBuilding(for coordinate: (Int, Int)) -> Building {
         let building = buildings[coordinate.0][coordinate.1]!
+        let name = building.buildingNode.name!
         let type = building.type
-        let level = getUpLevel(for: building.level)
+        let level = getNextLevel(after: building.level)
         let upgradeBuilding = AbstactFactoryBuildingsImpl.defaultFactory.create(type, with: level)
         upgradeBuilding.buildingNode.position = buildings[coordinate.0][coordinate.1]!.buildingNode.position
-        upgradeBuilding.buildingNode.name! += "(\(coordinate.0),\(coordinate.1))"
+        upgradeBuilding.buildingNode.name = name
         buildings[coordinate.0][coordinate.1] = upgradeBuilding
-        return upgradeBuilding.buildingNode
+        return upgradeBuilding
     }
     
-    private func getUpLevel(for level: BuildingLevels) -> BuildingLevels {
+    private func getNextLevel(after level: BuildingLevels) -> BuildingLevels {
         switch level {
         case .firstLevel:
             return .secondLevel
@@ -77,8 +82,7 @@ class BuildingsManagerImpl: BuildingsManager {
         }
     }
     
-    func deleteBuilding(with name: String) {
-        let coordinate = Converter.toCoordinate(from: name)
+    func deleteBuilding(with coordinate: (Int, Int)) {
         buildings[coordinate.0][coordinate.1] = nil
     }
     

@@ -67,7 +67,6 @@ class EnemiesManagerImpl: EnemiesManager {
             duration = Converter.toTimeInterval(from: enemy.speed)
         }
         enemy.counter += Converter.toCounter(from: duration)
-//        print("speed \(enemy.speed) = \(duration) seconds = \(enemy.counter) counter")
         let action = SCNAction.move(to: location, duration: duration)
         enemy.enemyNode.removeAllActions()
         enemy.enemyNode.runAction(action)
@@ -116,7 +115,6 @@ extension EnemiesManagerImpl {
     
     @objc func updateTimer() {
 
-//        timeMeasureRunningCode(title: "test") {
         for enemy in enemies {
             if counter == enemy.counter {
                 
@@ -130,13 +128,11 @@ extension EnemiesManagerImpl {
             }
         }
         counter+=1
-//                print("\(counter).")
-//         MARK: bad practice
+        // MARK: bad practice
         if counter >= 9999 {
             counter = 0
         }
         
-//    }
     }
     
     func createTimer() {

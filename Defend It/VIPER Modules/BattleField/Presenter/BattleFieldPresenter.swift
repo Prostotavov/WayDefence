@@ -14,58 +14,20 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     var interactor: BattleFieldInteractorInput!
     var router: BattleFieldRouterInput!
     
-    func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode {
-        interactor.showTowerSelectionPanel(On: position)
+    func loadView() {
+        interactor.loadView()
     }
     
-    func showTowerSelectionPanel(for buildingName: String ) -> SCNNode {
-        interactor.showTowerSelectionPanel(for: buildingName)
+    func add(_ node: SCNNode) {
+        view.add(node)
     }
     
-    func isExistBuiling(on coordinate: (Int, Int)) -> Bool {
-        interactor.isExistBuiling(on: coordinate)
+    func removeNode(with name: String) {
+        view.removeNode(with: name)
+    }
+    
+    func pressed(_ node: SCNNode) {
+        interactor.handlePressed(node)
     }
 
-}
-
-
-// pressed functions
-extension BattleFieldPresenter {
-    func buildingIconPressed(_ building: BuildingTypes, On position: SCNVector3) -> SCNNode {
-        let coordinate = Converter.toCoordinate(from: position)
-        if interactor.isExistBuiling(on: coordinate) {
-            view.removeBuilding(with: coordinate)
-            return interactor.getUpgradeBuilding(with: coordinate)
-        } else {
-            return interactor.build(building, On: position)
-        }
-        
-    }
-
-    func enemyPressed() {
-        interactor.runEnemies()
-    }
-    
-    func sellIconPressed(for name: String) {
-        interactor.sellBuilding(with: name)
-    }
-}
-
-//get functions
-extension BattleFieldPresenter {
-    func getGroundSquares() -> [[GroundSquareImpl]] {
-        interactor.getGroundSquares()
-    }
-    
-    func getCamera() -> SCNNode {
-        interactor.getCamera()
-    }
-    
-    func getEnemies() -> Set<AnyEnemy> {
-        interactor.getEnemies()
-    }
-    
-    func getBuildingName(with coordinate: (Int, Int)) -> String {
-        interactor.getBuildingName(with: coordinate)
-    }
 }

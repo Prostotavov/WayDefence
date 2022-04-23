@@ -16,52 +16,144 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     var enemiesManager: EnemiesManager!
     
     var camera: Camera = CameraImpl()
+    
+    func loadView() {
+        setupCamera()
+        setupMeadow()
+        setupEnemies()
+    }
+    
+    func setupCamera() {
+        output.add(camera.scnNode)
+    }
+    
+    func setupMeadow() {
+        for squaresRow in meadowManager.getGroundSquares() {
+            for square in squaresRow {
+                output.add(square.scnNode)
+            }
+        }
+    }
+    
+    func setupEnemies() {
+        for enemy in enemiesManager.enemies {
+            output.add(enemy.enemyNode)
+        }
+    }
+    
+    func handlePressed(_ node: SCNNode) {
+        switch node.name {
+        case _ where node.name! == RecognitionNodes.sellSelectIcon.rawValue:
+            sellIconPressed(by: node)
+            
+        case _ where node.name! == RecognitionNodes.repairSelectIcon.rawValue:
+            repairIconPressed(by: node)
 
-    
-    func getGroundSquares() -> [[GroundSquareImpl]] {
-        meadowManager.getGroundSquares()
+        case _ where node.name!.contains(RecognitionNodes.floor.rawValue):
+            floorPressed()
+            
+        case _ where node.name!.contains(RecognitionNodes.groundSquare.rawValue):
+            groundSquarePressed(by: node)
+            
+        case _ where node.name!.contains(RecognitionNodes.selectIcon.rawValue):
+            buildingIconPressed(by: node)
+            
+        case _ where node.name!.contains(RecognitionNodes.builtTower.rawValue):
+            builtTowerPressed(by: node)
+        default:
+            enemiesManager.runEnemies()
+            break
+        }
     }
     
-    func getEnemies() -> Set<AnyEnemy> {
-        enemiesManager.enemies
-    }
-    
-    func getCamera() -> SCNNode {
-        camera.scnNode
-    }
-    
-    func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode {
+    func createTowerSelectionPanel(with position: SCNVector3) -> SCNNode {
         buildingsManager.showTowerSelectionPanel(On: position)
     }
     
-    func showTowerSelectionPanel(for buildingName: String) -> SCNNode {
-        buildingsManager.showTowerSelectionPanel(for: buildingName)
+    func getPositionFrom(_ node: SCNNode) -> SCNVector3 {
+        var position: SCNVector3!
+        if node.parent?.parent != nil {
+            position = getPositionFrom(node.parent!)
+        } else {
+            position = node.position
+        }
+        return position
+    }
+    
+    func getRootNodeNameFrom(_ node: SCNNode) -> String {
+        var rootNodeName: String!
+        if node.parent?.parent != nil {
+            rootNodeName = getRootNodeNameFrom(node.parent!)
+        } else {
+            rootNodeName = node.name
+        }
+        return rootNodeName
     }
     
     func build(_ building: BuildingTypes, On position: SCNVector3) ->  SCNNode {
         enemiesManager.prohibitWalking(On: Converter.toCoordinate(from: position))
-        return buildingsManager.build(building, On: position)
+        let building = buildingsManager.create(building, with: .firstLevel, and: position).buildingNode
+        return building
     }
-    
-    func getUpgradeBuilding(with coordinate: (Int, Int)) -> SCNNode {
-        buildingsManager.upgradeBuilding(with: coordinate)
-    }
-    
-    func runEnemies() {
-        enemiesManager.runEnemies()
-    }
-    
-    func sellBuilding(with name: String) {
-        enemiesManager.allowWalking(On: Converter.toCoordinate(from: name))
-        buildingsManager.deleteBuilding(with: name)
-    }
-    
-    func getBuildingName(with coordinate: (Int, Int)) -> String {
-        buildingsManager.getBuildingName(with: coordinate)
-    }
-    
-    func isExistBuiling(on coordinate: (Int, Int)) -> Bool {
-        buildingsManager.isExistBuiling(on: coordinate)
-    }
+}
 
+
+// func for switch
+extension BattleFieldInteractor {
+    
+    func sellIconPressed(by node: SCNNode) {
+        let position = getPositionFrom(node)
+        let coordinate = Converter.toCoordinate(from: position)
+        let name = buildingsManager.getBuildingName(with: coordinate)
+        buildingsManager.deleteBuilding(with: coordinate)
+        output.removeNode(with: name)
+        enemiesManager.allowWalking(On: coordinate)
+        output.removeNode(with: NodeNames.buildingSelectionPanel.rawValue)
+    }
+    
+    func repairIconPressed(by node: SCNNode) {
+        print("repairIconPressed by -\(node.name!)- node")
+    }
+    
+    func floorPressed() {
+        output.removeNode(with: NodeNames.buildingSelectionPanel.rawValue)
+    }
+    
+    func groundSquarePressed(by node: SCNNode) {
+        let position = getPositionFrom(node)
+        output.add(createTowerSelectionPanel(with: position))
+    }
+    
+    func buildingIconPressed(by node: SCNNode) {
+        let position = getPositionFrom(node)
+        let name = node.name!
+        let coordinate = Converter.toCoordinate(from: position)
+        var building: SCNNode
+        
+        if buildingsManager.isExistBuiling(on: coordinate) {
+            let oldBuildingName = buildingsManager.getBuildingName(with: coordinate)
+            output.removeNode(with: oldBuildingName)
+            building = buildingsManager.getUpgradeBuilding(for: coordinate).buildingNode
+        } else {
+            let buildingType = Converter.toBuildingType(from: name)!
+            building = build(buildingType, On: position)
+        }
+        output.add(building)
+        output.removeNode(with: NodeNames.buildingSelectionPanel.rawValue)
+    }
+    
+    func builtTowerPressed(by node: SCNNode) {
+        let position = getPositionFrom(node)
+        let panel = buildingsManager.showTowerSelectionPanel(On: position)
+        output.add(panel)
+    }
+}
+
+enum RecognitionNodes: String  {
+    case floor = "floor"
+    case groundSquare = "groundSquare"
+    case selectIcon = "SelectIcon"
+    case builtTower = "builtTower"
+    case sellSelectIcon = "sellSelectIcon"
+    case repairSelectIcon = "repairSelectIcon"
 }

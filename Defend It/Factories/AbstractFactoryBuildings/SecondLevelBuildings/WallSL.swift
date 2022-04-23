@@ -13,7 +13,7 @@ class WallSL: Building {
     var level: BuildingLevels = .secondLevel
     var buildingNode: SCNNode
     var radius: CGFloat = 2.5
-    var upgradeSelection: [BuildingIcons] = [.wallSelectionIcon]
+    var upgradeSelection: [BuildingIcons] = [.wallSelectIcon]
     var upgrades: [BuiltTowers] = [.wallTL]
     
     required init(_ buildingNode: SCNNode) {

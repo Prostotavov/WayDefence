@@ -13,7 +13,7 @@ class BallistaFL: Building {
     var level: BuildingLevels = .firstLevel
     var buildingNode: SCNNode
     var radius: CGFloat = 2.5
-    var upgradeSelection: [BuildingIcons] = [.ballistaSelectionIcon]
+    var upgradeSelection: [BuildingIcons] = [.ballistaSelectIcon]
     var upgrades: [BuiltTowers] = [.ballistaSL]
     
     required init(_ buildingNode: SCNNode) {

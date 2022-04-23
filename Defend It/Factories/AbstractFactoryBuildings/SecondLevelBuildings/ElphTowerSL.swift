@@ -13,7 +13,7 @@ class ElphTowerSL: Building {
     var level: BuildingLevels = .secondLevel
     var buildingNode: SCNNode
     var radius: CGFloat = 3.5
-    var upgradeSelection: [BuildingIcons] = [.elphTowerSelectionIcon]
+    var upgradeSelection: [BuildingIcons] = [.elphTowerSelectIcon]
     var upgrades: [BuiltTowers] = [.elphTowerTL]
     
     required init(_ buildingNode: SCNNode) {

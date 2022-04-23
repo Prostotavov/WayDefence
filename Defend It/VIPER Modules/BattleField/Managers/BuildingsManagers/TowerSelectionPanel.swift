@@ -60,9 +60,8 @@ class TowerSelectionPanelImpl: TowerSelectionPanel {
     
     func show(for building: Building) -> SCNNode {
         boardNode.childNodes.map{$0.removeFromParentNode()}
-        let coordinate = Converter.toCoordinate(from: building.buildingNode.name!)
-        panelNode.position = Converter.toPosition(from: coordinate)
-        addTowerToBoard(for: building)
+        panelNode.position = building.buildingNode.position
+        addIconToBoard(for: building)
         return panelNode
     }
     
@@ -117,15 +116,15 @@ extension TowerSelectionPanelImpl {
     // this function is called when the player wants to build a tower on empty groundSquare
     // default locations 0, 2, 4, 6
     func addDefaultTowersToBoard() {
-        add(.elphTowerSelectionIcon, to: .upLeftPlace)       // 0
-        add(.magicTowerSelectionIcon, to: .upRightPlace)     // 2
-        add(.wallSelectionIcon, to: .downLeftPlace)          // 4
-        add(.ballistaSelectionIcon, to: .downRightPlace)     // 6
+        add(.elphTowerSelectIcon, to: .upLeftPlace)       // 0
+        add(.magicTowerSelectIcon, to: .upRightPlace)     // 2
+        add(.wallSelectIcon, to: .downLeftPlace)          // 4
+        add(.ballistaSelectIcon, to: .downRightPlace)     // 6
     }
     
-    func addTowerToBoard(for building: Building) {
-        add(.repairSelectionIcon, to: .repairTowerButton)
-        add(.sellSelectionIcon, to: .sellTowerButton)
+    func addIconToBoard(for building: Building) {
+        add(.repairSelectIcon, to: .repairTowerButton)
+        add(.sellSelectIcon, to: .sellTowerButton)
         add(building.upgradeSelection[0], to: .upMiddlePlace)
     }
     

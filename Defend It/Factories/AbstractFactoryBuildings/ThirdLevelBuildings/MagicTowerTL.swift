@@ -13,7 +13,7 @@ class MagicTowerTL: Building {
     var level: BuildingLevels = .thirdLevel
     var buildingNode: SCNNode
     var radius: CGFloat = 5
-    var upgradeSelection: [BuildingIcons] = [.magicTowerSelectionIcon]
+    var upgradeSelection: [BuildingIcons] = [.magicTowerSelectIcon]
     var upgrades: [BuiltTowers] = []
     
     required init(_ buildingNode: SCNNode) {
