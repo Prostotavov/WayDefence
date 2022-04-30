@@ -15,7 +15,7 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     var buildingsManager: BuildingsManager!
     var enemiesManager: EnemiesManager!
     
-    var camera: Camera = CameraImpl()
+    var cameras: Cameras = CamerasImpl()
     
     func loadView() {
         setupCamera()
@@ -25,7 +25,7 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     }
     
     func setupCamera() {
-        output.add(camera.scnNode)
+        output.add(cameras.scnVerticalNode)
     }
     
     func setupMeadow() {
@@ -164,4 +164,17 @@ enum RecognitionNodes: String  {
     case builtTower = "builtTower"
     case sellSelectIcon = "sellSelectIcon"
     case repairSelectIcon = "repairSelectIcon"
+}
+
+extension BattleFieldInteractor {
+    func deviceOrientationChanged(to orientation: UIDeviceOrientation) {
+        switch orientation {
+        case .portrait:
+            output.setupPointOfView(from: cameras.scnVerticalNode)
+            output.setViewVerticalOrientation()
+        default :
+            output.setupPointOfView(from: cameras.scnHorisontalNode)
+            output.setViewHorisontalOrientation()
+        }
+    }
 }

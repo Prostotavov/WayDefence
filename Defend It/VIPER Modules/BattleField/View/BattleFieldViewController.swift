@@ -59,3 +59,28 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     
 }
 
+extension BattleFieldViewController {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let deviceOrientation = UIDevice.current.orientation
+        output.deviceOrientationChanged(to: deviceOrientation)
+    }
+    
+    func setupPointOfView(from cameraNode: SCNNode) {
+        sceneView.pointOfView = cameraNode
+        
+    }
+    
+    func setViewHorisontalOrientation() {
+        if sceneView.frame.height > sceneView.frame.width {
+            sceneView.frame = CGRect(x: 0, y: 0, width: sceneView.frame.height, height: sceneView.frame.width)
+        }
+    }
+    
+    func setViewVerticalOrientation() {
+        if sceneView.frame.height < sceneView.frame.width {
+            sceneView.frame = CGRect(x: 0, y: 0, width: sceneView.frame.height, height: sceneView.frame.width)
+        }
+    }
+}
+
+

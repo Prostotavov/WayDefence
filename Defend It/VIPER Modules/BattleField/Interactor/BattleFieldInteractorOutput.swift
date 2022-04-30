@@ -12,5 +12,8 @@ protocol BattleFieldInteractorOutput: AnyObject {
     
     func add(_ node: SCNNode)
     func removeNode(with name: String)
+    func setupPointOfView(from cameraNode: SCNNode)
+    func setViewHorisontalOrientation()
+    func setViewVerticalOrientation()
 }
 

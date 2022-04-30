@@ -12,4 +12,5 @@ protocol BattleFieldInteractorInput: AnyObject {
     
     func loadView()
     func handlePressed(_ node: SCNNode)
+    func deviceOrientationChanged(to orientation: UIDeviceOrientation)
 }

@@ -12,5 +12,6 @@ protocol BattleFieldViewOutput: AnyObject {
     
     func loadView()
     func pressed(_ node: SCNNode)
+    func deviceOrientationChanged(to orientation: UIDeviceOrientation)
 
 }

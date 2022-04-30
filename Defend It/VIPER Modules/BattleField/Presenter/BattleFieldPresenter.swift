@@ -29,5 +29,22 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     func pressed(_ node: SCNNode) {
         interactor.handlePressed(node)
     }
+    
+    func deviceOrientationChanged(to orientation: UIDeviceOrientation) {
+        interactor.deviceOrientationChanged(to: orientation)
+    }
+    
+    func setupPointOfView(from cameraNode: SCNNode) {
+        view.setupPointOfView(from: cameraNode)
+    }
+
+    
+    func setViewHorisontalOrientation() {
+        view.setViewHorisontalOrientation()
+    }
+    
+    func setViewVerticalOrientation() {
+        view.setViewVerticalOrientation()
+    }
 
 }
