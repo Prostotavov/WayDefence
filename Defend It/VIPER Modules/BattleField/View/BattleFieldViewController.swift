@@ -28,6 +28,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         scene = SCNScene(named: ScenePaths.battleField.rawValue)!
         sceneView.scene = scene
         sceneView.allowsCameraControl = true
+        sceneView.autoenablesDefaultLighting = true
         view.addSubview(sceneView)
         
         let tapRecognizer = UITapGestureRecognizer()

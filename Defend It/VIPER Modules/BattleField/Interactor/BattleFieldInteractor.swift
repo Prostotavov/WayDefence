@@ -21,7 +21,7 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
         setupCamera()
         setupMeadow()
         setupEnemies()
-        loadFactories()
+//        loadFactories()
     }
     
     func setupCamera() {

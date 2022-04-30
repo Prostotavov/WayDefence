@@ -23,10 +23,10 @@ class CameraImpl: Camera {
     func createCamera() {
         scnNode = SCNNode()
         scnNode.camera = SCNCamera()
-        
-        scnNode.position = SCNVector3(x: 1.5, y: 4, z: 1.5)
-        let xAngle = Float(-180 * Float(180 / 3.14))
-        scnNode.eulerAngles = SCNVector3Make(xAngle, 0, 0)
+        scnNode.camera?.usesOrthographicProjection = true
+        scnNode.camera?.orthographicScale = 2.6
+        scnNode.eulerAngles = SCNVector3Make(-0.8, -0.5, 0)
+        scnNode.position = SCNVector3(x: 0.8, y: 2.8, z: 3.2)
     }
     
 }
