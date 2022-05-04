@@ -31,19 +31,24 @@ class EnemiesManagerImpl: EnemiesManager {
     }
     
     func createEnemies() {
-        for _ in 0..<1 {
-        enemies.insert(OrcFactory.defaultFactory.createFirstLevelEnemy())
-        enemies.insert(TrollFactory.defaultFactory.createFirstLevelEnemy())
-        enemies.insert(GoblinFactory.defaultFactory.createFirstLevelEnemy())
-        
-        enemies.insert(OrcFactory.defaultFactory.createSecondLevelEnemy())
-        enemies.insert(TrollFactory.defaultFactory.createSecondLevelEnemy())
-        enemies.insert(GoblinFactory.defaultFactory.createSecondLevelEnemy())
-
-        enemies.insert(OrcFactory.defaultFactory.createThirdLevelEnemy())
-        enemies.insert(TrollFactory.defaultFactory.createThirdLevelEnemy())
-        enemies.insert(GoblinFactory.defaultFactory.createThirdLevelEnemy())
-        }
+        create(.orc, with: .firstLevel)
+        create(.troll, with: .firstLevel)
+        create(.goblin, with: .firstLevel)
+    }
+    
+    func create(_ rase: EnemyRaces, with level: EnemyLevels) {
+        let enemy = AbstractFactoryEnemiesImpl.defaultFactory.create(rase, with: level)
+        addPhysicsBody(for: enemy)
+        enemies.insert(enemy)
+    }
+    
+    func addPhysicsBody(for enemy: AnyEnemy) {
+        let radius = 0.1
+        let physicsShape = SCNPhysicsShape(geometry: SCNSphere(radius: radius))
+        let physicsBody = SCNPhysicsBody(type: .kinematic, shape: physicsShape)
+        physicsBody.isAffectedByGravity = false
+        physicsBody.categoryBitMask = 2
+        enemy.enemyNode.physicsBody = physicsBody
     }
     
     func setupEnemies() {

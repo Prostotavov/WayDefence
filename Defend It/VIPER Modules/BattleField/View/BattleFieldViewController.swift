@@ -21,6 +21,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         assembler.assembly(with: self)
         setupScene()
         output.loadView()
+        scene.physicsWorld.contactDelegate = self
     }
     
     func setupScene() {
@@ -80,6 +81,29 @@ extension BattleFieldViewController {
         if sceneView.frame.height < sceneView.frame.width {
             sceneView.frame = CGRect(x: 0, y: 0, width: sceneView.frame.height, height: sceneView.frame.width)
         }
+    }
+}
+
+extension BattleFieldViewController: SCNPhysicsContactDelegate {
+    func physicsWorld(_ world: SCNPhysicsWorld,
+                      didBegin contact: SCNPhysicsContact) {
+        var collisionBoxNode: SCNNode!
+        if contact.nodeA.physicsBody?.categoryBitMask == 1 {
+            collisionBoxNode = contact.nodeB
+        } else {
+            collisionBoxNode = contact.nodeA
+        }
+        print("\(collisionBoxNode.name) start")
+    }
+    
+    func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
+        var collisionBoxNode: SCNNode!
+        if contact.nodeA.physicsBody?.categoryBitMask == 1 {
+            collisionBoxNode = contact.nodeB
+        } else {
+            collisionBoxNode = contact.nodeA
+        }
+        print("\(collisionBoxNode.name) end")
     }
 }
 

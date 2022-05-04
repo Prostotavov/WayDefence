@@ -52,6 +52,7 @@ class TowerSelectionPanelImpl: TowerSelectionPanel {
     }
     
     func show(on position: SCNVector3) -> SCNNode {
+        removeRadius()
         panelNode.position = position
         boardNode.childNodes.map{$0.removeFromParentNode()}
         addDefaultTowersToBoard()
@@ -59,9 +60,11 @@ class TowerSelectionPanelImpl: TowerSelectionPanel {
     }
     
     func show(for building: Building) -> SCNNode {
+        removeRadius()
         boardNode.childNodes.map{$0.removeFromParentNode()}
         panelNode.position = building.buildingNode.position
         addIconToBoard(for: building)
+        showBuilderRadius(radius: building.radius/3)
         return panelNode
     }
     
@@ -87,7 +90,7 @@ class TowerSelectionPanelImpl: TowerSelectionPanel {
     func setupConstraints() {
         let billboardConstraint = SCNBillboardConstraint()
         billboardConstraint.freeAxes = .all
-        panelNode.constraints = [billboardConstraint]
+        boardNode.constraints = [billboardConstraint]
     }
     
     private func setupScene() {
@@ -156,3 +159,23 @@ extension TowerSelectionPanelImpl {
     }
     
 }
+
+extension TowerSelectionPanelImpl {
+    func showBuilderRadius(radius: CGFloat) {
+        let radiusNode = SCNNode()
+        let tube = SCNTube(innerRadius: radius, outerRadius: radius, height: 0.3)
+        let material = SCNMaterial()
+        material.diffuse.contents = UIColor.blue
+        tube.materials = [material]
+        radiusNode.name = NodeNames.radiusNode.rawValue
+        radiusNode.opacity = 0.3
+        radiusNode.geometry = tube
+        panelNode.addChildNode(radiusNode)
+    }
+    
+    func removeRadius() {
+        panelNode.childNode(withName: NodeNames.radiusNode.rawValue, recursively: true)?.removeFromParentNode()
+    }
+}
+
+

@@ -56,6 +56,7 @@ class BuildingsManagerImpl: BuildingsManager {
         building.buildingNode.position = position
         building.buildingNode.name = "building(\(coordinate.0),\(coordinate.1))"
         buildings[coordinate.0][coordinate.1] = building
+        addPhysicsBody(for: building)
         return building
     }
     
@@ -68,6 +69,7 @@ class BuildingsManagerImpl: BuildingsManager {
         upgradeBuilding.buildingNode.position = buildings[coordinate.0][coordinate.1]!.buildingNode.position
         upgradeBuilding.buildingNode.name = name
         buildings[coordinate.0][coordinate.1] = upgradeBuilding
+        addPhysicsBody(for: upgradeBuilding)
         return upgradeBuilding
     }
     
@@ -94,4 +96,21 @@ class BuildingsManagerImpl: BuildingsManager {
         buildings[coordinate.0][coordinate.1] != nil
     }
     
+}
+
+extension BuildingsManagerImpl {
+    
+    func addPhysicsBody(for building: Building) {
+        let physicsShape = SCNPhysicsShape(geometry: SCNSphere(radius: building.radius / 3))
+        let physicsBody = SCNPhysicsBody(type: .kinematic, shape: physicsShape)
+        
+        physicsBody.isAffectedByGravity = false
+        physicsBody.categoryBitMask = 1
+        physicsBody.contactTestBitMask = 2
+        
+        let physicsRadiusNode = SCNNode()
+        physicsRadiusNode.name = NodeNames.physicsRadiusNode.rawValue
+        physicsRadiusNode.physicsBody = physicsBody
+        building.buildingNode.addChildNode(physicsRadiusNode)
+    }
 }
