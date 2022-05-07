@@ -17,6 +17,8 @@ class ElphTowerSL: Building {
     var upgradeSelection: [BuildingIcons] = [.elphTowerSelectIcon]
     var upgrades: [BuiltTowers] = [.elphTowerTL]
     @Weak var enemiesInRadius: [AnyEnemy]
+    var damage: CGFloat = 20
+    var attackSpeed: CGFloat = 20
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode

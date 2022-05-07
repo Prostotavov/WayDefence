@@ -15,6 +15,7 @@ protocol Enemy: Hashable {
     var speed: Int {get}  // enemy speed = count of squares completed per minute
     var enemyNode: SCNNode {get set}
     var path: [SCNVector3] {get set}
+    var healthPoints: CGFloat {get set}
 
 }
 
@@ -26,6 +27,7 @@ class AnyEnemy: Enemy {
     var speed: Int
     var enemyNode: SCNNode
     var path: [SCNVector3]
+    var healthPoints: CGFloat
     
     // adding vars
     var counter: Int
@@ -37,6 +39,7 @@ class AnyEnemy: Enemy {
         speed = object.speed
         enemyNode = object.enemyNode
         path = object.path
+        healthPoints = object.healthPoints
         // adding vars
         counter = 0
     }

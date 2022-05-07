@@ -15,6 +15,7 @@ struct GoblinSL: Enemy, Hashable {
     var speed: Int = 7
     var enemyNode: SCNNode
     var path: [SCNVector3] = []
+    var healthPoints: CGFloat = 600
     
     init(_ enemyNode: SCNNode) {
         self.enemyNode = enemyNode

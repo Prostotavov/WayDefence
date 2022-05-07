@@ -15,6 +15,7 @@ struct TrollTL: Enemy, Hashable {
     var speed: Int = 5
     var enemyNode: SCNNode
     var path: [SCNVector3] = []
+    var healthPoints: CGFloat = 1000
     
     init(_ enemyNode: SCNNode) {
         self.enemyNode = enemyNode

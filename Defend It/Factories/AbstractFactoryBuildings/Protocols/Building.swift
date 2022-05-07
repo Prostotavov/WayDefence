@@ -17,6 +17,8 @@ protocol Building {
     var upgradeSelection: [BuildingIcons] {get set}
     var upgrades: [BuiltTowers] {get set}
     var enemiesInRadius: [AnyEnemy] {get set}
+    var damage: CGFloat {get set}
+    var attackSpeed: CGFloat {get set}
     
     init(_ buildingNode: SCNNode)
 }

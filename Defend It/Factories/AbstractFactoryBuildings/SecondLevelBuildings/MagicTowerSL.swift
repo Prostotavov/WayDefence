@@ -17,6 +17,8 @@ class MagicTowerSL: Building {
     var upgradeSelection: [BuildingIcons] = [.magicTowerSelectIcon]
     var upgrades: [BuiltTowers] = [.magicTowerTL]
     @Weak var enemiesInRadius: [AnyEnemy]
+    var damage: CGFloat = 20
+    var attackSpeed: CGFloat = 20
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode

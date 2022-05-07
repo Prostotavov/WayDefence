@@ -17,6 +17,8 @@ class WallSL: Building {
     var upgradeSelection: [BuildingIcons] = [.wallSelectIcon]
     var upgrades: [BuiltTowers] = [.wallTL]
     @Weak var enemiesInRadius: [AnyEnemy]
+    var damage: CGFloat = 20
+    var attackSpeed: CGFloat = 20
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode
