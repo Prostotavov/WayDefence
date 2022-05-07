@@ -17,7 +17,7 @@ class BallistaSL: Building {
     var upgradeSelection: [BuildingIcons] = [.ballistaSelectIcon]
     var upgrades: [BuiltTowers] = [.ballistaTL]
     @Weak var enemiesInRadius: [AnyEnemy]
-    var damage: CGFloat = 20
+    var damage: CGFloat = 35
     var attackSpeed: CGFloat = 0.3
     var counter: Int = 0
     
