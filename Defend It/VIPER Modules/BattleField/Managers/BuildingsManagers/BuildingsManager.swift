@@ -14,9 +14,13 @@ protocol BuildingsManager {
     func getUpgradeBuilding(for coordinate: (Int, Int)) -> Building
     
     func getBuildingName(with coordinate: (Int, Int)) -> String
+    func getBuilding(with coordinate: (Int, Int)) -> Building
     func isExistBuiling(on coordinate: (Int, Int)) -> Bool
     
     func deleteBuilding(with coordinate: (Int, Int))
+    
+    func add(_ enemy: AnyEnemy, toBuildingWith coordinate: (Int, Int))
+    func remove(_ enemy: AnyEnemy, fromBuildingWith coordinate: (Int, Int))
 }
 
 class BuildingsManagerImpl: BuildingsManager {
@@ -54,7 +58,6 @@ class BuildingsManagerImpl: BuildingsManager {
         let coordinate = Converter.toCoordinate(from: position)
         let building = AbstactFactoryBuildingsImpl.defaultFactory.create(buildingType, with: level)
         building.buildingNode.position = position
-        building.buildingNode.name = "building(\(coordinate.0),\(coordinate.1))"
         buildings[coordinate.0][coordinate.1] = building
         addPhysicsBody(for: building)
         return building
@@ -62,12 +65,16 @@ class BuildingsManagerImpl: BuildingsManager {
     
     func getUpgradeBuilding(for coordinate: (Int, Int)) -> Building {
         let building = buildings[coordinate.0][coordinate.1]!
-        let name = building.buildingNode.name!
+        let id = building.id
         let type = building.type
         let level = getNextLevel(after: building.level)
-        let upgradeBuilding = AbstactFactoryBuildingsImpl.defaultFactory.create(type, with: level)
-        upgradeBuilding.buildingNode.position = buildings[coordinate.0][coordinate.1]!.buildingNode.position
-        upgradeBuilding.buildingNode.name = name
+        let position = buildings[coordinate.0][coordinate.1]!.buildingNode.position
+        var upgradeBuilding = AbstactFactoryBuildingsImpl.defaultFactory.create(type, with: level)
+        let enemiesInRadius = building.enemiesInRadius
+        
+        upgradeBuilding.buildingNode.position = position
+        upgradeBuilding.buildingNode.name = id.uuidString
+        upgradeBuilding.enemiesInRadius = enemiesInRadius
         buildings[coordinate.0][coordinate.1] = upgradeBuilding
         addPhysicsBody(for: upgradeBuilding)
         return upgradeBuilding
@@ -92,6 +99,10 @@ class BuildingsManagerImpl: BuildingsManager {
         buildings[coordinate.0][coordinate.1]!.buildingNode.name!
     }
     
+    func getBuilding(with coordinate: (Int, Int)) -> Building {
+        buildings[coordinate.0][coordinate.1]!
+    }
+    
     func isExistBuiling(on coordinate: (Int, Int)) -> Bool {
         buildings[coordinate.0][coordinate.1] != nil
     }
@@ -112,5 +123,18 @@ extension BuildingsManagerImpl {
         physicsRadiusNode.name = NodeNames.physicsRadiusNode.rawValue
         physicsRadiusNode.physicsBody = physicsBody
         building.buildingNode.addChildNode(physicsRadiusNode)
+    }
+}
+
+
+extension BuildingsManagerImpl {
+    func add(_ enemy: AnyEnemy, toBuildingWith coordinate: (Int, Int)) {
+        if buildings[coordinate.0][coordinate.1]?.level != .firstLevel {return}
+        buildings[coordinate.0][coordinate.1]?.enemiesInRadius.append(enemy)
+    }
+    
+    func remove(_ enemy: AnyEnemy, fromBuildingWith coordinate: (Int, Int)) {
+        let remainingEnemies = buildings[coordinate.0][coordinate.1]!.enemiesInRadius.filter{$0.id != enemy.id}
+        buildings[coordinate.0][coordinate.1]!.enemiesInRadius = remainingEnemies
     }
 }

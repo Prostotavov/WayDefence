@@ -9,7 +9,7 @@ import SceneKit
 
 struct TrollTL: Enemy, Hashable {
     
-    var ID: UUID
+    var id: UUID
     var race: EnemyRaces = .troll
     var level: EnemyLevels = .firstLevel
     var speed: Int = 5
@@ -18,16 +18,17 @@ struct TrollTL: Enemy, Hashable {
     
     init(_ enemyNode: SCNNode) {
         self.enemyNode = enemyNode
-        ID = UUID()
+        id = UUID()
+        self.enemyNode.name = id.uuidString
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(ID)
+        hasher.combine(id)
         hasher.combine(race)
         hasher.combine(level)
     }
     
     static func ==(lhs: TrollTL, rhs: TrollTL) -> Bool {
-        lhs.ID == rhs.ID
+        lhs.id == rhs.id
     }
 }

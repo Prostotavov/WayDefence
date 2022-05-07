@@ -14,4 +14,6 @@ protocol BattleFieldInteractorInput: AnyObject {
     func handlePressed(_ node: SCNNode)
     func deviceOrientationChanged(to orientation: UIDeviceOrientation)
     func newFrameDidRender()
+    func didBegin(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode)
+    func didEnd(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode)
 }

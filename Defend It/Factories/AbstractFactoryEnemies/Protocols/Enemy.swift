@@ -9,7 +9,7 @@ import SceneKit
 
 protocol Enemy: Hashable {
     
-    var ID: UUID {get}
+    var id: UUID {get}
     var race: EnemyRaces {get}
     var level: EnemyLevels {get}
     var speed: Int {get}  // enemy speed = count of squares completed per minute
@@ -20,7 +20,7 @@ protocol Enemy: Hashable {
 
 class AnyEnemy: Enemy {
     
-    var ID: UUID
+    var id: UUID
     var race: EnemyRaces
     var level: EnemyLevels
     var speed: Int
@@ -31,7 +31,7 @@ class AnyEnemy: Enemy {
     var counter: Int
     
     init<T: Enemy>(_ object: T) {
-        ID = object.ID
+        id = object.id
         race = object.race
         level = object.level
         speed = object.speed
@@ -50,11 +50,11 @@ class AnyEnemy: Enemy {
     }
     
     static func == (lhs: AnyEnemy, rhs: AnyEnemy) -> Bool {
-        lhs.ID == rhs.ID
+        lhs.id == rhs.id
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(ID)
+        hasher.combine(id)
         hasher.combine(race)
         hasher.combine(level)
     }

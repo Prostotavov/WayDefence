@@ -52,6 +52,10 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         scene.rootNode.addChildNode(node)
     }
     
+    func remove(_ node: SCNNode) {
+        node.removeFromParentNode()
+    }
+    
     func removeNode(with name: String) {
         scene.rootNode.childNode(withName: name, recursively: true)?.removeFromParentNode()
     }
@@ -91,23 +95,33 @@ extension BattleFieldViewController {
 extension BattleFieldViewController: SCNPhysicsContactDelegate {
     func physicsWorld(_ world: SCNPhysicsWorld,
                       didBegin contact: SCNPhysicsContact) {
-        var collisionBoxNode: SCNNode!
+        var collisionEnemyNode: SCNNode!
+        var collisionTowerNode: SCNNode!
+        
         if contact.nodeA.physicsBody?.categoryBitMask == 1 {
-            collisionBoxNode = contact.nodeB
+            collisionTowerNode = contact.nodeA
+            collisionEnemyNode = contact.nodeB
         } else {
-            collisionBoxNode = contact.nodeA
+            collisionEnemyNode = contact.nodeA
+            collisionTowerNode = contact.nodeB
         }
-        print("\(collisionBoxNode.name) start")
+        
+        output.didBegin(collisionEnemyNode, contactWith: collisionTowerNode)
     }
     
     func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
-        var collisionBoxNode: SCNNode!
+        var collisionEnemyNode: SCNNode!
+        var collisionTowerNode: SCNNode!
+        
         if contact.nodeA.physicsBody?.categoryBitMask == 1 {
-            collisionBoxNode = contact.nodeB
+            collisionTowerNode = contact.nodeA
+            collisionEnemyNode = contact.nodeB
         } else {
-            collisionBoxNode = contact.nodeA
+            collisionEnemyNode = contact.nodeA
+            collisionTowerNode = contact.nodeB
         }
-        print("\(collisionBoxNode.name) end")
+        
+        output.didEnd(collisionEnemyNode, contactWith: collisionTowerNode)
     }
 }
 

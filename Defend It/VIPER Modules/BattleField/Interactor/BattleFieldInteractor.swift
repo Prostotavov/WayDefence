@@ -78,14 +78,14 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
         buildingsManager.showTowerSelectionPanel(On: position)
     }
     
-    func getPositionFrom(_ node: SCNNode) -> SCNVector3 {
-        var position: SCNVector3!
-        if node.parent?.parent != nil {
-            position = getPositionFrom(node.parent!)
+    func getPerentNodeFor(_ childNode: SCNNode) -> SCNNode {
+        var parentNode: SCNNode!
+        if childNode.parent?.parent != nil {
+            parentNode = getPerentNodeFor(childNode.parent!)
         } else {
-            position = node.position
+            parentNode = childNode
         }
-        return position
+        return parentNode
     }
     
     func getRootNodeNameFrom(_ node: SCNNode) -> String {
@@ -110,13 +110,15 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
 extension BattleFieldInteractor {
     
     func sellIconPressed(by node: SCNNode) {
-        let position = getPositionFrom(node)
+        let position = getPerentNodeFor(node).position
         let coordinate = Converter.toCoordinate(from: position)
-        let name = buildingsManager.getBuildingName(with: coordinate)
+        let buildingNode = buildingsManager.getBuilding(with: coordinate).buildingNode
+        let selectionPanelNode = getPerentNodeFor(node)
         buildingsManager.deleteBuilding(with: coordinate)
-        output.removeNode(with: name)
+        output.remove(buildingNode)
+        output.remove(selectionPanelNode)
+        
         enemiesManager.allowWalking(On: coordinate)
-        output.removeNode(with: NodeNames.buildingSelectionPanel.rawValue)
     }
     
     func repairIconPressed(by node: SCNNode) {
@@ -128,30 +130,31 @@ extension BattleFieldInteractor {
     }
     
     func groundSquarePressed(by node: SCNNode) {
-        let position = getPositionFrom(node)
+        let position = getPerentNodeFor(node).position
         output.add(createTowerSelectionPanel(with: position))
     }
     
     func buildingIconPressed(by node: SCNNode) {
-        let position = getPositionFrom(node)
+        let position = getPerentNodeFor(node).position
         let name = node.name!
         let coordinate = Converter.toCoordinate(from: position)
+        let selectionPanelNode = getPerentNodeFor(node)
         var building: SCNNode
         
         if buildingsManager.isExistBuiling(on: coordinate) {
-            let oldBuildingName = buildingsManager.getBuildingName(with: coordinate)
-            output.removeNode(with: oldBuildingName)
+            let oldBuilding = buildingsManager.getBuilding(with: coordinate)
+            output.remove(oldBuilding.buildingNode)
             building = buildingsManager.getUpgradeBuilding(for: coordinate).buildingNode
         } else {
             let buildingType = Converter.toBuildingType(from: name)!
             building = build(buildingType, On: position)
         }
         output.add(building)
-        output.removeNode(with: NodeNames.buildingSelectionPanel.rawValue)
+        output.remove(selectionPanelNode)
     }
     
     func builtTowerPressed(by node: SCNNode) {
-        let position = getPositionFrom(node)
+        let position = getPerentNodeFor(node).position
         let panel = buildingsManager.showTowerSelectionPanel(On: position)
         output.add(panel)
     }
@@ -183,5 +186,19 @@ extension BattleFieldInteractor {
 extension BattleFieldInteractor {
     func newFrameDidRender() {
         enemiesManager.updateCounter()
+    }
+}
+
+extension BattleFieldInteractor {
+    func didBegin(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode) {
+        let coordinate = Converter.toCoordinate(from: getPerentNodeFor(radiusNode).position)
+        let enemy = enemiesManager.getEnemyBy(enemyNode)
+        buildingsManager.add(enemy, toBuildingWith: coordinate)
+    }
+    
+    func didEnd(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode) {
+        let coordinate = Converter.toCoordinate(from: getPerentNodeFor(radiusNode).position)
+        let enemy = enemiesManager.getEnemyBy(enemyNode)
+        buildingsManager.remove(enemy, fromBuildingWith: coordinate)
     }
 }

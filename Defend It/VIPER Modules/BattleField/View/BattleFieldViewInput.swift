@@ -11,6 +11,7 @@ import SceneKit
 protocol BattleFieldViewInput: AnyObject {
     
     func add(_ node: SCNNode)
+    func remove(_ node: SCNNode)
     func removeNode(with name: String)
     func pressed(_ node: SCNNode)
     func setupPointOfView(from cameraNode: SCNNode)

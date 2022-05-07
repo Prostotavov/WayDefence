@@ -9,14 +9,17 @@ import SceneKit
 
 class ElphTowerSL: Building {
     
+    var id: UUID
     var type: BuildingTypes = .elphTower
     var level: BuildingLevels = .secondLevel
     var buildingNode: SCNNode
     var radius: CGFloat = 3.5
     var upgradeSelection: [BuildingIcons] = [.elphTowerSelectIcon]
     var upgrades: [BuiltTowers] = [.elphTowerTL]
+    @Weak var enemiesInRadius: [AnyEnemy]
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode
+        id = UUID()
     }
 }

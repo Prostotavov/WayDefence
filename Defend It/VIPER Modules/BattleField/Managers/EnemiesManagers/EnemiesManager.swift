@@ -14,6 +14,7 @@ protocol EnemiesManager {
     func prohibitWalking(On coordination: (Int, Int))
     func allowWalking(On coordination: (Int, Int))
     func updateCounter()
+    func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy
 }
 
 class EnemiesManagerImpl: EnemiesManager {
@@ -73,7 +74,6 @@ class EnemiesManagerImpl: EnemiesManager {
         enemy.counter += Converter.toCounter(from: duration)
         let action = SCNAction.move(to: location, duration: duration)
         enemy.enemyNode.removeAllActions()
-        print("runOneSquare")
         enemy.enemyNode.runAction(action)
     }
     
@@ -116,20 +116,9 @@ extension EnemiesManagerImpl {
     func updateCounter() {
         
         // MARK: so mach bad practice
-        
-        if counter == 299 {
-            if !isRun {counter = 0}
-            isRun = true
-            
-        }
-        
-        if !isRun {
-            counter+=1
-            return
-        }
-        
-        print(counter)
-        
+        if counter == 299 { if !isRun {counter = 0}; isRun = true }
+        if !isRun { counter+=1; return }
+
         for enemy in enemies {
             if counter == enemy.counter {
                 if enemy.path.isEmpty {
@@ -148,4 +137,17 @@ extension EnemiesManagerImpl {
         }
     }
 
+}
+
+extension EnemiesManagerImpl {
+    
+    func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy {
+        for enemy in enemies {
+            if enemy.id.uuidString == enemyNode.name {
+                return enemy
+            }
+        }
+        // MARK: bad practice
+        return enemies.first!
+    }
 }

@@ -22,6 +22,10 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
         view.add(node)
     }
     
+    func remove(_ node: SCNNode) {
+        view.remove(node)
+    }
+    
     func removeNode(with name: String) {
         view.removeNode(with: name)
     }
@@ -49,6 +53,14 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     
     func newFrameDidRender() {
         interactor.newFrameDidRender()
+    }
+    
+    func didBegin(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode) {
+        interactor.didBegin(enemyNode, contactWith: radiusNode)
+    }
+    
+    func didEnd(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode) {
+        interactor.didEnd(enemyNode, contactWith: radiusNode)
     }
 
 }

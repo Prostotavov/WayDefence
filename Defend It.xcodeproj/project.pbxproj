@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87CA3D4B28267CF1000F952F /* WeakPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D4A28267CF1000F952F /* WeakPropertyWrapper.swift */; };
 		AA0B68BE27E5B95C0078003D /* AbstactFactoryBuildings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68BD27E5B95C0078003D /* AbstactFactoryBuildings.swift */; };
 		AA0B68C027E5BA7D0078003D /* MagicTowerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68BF27E5BA7D0078003D /* MagicTowerFactory.swift */; };
 		AA0B68C227E5BB150078003D /* ElphTowerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68C127E5BB150078003D /* ElphTowerFactory.swift */; };
@@ -109,6 +110,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		87CA3D4A28267CF1000F952F /* WeakPropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakPropertyWrapper.swift; sourceTree = "<group>"; };
 		AA0B68BD27E5B95C0078003D /* AbstactFactoryBuildings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstactFactoryBuildings.swift; sourceTree = "<group>"; };
 		AA0B68BF27E5BA7D0078003D /* MagicTowerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicTowerFactory.swift; sourceTree = "<group>"; };
 		AA0B68C127E5BB150078003D /* ElphTowerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElphTowerFactory.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				AA7801B427E200B6002C57E1 /* AppDelegate.swift */,
 				AA1B66BE27F624E60092F6C8 /* TestFunctions.swift */,
 				AAF4C9DA27E8DB0E00D5B6F8 /* Converter.swift */,
+				87CA3D4A28267CF1000F952F /* WeakPropertyWrapper.swift */,
 				AA78022527E207C2002C57E1 /* DataManager.swift */,
 				AA7801B627E200B6002C57E1 /* SceneDelegate.swift */,
 				AAE886D427EE112200CA4E5D /* Enums */,
@@ -751,6 +754,7 @@
 				AACC7BF327FB66D00022384E /* EnemyNodes.swift in Sources */,
 				AA7801F827E20291002C57E1 /* HomePageAssemblyProtocol.swift in Sources */,
 				AAF4C9AC27E855D700D5B6F8 /* HashedHeap.swift in Sources */,
+				87CA3D4B28267CF1000F952F /* WeakPropertyWrapper.swift in Sources */,
 				AA78024227E20B8E002C57E1 /* BattleFieldInteractor.swift in Sources */,
 				AAF4C9AD27E855D700D5B6F8 /* AStar.swift in Sources */,
 				AA78022427E2043D002C57E1 /* HomePageView.swift in Sources */,

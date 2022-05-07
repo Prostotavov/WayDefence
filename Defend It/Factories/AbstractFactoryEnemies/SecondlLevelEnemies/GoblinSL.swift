@@ -9,7 +9,7 @@ import SceneKit
 
 struct GoblinSL: Enemy, Hashable {
     
-    var ID: UUID
+    var id: UUID
     var race: EnemyRaces = .goblin
     var level: EnemyLevels = .firstLevel
     var speed: Int = 7
@@ -18,16 +18,17 @@ struct GoblinSL: Enemy, Hashable {
     
     init(_ enemyNode: SCNNode) {
         self.enemyNode = enemyNode
-        ID = UUID()
+        id = UUID()
+        self.enemyNode.name = id.uuidString
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(ID)
+        hasher.combine(id)
         hasher.combine(race)
         hasher.combine(level)
     }
     
     static func ==(lhs: GoblinSL, rhs: GoblinSL) -> Bool {
-        lhs.ID == rhs.ID
+        lhs.id == rhs.id
     }
 }
