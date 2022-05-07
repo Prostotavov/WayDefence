@@ -8,7 +8,7 @@
 import Foundation
 import SceneKit
 
-class BattleFieldInteractor: BattleFieldInteractorInput {
+class BattleFieldInteractor: BattleFieldInteractorInput, BuildingsManagerDelegate {
     
     weak var output: BattleFieldInteractorOutput!
     var meadowManager: MeadowManager!
@@ -185,6 +185,7 @@ extension BattleFieldInteractor {
 
 extension BattleFieldInteractor {
     func newFrameDidRender() {
+        buildingsManager.updateCounter()
         enemiesManager.updateCounter()
     }
 }
@@ -200,5 +201,11 @@ extension BattleFieldInteractor {
         let coordinate = Converter.toCoordinate(from: getPerentNodeFor(radiusNode).position)
         let enemy = enemiesManager.getEnemyBy(enemyNode)
         buildingsManager.remove(enemy, fromBuildingWith: coordinate)
+    }
+}
+
+extension BattleFieldInteractor {
+    func remove(_ enemy: AnyEnemy) {
+        enemiesManager.removeEnemy(enemy)
     }
 }

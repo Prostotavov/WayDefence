@@ -19,6 +19,7 @@ protocol Building {
     var enemiesInRadius: [AnyEnemy] {get set}
     var damage: CGFloat {get set}
     var attackSpeed: CGFloat {get set}
+    var counter: Int {get set}
     
     init(_ buildingNode: SCNNode)
 }

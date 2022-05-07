@@ -7,9 +7,13 @@
 
 import SceneKit
 
+protocol BuildingsManagerDelegate: AnyObject {
+    func remove(_ enemy: AnyEnemy)
+}
+
 protocol BuildingsManager {
     func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode
-
+    
     func create(_ buildingType: BuildingTypes, with level: BuildingLevels, and position: SCNVector3) -> Building
     func getUpgradeBuilding(for coordinate: (Int, Int)) -> Building
     
@@ -21,6 +25,8 @@ protocol BuildingsManager {
     
     func add(_ enemy: AnyEnemy, toBuildingWith coordinate: (Int, Int))
     func remove(_ enemy: AnyEnemy, fromBuildingWith coordinate: (Int, Int))
+    
+    func updateCounter()
 }
 
 class BuildingsManagerImpl: BuildingsManager {
@@ -29,6 +35,8 @@ class BuildingsManagerImpl: BuildingsManager {
     var towerSelectionPanel: TowerSelectionPanel!
     var battleFieldSize: Int!
     var buildings: [[Building?]]!
+    
+    weak var delegate: BuildingsManagerDelegate!
     
     init(_ battleFieldSize: Int) {
         self.battleFieldSize = battleFieldSize
@@ -137,4 +145,30 @@ extension BuildingsManagerImpl {
         let remainingEnemies = buildings[coordinate.0][coordinate.1]!.enemiesInRadius.filter{$0.id != enemy.id}
         buildings[coordinate.0][coordinate.1]!.enemiesInRadius = remainingEnemies
     }
+}
+
+extension BuildingsManagerImpl {
+    
+    func updateCounter() {
+        
+        for (x, _) in buildings.enumerated() {
+            for (z, _) in buildings[x].enumerated() {
+                if buildings[x][z] == nil  { continue }
+                if buildings[x][z]!.counter != 0 { buildings[x][z]?.counter -= 1; continue }
+                if buildings[x][z]!.enemiesInRadius == [] { continue }
+                buildings[x][z]!.counter = Converter.toCounter(from: buildings[x][z]!.attackSpeed)
+                attackEnemy(by: buildings[x][z]!)
+            }
+        }
+    }
+    
+    func attackEnemy(by building: Building) {
+        let attackedEnemy = building.enemiesInRadius.first!
+        attackedEnemy.healthPoints -= building.damage
+        if attackedEnemy.healthPoints <= 0 {
+            delegate.remove(attackedEnemy)
+            print(building.enemiesInRadius.map{$0.race})
+        }
+    }
+    
 }

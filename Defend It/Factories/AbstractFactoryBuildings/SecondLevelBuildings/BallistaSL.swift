@@ -18,7 +18,8 @@ class BallistaSL: Building {
     var upgrades: [BuiltTowers] = [.ballistaTL]
     @Weak var enemiesInRadius: [AnyEnemy]
     var damage: CGFloat = 20
-    var attackSpeed: CGFloat = 20
+    var attackSpeed: CGFloat = 0.3
+    var counter: Int = 0
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode

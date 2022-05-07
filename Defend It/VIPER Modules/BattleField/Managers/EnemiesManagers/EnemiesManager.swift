@@ -11,6 +11,7 @@ protocol EnemiesManager {
     
     var enemies: Set<AnyEnemy> {get}
     func runEnemies()
+    func removeEnemy(_ enemy: AnyEnemy)
     func prohibitWalking(On coordination: (Int, Int))
     func allowWalking(On coordination: (Int, Int))
     func updateCounter()
@@ -36,6 +37,14 @@ class EnemiesManagerImpl: EnemiesManager {
         create(.orc, with: .firstLevel)
         create(.troll, with: .firstLevel)
         create(.goblin, with: .firstLevel)
+        
+        create(.orc, with: .secondLevel)
+        create(.troll, with: .secondLevel)
+        create(.goblin, with: .secondLevel)
+        
+        create(.orc, with: .thirdLevel)
+        create(.troll, with: .thirdLevel)
+        create(.goblin, with: .thirdLevel)
     }
     
     func create(_ rase: EnemyRaces, with level: EnemyLevels) {
@@ -61,6 +70,7 @@ class EnemiesManagerImpl: EnemiesManager {
     }
     
     func removeEnemy(_ enemy: AnyEnemy) {
+        enemy.enemyNode.removeFromParentNode()
         enemies.remove(enemy)
     }
     
@@ -122,6 +132,7 @@ extension EnemiesManagerImpl {
         for enemy in enemies {
             if counter == enemy.counter {
                 if enemy.path.isEmpty {
+                    enemy.enemyNode.removeFromParentNode()
                     removeEnemy(enemy)
                     continue
                 }
@@ -151,3 +162,4 @@ extension EnemiesManagerImpl {
         return enemies.first!
     }
 }
+

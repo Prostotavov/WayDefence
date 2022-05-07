@@ -32,6 +32,8 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         
         router.view = viewController
         
+        buildingsManager.delegate = interactor
+        
     }
     
 }
