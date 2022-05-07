@@ -14,7 +14,7 @@ struct TrollFL: Enemy, Hashable {
     var level: EnemyLevels = .firstLevel
     var speed: Int = 10
     var enemyNode: SCNNode
-    var path: [SCNVector3]?
+    var path: [SCNVector3] = []
     
     init(_ enemyNode: SCNNode) {
         self.enemyNode = enemyNode

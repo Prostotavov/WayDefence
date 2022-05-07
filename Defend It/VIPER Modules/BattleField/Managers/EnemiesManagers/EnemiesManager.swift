@@ -13,6 +13,7 @@ protocol EnemiesManager {
     func runEnemies()
     func prohibitWalking(On coordination: (Int, Int))
     func allowWalking(On coordination: (Int, Int))
+    func updateCounter()
 }
 
 class EnemiesManagerImpl: EnemiesManager {
@@ -20,8 +21,8 @@ class EnemiesManagerImpl: EnemiesManager {
     var enemies = Set<AnyEnemy>()
     var enemyPositionManager: EnemyPositionManager!
     
-    var timer: Timer?
     var counter: Int = 0
+    var isRun: Bool = false
     
     init(_ battleFieldSize: Int) {
         self.battleFieldSize = battleFieldSize
@@ -54,26 +55,25 @@ class EnemiesManagerImpl: EnemiesManager {
     func setupEnemies() {
         for enemy in enemies {
             enemy.enemyNode.position = enemyPositionManager.culculateStartPosition()
+            enemy.path = enemyPositionManager.calculatePath(for: enemy)
         }
     }
     
     func removeEnemy(_ enemy: AnyEnemy) {
         enemies.remove(enemy)
-        if enemies.isEmpty {
-            cancelTimer()
-        }
     }
     
     private func runOneSquare(_ enemy: AnyEnemy, to location: SCNVector3) {
         var duration: TimeInterval
         if counter == 0 {
-            duration = getDurationForStepAfterBuiling(for: enemy)
+            duration = getDurationForStepAfterBuilding(for: enemy)
         } else {
             duration = Converter.toTimeInterval(from: enemy.speed)
         }
         enemy.counter += Converter.toCounter(from: duration)
         let action = SCNAction.move(to: location, duration: duration)
         enemy.enemyNode.removeAllActions()
+        print("runOneSquare")
         enemy.enemyNode.runAction(action)
     }
     
@@ -82,23 +82,20 @@ class EnemiesManagerImpl: EnemiesManager {
             let path = enemyPositionManager.calculatePath(for: enemies[i])
             enemies[i].setPath(path)
         }
-        createTimer()
     }
     
     func prohibitWalking(On coordination: (Int, Int)) {
         counter = 0
         resetEnemyCounter()
         enemyPositionManager.prohibitWalking(On: coordination)
-        if timer != nil { runEnemies() }
-        
+        runEnemies()
     }
     
     func allowWalking(On coordination: (Int, Int)) {
         counter = 0
         resetEnemyCounter()
         enemyPositionManager.allowWalking(On: coordination)
-        if timer != nil { runEnemies() }
-        
+        runEnemies()
     }
 }
 
@@ -110,49 +107,45 @@ extension EnemiesManagerImpl {
         }
     }
     
-    func getDurationForStepAfterBuiling<T: Enemy>(for enemy: T) -> TimeInterval {
-        let distination = Converter.toDistination(between: enemy.enemyNode.position, and: enemy.path!.first!)
+    func getDurationForStepAfterBuilding<T: Enemy>(for enemy: T) -> TimeInterval {
+        let distination = Converter.toDistination(between: enemy.enemyNode.position, and: enemy.path.first!)
         let defaultDuration = Converter.toTimeInterval(from: enemy.speed)
         return  TimeInterval(defaultDuration * distination / 0.5)
     }
     
-    
-    
-    @objc func updateTimer() {
-
+    func updateCounter() {
+        
+        // MARK: so mach bad practice
+        
+        if counter == 299 {
+            if !isRun {counter = 0}
+            isRun = true
+            
+        }
+        
+        if !isRun {
+            counter+=1
+            return
+        }
+        
+        print(counter)
+        
         for enemy in enemies {
             if counter == enemy.counter {
-                
-                if enemy.path!.isEmpty {
+                if enemy.path.isEmpty {
                     removeEnemy(enemy)
                     continue
                 }
-                let location = enemy.path!.first!
+                let location = enemy.path.first!
                 runOneSquare(enemy, to: location)
-                enemy.path?.removeFirst()
+                enemy.path.removeFirst()
             }
         }
         counter+=1
         // MARK: bad practice
-        if counter >= 9999 {
+        if counter >= 99999 {
             counter = 0
         }
-        
     }
-    
-    func createTimer() {
-        if timer == nil {
-            let timer = Timer(timeInterval: 0.1, target: self,
-            selector: #selector(updateTimer), userInfo: nil, repeats: true)
-            RunLoop.current.add(timer, forMode: .common)
-            timer.tolerance = 0 // MARK: for high performance
-            self.timer = timer
-        }
-    }
-    
-    func cancelTimer() {
-        counter = 0
-        timer?.invalidate()
-        timer = nil
-    }
+
 }

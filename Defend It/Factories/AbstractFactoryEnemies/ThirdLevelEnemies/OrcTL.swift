@@ -12,9 +12,9 @@ struct OrcTL: Enemy, Hashable {
     var ID: UUID
     var race: EnemyRaces = .orc
     var level: EnemyLevels = .firstLevel
-    var speed: Int = 40
+    var speed: Int = 7
     var enemyNode: SCNNode
-    var path: [SCNVector3]?
+    var path: [SCNVector3] = []
     
     init(_ enemyNode: SCNNode) {
         self.enemyNode = enemyNode

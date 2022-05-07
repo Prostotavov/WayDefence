@@ -7,6 +7,7 @@
 
 import UIKit
 import SceneKit
+import SpriteKit
 
 class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     
@@ -22,6 +23,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         setupScene()
         output.loadView()
         scene.physicsWorld.contactDelegate = self
+        sceneView.delegate = self
     }
     
     func setupScene() {
@@ -60,6 +62,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     
 }
 
+// cameras
 extension BattleFieldViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         let deviceOrientation = UIDevice.current.orientation
@@ -84,6 +87,7 @@ extension BattleFieldViewController {
     }
 }
 
+// physics
 extension BattleFieldViewController: SCNPhysicsContactDelegate {
     func physicsWorld(_ world: SCNPhysicsWorld,
                       didBegin contact: SCNPhysicsContact) {
@@ -107,4 +111,21 @@ extension BattleFieldViewController: SCNPhysicsContactDelegate {
     }
 }
 
+
+// render & actions
+extension BattleFieldViewController: SCNSceneRendererDelegate {
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        output.newFrameDidRender()
+        runRender()
+
+    }
+    
+    func stopRender() {
+        sceneView.isPlaying = false
+    }
+    
+    func runRender() {
+        sceneView.isPlaying = true
+    }
+}
 

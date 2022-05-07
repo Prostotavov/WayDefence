@@ -46,11 +46,11 @@ struct Converter {
     
     // enemy speed = count of squares completed per minute
     static func toTimeInterval(from speed: Int) -> TimeInterval {
-        TimeInterval(Float(60/Float(speed)))
+        TimeInterval(Float(10/Float(speed)))
     }
     
     static func toCounter(from speed: Int) -> Int {
-        600 / speed
+        100 / speed
     }
     
     static func toDistination(between position: SCNVector3, and target: SCNVector3) -> Double {
@@ -62,7 +62,7 @@ struct Converter {
     }
     
     static func toCounter(from timeInterval: TimeInterval) -> Int {
-        Int(timeInterval * 10)
+        Int(timeInterval * 60)
     }
     
     static func toBuildingType(from nodeName: String) -> BuildingTypes? {

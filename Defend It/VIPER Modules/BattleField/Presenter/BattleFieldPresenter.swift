@@ -46,5 +46,9 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     func setViewVerticalOrientation() {
         view.setViewVerticalOrientation()
     }
+    
+    func newFrameDidRender() {
+        interactor.newFrameDidRender()
+    }
 
 }

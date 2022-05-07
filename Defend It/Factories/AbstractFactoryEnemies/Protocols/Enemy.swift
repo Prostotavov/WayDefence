@@ -14,7 +14,7 @@ protocol Enemy: Hashable {
     var level: EnemyLevels {get}
     var speed: Int {get}  // enemy speed = count of squares completed per minute
     var enemyNode: SCNNode {get set}
-    var path: [SCNVector3]? {get set}
+    var path: [SCNVector3] {get set}
 
 }
 
@@ -25,7 +25,7 @@ class AnyEnemy: Enemy {
     var level: EnemyLevels
     var speed: Int
     var enemyNode: SCNNode
-    var path: [SCNVector3]?
+    var path: [SCNVector3]
     
     // adding vars
     var counter: Int
@@ -46,7 +46,7 @@ class AnyEnemy: Enemy {
     }
     
     func removeFirstStep() {
-        path?.removeFirst()
+        path.removeFirst()
     }
     
     static func == (lhs: AnyEnemy, rhs: AnyEnemy) -> Bool {

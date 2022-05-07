@@ -166,6 +166,7 @@ enum RecognitionNodes: String  {
     case repairSelectIcon = "repairSelectIcon"
 }
 
+// cameras
 extension BattleFieldInteractor {
     func deviceOrientationChanged(to orientation: UIDeviceOrientation) {
         switch orientation {
@@ -176,5 +177,11 @@ extension BattleFieldInteractor {
             output.setupPointOfView(from: cameras.scnHorisontalNode)
             output.setViewHorisontalOrientation()
         }
+    }
+}
+
+extension BattleFieldInteractor {
+    func newFrameDidRender() {
+        enemiesManager.updateCounter()
     }
 }
