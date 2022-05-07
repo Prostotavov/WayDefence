@@ -13,4 +13,5 @@ enum NodeNames: String {
     case buildingSelectionPanel = "buildingSelectionPanelNode"
     case radiusNode = "radiusNode"
     case physicsRadiusNode = "physicsRadiusNode"
+    case projectileNode = "projectileNode"
 }

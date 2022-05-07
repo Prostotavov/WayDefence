@@ -150,7 +150,6 @@ extension BuildingsManagerImpl {
 extension BuildingsManagerImpl {
     
     func updateCounter() {
-        
         for (x, _) in buildings.enumerated() {
             for (z, _) in buildings[x].enumerated() {
                 if buildings[x][z] == nil  { continue }
@@ -163,6 +162,7 @@ extension BuildingsManagerImpl {
     }
     
     func attackEnemy(by building: Building) {
+        pushProjectileNodeFrom(building)
         let attackedEnemy = building.enemiesInRadius.first!
         attackedEnemy.healthPoints -= building.damage
         if attackedEnemy.healthPoints <= 0 {
@@ -171,4 +171,19 @@ extension BuildingsManagerImpl {
         }
     }
     
+}
+
+extension BuildingsManagerImpl {
+    
+    func pushProjectileNodeFrom(_ building: Building) {
+        let projectileNode = building.buildingNode.childNode(withName: NodeNames.projectileNode.rawValue, recursively: true)
+        projectileNode!.removeAllActions()
+        let enemyPosition = building.enemiesInRadius.first!.enemyNode.position
+        let buildingPosition = building.buildingNode.position
+        let endPosition = SCNVector3(enemyPosition.x - buildingPosition.x, enemyPosition.y, enemyPosition.z - buildingPosition.z)
+        let duration = 0.3
+        projectileNode!.position = SCNVector3(0, 0.5, 0)
+        let action = SCNAction.move(to: endPosition, duration: duration)
+        projectileNode!.runAction(action)
+    }
 }
