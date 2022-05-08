@@ -157,6 +157,8 @@ extension BattleFieldInteractor {
         let position = getPerentNodeFor(node).position
         let panel = buildingsManager.showTowerSelectionPanel(On: position)
         output.add(panel)
+        let building = buildingsManager.getBuilding(with: Converter.toCoordinate(from: position))
+        print("\(building.level) \(building.type) ---  \(building.enemiesInRadius.count)")
     }
 }
 

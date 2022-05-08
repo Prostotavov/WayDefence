@@ -79,7 +79,6 @@ class BuildingsManagerImpl: BuildingsManager {
         let position = buildings[coordinate.0][coordinate.1]!.buildingNode.position
         var upgradeBuilding = AbstactFactoryBuildingsImpl.defaultFactory.create(type, with: level)
         let enemiesInRadius = building.enemiesInRadius
-        
         upgradeBuilding.buildingNode.position = position
         upgradeBuilding.buildingNode.name = id.uuidString
         upgradeBuilding.enemiesInRadius = enemiesInRadius
@@ -137,8 +136,9 @@ extension BuildingsManagerImpl {
 
 extension BuildingsManagerImpl {
     func add(_ enemy: AnyEnemy, toBuildingWith coordinate: (Int, Int)) {
-        if buildings[coordinate.0][coordinate.1]?.level != .firstLevel {return}
-        buildings[coordinate.0][coordinate.1]?.enemiesInRadius.append(enemy)
+        if buildings[coordinate.0][coordinate.1]!.enemiesInRadius
+            .contains(where: {$0.id == enemy.id}){return}
+        buildings[coordinate.0][coordinate.1]!.enemiesInRadius.append(enemy)
     }
     
     func remove(_ enemy: AnyEnemy, fromBuildingWith coordinate: (Int, Int)) {

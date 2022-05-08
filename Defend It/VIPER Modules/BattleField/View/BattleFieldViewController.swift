@@ -105,13 +105,13 @@ extension BattleFieldViewController: SCNPhysicsContactDelegate {
             collisionEnemyNode = contact.nodeA
             collisionTowerNode = contact.nodeB
         }
-        
         output.didBegin(collisionEnemyNode, contactWith: collisionTowerNode)
     }
     
     func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
         var collisionEnemyNode: SCNNode!
         var collisionTowerNode: SCNNode!
+        
         
         if contact.nodeA.physicsBody?.categoryBitMask == 1 {
             collisionTowerNode = contact.nodeA
