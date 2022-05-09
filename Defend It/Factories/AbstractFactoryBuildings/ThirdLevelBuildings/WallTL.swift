@@ -19,7 +19,9 @@ class WallTL: Building {
     @Weak var enemiesInRadius: [AnyEnemy]
     var damage: CGFloat = 50
     var attackSpeed: CGFloat = 0.2
-    var counter: Int = 0 
+    var counter: Int = 0
+    var buildingCost: Int = 45
+    var saleCost: Int = 22
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode

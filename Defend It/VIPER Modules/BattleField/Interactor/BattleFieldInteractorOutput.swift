@@ -16,5 +16,6 @@ protocol BattleFieldInteractorOutput: AnyObject {
     func setupPointOfView(from cameraNode: SCNNode)
     func setViewHorisontalOrientation()
     func setViewVerticalOrientation()
+    func set(_ value: BattleValues, to number: Int)
 }
 

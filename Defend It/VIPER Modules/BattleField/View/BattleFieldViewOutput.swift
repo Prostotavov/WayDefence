@@ -11,6 +11,7 @@ import SceneKit
 protocol BattleFieldViewOutput: AnyObject {
     
     func loadView()
+    func viewDidAppear()
     func pressed(_ node: SCNNode)
     func deviceOrientationChanged(to orientation: UIDeviceOrientation)
     func newFrameDidRender()

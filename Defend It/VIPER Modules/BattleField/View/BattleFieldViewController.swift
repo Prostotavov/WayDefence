@@ -33,6 +33,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         setupTopBarView()
         setupBottomBarView()
         runRender()
+        output.viewDidAppear()
     }
     
     func setupScene() {
@@ -157,6 +158,10 @@ extension BattleFieldViewController {
             topBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             topBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+    }
+    
+    func set(_ value: BattleValues, to number: Int) {
+        topBarView.set(value, to: number)
     }
 }
 

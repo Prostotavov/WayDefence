@@ -1,4 +1,4 @@
-// 
+//
 //  BattleFieldInteractor.swift
 //  Defend It
 //
@@ -14,6 +14,7 @@ class BattleFieldInteractor: BattleFieldInteractorInput, BuildingsManagerDelegat
     var meadowManager: MeadowManager!
     var buildingsManager: BuildingsManager!
     var enemiesManager: EnemiesManager!
+    var battleValuesManager: BattleValuesManager!
     
     var cameras: Cameras = CamerasImpl()
     
@@ -21,7 +22,12 @@ class BattleFieldInteractor: BattleFieldInteractorInput, BuildingsManagerDelegat
         setupCamera()
         setupMeadow()
         setupEnemies()
-//        loadFactories()
+    }
+    
+    func viewDidAppear() {
+        set(.coins)
+        set(.lives)
+        set(.points)
     }
     
     func setupCamera() {
@@ -42,13 +48,6 @@ class BattleFieldInteractor: BattleFieldInteractorInput, BuildingsManagerDelegat
         }
     }
     
-    func loadFactories() {
-        MagicTowerFactory.defaultFactory
-        ElphTowerFactory.defaultFactory
-        BallistaFactory.defaultFactory
-        WallFactory.defaultFactory
-    }
-    
     func handlePressed(_ node: SCNNode) {
         switch node.name {
         case _ where node.name! == RecognitionNodes.sellSelectIcon.rawValue:
@@ -56,7 +55,7 @@ class BattleFieldInteractor: BattleFieldInteractorInput, BuildingsManagerDelegat
             
         case _ where node.name! == RecognitionNodes.repairSelectIcon.rawValue:
             repairIconPressed(by: node)
-
+            
         case _ where node.name!.contains(RecognitionNodes.floor.rawValue):
             floorPressed()
             
@@ -98,9 +97,9 @@ class BattleFieldInteractor: BattleFieldInteractorInput, BuildingsManagerDelegat
         return rootNodeName
     }
     
-    func build(_ building: BuildingTypes, On position: SCNVector3) ->  SCNNode {
+    func build(_ building: BuildingTypes, On position: SCNVector3) ->  Building {
         enemiesManager.prohibitWalking(On: Converter.toCoordinate(from: position))
-        let building = buildingsManager.create(building, with: .firstLevel, and: position).buildingNode
+        let building = buildingsManager.create(building, with: .firstLevel, and: position)
         return building
     }
 }
@@ -114,10 +113,10 @@ extension BattleFieldInteractor {
         let coordinate = Converter.toCoordinate(from: position)
         let buildingNode = buildingsManager.getBuilding(with: coordinate).buildingNode
         let selectionPanelNode = getPerentNodeFor(node)
+        increase(.coins, by: buildingsManager.getBuilding(with: coordinate).saleCost)
         buildingsManager.deleteBuilding(with: coordinate)
         output.remove(buildingNode)
         output.remove(selectionPanelNode)
-        
         enemiesManager.allowWalking(On: coordinate)
     }
     
@@ -135,22 +134,26 @@ extension BattleFieldInteractor {
     }
     
     func buildingIconPressed(by node: SCNNode) {
+        if battleValuesManager.get(.coins) - 30 <= 0 {return}
         let position = getPerentNodeFor(node).position
         let name = node.name!
         let coordinate = Converter.toCoordinate(from: position)
         let selectionPanelNode = getPerentNodeFor(node)
-        var building: SCNNode
+        var buildingNode: SCNNode
         
         if buildingsManager.isExistBuiling(on: coordinate) {
             let oldBuilding = buildingsManager.getBuilding(with: coordinate)
             output.remove(oldBuilding.buildingNode)
-            building = buildingsManager.getUpgradeBuilding(for: coordinate).buildingNode
+            let building = buildingsManager.getUpgradeBuilding(for: coordinate)
+            buildingNode = building.buildingNode
         } else {
             let buildingType = Converter.toBuildingType(from: name)!
-            building = build(buildingType, On: position)
+            let building = build(buildingType, On: position)
+            buildingNode = building.buildingNode
         }
-        output.add(building)
+        output.add(buildingNode)
         output.remove(selectionPanelNode)
+        reduce(.coins, by: buildingsManager.getBuilding(with: coordinate).buildingCost)
     }
     
     func builtTowerPressed(by node: SCNNode) {
@@ -208,6 +211,29 @@ extension BattleFieldInteractor {
 
 extension BattleFieldInteractor {
     func remove(_ enemy: AnyEnemy) {
+        DispatchQueue.main.async {
+            self.increase(.coins, by: enemy.coinMurderReward)
+        }
         enemiesManager.removeEnemy(enemy)
+    }
+}
+
+extension BattleFieldInteractor {
+    
+    func set(_ value: BattleValues) {
+        let number = battleValuesManager.get(value)
+        output.set(value, to: number)
+    }
+    
+    func increase(_ value: BattleValues, by number: Int) {
+        battleValuesManager.increase(value, by: number)
+        let number = battleValuesManager.get(value)
+        output.set(value, to: number)
+    }
+    
+    func reduce(_ value: BattleValues, by number: Int) {
+        battleValuesManager.reduce(value, by: number)
+        let number = battleValuesManager.get(value)
+        output.set(value, to: number)
     }
 }

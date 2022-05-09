@@ -16,6 +16,7 @@ protocol Enemy: Hashable {
     var enemyNode: SCNNode {get set}
     var path: [SCNVector3] {get set}
     var healthPoints: CGFloat {get set}
+    var coinMurderReward: Int {get set}
 
 }
 
@@ -28,6 +29,7 @@ class AnyEnemy: Enemy {
     var enemyNode: SCNNode
     var path: [SCNVector3]
     var healthPoints: CGFloat
+    var coinMurderReward: Int
     
     // adding vars
     var counter: Int
@@ -40,6 +42,7 @@ class AnyEnemy: Enemy {
         enemyNode = object.enemyNode
         path = object.path
         healthPoints = object.healthPoints
+        coinMurderReward = object.coinMurderReward
         // adding vars
         counter = 0
     }

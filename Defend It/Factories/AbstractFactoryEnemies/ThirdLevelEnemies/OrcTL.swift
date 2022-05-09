@@ -16,6 +16,7 @@ struct OrcTL: Enemy, Hashable {
     var enemyNode: SCNNode
     var path: [SCNVector3] = []
     var healthPoints: CGFloat = 1000
+    var coinMurderReward: Int = 15
     
     init(_ enemyNode: SCNNode) {
         self.enemyNode = enemyNode

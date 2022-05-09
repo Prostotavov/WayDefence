@@ -18,6 +18,10 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
         interactor.loadView()
     }
     
+    func viewDidAppear() {
+        interactor.viewDidAppear()
+    }
+    
     func add(_ node: SCNNode) {
         view.add(node)
     }
@@ -61,6 +65,10 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     
     func didEnd(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode) {
         interactor.didEnd(enemyNode, contactWith: radiusNode)
+    }
+    
+    func set(_ value: BattleValues, to number: Int) {
+        view.set(value, to: number)
     }
 
 }

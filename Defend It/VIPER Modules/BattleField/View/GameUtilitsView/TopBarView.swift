@@ -83,3 +83,15 @@ class TopBarView: UIView {
         pointsLabel.textAlignment = .center
     }
 }
+
+extension TopBarView {
+    
+    func set(_ value: BattleValues, to number: Int) {
+        switch value {
+        case .coins: coinsLabel.text = "🤑 \(number)"
+            print(number)
+        case .lives: livesLabel.text = "❤️ \(number)"
+        case .points: pointsLabel.text = "⭐️ \(number)"
+        }
+    }
+}

@@ -20,6 +20,8 @@ class MagicTowerSL: Building {
     var damage: CGFloat = 35
     var attackSpeed: CGFloat = 0.3
     var counter: Int = 0
+    var buildingCost: Int = 35
+    var saleCost: Int = 17
     
     required init(_ buildingNode: SCNNode) {
         self.buildingNode = buildingNode
