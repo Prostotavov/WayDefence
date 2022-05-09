@@ -21,7 +21,7 @@ class HomePageView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .lightGray
+        backgroundColor = .gray
         setStartButton()
         startButton.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
     }

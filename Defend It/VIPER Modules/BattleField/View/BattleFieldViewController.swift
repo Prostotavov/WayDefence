@@ -17,6 +17,9 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     var sceneView: SCNView!
     var scene: SCNScene!
     
+    var topBarView: TopBarView!
+    var bottomBarView: BottomBarView!
+    
     override func loadView() {
         super.loadView()
         assembler.assembly(with: self)
@@ -24,6 +27,12 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         output.loadView()
         scene.physicsWorld.contactDelegate = self
         sceneView.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setupTopBarView()
+        setupBottomBarView()
+        runRender()
     }
     
     func setupScene() {
@@ -120,7 +129,6 @@ extension BattleFieldViewController: SCNPhysicsContactDelegate {
             collisionEnemyNode = contact.nodeA
             collisionTowerNode = contact.nodeB
         }
-        
         output.didEnd(collisionEnemyNode, contactWith: collisionTowerNode)
     }
 }
@@ -130,12 +138,6 @@ extension BattleFieldViewController: SCNPhysicsContactDelegate {
 extension BattleFieldViewController: SCNSceneRendererDelegate {
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         output.newFrameDidRender()
-        runRender()
-
-    }
-    
-    func stopRender() {
-        sceneView.isPlaying = false
     }
     
     func runRender() {
@@ -143,3 +145,33 @@ extension BattleFieldViewController: SCNSceneRendererDelegate {
     }
 }
 
+extension BattleFieldViewController {
+    
+    func setupTopBarView() {
+        topBarView = TopBarView(frame: view.frame)
+        view.addSubview(topBarView)
+        topBarView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            topBarView.topAnchor.constraint(equalTo: view.topAnchor),
+            topBarView.bottomAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            topBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            topBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+}
+
+
+extension BattleFieldViewController {
+    
+    func setupBottomBarView() {
+        bottomBarView = BottomBarView(frame: view.frame)
+        view.addSubview(bottomBarView)
+        bottomBarView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            bottomBarView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            bottomBarView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -90),
+            bottomBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bottomBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+}

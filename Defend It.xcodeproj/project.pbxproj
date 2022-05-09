@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		87CA3D4B28267CF1000F952F /* WeakPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D4A28267CF1000F952F /* WeakPropertyWrapper.swift */; };
+		87CA3D4F2828FBE0000F952F /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D4E2828FBE0000F952F /* TopBarView.swift */; };
+		87CA3D512829024C000F952F /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D502829024C000F952F /* BottomBarView.swift */; };
 		AA0B68BE27E5B95C0078003D /* AbstactFactoryBuildings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68BD27E5B95C0078003D /* AbstactFactoryBuildings.swift */; };
 		AA0B68C027E5BA7D0078003D /* MagicTowerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68BF27E5BA7D0078003D /* MagicTowerFactory.swift */; };
 		AA0B68C227E5BB150078003D /* ElphTowerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68C127E5BB150078003D /* ElphTowerFactory.swift */; };
@@ -111,6 +113,8 @@
 
 /* Begin PBXFileReference section */
 		87CA3D4A28267CF1000F952F /* WeakPropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakPropertyWrapper.swift; sourceTree = "<group>"; };
+		87CA3D4E2828FBE0000F952F /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
+		87CA3D502829024C000F952F /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
 		AA0B68BD27E5B95C0078003D /* AbstactFactoryBuildings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstactFactoryBuildings.swift; sourceTree = "<group>"; };
 		AA0B68BF27E5BA7D0078003D /* MagicTowerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicTowerFactory.swift; sourceTree = "<group>"; };
 		AA0B68C127E5BB150078003D /* ElphTowerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElphTowerFactory.swift; sourceTree = "<group>"; };
@@ -224,6 +228,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		87CA3D5228293CAA000F952F /* GameUtilitsView */ = {
+			isa = PBXGroup;
+			children = (
+				87CA3D4E2828FBE0000F952F /* TopBarView.swift */,
+				87CA3D502829024C000F952F /* BottomBarView.swift */,
+			);
+			path = GameUtilitsView;
+			sourceTree = "<group>";
+		};
 		AA0B68B627E5B8750078003D /* AbstractFactoryBuildings */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +433,7 @@
 				AA78023027E20B8D002C57E1 /* BattleFieldViewController.swift */,
 				AA78023127E20B8D002C57E1 /* BattleFieldViewOutput.swift */,
 				AA78023227E20B8D002C57E1 /* BattleFieldViewInput.swift */,
+				87CA3D5228293CAA000F952F /* GameUtilitsView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -730,6 +744,7 @@
 				AAE886F527EF2EDC00CA4E5D /* OrcFactory.swift in Sources */,
 				AA0B68C227E5BB150078003D /* ElphTowerFactory.swift in Sources */,
 				AA78020127E20291002C57E1 /* HomePageRouterInput.swift in Sources */,
+				87CA3D4F2828FBE0000F952F /* TopBarView.swift in Sources */,
 				AACC7BD627FB01F10022384E /* BuildingIconPlaces.swift in Sources */,
 				AACC7BF127FB66B20022384E /* BuildingNodes.swift in Sources */,
 				AA78024427E20B8E002C57E1 /* BattleFieldRouter.swift in Sources */,
@@ -766,6 +781,7 @@
 				AA7801FA27E20291002C57E1 /* HomePagePresenter.swift in Sources */,
 				AA7801B527E200B6002C57E1 /* AppDelegate.swift in Sources */,
 				AAE886F327EF2DC500CA4E5D /* AbstractFactoryEnemies.swift in Sources */,
+				87CA3D512829024C000F952F /* BottomBarView.swift in Sources */,
 				AAE886EA27EEFF9800CA4E5D /* Ground.swift in Sources */,
 				AA78020227E20291002C57E1 /* HomePageRouter.swift in Sources */,
 				AA78020027E20291002C57E1 /* HomePageInteractorOutput.swift in Sources */,
