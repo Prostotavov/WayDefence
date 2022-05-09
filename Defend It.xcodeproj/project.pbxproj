@@ -19,7 +19,6 @@
 		AA0B68C827E5BDC20078003D /* ElphTowerFL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68C727E5BDC20078003D /* ElphTowerFL.swift */; };
 		AA0B68CA27E5BDF10078003D /* MagicTowerSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68C927E5BDF10078003D /* MagicTowerSL.swift */; };
 		AA0B68CC27E5BDFD0078003D /* ElphTowerSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68CB27E5BDFD0078003D /* ElphTowerSL.swift */; };
-		AA0B68CE27E5D8C10078003D /* TowerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68CD27E5D8C10078003D /* TowerBuilder.swift */; };
 		AA0B68D627E5FA450078003D /* Cameras.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68D527E5FA450078003D /* Cameras.swift */; };
 		AA0B68D827E5FD7F0078003D /* TowerSelectionPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68D727E5FD7F0078003D /* TowerSelectionPanel.swift */; };
 		AA1B66BF27F624E60092F6C8 /* TestFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B66BE27F624E60092F6C8 /* TestFunctions.swift */; };
@@ -125,7 +124,6 @@
 		AA0B68C727E5BDC20078003D /* ElphTowerFL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElphTowerFL.swift; sourceTree = "<group>"; };
 		AA0B68C927E5BDF10078003D /* MagicTowerSL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicTowerSL.swift; sourceTree = "<group>"; };
 		AA0B68CB27E5BDFD0078003D /* ElphTowerSL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElphTowerSL.swift; sourceTree = "<group>"; };
-		AA0B68CD27E5D8C10078003D /* TowerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerBuilder.swift; sourceTree = "<group>"; };
 		AA0B68D527E5FA450078003D /* Cameras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cameras.swift; sourceTree = "<group>"; };
 		AA0B68D727E5FD7F0078003D /* TowerSelectionPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerSelectionPanel.swift; sourceTree = "<group>"; };
 		AA1B66BE27F624E60092F6C8 /* TestFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFunctions.swift; sourceTree = "<group>"; };
@@ -598,7 +596,6 @@
 			isa = PBXGroup;
 			children = (
 				AAF4C9D827E8DA0300D5B6F8 /* BuildingsManager.swift */,
-				AA0B68CD27E5D8C10078003D /* TowerBuilder.swift */,
 				AA0B68D727E5FD7F0078003D /* TowerSelectionPanel.swift */,
 			);
 			path = BuildingsManagers;
@@ -762,7 +759,6 @@
 				AACC7BDB27FB28200022384E /* ElphTowerTL.swift in Sources */,
 				87CA3D5728294F17000F952F /* BattleValuesManager.swift in Sources */,
 				AA0B68BE27E5B95C0078003D /* AbstactFactoryBuildings.swift in Sources */,
-				AA0B68CE27E5D8C10078003D /* TowerBuilder.swift in Sources */,
 				AA78024127E20B8E002C57E1 /* BattleFieldInteractorOutput.swift in Sources */,
 				AAF4C9DB27E8DB0E00D5B6F8 /* Converter.swift in Sources */,
 				AACC7BDF27FB2C5D0022384E /* WallFL.swift in Sources */,

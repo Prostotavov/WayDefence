@@ -12,9 +12,15 @@ protocol BattleFieldInteractorInput: AnyObject {
     
     func loadView()
     func viewDidAppear()
-    func handlePressed(_ node: SCNNode)
     func deviceOrientationChanged(to orientation: UIDeviceOrientation)
     func newFrameDidRender()
     func didBegin(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode)
     func didEnd(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode)
+    
+    //MARK: new
+    func sellBuilding(on position: SCNVector3)
+    func hideTowerSelectionPanel()
+    func repairBuilding(on position: SCNVector3)
+    func showTowerSelectionPanel(on position: SCNVector3)
+    func build(_ buildingType: BuildingTypes, on position: SCNVector3)
 }

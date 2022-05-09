@@ -48,59 +48,14 @@ class BattleFieldInteractor: BattleFieldInteractorInput, BuildingsManagerDelegat
         }
     }
     
-    func handlePressed(_ node: SCNNode) {
-        switch node.name {
-        case _ where node.name! == RecognitionNodes.sellSelectIcon.rawValue:
-            sellIconPressed(by: node)
-            
-        case _ where node.name! == RecognitionNodes.repairSelectIcon.rawValue:
-            repairIconPressed(by: node)
-            
-        case _ where node.name!.contains(RecognitionNodes.floor.rawValue):
-            floorPressed()
-            
-        case _ where node.name!.contains(RecognitionNodes.groundSquare.rawValue):
-            groundSquarePressed(by: node)
-            
-        case _ where node.name!.contains(RecognitionNodes.selectIcon.rawValue):
-            buildingIconPressed(by: node)
-            
-        case _ where node.name!.contains(RecognitionNodes.builtTower.rawValue):
-            builtTowerPressed(by: node)
-        default:
-            enemiesManager.runEnemies()
-            break
-        }
-    }
-    
-    func createTowerSelectionPanel(with position: SCNVector3) -> SCNNode {
-        buildingsManager.showTowerSelectionPanel(On: position)
-    }
-    
-    func getPerentNodeFor(_ childNode: SCNNode) -> SCNNode {
+    func getParentNodeFor(_ childNode: SCNNode) -> SCNNode {
         var parentNode: SCNNode!
         if childNode.parent?.parent != nil {
-            parentNode = getPerentNodeFor(childNode.parent!)
+            parentNode = getParentNodeFor(childNode.parent!)
         } else {
             parentNode = childNode
         }
         return parentNode
-    }
-    
-    func getRootNodeNameFrom(_ node: SCNNode) -> String {
-        var rootNodeName: String!
-        if node.parent?.parent != nil {
-            rootNodeName = getRootNodeNameFrom(node.parent!)
-        } else {
-            rootNodeName = node.name
-        }
-        return rootNodeName
-    }
-    
-    func build(_ building: BuildingTypes, On position: SCNVector3) ->  Building {
-        enemiesManager.prohibitWalking(On: Converter.toCoordinate(from: position))
-        let building = buildingsManager.create(building, with: .firstLevel, and: position)
-        return building
     }
 }
 
@@ -108,70 +63,53 @@ class BattleFieldInteractor: BattleFieldInteractorInput, BuildingsManagerDelegat
 // func for switch
 extension BattleFieldInteractor {
     
-    func sellIconPressed(by node: SCNNode) {
-        let position = getPerentNodeFor(node).position
+    func sellBuilding(on position: SCNVector3) {
         let coordinate = Converter.toCoordinate(from: position)
-        let buildingNode = buildingsManager.getBuilding(with: coordinate).buildingNode
-        let selectionPanelNode = getPerentNodeFor(node)
-        increase(.coins, by: buildingsManager.getBuilding(with: coordinate).saleCost)
+        let building = buildingsManager.getBuilding(by: coordinate)
         buildingsManager.deleteBuilding(with: coordinate)
-        output.remove(buildingNode)
-        output.remove(selectionPanelNode)
         enemiesManager.allowWalking(On: coordinate)
+        increase(.coins, by: building.saleCost)
+        output.remove(building.buildingNode)
     }
     
-    func repairIconPressed(by node: SCNNode) {
-        print("repairIconPressed by -\(node.name!)- node")
+    func repairBuilding(on position: SCNVector3) {
+        print("repairBuilding on \(position)")
     }
     
-    func floorPressed() {
+    func hideTowerSelectionPanel() {
         output.removeNode(with: NodeNames.buildingSelectionPanel.rawValue)
     }
     
-    func groundSquarePressed(by node: SCNNode) {
-        let position = getPerentNodeFor(node).position
-        output.add(createTowerSelectionPanel(with: position))
-    }
-    
-    func buildingIconPressed(by node: SCNNode) {
-        if battleValuesManager.get(.coins) - 30 <= 0 {return}
-        let position = getPerentNodeFor(node).position
-        let name = node.name!
-        let coordinate = Converter.toCoordinate(from: position)
-        let selectionPanelNode = getPerentNodeFor(node)
-        var buildingNode: SCNNode
-        
-        if buildingsManager.isExistBuiling(on: coordinate) {
-            let oldBuilding = buildingsManager.getBuilding(with: coordinate)
-            output.remove(oldBuilding.buildingNode)
-            let building = buildingsManager.getUpgradeBuilding(for: coordinate)
-            buildingNode = building.buildingNode
-        } else {
-            let buildingType = Converter.toBuildingType(from: name)!
-            let building = build(buildingType, On: position)
-            buildingNode = building.buildingNode
-        }
-        output.add(buildingNode)
-        output.remove(selectionPanelNode)
-        reduce(.coins, by: buildingsManager.getBuilding(with: coordinate).buildingCost)
-    }
-    
-    func builtTowerPressed(by node: SCNNode) {
-        let position = getPerentNodeFor(node).position
-        let panel = buildingsManager.showTowerSelectionPanel(On: position)
+    func showTowerSelectionPanel(on position: SCNVector3) {
+        let panel = buildingsManager.getTowerSelectionPanel(On: position)
         output.add(panel)
-        let building = buildingsManager.getBuilding(with: Converter.toCoordinate(from: position))
-        print("\(building.level) \(building.type) ---  \(building.enemiesInRadius.count)")
     }
-}
-
-enum RecognitionNodes: String  {
-    case floor = "floor"
-    case groundSquare = "groundSquare"
-    case selectIcon = "SelectIcon"
-    case builtTower = "builtTower"
-    case sellSelectIcon = "sellSelectIcon"
-    case repairSelectIcon = "repairSelectIcon"
+    
+    func build(_ buildingType: BuildingTypes, on position: SCNVector3) {
+        if !checkIfEnounghMoney(forBuilding: buildingType, on : position) {return}
+        let coordinate = Converter.toCoordinate(from: position)
+        enemiesManager.prohibitWalking(On: coordinate)
+        
+        var building: Building!
+        if buildingsManager.isExistBuiling(on: coordinate) {
+            buildingsManager.updateBuilding(by: coordinate)
+            building = buildingsManager.getBuilding(by: coordinate)
+        } else {
+            buildingsManager.build(buildingType, by: coordinate)
+            building = buildingsManager.getBuilding(by: coordinate)
+        }
+        output.add(building.buildingNode)
+        hideTowerSelectionPanel()
+        reduce(.coins, by: buildingsManager.getBuilding(by: coordinate).buildingCost)
+    }
+    
+    private func checkIfEnounghMoney(forBuilding buildingType: BuildingTypes,
+                                     on position: SCNVector3) -> Bool {
+        let coordinate = Converter.toCoordinate(from: position)
+        let buildingCost = buildingsManager.calculateCost(ofBuilding: buildingType, by: coordinate)
+        let currentCoins = battleValuesManager.get(.coins)
+        return (currentCoins - buildingCost >= 0) ? true : false
+    }
 }
 
 // cameras
@@ -189,27 +127,24 @@ extension BattleFieldInteractor {
 }
 
 extension BattleFieldInteractor {
+    
     func newFrameDidRender() {
         buildingsManager.updateCounter()
         enemiesManager.updateCounter()
     }
-}
-
-extension BattleFieldInteractor {
+    
     func didBegin(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode) {
-        let coordinate = Converter.toCoordinate(from: getPerentNodeFor(radiusNode).position)
+        let coordinate = Converter.toCoordinate(from: getParentNodeFor(radiusNode).position)
         let enemy = enemiesManager.getEnemyBy(enemyNode)
         buildingsManager.add(enemy, toBuildingWith: coordinate)
     }
     
     func didEnd(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode) {
-        let coordinate = Converter.toCoordinate(from: getPerentNodeFor(radiusNode).position)
+        let coordinate = Converter.toCoordinate(from: getParentNodeFor(radiusNode).position)
         let enemy = enemiesManager.getEnemyBy(enemyNode)
         buildingsManager.remove(enemy, fromBuildingWith: coordinate)
     }
-}
-
-extension BattleFieldInteractor {
+    
     func remove(_ enemy: AnyEnemy) {
         DispatchQueue.main.async {
             self.increase(.coins, by: enemy.coinMurderReward)

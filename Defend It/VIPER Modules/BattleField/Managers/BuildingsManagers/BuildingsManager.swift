@@ -12,26 +12,21 @@ protocol BuildingsManagerDelegate: AnyObject {
 }
 
 protocol BuildingsManager {
-    func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode
-    
-    func create(_ buildingType: BuildingTypes, with level: BuildingLevels, and position: SCNVector3) -> Building
-    func getUpgradeBuilding(for coordinate: (Int, Int)) -> Building
-    
-    func getBuildingName(with coordinate: (Int, Int)) -> String
-    func getBuilding(with coordinate: (Int, Int)) -> Building
+    func getTowerSelectionPanel(On position: SCNVector3) -> SCNNode
     func isExistBuiling(on coordinate: (Int, Int)) -> Bool
-    
     func deleteBuilding(with coordinate: (Int, Int))
-    
     func add(_ enemy: AnyEnemy, toBuildingWith coordinate: (Int, Int))
     func remove(_ enemy: AnyEnemy, fromBuildingWith coordinate: (Int, Int))
-    
     func updateCounter()
+    
+    func calculateCost(ofBuilding buildingType: BuildingTypes, by coordinate: (Int, Int)) -> Int
+    func getBuilding(by coordinate: (Int, Int)) -> Building
+    func build(_ buildingType: BuildingTypes, by coordinate: (Int, Int))
+    func updateBuilding(by coordinate: (Int, Int))
 }
 
 class BuildingsManagerImpl: BuildingsManager {
     
-    var towerBuilder = TowerBuilderImpl()
     var towerSelectionPanel: TowerSelectionPanel!
     var battleFieldSize: Int!
     var buildings: [[Building?]]!
@@ -53,7 +48,7 @@ class BuildingsManagerImpl: BuildingsManager {
         towerSelectionPanel = TowerSelectionPanelImpl()
     }
     
-    func showTowerSelectionPanel(On position: SCNVector3) -> SCNNode {
+    func getTowerSelectionPanel(On position: SCNVector3) -> SCNNode {
         let coordinate = Converter.toCoordinate(from: position)
         if isExistBuiling(on: coordinate) {
             return towerSelectionPanel.show(for: buildings[coordinate.0][coordinate.1]!)
@@ -62,31 +57,30 @@ class BuildingsManagerImpl: BuildingsManager {
         }
     }
     
-    func create(_ buildingType: BuildingTypes, with level: BuildingLevels, and position: SCNVector3) -> Building {
-        let coordinate = Converter.toCoordinate(from: position)
-        let building = AbstactFactoryBuildingsImpl.defaultFactory.create(buildingType, with: level)
-        building.buildingNode.position = position
+    func build(_ buildingType: BuildingTypes, by coordinate: (Int, Int)) {
+        let building = AbstactFactoryBuildingsImpl.defaultFactory.create(buildingType, with: .firstLevel)
         buildings[coordinate.0][coordinate.1] = building
+        building.buildingNode.position = Converter.toPosition(from: coordinate)
         addPhysicsBody(for: building)
-        return building
     }
     
-    func getUpgradeBuilding(for coordinate: (Int, Int)) -> Building {
-        let building = buildings[coordinate.0][coordinate.1]!
-        let id = building.id
-        let type = building.type
-        let level = getNextLevel(after: building.level)
-        let position = buildings[coordinate.0][coordinate.1]!.buildingNode.position
-        var upgradeBuilding = AbstactFactoryBuildingsImpl.defaultFactory.create(type, with: level)
-        let enemiesInRadius = building.enemiesInRadius
-        upgradeBuilding.buildingNode.position = position
-        upgradeBuilding.buildingNode.name = id.uuidString
-        upgradeBuilding.enemiesInRadius = enemiesInRadius
-        buildings[coordinate.0][coordinate.1] = upgradeBuilding
-        addPhysicsBody(for: upgradeBuilding)
-        return upgradeBuilding
+    func updateBuilding(by coordinate: (Int, Int)) {
+        let oldBuilding = getBuilding(by: coordinate)
+        let type = oldBuilding.type
+        let nextLevel = getNextLevel(after: oldBuilding.level)
+        var newBuilding = AbstactFactoryBuildingsImpl.defaultFactory.create(type, with: nextLevel)
+        copyJointDataFrom(oldBuilding, to: &newBuilding)
+        oldBuilding.buildingNode.removeFromParentNode()
+        buildings[coordinate.0][coordinate.1] = newBuilding
+        addPhysicsBody(for: newBuilding)
     }
     
+    private func copyJointDataFrom(_ oldBuilding: Building, to newBuilding: inout Building) {
+        newBuilding.id = oldBuilding.id
+        newBuilding.enemiesInRadius = oldBuilding.enemiesInRadius
+        newBuilding.buildingNode.position = oldBuilding.buildingNode.position
+    }
+
     private func getNextLevel(after level: BuildingLevels) -> BuildingLevels {
         switch level {
         case .firstLevel:
@@ -102,18 +96,30 @@ class BuildingsManagerImpl: BuildingsManager {
         buildings[coordinate.0][coordinate.1] = nil
     }
     
-    func getBuildingName(with coordinate: (Int, Int)) -> String {
-        buildings[coordinate.0][coordinate.1]!.buildingNode.name!
-    }
-    
-    func getBuilding(with coordinate: (Int, Int)) -> Building {
-        buildings[coordinate.0][coordinate.1]!
-    }
-    
     func isExistBuiling(on coordinate: (Int, Int)) -> Bool {
         buildings[coordinate.0][coordinate.1] != nil
     }
     
+    func getBuilding(by coordinate: (Int, Int)) -> Building {
+        return buildings[coordinate.0][coordinate.1]!
+    }
+    
+    //MARK: SO BAD CODE.
+    /// Because instances of classes are created in order to take only one property of this class. Irrational use of productivity
+    /// This will need to be fixed in the future.
+    func calculateCost(ofBuilding buildingType: BuildingTypes, by coordinate: (Int, Int)) -> Int {
+        if isExistBuiling(on: coordinate) {
+            let oldBuilding = getBuilding(by: coordinate)
+            let nextLevel = getNextLevel(after: oldBuilding.level)
+            let wantedBuilding = AbstactFactoryBuildingsImpl.defaultFactory
+                .create(buildingType, with: nextLevel)
+            return wantedBuilding.buildingCost
+        } else {
+            let wantedBuilding = AbstactFactoryBuildingsImpl.defaultFactory
+                .create(buildingType, with: .firstLevel)
+            return wantedBuilding.buildingCost
+        }
+    }
 }
 
 extension BuildingsManagerImpl {
@@ -133,8 +139,8 @@ extension BuildingsManagerImpl {
     }
 }
 
-
 extension BuildingsManagerImpl {
+    
     func add(_ enemy: AnyEnemy, toBuildingWith coordinate: (Int, Int)) {
         if buildings[coordinate.0][coordinate.1]!.enemiesInRadius
             .contains(where: {$0.id == enemy.id}){return}
@@ -145,9 +151,6 @@ extension BuildingsManagerImpl {
         let remainingEnemies = buildings[coordinate.0][coordinate.1]!.enemiesInRadius.filter{$0.id != enemy.id}
         buildings[coordinate.0][coordinate.1]!.enemiesInRadius = remainingEnemies
     }
-}
-
-extension BuildingsManagerImpl {
     
     func updateCounter() {
         for (x, _) in buildings.enumerated() {
@@ -171,10 +174,6 @@ extension BuildingsManagerImpl {
         }
     }
     
-}
-
-extension BuildingsManagerImpl {
-    
     func pushProjectileNodeFrom(_ building: Building) {
         let projectileNode = building.buildingNode.childNode(withName: NodeNames.projectileNode.rawValue, recursively: true)
         projectileNode!.removeAllActions()
@@ -186,4 +185,6 @@ extension BuildingsManagerImpl {
         let action = SCNAction.move(to: endPosition, duration: duration)
         projectileNode!.runAction(action)
     }
+    
 }
+

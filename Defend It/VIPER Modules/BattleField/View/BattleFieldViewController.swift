@@ -174,7 +174,7 @@ extension BattleFieldViewController {
         bottomBarView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             bottomBarView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            bottomBarView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -90),
+            bottomBarView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
             bottomBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             bottomBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
