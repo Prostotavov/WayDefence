@@ -15,8 +15,7 @@ class BattleFieldInteractor: BattleFieldInteractorInput, BuildingsManagerDelegat
     var buildingsManager: BuildingsManager!
     var enemiesManager: EnemiesManager!
     var battleValuesManager: BattleValuesManager!
-    
-    var cameras: Cameras = CamerasImpl()
+    var camerasManager: CamerasManager!
     
     func loadView() {
         setupCamera()
@@ -31,7 +30,8 @@ class BattleFieldInteractor: BattleFieldInteractorInput, BuildingsManagerDelegat
     }
     
     func setupCamera() {
-        output.add(cameras.scnVerticalNode)
+        output.add(camerasManager.parentCameraNode)
+        output.setupPointOfView(from: camerasManager.chieldCameraNode)
     }
     
     func setupMeadow() {
@@ -117,10 +117,12 @@ extension BattleFieldInteractor {
     func deviceOrientationChanged(to orientation: UIDeviceOrientation) {
         switch orientation {
         case .portrait:
-            output.setupPointOfView(from: cameras.scnVerticalNode)
+            camerasManager.switchToVerticalCamera()
+            output.setupPointOfView(from: camerasManager.chieldCameraNode)
             output.setViewVerticalOrientation()
         default :
-            output.setupPointOfView(from: cameras.scnHorisontalNode)
+            camerasManager.switchToHorisontalCamera()
+            output.setupPointOfView(from: camerasManager.chieldCameraNode)
             output.setViewHorisontalOrientation()
         }
     }
@@ -170,5 +172,18 @@ extension BattleFieldInteractor {
         battleValuesManager.reduce(value, by: number)
         let number = battleValuesManager.get(value)
         output.set(value, to: number)
+    }
+}
+
+//MARK: bad code
+extension BattleFieldInteractor {
+    
+    func fixCurrentPosition() {
+        camerasManager.fixCurrentPosition()
+    }
+    
+    func dragCamera(by position: SCNVector3) {
+        camerasManager.dragCamera(by: position)
+        output.setupPointOfView(from: camerasManager.chieldCameraNode)
     }
 }

@@ -17,4 +17,8 @@ protocol BattleFieldViewOutput: AnyObject {
     func newFrameDidRender()
     func didBegin(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode)
     func didEnd(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode)
+    
+    //MARK: bad code
+    func panGestureChanged(by translation: CGPoint)
+    func panGestureEnded()
 }

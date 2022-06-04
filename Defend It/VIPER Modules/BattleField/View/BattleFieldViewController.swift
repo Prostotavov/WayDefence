@@ -44,14 +44,19 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         sceneView.autoenablesDefaultLighting = true
         view.addSubview(sceneView)
         
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGesture))
+        sceneView.addGestureRecognizer(panRecognizer)
+        
         let tapRecognizer = UITapGestureRecognizer()
         tapRecognizer.numberOfTapsRequired = 1
         tapRecognizer.numberOfTouchesRequired = 1
         tapRecognizer.addTarget(self, action: #selector(tapHandler))
         sceneView.addGestureRecognizer(tapRecognizer)
+        
+
     }
     
-    @objc func tapHandler (recognizer:UITapGestureRecognizer) {
+    @objc func tapHandler(recognizer:UITapGestureRecognizer) {
         let location = recognizer.location(in: sceneView)
         let hitResults = sceneView.hitTest(location, options: nil)
         guard let node = hitResults.first?.node else {return}
@@ -85,7 +90,6 @@ extension BattleFieldViewController {
     
     func setupPointOfView(from cameraNode: SCNNode) {
         sceneView.pointOfView = cameraNode
-        
     }
     
     func setViewHorisontalOrientation() {
@@ -97,6 +101,19 @@ extension BattleFieldViewController {
     func setViewVerticalOrientation() {
         if sceneView.frame.height < sceneView.frame.width {
             sceneView.frame = CGRect(x: 0, y: 0, width: sceneView.frame.height, height: sceneView.frame.width)
+        }
+    }
+    
+    
+    @objc func panGesture(recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+        case .changed:
+            let translation = recognizer.translation(in: view)
+            output.panGestureChanged(by: translation)
+        case .ended:
+            output.panGestureEnded()
+        default:
+            print("default panGesture switch BattleFieldViewController")
         }
     }
 }
@@ -146,6 +163,7 @@ extension BattleFieldViewController: SCNSceneRendererDelegate {
     }
 }
 
+// topBarView
 extension BattleFieldViewController {
     
     func setupTopBarView() {
@@ -166,6 +184,7 @@ extension BattleFieldViewController {
 }
 
 
+// bottomBarView
 extension BattleFieldViewController {
     
     func setupBottomBarView() {

@@ -23,4 +23,8 @@ protocol BattleFieldInteractorInput: AnyObject {
     func repairBuilding(on position: SCNVector3)
     func showTowerSelectionPanel(on position: SCNVector3)
     func build(_ buildingType: BuildingTypes, on position: SCNVector3)
+    
+    //MARK: bad code
+    func fixCurrentPosition()
+    func dragCamera(by position: SCNVector3)
 }

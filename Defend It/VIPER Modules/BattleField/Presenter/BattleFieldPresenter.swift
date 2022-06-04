@@ -66,6 +66,7 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
         view.set(value, to: number)
     }
 
+
 }
 
 extension BattleFieldPresenter {
@@ -118,5 +119,16 @@ enum RecognitionNodes: String  {
     case builtTower = "builtTower"
     case sellSelectIcon = "sellSelectIcon"
     case repairSelectIcon = "repairSelectIcon"
+}
 
+extension BattleFieldPresenter {
+    
+    func panGestureChanged(by translation: CGPoint) {
+        let position = Converter.toPosition(from: translation)
+        interactor.dragCamera(by: position)
+    }
+    
+    func panGestureEnded() {
+        interactor.fixCurrentPosition()
+    }
 }

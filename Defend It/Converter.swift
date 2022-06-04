@@ -117,7 +117,10 @@ struct Converter {
         }
     }
     
-    
+    static func toPosition(from translation: CGPoint) -> SCNVector3 {
+        let sensity: Float = 140
+        return SCNVector3(x: Float(translation.x) / sensity, y: 0, z: Float(translation.y) / sensity)
+    }
     
 }
 
