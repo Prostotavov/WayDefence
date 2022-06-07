@@ -21,6 +21,7 @@ class BattleFieldInteractor: BattleFieldInteractorInput, BuildingsManagerDelegat
         setupCamera()
         setupMeadow()
         setupEnemies()
+        loadBuildngs()
     }
     
     func viewDidAppear() {
@@ -46,6 +47,13 @@ class BattleFieldInteractor: BattleFieldInteractorInput, BuildingsManagerDelegat
         for enemy in enemiesManager.enemies {
             output.add(enemy.enemyNode)
         }
+    }
+    
+    func loadBuildngs() {
+        _ = BallistaFactory.defaultFactory
+        _ = MagicTowerFactory.defaultFactory
+        _ = ElphTowerFactory.defaultFactory
+        _ = WallFactory.defaultFactory
     }
     
     func getParentNodeFor(_ childNode: SCNNode) -> SCNNode {
@@ -137,13 +145,13 @@ extension BattleFieldInteractor {
     
     func didBegin(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode) {
         let coordinate = Converter.toCoordinate(from: getParentNodeFor(radiusNode).position)
-        let enemy = enemiesManager.getEnemyBy(enemyNode)
+        guard let enemy = enemiesManager.getEnemyBy(enemyNode) else {return}
         buildingsManager.add(enemy, toBuildingWith: coordinate)
     }
     
     func didEnd(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode) {
         let coordinate = Converter.toCoordinate(from: getParentNodeFor(radiusNode).position)
-        let enemy = enemiesManager.getEnemyBy(enemyNode)
+        guard let enemy = enemiesManager.getEnemyBy(enemyNode) else {return}
         buildingsManager.remove(enemy, fromBuildingWith: coordinate)
     }
     
@@ -185,5 +193,17 @@ extension BattleFieldInteractor {
     func dragCamera(by position: SCNVector3) {
         camerasManager.dragCamera(by: position)
         output.setupPointOfView(from: camerasManager.chieldCameraNode)
+    }
+}
+
+extension BattleFieldInteractor {
+    func stopGame() {
+        enemiesManager.stopAllEnemies()
+        buildingsManager.stopAtack()
+    }
+    
+    func playGame() {
+        enemiesManager.runAllEnemies()
+        buildingsManager.runAtack()
     }
 }

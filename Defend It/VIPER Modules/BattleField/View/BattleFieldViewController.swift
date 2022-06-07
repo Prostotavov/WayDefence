@@ -185,10 +185,19 @@ extension BattleFieldViewController {
 
 
 // bottomBarView
-extension BattleFieldViewController {
+extension BattleFieldViewController: BottomBarViewDelegate {
+    
+    func playButtonPressed() {
+        output.playButtonPressed()
+    }
+    
+    func stopButtonPressed() {
+        output.stopButtonPressed()
+    }
     
     func setupBottomBarView() {
         bottomBarView = BottomBarView(frame: view.frame)
+        bottomBarView.delegate = self
         view.addSubview(bottomBarView)
         bottomBarView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -199,3 +208,4 @@ extension BattleFieldViewController {
         ])
     }
 }
+

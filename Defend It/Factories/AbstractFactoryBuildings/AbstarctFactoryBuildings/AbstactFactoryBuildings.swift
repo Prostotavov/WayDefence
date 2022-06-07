@@ -32,6 +32,7 @@ class AbstactFactoryBuildingsImpl {
     static let defaultFactory = AbstactFactoryBuildingsImpl()
     
     func create(_ building: BuildingTypes, with level: BuildingLevels) -> Building {
+        print("-0- AbstactFactoryBuildingsImpl ", CFAbsoluteTimeGetCurrent())
         switch building {
         case .elphTower:
             switch level {

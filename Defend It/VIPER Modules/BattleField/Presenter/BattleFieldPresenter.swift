@@ -66,6 +66,13 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
         view.set(value, to: number)
     }
 
+    func playButtonPressed() {
+        interactor.playGame()
+    }
+    
+    func stopButtonPressed() {
+        interactor.stopGame()
+    }
 
 }
 

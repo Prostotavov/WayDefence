@@ -10,12 +10,14 @@ import SceneKit
 protocol EnemiesManager {
     
     var enemies: Set<AnyEnemy> {get}
-    func runEnemies()
     func removeEnemy(_ enemy: AnyEnemy)
     func prohibitWalking(On coordination: (Int, Int))
     func allowWalking(On coordination: (Int, Int))
     func updateCounter()
-    func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy
+    func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy?
+    func removeEnemies()
+    func stopAllEnemies()
+    func runAllEnemies()
 }
 
 class EnemiesManagerImpl: EnemiesManager {
@@ -33,18 +35,24 @@ class EnemiesManagerImpl: EnemiesManager {
         setupEnemies()
     }
     
+    func removeEnemies() {
+        enemies.removeAll()
+    }
+    
     func createEnemies() {
-        create(.orc, with: .firstLevel)
-        create(.troll, with: .firstLevel)
-        create(.goblin, with: .firstLevel)
-        
-        create(.orc, with: .secondLevel)
-        create(.troll, with: .secondLevel)
-        create(.goblin, with: .secondLevel)
-        
-        create(.orc, with: .thirdLevel)
-        create(.troll, with: .thirdLevel)
-        create(.goblin, with: .thirdLevel)
+        for _ in 0..<5 {
+            create(.orc, with: .firstLevel)
+            create(.troll, with: .firstLevel)
+            create(.goblin, with: .firstLevel)
+
+            create(.orc, with: .secondLevel)
+            create(.troll, with: .secondLevel)
+            create(.goblin, with: .secondLevel)
+
+            create(.orc, with: .thirdLevel)
+            create(.troll, with: .thirdLevel)
+            create(.goblin, with: .thirdLevel)
+        }
     }
     
     func create(_ rase: EnemyRaces, with level: EnemyLevels) {
@@ -83,30 +91,47 @@ class EnemiesManagerImpl: EnemiesManager {
         }
         enemy.counter += Converter.toCounter(from: duration)
         let action = SCNAction.move(to: location, duration: duration)
+        !enemy.enemyNode.actionKeys.isEmpty ? print("-0-") : print("evr alr")
         enemy.enemyNode.removeAllActions()
         enemy.enemyNode.runAction(action)
     }
     
-    func runEnemies() {
-        for i in enemies.indices {
-            let path = enemyPositionManager.calculatePath(for: enemies[i])
-            enemies[i].setPath(path)
-        }
-    }
-    
     func prohibitWalking(On coordination: (Int, Int)) {
-        counter = 0
         resetEnemyCounter()
+        counter = 0
         enemyPositionManager.prohibitWalking(On: coordination)
         runEnemies()
     }
     
     func allowWalking(On coordination: (Int, Int)) {
-        counter = 0
         resetEnemyCounter()
+        counter = 0
         enemyPositionManager.allowWalking(On: coordination)
         runEnemies()
     }
+    
+    func stopAllEnemies() {
+        isRun = false
+        resetEnemyCounter()
+        counter = 0
+        enemies.map{$0.enemyNode.removeAllActions()}
+    }
+    
+    func runAllEnemies() {
+        isRun = true
+        resetEnemyCounter()
+        counter = 0
+        runEnemies()
+    }
+    
+    func runEnemies() {
+        if !isRun {return}
+        for enemy in enemies {
+            let path = enemyPositionManager.calculatePath(for: enemy)
+            enemy.setPath(path)
+        }
+    }
+
 }
 
 extension EnemiesManagerImpl {
@@ -125,10 +150,11 @@ extension EnemiesManagerImpl {
     
     func updateCounter() {
         
-        // MARK: so mach bad practice
-        if counter == 299 { if !isRun {counter = 0}; isRun = true }
-        if !isRun { counter+=1; return }
-
+        if !isRun {return}
+        
+        // MARK: biggest bad practice in my code
+        if counter%5 == 0 { runEnemies()}
+        
         for enemy in enemies {
             if counter == enemy.counter {
                 if enemy.path.isEmpty {
@@ -147,19 +173,18 @@ extension EnemiesManagerImpl {
             counter = 0
         }
     }
-
+    
 }
 
 extension EnemiesManagerImpl {
     
-    func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy {
+    func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy? {
         for enemy in enemies {
             if enemy.id.uuidString == enemyNode.name {
                 return enemy
             }
         }
-        // MARK: bad practice
-        return enemies.first!
+        return enemies.first
     }
 }
 

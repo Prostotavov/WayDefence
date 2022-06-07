@@ -21,4 +21,7 @@ protocol BattleFieldViewOutput: AnyObject {
     //MARK: bad code
     func panGestureChanged(by translation: CGPoint)
     func panGestureEnded()
+    
+    func playButtonPressed()
+    func stopButtonPressed()
 }

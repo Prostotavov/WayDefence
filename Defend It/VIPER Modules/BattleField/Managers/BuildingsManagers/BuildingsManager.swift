@@ -23,6 +23,9 @@ protocol BuildingsManager {
     func getBuilding(by coordinate: (Int, Int)) -> Building
     func build(_ buildingType: BuildingTypes, by coordinate: (Int, Int))
     func updateBuilding(by coordinate: (Int, Int))
+    
+    func stopAtack()
+    func runAtack()
 }
 
 class BuildingsManagerImpl: BuildingsManager {
@@ -30,6 +33,7 @@ class BuildingsManagerImpl: BuildingsManager {
     var towerSelectionPanel: TowerSelectionPanel!
     var battleFieldSize: Int!
     var buildings: [[Building?]]!
+    var isActive: Bool = false
     
     weak var delegate: BuildingsManagerDelegate!
     
@@ -153,6 +157,7 @@ extension BuildingsManagerImpl {
     }
     
     func updateCounter() {
+        if !isActive {return}
         for (x, _) in buildings.enumerated() {
             for (z, _) in buildings[x].enumerated() {
                 if buildings[x][z] == nil  { continue }
@@ -172,6 +177,14 @@ extension BuildingsManagerImpl {
             delegate.remove(attackedEnemy)
             print(building.enemiesInRadius.map{$0.race})
         }
+    }
+    
+    func stopAtack() {
+        isActive = false
+    }
+    
+    func runAtack() {
+        isActive = true
     }
     
     func pushProjectileNodeFrom(_ building: Building) {

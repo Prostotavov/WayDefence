@@ -15,7 +15,7 @@ protocol BattleValuesManager {
 }
 
 class BattleValuesManagerImpl: BattleValuesManager {
-    private var coins: Int = 320
+    private var coins: Int = 3200
     private var lives: Int = 10
     private var points: Int = 0
     

@@ -7,10 +7,16 @@
 
 import UIKit
 
+protocol BottomBarViewDelegate: NSObject {
+    func stopButtonPressed()
+    func playButtonPressed()
+}
+
 class BottomBarView: UIView {
     
     var stopButton: UIButton!
     var playButton: UIButton!
+    weak var delegate: BottomBarViewDelegate!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -65,10 +71,10 @@ class BottomBarView: UIView {
 
     
     @objc func stopButtonPressed() {
-        print("stop button pressed")
+        delegate.stopButtonPressed()
     }
     @objc func playButtonPressed() {
-        print("play button pressed")
+        delegate.playButtonPressed()
     }
     
 }

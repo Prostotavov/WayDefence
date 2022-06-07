@@ -27,4 +27,7 @@ protocol BattleFieldInteractorInput: AnyObject {
     //MARK: bad code
     func fixCurrentPosition()
     func dragCamera(by position: SCNVector3)
+    
+    func playGame()
+    func stopGame()
 }

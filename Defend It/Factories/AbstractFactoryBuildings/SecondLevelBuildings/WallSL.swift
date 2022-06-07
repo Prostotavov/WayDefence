@@ -17,7 +17,7 @@ class WallSL: Building {
     var upgradeSelection: [BuildingIcons] = [.wallSelectIcon]
     var upgrades: [BuiltTowers] = [.wallTL]
     @Weak var enemiesInRadius: [AnyEnemy]
-    var damage: CGFloat = 35
+    var damage: CGFloat = 0
     var attackSpeed: CGFloat = 0.3
     var counter: Int = 0
     var buildingCost: Int = 35
