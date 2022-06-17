@@ -20,6 +20,10 @@ protocol EnemiesManager {
     func runAllEnemies()
 }
 
+protocol EnemiesManagerDelegate: AnyObject {
+    func enemyReachedCastle()
+}
+
 class EnemiesManagerImpl: EnemiesManager {
     var battleFieldSize: Int!
     var enemies = Set<AnyEnemy>()
@@ -27,6 +31,8 @@ class EnemiesManagerImpl: EnemiesManager {
     
     var counter: Int = 0
     var isRun: Bool = false
+    
+    var delegate: EnemiesManagerDelegate!
     
     init(_ battleFieldSize: Int) {
         self.battleFieldSize = battleFieldSize
@@ -148,6 +154,12 @@ extension EnemiesManagerImpl {
         return  TimeInterval(defaultDuration * distination / 0.5)
     }
     
+    func enemyReachedCastle(enemy: AnyEnemy) {
+        enemy.enemyNode.removeFromParentNode()
+        removeEnemy(enemy)
+        delegate.enemyReachedCastle()
+    }
+    
     func updateCounter() {
         
         if !isRun {return}
@@ -158,8 +170,7 @@ extension EnemiesManagerImpl {
         for enemy in enemies {
             if counter == enemy.counter {
                 if enemy.path.isEmpty {
-                    enemy.enemyNode.removeFromParentNode()
-                    removeEnemy(enemy)
+                    enemyReachedCastle(enemy: enemy)
                     continue
                 }
                 let location = enemy.path.first!

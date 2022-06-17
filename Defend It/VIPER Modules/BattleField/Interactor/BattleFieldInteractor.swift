@@ -8,7 +8,7 @@
 import Foundation
 import SceneKit
 
-class BattleFieldInteractor: BattleFieldInteractorInput, BuildingsManagerDelegate {
+class BattleFieldInteractor: BattleFieldInteractorInput {
     
     weak var output: BattleFieldInteractorOutput!
     var meadowManager: MeadowManager!
@@ -154,13 +154,6 @@ extension BattleFieldInteractor {
         guard let enemy = enemiesManager.getEnemyBy(enemyNode) else {return}
         buildingsManager.remove(enemy, fromBuildingWith: coordinate)
     }
-    
-    func remove(_ enemy: AnyEnemy) {
-        DispatchQueue.main.async {
-            self.increase(.coins, by: enemy.coinMurderReward)
-        }
-        enemiesManager.removeEnemy(enemy)
-    }
 }
 
 extension BattleFieldInteractor {
@@ -205,5 +198,24 @@ extension BattleFieldInteractor {
     func playGame() {
         enemiesManager.runAllEnemies()
         buildingsManager.runAtack()
+    }
+}
+
+extension BattleFieldInteractor: BuildingsManagerDelegate {
+    
+    func enemyKilled(_ enemy: AnyEnemy) {
+        DispatchQueue.main.async {
+            self.increase(.coins, by: enemy.coinMurderReward)
+            self.increase(.points, by: enemy.pointsMurderReward)
+        }
+        enemiesManager.removeEnemy(enemy)
+    }
+}
+
+extension BattleFieldInteractor: EnemiesManagerDelegate {
+    func enemyReachedCastle() {
+        DispatchQueue.main.async {
+            self.reduce(.lives, by: 1)
+        }
     }
 }

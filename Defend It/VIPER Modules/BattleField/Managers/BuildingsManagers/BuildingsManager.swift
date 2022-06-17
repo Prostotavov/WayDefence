@@ -8,7 +8,7 @@
 import SceneKit
 
 protocol BuildingsManagerDelegate: AnyObject {
-    func remove(_ enemy: AnyEnemy)
+    func enemyKilled(_ enemy: AnyEnemy)
 }
 
 protocol BuildingsManager {
@@ -174,7 +174,7 @@ extension BuildingsManagerImpl {
         let attackedEnemy = building.enemiesInRadius.first!
         attackedEnemy.healthPoints -= building.damage
         if attackedEnemy.healthPoints <= 0 {
-            delegate.remove(attackedEnemy)
+            delegate.enemyKilled(attackedEnemy)
             print(building.enemiesInRadius.map{$0.race})
         }
     }

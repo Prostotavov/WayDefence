@@ -95,6 +95,20 @@
 		AAFD65EA27E4FFC500450C52 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = AAFD65E927E4FFC500450C52 /* art.scnassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		87A12CFA28590A0C00C8E6D0 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = file.rcproject;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# rctool\n";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
 		AA7801C827E200BA002C57E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -634,6 +648,7 @@
 				AA7801AF27E200B6002C57E1 /* Resources */,
 			);
 			buildRules = (
+				87A12CFA28590A0C00C8E6D0 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -1018,7 +1033,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MyId.Defend-It";
+				PRODUCT_BUNDLE_IDENTIFIER = "RomaId.Defend-It";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1048,7 +1063,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MyId.Defend-It";
+				PRODUCT_BUNDLE_IDENTIFIER = "RomaId.Defend-It";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
