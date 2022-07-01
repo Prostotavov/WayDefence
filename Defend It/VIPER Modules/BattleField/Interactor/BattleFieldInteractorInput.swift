@@ -12,22 +12,19 @@ protocol BattleFieldInteractorInput: AnyObject {
     
     func loadView()
     func viewDidAppear()
-    func deviceOrientationChanged(to orientation: UIDeviceOrientation)
-    func newFrameDidRender()
-    func didBegin(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode)
-    func didEnd(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode)
     
-    //MARK: new
-    func sellBuilding(on position: SCNVector3)
-    func hideTowerSelectionPanel()
-    func repairBuilding(on position: SCNVector3)
-    func showTowerSelectionPanel(on position: SCNVector3)
-    func build(_ buildingType: BuildingTypes, on position: SCNVector3)
-    
-    //MARK: bad code
-    func fixCurrentPosition()
-    func dragCamera(by position: SCNVector3)
-    
+    /// funcs for handle user taps
     func playGame()
     func stopGame()
+    func pressedNode(_ node: SCNNode)
+    
+    /// funcs for handle nodes collisions
+    func didBegin(_ nodeA: SCNNode, contactWith nodeB: SCNNode)
+    func didEnd(_ nodeA: SCNNode, contactWith nodeB: SCNNode)
+    func update()
+
+    /// funcs for setup camera
+    func fixCurrentPosition()
+    func dragCamera(by position: SCNVector3)
+    func deviceOrientationChanged(to orientation: UIDeviceOrientation)
 }

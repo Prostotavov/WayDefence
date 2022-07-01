@@ -7,6 +7,11 @@
 
 import SceneKit
 
+enum EnemiesStates {
+    case active
+    case inactive
+}
+
 protocol EnemiesManager {
     
     var enemies: Set<AnyEnemy> {get}
@@ -18,10 +23,12 @@ protocol EnemiesManager {
     func removeEnemies()
     func stopAllEnemies()
     func runAllEnemies()
+    func addEnemiesToScene()
 }
 
 protocol EnemiesManagerDelegate: AnyObject {
     func enemyReachedCastle()
+    func addNodeToScene(_ node: SCNNode)
 }
 
 class EnemiesManagerImpl: EnemiesManager {
@@ -30,15 +37,22 @@ class EnemiesManagerImpl: EnemiesManager {
     var enemyPositionManager: EnemyPositionManager!
     
     var counter: Int = 0
-    var isRun: Bool = false
+    var enemiesState: EnemiesStates!
     
-    var delegate: EnemiesManagerDelegate!
+    weak var delegate: EnemiesManagerDelegate!
     
     init(_ battleFieldSize: Int) {
         self.battleFieldSize = battleFieldSize
+        enemiesState = .inactive
         enemyPositionManager = EnemyPositionManagerImpl(battleFieldSize)
         createEnemies()
         setupEnemies()
+    }
+    
+    func addEnemiesToScene() {
+        for enemy in enemies {
+            delegate.addNodeToScene(enemy.enemyNode)
+        }
     }
     
     func removeEnemies() {
@@ -46,7 +60,7 @@ class EnemiesManagerImpl: EnemiesManager {
     }
     
     func createEnemies() {
-        for _ in 0..<5 {
+        for _ in 0..<1 {
             create(.orc, with: .firstLevel)
             create(.troll, with: .firstLevel)
             create(.goblin, with: .firstLevel)
@@ -97,7 +111,6 @@ class EnemiesManagerImpl: EnemiesManager {
         }
         enemy.counter += Converter.toCounter(from: duration)
         let action = SCNAction.move(to: location, duration: duration)
-        !enemy.enemyNode.actionKeys.isEmpty ? print("-0-") : print("evr alr")
         enemy.enemyNode.removeAllActions()
         enemy.enemyNode.runAction(action)
     }
@@ -117,21 +130,21 @@ class EnemiesManagerImpl: EnemiesManager {
     }
     
     func stopAllEnemies() {
-        isRun = false
+        enemiesState = .inactive
         resetEnemyCounter()
         counter = 0
         enemies.map{$0.enemyNode.removeAllActions()}
     }
     
     func runAllEnemies() {
-        isRun = true
+        enemiesState = .active
         resetEnemyCounter()
         counter = 0
         runEnemies()
     }
     
     func runEnemies() {
-        if !isRun {return}
+        if enemiesState == .inactive {return}
         for enemy in enemies {
             let path = enemyPositionManager.calculatePath(for: enemy)
             enemy.setPath(path)
@@ -162,7 +175,7 @@ extension EnemiesManagerImpl {
     
     func updateCounter() {
         
-        if !isRun {return}
+        if enemiesState == .inactive {return}
         
         // MARK: biggest bad practice in my code
         if counter%5 == 0 { runEnemies()}

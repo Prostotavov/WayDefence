@@ -14,10 +14,10 @@ enum BuildingTypes: String, CaseIterable {
     case wall
 }
 
-enum BuildingLevels: String, CaseIterable {
-    case firstLevel
-    case secondLevel
-    case thirdLevel
+enum BuildingLevels: Int, CaseIterable {
+    case firstLevel = 1
+    case secondLevel = 2
+    case thirdLevel = 3
 }
 
 protocol AbstactFactoryBuildings {
@@ -32,7 +32,6 @@ class AbstactFactoryBuildingsImpl {
     static let defaultFactory = AbstactFactoryBuildingsImpl()
     
     func create(_ building: BuildingTypes, with level: BuildingLevels) -> Building {
-        print("-0- AbstactFactoryBuildingsImpl ", CFAbsoluteTimeGetCurrent())
         switch building {
         case .elphTower:
             switch level {

@@ -11,11 +11,12 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
     
     func assembly(with viewController: BattleFieldViewController) {
         
+        // init viper modules
         let presenter = BattleFieldPresenter()
         let interactor = BattleFieldInteractor()
         let router = BattleFieldRouter()
         
-        // managers
+        // init managers
         let dataManager = DataManagerImpl()
         let meadowManager = MeadowManagerImpl(dataManager.battleFieldSize)
         let buildingsManager = BuildingsManagerImpl(dataManager.battleFieldSize)
@@ -23,23 +24,31 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         let battleValuesManager = BattleValuesManagerImpl()
         let camerasManager = CamerasManagerImpl()
         
+        // init and assembly battle
+        let battle = BattleImpl()
+        battle.meadowManager = meadowManager
+        battle.enemiesManager = enemiesManager
+        battle.buildingsManager = buildingsManager
+        battle.battleValuesManager = battleValuesManager
+        battle.delegate = interactor
+        
+        // assembly in/out for viper modules
         viewController.output = presenter
         
         presenter.view = viewController
         presenter.router = router
         presenter.interactor = interactor
         
-        interactor.meadowManager = meadowManager
-        interactor.buildingsManager = buildingsManager
-        interactor.enemiesManager = enemiesManager
-        interactor.battleValuesManager = battleValuesManager
+        interactor.battle = battle
         interactor.camerasManager = camerasManager
         interactor.output = presenter
         
         router.view = viewController
         
-        buildingsManager.delegate = interactor
-        enemiesManager.delegate = interactor
+        // assembly delegates for managers
+        buildingsManager.delegate = battle
+        enemiesManager.delegate = battle
+        meadowManager.delegate = battle
         
     }
     

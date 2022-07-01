@@ -52,31 +52,26 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
         tapRecognizer.numberOfTouchesRequired = 1
         tapRecognizer.addTarget(self, action: #selector(tapHandler))
         sceneView.addGestureRecognizer(tapRecognizer)
-        
-
     }
     
     @objc func tapHandler(recognizer:UITapGestureRecognizer) {
         let location = recognizer.location(in: sceneView)
         let hitResults = sceneView.hitTest(location, options: nil)
         guard let node = hitResults.first?.node else {return}
-        pressed(node)
+        pressedNode(node)
     }
     
-    func add(_ node: SCNNode) {
+    func addNodeToScene(_ node: SCNNode) {
         scene.rootNode.addChildNode(node)
     }
-    
-    func remove(_ node: SCNNode) {
+    func removeNodeFromScene(_ node: SCNNode) {
         node.removeFromParentNode()
     }
-    
-    func removeNode(with name: String) {
+    func removeNodeFromScene(with name: String) {
         scene.rootNode.childNode(withName: name, recursively: true)?.removeFromParentNode()
     }
-    
-    func pressed(_ node: SCNNode) {
-        output.pressed(node)
+    func pressedNode(_ node: SCNNode) {
+        output.pressedNode(node)
     }
     
 }
@@ -104,7 +99,6 @@ extension BattleFieldViewController {
         }
     }
     
-    
     @objc func panGesture(recognizer: UIPanGestureRecognizer) {
         switch recognizer.state {
         case .changed:
@@ -120,34 +114,12 @@ extension BattleFieldViewController {
 
 // physics
 extension BattleFieldViewController: SCNPhysicsContactDelegate {
-    func physicsWorld(_ world: SCNPhysicsWorld,
-                      didBegin contact: SCNPhysicsContact) {
-        var collisionEnemyNode: SCNNode!
-        var collisionTowerNode: SCNNode!
-        
-        if contact.nodeA.physicsBody?.categoryBitMask == 1 {
-            collisionTowerNode = contact.nodeA
-            collisionEnemyNode = contact.nodeB
-        } else {
-            collisionEnemyNode = contact.nodeA
-            collisionTowerNode = contact.nodeB
-        }
-        output.didBegin(collisionEnemyNode, contactWith: collisionTowerNode)
+    func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+        output.didBegin(contact.nodeA, contactWith: contact.nodeB)
     }
     
     func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
-        var collisionEnemyNode: SCNNode!
-        var collisionTowerNode: SCNNode!
-        
-        
-        if contact.nodeA.physicsBody?.categoryBitMask == 1 {
-            collisionTowerNode = contact.nodeA
-            collisionEnemyNode = contact.nodeB
-        } else {
-            collisionEnemyNode = contact.nodeA
-            collisionTowerNode = contact.nodeB
-        }
-        output.didEnd(collisionEnemyNode, contactWith: collisionTowerNode)
+        output.didEnd(contact.nodeA, contactWith: contact.nodeB)
     }
 }
 
@@ -155,7 +127,7 @@ extension BattleFieldViewController: SCNPhysicsContactDelegate {
 // render & actions
 extension BattleFieldViewController: SCNSceneRendererDelegate {
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        output.newFrameDidRender()
+        output.update()
     }
     
     func runRender() {
@@ -165,7 +137,6 @@ extension BattleFieldViewController: SCNSceneRendererDelegate {
 
 // topBarView
 extension BattleFieldViewController {
-    
     func setupTopBarView() {
         topBarView = TopBarView(frame: view.frame)
         view.addSubview(topBarView)
@@ -178,15 +149,14 @@ extension BattleFieldViewController {
         ])
     }
     
-    func set(_ value: BattleValues, to number: Int) {
-        topBarView.set(value, to: number)
+    func displayValue(of valueType: BattleValues, to number: Int) {
+        topBarView.displayValue(of: valueType, to: number)
     }
 }
 
 
 // bottomBarView
 extension BattleFieldViewController: BottomBarViewDelegate {
-    
     func playButtonPressed() {
         output.playButtonPressed()
     }

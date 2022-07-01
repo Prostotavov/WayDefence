@@ -10,12 +10,16 @@ import SceneKit
 
 protocol BattleFieldViewInput: AnyObject {
     
-    func add(_ node: SCNNode)
-    func remove(_ node: SCNNode)
-    func removeNode(with name: String)
-    func pressed(_ node: SCNNode)
+    /// funcs for add and remove nodes on the scene
+    func addNodeToScene(_ node: SCNNode)
+    func removeNodeFromScene(_ node: SCNNode)
+    func removeNodeFromScene(with name: String)
+    
+    /// funcs for setup camera
     func setupPointOfView(from cameraNode: SCNNode)
     func setViewHorisontalOrientation()
     func setViewVerticalOrientation()
-    func set(_ value: BattleValues, to number: Int)
+    
+    /// funcs for display battle values on the TopBarView
+    func displayValue(of valueType: BattleValues, to number: Int)
 }

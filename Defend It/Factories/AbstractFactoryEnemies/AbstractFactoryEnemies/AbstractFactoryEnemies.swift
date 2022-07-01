@@ -13,10 +13,10 @@ enum EnemyRaces {
     case troll
 }
 
-enum EnemyLevels: String {
-    case firstLevel
-    case secondLevel
-    case thirdLevel
+enum EnemyLevels: Int  {
+    case firstLevel = 1
+    case secondLevel = 2
+    case thirdLevel = 3
 }
 
 protocol AbstractFactoryEnemies {

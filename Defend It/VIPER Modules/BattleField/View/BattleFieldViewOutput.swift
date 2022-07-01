@@ -12,16 +12,23 @@ protocol BattleFieldViewOutput: AnyObject {
     
     func loadView()
     func viewDidAppear()
-    func pressed(_ node: SCNNode)
-    func deviceOrientationChanged(to orientation: UIDeviceOrientation)
-    func newFrameDidRender()
-    func didBegin(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode)
-    func didEnd(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode)
+
+    /// handle nodes collision
+    func didBegin(_ nodeA: SCNNode, contactWith nodeB: SCNNode)
+    func didEnd(_ nodeA: SCNNode, contactWith nodeB: SCNNode)
     
-    //MARK: bad code
+    /// this func called every new frame and update game
+    func update()
+    
+    /// camera
+    func deviceOrientationChanged(to orientation: UIDeviceOrientation)
     func panGestureChanged(by translation: CGPoint)
     func panGestureEnded()
     
+    /// game state
     func playButtonPressed()
     func stopButtonPressed()
+    
+    /// handle pressed node
+    func pressedNode(_ node: SCNNode)
 }

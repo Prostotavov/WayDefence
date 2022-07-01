@@ -14,128 +14,79 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     var interactor: BattleFieldInteractorInput!
     var router: BattleFieldRouterInput!
     
+    /// view run loop funcs
     func loadView() {
         interactor.loadView()
     }
-    
     func viewDidAppear() {
         interactor.viewDidAppear()
     }
     
-    func add(_ node: SCNNode) {
-        view.add(node)
+    /// func for scene
+    func addNodeToScene(_ node: SCNNode) {
+        view.addNodeToScene(node)
+    }
+    func removeNodeFromScene(_ node: SCNNode) {
+        view.removeNodeFromScene(node)
+    }
+    func removeNodeFromScene(with name: String) {
+        view.removeNodeFromScene(with: name)
     }
     
-    func remove(_ node: SCNNode) {
-        view.remove(node)
-    }
-    
-    func removeNode(with name: String) {
-        view.removeNode(with: name)
-    }
-    
+    /// func for device change orientation
     func deviceOrientationChanged(to orientation: UIDeviceOrientation) {
         interactor.deviceOrientationChanged(to: orientation)
     }
-    
     func setupPointOfView(from cameraNode: SCNNode) {
         view.setupPointOfView(from: cameraNode)
     }
-
     func setViewHorisontalOrientation() {
         view.setViewHorisontalOrientation()
     }
-    
     func setViewVerticalOrientation() {
         view.setViewVerticalOrientation()
     }
     
-    func newFrameDidRender() {
-        interactor.newFrameDidRender()
-    }
-    
-    func didBegin(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode) {
-        interactor.didBegin(enemyNode, contactWith: radiusNode)
-    }
-    
-    func didEnd(_ enemyNode: SCNNode, contactWith radiusNode: SCNNode) {
-        interactor.didEnd(enemyNode, contactWith: radiusNode)
-    }
-    
-    func set(_ value: BattleValues, to number: Int) {
-        view.set(value, to: number)
-    }
-
-    func playButtonPressed() {
-        interactor.playGame()
-    }
-    
-    func stopButtonPressed() {
-        interactor.stopGame()
-    }
-
-}
-
-extension BattleFieldPresenter {
-    
-    func pressed(_ node: SCNNode) {
-        
-        let parentNode = getParentNodeFor(node)
-        
-        switch node.name {
-        case _ where node.name! == RecognitionNodes.sellSelectIcon.rawValue:
-            interactor.sellBuilding(on: parentNode.position)
-            interactor.hideTowerSelectionPanel()
-            
-        case _ where node.name! == RecognitionNodes.repairSelectIcon.rawValue:
-            interactor.repairBuilding(on: parentNode.position)
-            
-        case _ where node.name!.contains(RecognitionNodes.floor.rawValue):
-            interactor.hideTowerSelectionPanel()
-            
-        case _ where node.name!.contains(RecognitionNodes.groundSquare.rawValue):
-            interactor.showTowerSelectionPanel(on: parentNode.position)
-            
-        case _ where node.name!.contains(RecognitionNodes.selectIcon.rawValue):
-            let buildingType = Converter.toBuildingType(from: node.name!)!
-            interactor.build(buildingType, on: parentNode.position)
-            
-        case _ where node.name!.contains(RecognitionNodes.builtTower.rawValue):
-            interactor.showTowerSelectionPanel(on: parentNode.position)
-        default:
-            print("default case in BattleFieldPresenter")
-            break
-        }
-    }
-    
-    func getParentNodeFor(_ childNode: SCNNode) -> SCNNode {
-        var parentNode: SCNNode!
-        if childNode.parent?.parent != nil {
-            parentNode = getParentNodeFor(childNode.parent!)
-        } else {
-            parentNode = childNode
-        }
-        return parentNode
-    }
-}
-
-enum RecognitionNodes: String  {
-    case floor = "floor"
-    case groundSquare = "groundSquare"
-    case selectIcon = "SelectIcon"
-    case builtTower = "builtTower"
-    case sellSelectIcon = "sellSelectIcon"
-    case repairSelectIcon = "repairSelectIcon"
-}
-
-extension BattleFieldPresenter {
-    
+    /// func for map and pan camera
     func panGestureChanged(by translation: CGPoint) {
         let position = Converter.toPosition(from: translation)
         interactor.dragCamera(by: position)
     }
-    
     func panGestureEnded() {
         interactor.fixCurrentPosition()
     }
+    
+    /// game run loop
+    func update() {
+        interactor.update()
+    }
+    
+    /// nodes collisions
+    func didBegin(_ nodeA: SCNNode, contactWith nodeB: SCNNode) {
+        interactor.didBegin(nodeA, contactWith: nodeB)
+    }
+    func didEnd(_ nodeA: SCNNode, contactWith nodeB: SCNNode) {
+        interactor.didEnd(nodeA, contactWith: nodeB)
+    }
+    
+    /// func for display values to the topBarView
+    func displayValue(of valueType: BattleValues, to number: Int) {
+        view.displayValue(of: valueType, to: number)
+    }
+
+    /// user can stop and play the game
+    func playButtonPressed() {
+        interactor.playGame()
+    }
+    func stopButtonPressed() {
+        interactor.stopGame()
+    }
+    
+    /// func for handle pressed node by user
+    func pressedNode(_ node: SCNNode) {
+        interactor.pressedNode(node)
+    }
+
 }
+
+

@@ -18,8 +18,6 @@ struct Weak<Element> where Element: AnyObject {
 
     var wrappedValue: [Element] {
         get { storage.compactMap { $0.value } }
-        set {
-            storage = newValue.map { WeakObject($0) }
-        }
+        set { storage = newValue.map { WeakObject($0) } }
     }
 }

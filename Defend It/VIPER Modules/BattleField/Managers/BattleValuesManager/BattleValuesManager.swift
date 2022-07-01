@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol BattleValuesManagerDelegate: AnyObject {
+    func livesAreOver()
+}
+
 protocol BattleValuesManager {
     func increase(_ value: BattleValues, by number: Int)
     func reduce(_ value: BattleValues, by number: Int)
@@ -15,9 +19,10 @@ protocol BattleValuesManager {
 }
 
 class BattleValuesManagerImpl: BattleValuesManager {
-    private var coins: Int = 3200
+    private var coins: Int = 320
     private var lives: Int = 10
     private var points: Int = 0
+    weak var delegate: BattleValuesManagerDelegate!
     
     func increase(_ value: BattleValues, by number: Int) {
         switch value {
