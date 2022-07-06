@@ -21,7 +21,7 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         let meadowManager = MeadowManagerImpl(dataManager.battleFieldSize)
         let buildingsManager = BuildingsManagerImpl(dataManager.battleFieldSize)
         let enemiesManager = EnemiesManagerImpl(dataManager.battleFieldSize)
-        let battleValuesManager = BattleValuesManagerImpl()
+        let battleValuesManager = BattleManagerImpl()
         let camerasManager = CamerasManagerImpl()
         
         // init and assembly battle

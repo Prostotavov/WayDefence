@@ -52,13 +52,19 @@ class BattleImpl: MeadowManagerDelagate, BuildingsManagerDelegate, Battle {
     var meadowManager: MeadowManager!
     var buildingsManager: BuildingsManager!
     var enemiesManager: EnemiesManager!
-    var battleValuesManager: BattleValuesManager!
+    var battleValuesManager: BattleManager!
     
     weak var delegate: BattleDelegate!
+    
+    var battleCounter: Int = 0
     
     init() {
         battleState = .pause
         loadBuildngs()
+    }
+    
+    func getBattleCounter() -> Int {
+        battleCounter
     }
     
     func displayBattleValues() {
@@ -69,13 +75,15 @@ class BattleImpl: MeadowManagerDelagate, BuildingsManagerDelegate, Battle {
     
     func startBattle() {
         changeBattleState(into: .pause)
-        enemiesManager.addEnemiesToScene()
+//        enemiesManager.addEnemiesToScene()
         meadowManager.addGroundToScene()
     }
     
     func update() {
+        if battleState != .play {return}
         buildingsManager.updateCounter()
         enemiesManager.updateCounter()
+        battleCounter += 1
     }
     
     func loadBuildngs() {
@@ -171,7 +179,7 @@ extension BattleImpl {
 }
 
 // interactions
-extension BattleImpl: EnemiesManagerDelegate, BattleValuesManagerDelegate {
+extension BattleImpl: EnemiesManagerDelegate, BattleManagerDelegate {
     
     func enemyWounded(enemy: AnyEnemy) {
 //        print("sound")

@@ -35,6 +35,7 @@ class AnyEnemy: Enemy {
     
     // adding vars
     var counter: Int
+    var isActive: Bool
     
     init<T: Enemy>(_ object: T) {
         id = object.id
@@ -48,6 +49,7 @@ class AnyEnemy: Enemy {
         pointsMurderReward = object.pointsMurderReward
         // adding vars
         counter = 0
+        isActive = false
     }
     
     func setPath(_ path: [SCNVector3]) {

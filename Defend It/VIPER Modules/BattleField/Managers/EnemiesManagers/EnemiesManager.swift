@@ -14,7 +14,6 @@ enum EnemiesStates {
 
 protocol EnemiesManager {
     
-    var enemies: Set<AnyEnemy> {get}
     func removeEnemy(_ enemy: AnyEnemy)
     func prohibitWalking(On coordination: (Int, Int))
     func allowWalking(On coordination: (Int, Int))
@@ -29,186 +28,103 @@ protocol EnemiesManager {
 protocol EnemiesManagerDelegate: AnyObject {
     func enemyReachedCastle()
     func addNodeToScene(_ node: SCNNode)
+    func getBattleCounter() -> Int
 }
 
-class EnemiesManagerImpl: EnemiesManager {
-    var battleFieldSize: Int!
-    var enemies = Set<AnyEnemy>()
-    var enemyPositionManager: EnemyPositionManager!
+class EnemiesManagerImpl: EnemiesManager, EnemiesWaveDelegate, BatttleMissionDelegate {
     
-    var counter: Int = 0
+    
+    var battleFieldSize: Int!
     var enemiesState: EnemiesStates!
     
     weak var delegate: EnemiesManagerDelegate!
+
     
+    let battleMision = Battle01()
+    var wavesCounter: Int = 0
+
     init(_ battleFieldSize: Int) {
         self.battleFieldSize = battleFieldSize
-        enemiesState = .inactive
-        enemyPositionManager = EnemyPositionManagerImpl(battleFieldSize)
-        createEnemies()
-        setupEnemies()
+        battleMision.delegate = self
+    }
+}
+
+extension EnemiesManagerImpl {
+    func enemyReachedCastle() {
+        delegate.enemyReachedCastle()
     }
     
-    func addEnemiesToScene() {
-        for enemy in enemies {
-            delegate.addNodeToScene(enemy.enemyNode)
+    func addNodeToScene(_ node: SCNNode) {
+        delegate.addNodeToScene(node)
+    }
+    
+    func removeEnemy(_ enemy: AnyEnemy) {
+        for wave in battleMision.enemiesWaves {
+            if wave.startFrame > wavesCounter {continue}
+            wave.removeEnemy(enemy)
         }
     }
     
     func removeEnemies() {
-        enemies.removeAll()
+        for wave in battleMision.enemiesWaves {
+            if wave.startFrame > wavesCounter {continue}
+            wave.removeEnemies()
+        }
     }
     
-    func createEnemies() {
-        for _ in 0..<1 {
-            create(.orc, with: .firstLevel)
-            create(.troll, with: .firstLevel)
-            create(.goblin, with: .firstLevel)
+    func addEnemiesToScene() {
+        for wave in battleMision.enemiesWaves {
+            if wave.startFrame > wavesCounter {continue}
+            wave.addEnemiesToScene()
+        }
+    }
+}
 
-            create(.orc, with: .secondLevel)
-            create(.troll, with: .secondLevel)
-            create(.goblin, with: .secondLevel)
-
-            create(.orc, with: .thirdLevel)
-            create(.troll, with: .thirdLevel)
-            create(.goblin, with: .thirdLevel)
-        }
-    }
-    
-    func create(_ rase: EnemyRaces, with level: EnemyLevels) {
-        let enemy = AbstractFactoryEnemiesImpl.defaultFactory.create(rase, with: level)
-        addPhysicsBody(for: enemy)
-        enemies.insert(enemy)
-    }
-    
-    func addPhysicsBody(for enemy: AnyEnemy) {
-        let radius = 0.1
-        let physicsShape = SCNPhysicsShape(geometry: SCNSphere(radius: radius))
-        let physicsBody = SCNPhysicsBody(type: .kinematic, shape: physicsShape)
-        physicsBody.isAffectedByGravity = false
-        physicsBody.categoryBitMask = 2
-        enemy.enemyNode.physicsBody = physicsBody
-    }
-    
-    func setupEnemies() {
-        for enemy in enemies {
-            enemy.enemyNode.position = enemyPositionManager.culculateStartPosition()
-            enemy.path = enemyPositionManager.calculatePath(for: enemy)
-        }
-    }
-    
-    func removeEnemy(_ enemy: AnyEnemy) {
-        enemy.enemyNode.removeFromParentNode()
-        enemies.remove(enemy)
-    }
-    
-    private func runOneSquare(_ enemy: AnyEnemy, to location: SCNVector3) {
-        var duration: TimeInterval
-        if counter == 0 {
-            duration = getDurationForStepAfterBuilding(for: enemy)
-        } else {
-            duration = Converter.toTimeInterval(from: enemy.speed)
-        }
-        enemy.counter += Converter.toCounter(from: duration)
-        let action = SCNAction.move(to: location, duration: duration)
-        enemy.enemyNode.removeAllActions()
-        enemy.enemyNode.runAction(action)
-    }
-    
+extension EnemiesManagerImpl {
     func prohibitWalking(On coordination: (Int, Int)) {
-        resetEnemyCounter()
-        counter = 0
-        enemyPositionManager.prohibitWalking(On: coordination)
-        runEnemies()
+        for wave in battleMision.enemiesWaves {
+            wave.prohibitWalking(On: coordination)
+        }
     }
     
     func allowWalking(On coordination: (Int, Int)) {
-        resetEnemyCounter()
-        counter = 0
-        enemyPositionManager.allowWalking(On: coordination)
-        runEnemies()
-    }
-    
-    func stopAllEnemies() {
-        enemiesState = .inactive
-        resetEnemyCounter()
-        counter = 0
-        enemies.map{$0.enemyNode.removeAllActions()}
-    }
-    
-    func runAllEnemies() {
-        enemiesState = .active
-        resetEnemyCounter()
-        counter = 0
-        runEnemies()
-    }
-    
-    func runEnemies() {
-        if enemiesState == .inactive {return}
-        for enemy in enemies {
-            let path = enemyPositionManager.calculatePath(for: enemy)
-            enemy.setPath(path)
+        for wave in battleMision.enemiesWaves {
+            wave.allowWalking(On: coordination)
         }
-    }
-
-}
-
-extension EnemiesManagerImpl {
-    
-    func resetEnemyCounter() {
-        for enemy in enemies {
-            enemy.counter = 0
-        }
-    }
-    
-    func getDurationForStepAfterBuilding<T: Enemy>(for enemy: T) -> TimeInterval {
-        let distination = Converter.toDistination(between: enemy.enemyNode.position, and: enemy.path.first!)
-        let defaultDuration = Converter.toTimeInterval(from: enemy.speed)
-        return  TimeInterval(defaultDuration * distination / 0.5)
-    }
-    
-    func enemyReachedCastle(enemy: AnyEnemy) {
-        enemy.enemyNode.removeFromParentNode()
-        removeEnemy(enemy)
-        delegate.enemyReachedCastle()
     }
     
     func updateCounter() {
-        
-        if enemiesState == .inactive {return}
-        
-        // MARK: biggest bad practice in my code
-        if counter%5 == 0 { runEnemies()}
-        
-        for enemy in enemies {
-            if counter == enemy.counter {
-                if enemy.path.isEmpty {
-                    enemyReachedCastle(enemy: enemy)
-                    continue
-                }
-                let location = enemy.path.first!
-                runOneSquare(enemy, to: location)
-                enemy.path.removeFirst()
+        wavesCounter += 1
+        for wave in battleMision.enemiesWaves {
+            if wave.startFrame > wavesCounter {continue}
+            if wave.startFrame == wavesCounter {
+                wave.runAllEnemies()
             }
-        }
-        counter+=1
-        // MARK: bad practice
-        if counter >= 99999 {
-            counter = 0
+            wave.updateCounter()
         }
     }
     
-}
-
-extension EnemiesManagerImpl {
-    
     func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy? {
-        for enemy in enemies {
-            if enemy.id.uuidString == enemyNode.name {
+        for wave in battleMision.enemiesWaves {
+            if wave.startFrame > wavesCounter {continue}
+            if let enemy = wave.getEnemyBy(enemyNode) {
                 return enemy
             }
         }
-        return enemies.first
+        return nil
+    }
+    
+    func stopAllEnemies() {
+        for wave in battleMision.enemiesWaves {
+            if wave.startFrame > wavesCounter {continue}
+            wave.stopAllEnemies()
+        }
+    }
+    
+    func runAllEnemies() {
+        for wave in battleMision.enemiesWaves {
+            if wave.startFrame > wavesCounter {continue}
+            wave.runAllEnemies()
+        }
     }
 }
-
