@@ -9,23 +9,10 @@ import SceneKit
 
 protocol BattleMission {
     var id: Int {get}
+    
+    var battleFieldSize: Int {get}
     var enemiesWaves: [EnemiesWave] {get set}
-}
-
-
-
-class BattleMissionImpl {
-    
-    var id: Int = 0
-    
-    var battleMeadow: [[GroundSquareImpl]] = []
-    var enemiesWaves: [EnemiesWave] = []
-    var battleValues: BattleValues!
-    
-    
-    func setId(id: Int) {
-        self.id = id
-    }
+    var battleMeadow: BattleMeadow {get}
 }
 
 

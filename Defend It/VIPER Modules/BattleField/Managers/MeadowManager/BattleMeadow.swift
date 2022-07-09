@@ -1,5 +1,5 @@
 //
-//  Ground.swift
+//  BattleMeadow.swift
 //  Defend It
 //
 //  Created by MacBook Pro on 26.03.22.
@@ -7,11 +7,11 @@
 
 import SceneKit
 
-protocol Ground {
+protocol BattleMeadow {
     var squares: [[GroundSquareImpl]]! {get set}
 }
 
-class GroundImpl: Ground, Equatable {
+class BattleMeadowImpl: BattleMeadow, Equatable {
     
     var squareScene: SCNScene!
     var squareNode: SCNNode!
@@ -46,7 +46,7 @@ class GroundImpl: Ground, Equatable {
         }
     }
     
-    static func == (lhs: GroundImpl, rhs: GroundImpl) -> Bool {
+    static func == (lhs: BattleMeadowImpl, rhs: BattleMeadowImpl) -> Bool {
         return lhs.squareScene == rhs.squareScene &&
         lhs.squareNode == rhs.squareNode &&
         lhs.squares == rhs.squares

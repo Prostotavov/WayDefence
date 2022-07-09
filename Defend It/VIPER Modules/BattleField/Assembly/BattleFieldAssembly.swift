@@ -16,14 +16,15 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         let interactor = BattleFieldInteractor()
         let router = BattleFieldRouter()
         
+        let battleMission = Battle01()
+        
         // init managers
-        let dataManager = DataManagerImpl()
-        let meadowManager = MeadowManagerImpl(dataManager.battleFieldSize)
-        let buildingsManager = BuildingsManagerImpl(dataManager.battleFieldSize)
-        let enemiesManager = EnemiesManagerImpl(dataManager.battleFieldSize)
+        let meadowManager = MeadowManagerImpl(ground: battleMission.battleMeadow)
+        let buildingsManager = BuildingsManagerImpl(battleMission.battleFieldSize)
+        let enemiesManager = EnemiesManagerImpl(battleMission.battleFieldSize)
         let battleValuesManager = BattleManagerImpl()
         let camerasManager = CamerasManagerImpl()
-        let battleMission = Battle01()
+        
         
         // init and assembly battle
         let battle = BattleImpl()

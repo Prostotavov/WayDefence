@@ -78,7 +78,7 @@
 		AACC7BF327FB66D00022384E /* EnemyNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BF227FB66D00022384E /* EnemyNodes.swift */; };
 		AAE886D327EE0FC800CA4E5D /* ScenePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886D227EE0FC800CA4E5D /* ScenePaths.swift */; };
 		AAE886D627EE115A00CA4E5D /* NodeNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886D527EE115A00CA4E5D /* NodeNames.swift */; };
-		AAE886EA27EEFF9800CA4E5D /* Ground.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886E827EEFF9800CA4E5D /* Ground.swift */; };
+		AAE886EA27EEFF9800CA4E5D /* BattleMeadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886E827EEFF9800CA4E5D /* BattleMeadow.swift */; };
 		AAE886EB27EEFF9800CA4E5D /* MeadowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886E927EEFF9800CA4E5D /* MeadowManager.swift */; };
 		AAE886EE27EEFFE000CA4E5D /* EnemyPositionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886ED27EEFFE000CA4E5D /* EnemyPositionManager.swift */; };
 		AAE886F327EF2DC500CA4E5D /* AbstractFactoryEnemies.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886F227EF2DC500CA4E5D /* AbstractFactoryEnemies.swift */; };
@@ -212,7 +212,7 @@
 		AACC7BF227FB66D00022384E /* EnemyNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyNodes.swift; sourceTree = "<group>"; };
 		AAE886D227EE0FC800CA4E5D /* ScenePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenePaths.swift; sourceTree = "<group>"; };
 		AAE886D527EE115A00CA4E5D /* NodeNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeNames.swift; sourceTree = "<group>"; };
-		AAE886E827EEFF9800CA4E5D /* Ground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ground.swift; sourceTree = "<group>"; };
+		AAE886E827EEFF9800CA4E5D /* BattleMeadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMeadow.swift; sourceTree = "<group>"; };
 		AAE886E927EEFF9800CA4E5D /* MeadowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeadowManager.swift; sourceTree = "<group>"; };
 		AAE886ED27EEFFE000CA4E5D /* EnemyPositionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyPositionManager.swift; sourceTree = "<group>"; };
 		AAE886F227EF2DC500CA4E5D /* AbstractFactoryEnemies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractFactoryEnemies.swift; sourceTree = "<group>"; };
@@ -282,6 +282,21 @@
 			path = BattleCreators;
 			sourceTree = "<group>";
 		};
+		87B606C328790D59003549AF /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				87CA3D4A28267CF1000F952F /* WeakPropertyWrapper.swift */,
+				AA7801BF27E200BA002C57E1 /* LaunchScreen.storyboard */,
+				AA7801B427E200B6002C57E1 /* AppDelegate.swift */,
+				AA1B66BE27F624E60092F6C8 /* TestFunctions.swift */,
+				875CB7DB28327D98003B4412 /* Extensions.swift */,
+				AAF4C9DA27E8DB0E00D5B6F8 /* Converter.swift */,
+				AA78022527E207C2002C57E1 /* DataManager.swift */,
+				AA7801B627E200B6002C57E1 /* SceneDelegate.swift */,
+			);
+			path = utilities;
+			sourceTree = "<group>";
+		};
 		87CA3D5228293CAA000F952F /* GameUtilitsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				87CA3D5628294F17000F952F /* BattleManager.swift */,
+				87ECCC592878E8A800E66C09 /* BattleMissionEnums.swift */,
 			);
 			path = BattleValuesManager;
 			sourceTree = "<group>";
@@ -312,19 +328,17 @@
 			children = (
 				87ECCC572878E87400E66C09 /* BattleMission.swift */,
 				87B606C02878FF9E003549AF /* BattleCreators */,
-				87ECCC552878E84F00E66C09 /* BattleMissionFactory.swift */,
-				87ECCC592878E8A800E66C09 /* BattleMissionEnums.swift */,
-				87ECCC5B2878E8D600E66C09 /* BattleMissions */,
+				87ECCC5B2878E8D600E66C09 /* Battles */,
 			);
 			path = BattleMission;
 			sourceTree = "<group>";
 		};
-		87ECCC5B2878E8D600E66C09 /* BattleMissions */ = {
+		87ECCC5B2878E8D600E66C09 /* Battles */ = {
 			isa = PBXGroup;
 			children = (
 				8711C631287564CA00E84876 /* Battle01.swift */,
 			);
-			path = BattleMissions;
+			path = Battles;
 			sourceTree = "<group>";
 		};
 		AA0B68B627E5B8750078003D /* AbstractFactoryBuildings */ = {
@@ -404,19 +418,12 @@
 			children = (
 				AAE886EF27EF2D6900CA4E5D /* Factories */,
 				AA7801E427E2011C002C57E1 /* VIPER Modules */,
-				AA7801B427E200B6002C57E1 /* AppDelegate.swift */,
-				AA1B66BE27F624E60092F6C8 /* TestFunctions.swift */,
-				875CB7DB28327D98003B4412 /* Extensions.swift */,
-				AAF4C9DA27E8DB0E00D5B6F8 /* Converter.swift */,
 				87ECCC522878E7DA00E66C09 /* BattleMission */,
-				87CA3D4A28267CF1000F952F /* WeakPropertyWrapper.swift */,
-				AA78022527E207C2002C57E1 /* DataManager.swift */,
-				AA7801B627E200B6002C57E1 /* SceneDelegate.swift */,
+				87B606C328790D59003549AF /* utilities */,
+				AA7801C227E200BA002C57E1 /* Info.plist */,
 				AAE886D427EE112200CA4E5D /* Enums */,
 				AAFD65E927E4FFC500450C52 /* art.scnassets */,
 				AA7801BD27E200BA002C57E1 /* Assets.xcassets */,
-				AA7801BF27E200BA002C57E1 /* LaunchScreen.storyboard */,
-				AA7801C227E200BA002C57E1 /* Info.plist */,
 			);
 			path = "Defend It";
 			sourceTree = "<group>";
@@ -579,7 +586,7 @@
 			isa = PBXGroup;
 			children = (
 				AAE886E927EEFF9800CA4E5D /* MeadowManager.swift */,
-				AAE886E827EEFF9800CA4E5D /* Ground.swift */,
+				AAE886E827EEFF9800CA4E5D /* BattleMeadow.swift */,
 				AAF4C9DC27E8E6A200D5B6F8 /* GroundSquare.swift */,
 			);
 			path = MeadowManager;
@@ -588,6 +595,7 @@
 		AAE886EF27EF2D6900CA4E5D /* Factories */ = {
 			isa = PBXGroup;
 			children = (
+				87ECCC552878E84F00E66C09 /* BattleMissionFactory.swift */,
 				AAE886F027EF2D9200CA4E5D /* AbstractFactoryEnemies */,
 				AA0B68B627E5B8750078003D /* AbstractFactoryBuildings */,
 			);
@@ -881,7 +889,7 @@
 				AA7801B527E200B6002C57E1 /* AppDelegate.swift in Sources */,
 				AAE886F327EF2DC500CA4E5D /* AbstractFactoryEnemies.swift in Sources */,
 				87CA3D512829024C000F952F /* BottomBarView.swift in Sources */,
-				AAE886EA27EEFF9800CA4E5D /* Ground.swift in Sources */,
+				AAE886EA27EEFF9800CA4E5D /* BattleMeadow.swift in Sources */,
 				8711C62A286FACA300E84876 /* EnemiesWave.swift in Sources */,
 				AA78020227E20291002C57E1 /* HomePageRouter.swift in Sources */,
 				AA78020027E20291002C57E1 /* HomePageInteractorOutput.swift in Sources */,

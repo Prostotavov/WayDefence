@@ -10,20 +10,30 @@ import SceneKit
 final class Battle01: BattleMission {
     var id: Int = 1
     
-    var battleFieldWidth: Int = 7
-    var bettleFieldHeight: Int = 7
+    var battleFieldSize: Int = 7
     
+    
+    var battleMeadow: BattleMeadow
     var enemiesWaves: [EnemiesWave] = []
+    var battleValues: BattleValues!
+    
     let wavesCreator = EnemyWavesCreatorImpl()
-    let meadowCreator = BattleMeadowCreatorImpl()
+    let meadowCreator: BattleMeadowCreator = BattleMeadowCreatorImpl()
     let battlevaluesCreator = BattleMeadowCreatorImpl()
     
     init() {
+        battleMeadow = BattleMeadowImpl(size: battleFieldSize)
+        createMeadow()
         createWave()
     }
     
     func createMeadow() {
-        
+        meadowCreator.add(groundType: .grass, on: [(0,0), (0,1)])
+        meadowCreator.add(groundType: .snow, on: [(1,0), (1,1)])
+        meadowCreator.add(groundType: .lava, on: [(2,0), (2,1)])
+        meadowCreator.add(groundType: .water, on: [(3,0), (3,1)])
+        meadowCreator.add(groundType: .swamp, on: [(4,0), (4,1)])
+        battleMeadow = meadowCreator.getBattleMeadow()
     }
     
     func setupBattleValues() {

@@ -17,21 +17,16 @@ protocol MeadowManager {
 }
 
 class MeadowManagerImpl: MeadowManager {
-    var ground: Ground!
-    var battleFieldSize: Int!
+    var battleMeadow: BattleMeadow!
+    
     weak var delegate: MeadowManagerDelagate!
     
-    init(_ battleFieldSize: Int) {
-        self.battleFieldSize = battleFieldSize
-        createGround(size: battleFieldSize)
-    }
-    
-    private func createGround(size: Int) {
-        ground = GroundImpl(size: size)
+    init(ground: BattleMeadow) {
+        self.battleMeadow = ground
     }
     
     func addGroundToScene() {
-        for squaresRow in ground.squares {
+        for squaresRow in battleMeadow.squares {
             for square in squaresRow {
                 delegate.addNodeToScene(square.scnNode)
             }
@@ -39,6 +34,6 @@ class MeadowManagerImpl: MeadowManager {
     }
     
     func getGroundSquares() ->  [[GroundSquareImpl]] {
-        ground.squares
+        battleMeadow.squares
     }
 }
