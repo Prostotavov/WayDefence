@@ -23,6 +23,7 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         let enemiesManager = EnemiesManagerImpl(dataManager.battleFieldSize)
         let battleValuesManager = BattleManagerImpl()
         let camerasManager = CamerasManagerImpl()
+        let battleMission = Battle01()
         
         // init and assembly battle
         let battle = BattleImpl()
@@ -31,6 +32,7 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         battle.buildingsManager = buildingsManager
         battle.battleValuesManager = battleValuesManager
         battle.delegate = interactor
+        battle.battleMission = battleMission
         
         // assembly in/out for viper modules
         viewController.output = presenter

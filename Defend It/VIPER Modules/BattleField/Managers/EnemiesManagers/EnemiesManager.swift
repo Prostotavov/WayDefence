@@ -31,7 +31,7 @@ protocol EnemiesManagerDelegate: AnyObject {
     func getBattleCounter() -> Int
 }
 
-class EnemiesManagerImpl: EnemiesManager, EnemiesWaveDelegate, BatttleMissionDelegate {
+class EnemiesManagerImpl: EnemiesManager, EnemiesWaveDelegate, EnemyWavesCreatorDelegate {
     
     
     var battleFieldSize: Int!
@@ -45,7 +45,7 @@ class EnemiesManagerImpl: EnemiesManager, EnemiesWaveDelegate, BatttleMissionDel
 
     init(_ battleFieldSize: Int) {
         self.battleFieldSize = battleFieldSize
-        battleMision.delegate = self
+        battleMision.wavesCreator.delegate = self
     }
 }
 

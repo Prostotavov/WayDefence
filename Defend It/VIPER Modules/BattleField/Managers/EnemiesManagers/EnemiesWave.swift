@@ -24,6 +24,8 @@ protocol EnemiesWave {
     func addEnemiesToScene()
     func addOneRaceWave(race: EnemyRaces, level: EnemyLevels, count: Int, intervalBetweenEnemies: Int, startFrame: Int)
     var startFrame: Int {get set}
+    
+    func setupDelegate(delegate: EnemiesWaveDelegate)
 }
 
 class EnemiesWaveImpl: EnemiesWave, OneEnemiesTypeWaveDelegate {
@@ -35,6 +37,10 @@ class EnemiesWaveImpl: EnemiesWave, OneEnemiesTypeWaveDelegate {
     
     init(startFrame: Int) {
         self.startFrame = startFrame
+    }
+    
+    func setupDelegate(delegate: EnemiesWaveDelegate) {
+        self.delegate = delegate
     }
     
     func addOneRaceWave(race: EnemyRaces, level: EnemyLevels, count: Int, intervalBetweenEnemies: Int, startFrame: Int) {

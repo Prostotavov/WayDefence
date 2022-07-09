@@ -54,6 +54,7 @@ class BattleImpl: MeadowManagerDelagate, BuildingsManagerDelegate, Battle {
     var enemiesManager: EnemiesManager!
     var battleValuesManager: BattleManager!
     
+    var battleMission: BattleMission!
     weak var delegate: BattleDelegate!
     
     var battleCounter: Int = 0

@@ -57,8 +57,3 @@ class BattleManagerImpl: BattleManager {
     }
 }
 
-enum BattleValues {
-    case coins
-    case lives
-    case points
-}
