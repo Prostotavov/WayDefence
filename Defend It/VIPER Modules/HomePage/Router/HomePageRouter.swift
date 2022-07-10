@@ -17,4 +17,10 @@ class HomePageRouter: HomePageRouterInput {
         battleFieldVC.modalPresentationStyle = .fullScreen
         view.present(battleFieldVC, animated: true)
     }
+    
+    func showBattleLoadView() {
+        let battleLoadVC = BattleLoadViewController()
+        battleLoadVC.modalPresentationStyle = .fullScreen
+        view.present(battleLoadVC, animated: true)
+    }
 }

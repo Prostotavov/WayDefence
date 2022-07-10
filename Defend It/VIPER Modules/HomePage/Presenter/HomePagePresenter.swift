@@ -14,7 +14,8 @@ class HomePagePresenter: HomePageViewOutput, HomePageInteractorOutput {
     var router: HomePageRouterInput!
     
     func startGame() {
-        router.showBattleField()
+//        router.showBattleField()
+        router.showBattleLoadView()
     }
     
 }

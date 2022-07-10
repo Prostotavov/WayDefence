@@ -9,4 +9,5 @@ import Foundation
 
 protocol HomePageRouterInput: AnyObject {
     func showBattleField()
+    func showBattleLoadView()
 }

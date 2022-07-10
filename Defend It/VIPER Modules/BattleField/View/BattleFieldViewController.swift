@@ -9,7 +9,11 @@ import UIKit
 import SceneKit
 import SpriteKit
 
-class BattleFieldViewController: UIViewController, BattleFieldViewInput {
+protocol BattleFieldLoadDelegate: UIViewController {
+    func assemblyModule()
+}
+
+class BattleFieldViewController: UIViewController, BattleFieldViewInput, BattleFieldLoadDelegate {
     
     var output: BattleFieldViewOutput!
     var assembler: BattleFieldAssemblyProtocol = BattleFieldAssembly()
@@ -22,11 +26,14 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput {
     
     override func loadView() {
         super.loadView()
-        assembler.assembly(with: self)
         setupScene()
         output.loadView()
         scene.physicsWorld.contactDelegate = self
         sceneView.delegate = self
+    }
+    
+    func assemblyModule() {
+        assembler.assembly(with: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
