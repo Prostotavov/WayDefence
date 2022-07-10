@@ -21,5 +21,5 @@ protocol BattleFieldViewInput: AnyObject {
     func setViewVerticalOrientation()
     
     /// funcs for display battle values on the TopBarView
-    func displayValue(of valueType: BattleValues, to number: Int)
+    func displayValue(of valueType: BattleValueTypes, to number: Int)
 }

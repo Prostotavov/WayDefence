@@ -12,48 +12,40 @@ protocol BattleManagerDelegate: AnyObject {
 }
 
 protocol BattleManager {
-    func increase(_ value: BattleValues, by number: Int)
-    func reduce(_ value: BattleValues, by number: Int)
-    func set(_ value: BattleValues, to number: Int)
-    func get(_ value: BattleValues) -> Int
+    func increase(_ value: BattleValueTypes, by number: Int)
+    func reduce(_ value: BattleValueTypes, by number: Int)
+    func set(_ value: BattleValueTypes, to number: Int)
+    func get(_ value: BattleValueTypes) -> Int
 }
 
 class BattleManagerImpl: BattleManager {
-    private var coins: Int = 320
-    private var lives: Int = 10
-    private var points: Int = 0
+    var battleValues: BattleValues!
+    
     weak var delegate: BattleManagerDelegate!
     
-    func increase(_ value: BattleValues, by number: Int) {
-        switch value {
-        case .coins: coins += number
-        case .lives: lives += number
-        case .points: points += number
-        }
+    init(battleValues: BattleValues) {
+        self.battleValues = battleValues
     }
     
-    func reduce(_ value: BattleValues, by number: Int) {
-        switch value {
-        case .coins: coins -= number
-        case .lives: lives -= number
-        case .points: points -= number
-        }
+    func increase(_ value: BattleValueTypes, by number: Int) {
+        battleValues.increase(value, by: number)
     }
     
-    func set(_ value: BattleValues, to number: Int) {
-        switch value {
-        case .coins: coins = number
-        case .lives: lives = number
-        case .points: points = number
-        }
+    func reduce(_ value: BattleValueTypes, by number: Int) {
+        battleValues.reduce(value, by: number)
+        if areLivesOver() {delegate.livesAreOver()}
     }
     
-    func get(_ value: BattleValues) -> Int {
-        switch value {
-        case .coins: return coins
-        case .lives: return lives
-        case .points: return points 
-        }
+    func set(_ value: BattleValueTypes, to number: Int) {
+        battleValues.set(value, to: number)
+    }
+    
+    func get(_ value: BattleValueTypes) -> Int {
+        battleValues.get(value)
+    }
+    
+    func areLivesOver() -> Bool {
+        battleValues.get(.lives) <= 0
     }
 }
 

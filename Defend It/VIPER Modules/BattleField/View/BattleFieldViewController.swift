@@ -149,7 +149,7 @@ extension BattleFieldViewController {
         ])
     }
     
-    func displayValue(of valueType: BattleValues, to number: Int) {
+    func displayValue(of valueType: BattleValueTypes, to number: Int) {
         topBarView.displayValue(of: valueType, to: number)
     }
 }

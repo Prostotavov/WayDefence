@@ -32,7 +32,7 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
         battle.displayBattleValues()
     }
     
-    func displayValues(of valueType: BattleValues, to number: Int) {
+    func displayValues(of valueType: BattleValueTypes, to number: Int) {
         output.displayValue(of: valueType, to: number)
     }
 }

@@ -22,7 +22,7 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         let meadowManager = MeadowManagerImpl(ground: battleMission.battleMeadow)
         let buildingsManager = BuildingsManagerImpl(battleMission.battleFieldSize)
         let enemiesManager = EnemiesManagerImpl(battleMission.battleFieldSize)
-        let battleValuesManager = BattleManagerImpl()
+        let battleValuesManager = BattleManagerImpl(battleValues: battleMission.battleValues)
         let camerasManager = CamerasManagerImpl()
         
         
@@ -52,7 +52,7 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         buildingsManager.delegate = battle
         enemiesManager.delegate = battle
         meadowManager.delegate = battle
-        
+        battleValuesManager.delegate = battle
     }
     
 }

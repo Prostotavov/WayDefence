@@ -12,5 +12,5 @@ protocol BattleValuesCreator {
 }
 
 class BattleValuesCreatorImpl: BattleValuesCreator {
-    
+    let battleValues: BattleValues = BattleValuesImpl()
 }

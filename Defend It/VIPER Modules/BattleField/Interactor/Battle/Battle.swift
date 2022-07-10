@@ -18,7 +18,7 @@ enum BattleStates: String {
 protocol BattleDelegate: AnyObject {
     func addNodeToScene(_ node: SCNNode)
     func removeNodeFromScene(with name: String)
-    func displayValues(of value: BattleValues, to number: Int)
+    func displayValues(of value: BattleValueTypes, to number: Int)
 }
 
 protocol Battle {
@@ -120,6 +120,7 @@ extension BattleImpl {
         
     }
     func finishBattle() {
+        stopBattle()
         changeBattleState(into: .lose)
     }
     func speedUpBattle(by times: Int) {

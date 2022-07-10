@@ -7,6 +7,15 @@
 
 import SceneKit
 
+enum battleIds: Int {
+    case first = 1
+    case second = 2
+    case third = 3
+    case four = 4
+    case five = 5
+    case six = 6
+}
+
 protocol FactoryBattleMissionDelegate: AnyObject {
     func enemyReachedCastle()
     func addNodeToScene(_ node: SCNNode)
