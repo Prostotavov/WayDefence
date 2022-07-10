@@ -272,6 +272,14 @@
 			path = CamerasManager;
 			sourceTree = "<group>";
 		};
+		878DDC99287ABE3800B37154 /* DataManagers */ = {
+			isa = PBXGroup;
+			children = (
+				87ECCC522878E7DA00E66C09 /* BattleMission */,
+			);
+			path = DataManagers;
+			sourceTree = "<group>";
+		};
 		87B606C02878FF9E003549AF /* BattleCreators */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,7 +426,7 @@
 			children = (
 				AAE886EF27EF2D6900CA4E5D /* Factories */,
 				AA7801E427E2011C002C57E1 /* VIPER Modules */,
-				87ECCC522878E7DA00E66C09 /* BattleMission */,
+				878DDC99287ABE3800B37154 /* DataManagers */,
 				87B606C328790D59003549AF /* utilities */,
 				AA7801C227E200BA002C57E1 /* Info.plist */,
 				AAE886D427EE112200CA4E5D /* Enums */,

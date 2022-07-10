@@ -227,7 +227,7 @@ extension OneEnemiesTypeWaveImpl {
                 return enemy
             }
         }
-        return enemies.first
+        return nil
     }
     
 }

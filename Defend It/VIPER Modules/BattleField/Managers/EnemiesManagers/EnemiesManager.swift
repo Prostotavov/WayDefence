@@ -106,7 +106,7 @@ extension EnemiesManagerImpl {
     
     func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy? {
         for wave in battleMision.enemiesWaves {
-            if wave.startFrame > wavesCounter {continue}
+            if wave.startFrame > wavesCounter {continue} ///  not a prerequisite. if it causes an error in the future, you can delete it
             if let enemy = wave.getEnemyBy(enemyNode) {
                 return enemy
             }

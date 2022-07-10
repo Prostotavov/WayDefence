@@ -34,6 +34,7 @@ protocol BuildingsManager {
     func add(_ enemy: AnyEnemy, toBuildingWith coordinate: (Int, Int))
     func remove(_ enemy: AnyEnemy, fromBuildingWith coordinate: (Int, Int))
 
+    func resetPhysicsBody(by coordinate: (Int, Int))
 }
 
 class BuildingsManagerImpl: BuildingsManager {
@@ -56,10 +57,6 @@ class BuildingsManagerImpl: BuildingsManager {
         let row: [Building?] = Array(repeating: nil, count: battleFieldSize)
         buildings = Array(repeating: row, count: battleFieldSize)
     }
-    
-
-    
-
 }
 
 // funcs for build, upgrage and remove towers
@@ -125,12 +122,14 @@ extension BuildingsManagerImpl {
 // funs for atack enemy
 extension BuildingsManagerImpl {
     func add(_ enemy: AnyEnemy, toBuildingWith coordinate: (Int, Int)) {
+        guard let _ = buildings[coordinate.0][coordinate.1] else {return}
         if buildings[coordinate.0][coordinate.1]!.enemiesInRadius
             .contains(where: {$0.id == enemy.id}){return}
         buildings[coordinate.0][coordinate.1]!.enemiesInRadius.append(enemy)
     }
     
     func remove(_ enemy: AnyEnemy, fromBuildingWith coordinate: (Int, Int)) {
+        guard let _ = buildings[coordinate.0][coordinate.1] else {return}
         let remainingEnemies = buildings[coordinate.0][coordinate.1]!.enemiesInRadius.filter{$0.id != enemy.id}
         buildings[coordinate.0][coordinate.1]!.enemiesInRadius = remainingEnemies
     }
@@ -183,7 +182,11 @@ extension BuildingsManagerImpl {
         building.buildingNode.addChildNode(physicsRadiusNode)
     }
     
-
+    func resetPhysicsBody(by coordinate: (Int, Int)) {
+        guard let _ = buildings[coordinate.0][coordinate.1] else {return}
+        buildings[coordinate.0][coordinate.1]!.buildingNode.childNode(withName: NodeNames.physicsRadiusNode.rawValue, recursively: true)?.removeFromParentNode()
+        addPhysicsBody(for: buildings[coordinate.0][coordinate.1]!)
+    }
     
 }
 

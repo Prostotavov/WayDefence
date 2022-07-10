@@ -68,7 +68,6 @@ extension EnemiesWaveImpl {
     
     func allowWalking(On coordination: (Int, Int)) {
         for wave in oneEnemiesTypeWaves {
-            if wave.getStartCounter() > waveCounter {continue}
             wave.allowWalking(On: coordination)
         }
     }
@@ -112,7 +111,7 @@ extension EnemiesWaveImpl {
     
     func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy? {
         for wave in oneEnemiesTypeWaves {
-            if wave.getStartCounter() > waveCounter {continue}
+            if wave.getStartCounter() > waveCounter {continue} ///  not a prerequisite. if it causes an error in the future, you can delete it
             if let enemy = wave.getEnemyBy(enemyNode) {
                 return enemy
             }

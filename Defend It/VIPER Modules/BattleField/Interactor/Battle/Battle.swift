@@ -253,8 +253,16 @@ extension BattleImpl {
             enemyNode = nodeA
             towerRadiusNode = nodeB
         }
+        /// It is absolutely necessary that the parent of the node is a tower.
+        /// If this is not the case, it means that the physics engine handled the collision of objects incorrectly
+        if getParentNodeFor(towerRadiusNode).name!.contains("Radius") {return}
         let coordinate = Converter.toCoordinate(from: getParentNodeFor(towerRadiusNode).position)
         guard let enemy = enemiesManager.getEnemyBy(enemyNode) else {return}
+        /// if nodeA is a radius, then touching objects is handled incorrectly. So you need to re-set the physical body for the radius
+        if nodeA.name!.contains("Radius") {
+            let coordinate = Converter.toCoordinate(from: getParentNodeFor(nodeA).position)
+            buildingsManager.resetPhysicsBody(by: coordinate)
+        }
         buildingsManager.add(enemy, toBuildingWith: coordinate)
     }
     
