@@ -7,7 +7,21 @@
 
 import UIKit
 
+protocol BattleFieldAssemblyDelagate: AnyObject {
+    func viperModulesInitCompleted()
+    func managersInitCompleted()
+    func battleMissionCreated()
+    func battleLogicCreated()
+    func viewAssemblyCompleted()
+}
+
 class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
+    
+    weak var delegate: BattleFieldAssemblyDelagate!
+    
+    func setDelegate(delegate: BattleFieldAssemblyDelagate) {
+        self.delegate = delegate
+    }
     
     func assembly(with viewController: BattleFieldViewController) {
         
@@ -15,8 +29,11 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         let presenter = BattleFieldPresenter()
         let interactor = BattleFieldInteractor()
         let router = BattleFieldRouter()
+        delegate.viperModulesInitCompleted()
+        
         
         let battleMission = Battle01()
+        delegate.battleMissionCreated()
         
         // init managers
         let meadowManager = MeadowManagerImpl(ground: battleMission.battleMeadow)
@@ -24,10 +41,12 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         let enemiesManager = EnemiesManagerImpl(battleMission.battleFieldSize)
         let battleValuesManager = BattleManagerImpl(battleValues: battleMission.battleValues)
         let camerasManager = CamerasManagerImpl()
+        delegate.managersInitCompleted()
         
         
         // init and assembly battle
         let battle = BattleImpl()
+        delegate.battleLogicCreated()
         battle.meadowManager = meadowManager
         battle.enemiesManager = enemiesManager
         battle.buildingsManager = buildingsManager
@@ -53,6 +72,8 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         enemiesManager.delegate = battle
         meadowManager.delegate = battle
         battleValuesManager.delegate = battle
+        
+        delegate.viewAssemblyCompleted()
     }
     
 }

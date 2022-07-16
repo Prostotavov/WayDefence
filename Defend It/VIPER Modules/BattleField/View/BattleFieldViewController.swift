@@ -10,7 +10,7 @@ import SceneKit
 import SpriteKit
 
 protocol BattleFieldLoadDelegate: UIViewController {
-    func assemblyModule()
+    func assemblyModule(delegate: BattleFieldAssemblyDelagate)
 }
 
 class BattleFieldViewController: UIViewController, BattleFieldViewInput, BattleFieldLoadDelegate {
@@ -32,7 +32,8 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput, BattleF
         sceneView.delegate = self
     }
     
-    func assemblyModule() {
+    func assemblyModule(delegate: BattleFieldAssemblyDelagate) {
+        assembler.setDelegate(delegate: delegate)
         assembler.assembly(with: self)
     }
     

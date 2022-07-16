@@ -13,30 +13,28 @@ class BattleLoadViewController: UIViewController {
     var battleFieldVC: BattleFieldLoadDelegate = BattleFieldViewController()
     
     // UIView's
-    var headingLabel: UILabel = UILabel()
-    var timeLabel: UILabel = UILabel()
+    var loadProgressBar: UIProgressView = UIProgressView()
+    var progressLabel: UILabel = UILabel()
     
     // others vars
-    var timer = Timer()
-    var loadTime: Int = 5
+    var loadProgress: Float = 0.0
     
     override func viewDidLoad() {
         view.backgroundColor = .blue
+        setLoadProgressBar()
         setHeadingLabel()
-        setTimeLabel()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setTimer()
         DispatchQueue.global(qos: .utility).async {
             self.loadBattleField()
         }
     }
     
     func loadBattleField() {
-        battleFieldVC.assemblyModule()
+        battleFieldVC.assemblyModule(delegate: self)
     }
     
     func showBattleField() {
@@ -48,48 +46,80 @@ class BattleLoadViewController: UIViewController {
 
 // funcs for timer
 extension BattleLoadViewController {
-    func setTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self,
-                               selector: #selector(self.updateTimer),userInfo: nil, repeats: true)
-    }
     
-    @objc func updateTimer() {
-        loadTime -= 1
-        timeLabel.text = "\(loadTime) seconds"
-        if loadTime == 0 {
-            timer.invalidate()
-            showBattleField()
-        }
-    }
 }
 
 // funcs for set labels
 extension BattleLoadViewController {
-    func setHeadingLabel() {
-        headingLabel.text = "The battle will begin in"
-        headingLabel.textColor = .white
-        headingLabel.textAlignment = .center
-        headingLabel.font = headingLabel.font.withSize(25)
-        
-        view.addSubview(headingLabel)
-        headingLabel.translatesAutoresizingMaskIntoConstraints = false
+    func setLoadProgressBar() {
+        loadProgressBar.progressTintColor = .white
+        loadProgressBar.backgroundColor = .gray
+        loadProgressBar.progress = 0
+        view.addSubview(loadProgressBar)
+        loadProgressBar.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            headingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            headingLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100)
+            loadProgressBar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadProgressBar.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100),
+            loadProgressBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            loadProgressBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])
     }
     
-    func setTimeLabel() {
-        timeLabel.text = "\(loadTime) seconds"
-        timeLabel.textColor = .white
-        timeLabel.textAlignment = .center
-        timeLabel.font = timeLabel.font.withSize(25)
+    func changeProgress(into value: Float) {
+        loadProgress += value
+        loadProgressBar.progress = loadProgress
+    }
+    
+    func setHeadingLabel() {
+        progressLabel.text = "The battle will begin in"
+        progressLabel.textColor = .white
+        progressLabel.textAlignment = .center
+        progressLabel.font = progressLabel.font.withSize(25)
         
-        view.addSubview(timeLabel)
-        timeLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(progressLabel)
+        progressLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            timeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            timeLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            progressLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            progressLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100)
         ])
+    }
+    
+    func changeLabel(into text: String) {
+        progressLabel.text = text
+    }
+}
+
+
+extension BattleLoadViewController: BattleFieldAssemblyDelagate {
+    func viperModulesInitCompleted() {
+        DispatchQueue.main.async {
+            self.changeProgress(into: 0.25)
+            self.changeLabel(into: "viper Modules Init Completed: \(Int(self.loadProgress * 100))%")
+        }
+    }
+    func managersInitCompleted() {
+        DispatchQueue.main.async {
+            self.changeProgress(into: 0.21)
+            self.changeLabel(into: "managers Init Completed: \(Int(self.loadProgress * 100))%")
+        }
+    }
+    func battleMissionCreated() {
+        DispatchQueue.main.async {
+            self.changeProgress(into: 0.37)
+            self.changeLabel(into: "battle Mission Created: \(Int(self.loadProgress * 100))%")
+        }
+    }
+    func battleLogicCreated() {
+        DispatchQueue.main.async {
+            self.changeProgress(into: 0.10)
+            self.changeLabel(into: "battle Logic Created: \(Int(self.loadProgress * 100))%")
+        }
+    }
+    func viewAssemblyCompleted() {
+        DispatchQueue.main.async {
+            self.changeProgress(into: 1)
+            self.changeLabel(into: "Go!!!")
+            self.showBattleField()
+        }
     }
 }
