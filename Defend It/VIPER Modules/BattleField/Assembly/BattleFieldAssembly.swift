@@ -8,11 +8,11 @@
 import UIKit
 
 protocol BattleFieldAssemblyDelagate: AnyObject {
-    func viperModulesInitCompleted()
-    func managersInitCompleted()
-    func battleMissionCreated()
-    func battleLogicCreated()
-    func viewAssemblyCompleted()
+    func createViperModelues(completed percent: Float)
+    func createBattleMission(completed percent: Float)
+    func createManagers(completed percent: Float)
+    func loadBattleLogic(completed percent: Float)
+    func viewAssemblyDone()
 }
 
 class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
@@ -29,11 +29,11 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         let presenter = BattleFieldPresenter()
         let interactor = BattleFieldInteractor()
         let router = BattleFieldRouter()
-        delegate.viperModulesInitCompleted()
+        delegate.createViperModelues(completed: 5)        // 5% load
         
         
         let battleMission = Battle01()
-        delegate.battleMissionCreated()
+        delegate.createBattleMission(completed: 17)       // 22% load
         
         // init managers
         let meadowManager = MeadowManagerImpl(ground: battleMission.battleMeadow)
@@ -41,12 +41,12 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         let enemiesManager = EnemiesManagerImpl(battleMission.battleFieldSize)
         let battleValuesManager = BattleManagerImpl(battleValues: battleMission.battleValues)
         let camerasManager = CamerasManagerImpl()
-        delegate.managersInitCompleted()
+        delegate.createManagers(completed: 33)           // 65% load
         
         
         // init and assembly battle
         let battle = BattleImpl()
-        delegate.battleLogicCreated()
+        delegate.loadBattleLogic(completed: 27)           // 82% load
         battle.meadowManager = meadowManager
         battle.enemiesManager = enemiesManager
         battle.buildingsManager = buildingsManager
@@ -73,7 +73,7 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         meadowManager.delegate = battle
         battleValuesManager.delegate = battle
         
-        delegate.viewAssemblyCompleted()
+        delegate.viewAssemblyDone()                     // 100% load
     }
     
 }

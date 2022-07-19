@@ -22,8 +22,7 @@ class BattleLoadViewController: UIViewController {
     override func viewDidLoad() {
         view.backgroundColor = .blue
         setLoadProgressBar()
-        setHeadingLabel()
-        
+        setProgressLabel()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -70,8 +69,8 @@ extension BattleLoadViewController {
         loadProgressBar.progress = loadProgress
     }
     
-    func setHeadingLabel() {
-        progressLabel.text = "The battle will begin in"
+    func setProgressLabel() {
+        progressLabel.text = "Load battle scene... 0%"
         progressLabel.textColor = .white
         progressLabel.textAlignment = .center
         progressLabel.font = progressLabel.font.withSize(25)
@@ -91,31 +90,35 @@ extension BattleLoadViewController {
 
 
 extension BattleLoadViewController: BattleFieldAssemblyDelagate {
-    func viperModulesInitCompleted() {
+    func createViperModelues(completed percent: Float) {
         DispatchQueue.main.async {
-            self.changeProgress(into: 0.25)
-            self.changeLabel(into: "viper Modules Init Completed: \(Int(self.loadProgress * 100))%")
+            self.changeProgress(into: percent/100.0)
+            self.changeLabel(into: "create Viper Modelues: \(Int(self.loadProgress * 100))%")
         }
     }
-    func managersInitCompleted() {
+    
+    func createBattleMission(completed percent: Float) {
         DispatchQueue.main.async {
-            self.changeProgress(into: 0.21)
-            self.changeLabel(into: "managers Init Completed: \(Int(self.loadProgress * 100))%")
+            self.changeProgress(into: percent/100.0)
+            self.changeLabel(into: "create Battle Mission: \(Int(self.loadProgress  * 100))%")
         }
     }
-    func battleMissionCreated() {
+    
+    func createManagers(completed percent: Float) {
         DispatchQueue.main.async {
-            self.changeProgress(into: 0.37)
-            self.changeLabel(into: "battle Mission Created: \(Int(self.loadProgress * 100))%")
+            self.changeProgress(into: percent/100.0)
+            self.changeLabel(into: "create Managers: \(Int(self.loadProgress  * 100))%")
         }
     }
-    func battleLogicCreated() {
+    
+    func loadBattleLogic(completed percent: Float) {
         DispatchQueue.main.async {
-            self.changeProgress(into: 0.10)
-            self.changeLabel(into: "battle Logic Created: \(Int(self.loadProgress * 100))%")
+            self.changeProgress(into: percent/100.0)
+            self.changeLabel(into: "load Battle Logic: \(Int(self.loadProgress  * 100))%")
         }
     }
-    func viewAssemblyCompleted() {
+    
+    func viewAssemblyDone() {
         DispatchQueue.main.async {
             self.changeProgress(into: 1)
             self.changeLabel(into: "Go!!!")
