@@ -168,7 +168,7 @@
 		AA7801B627E200B6002C57E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AA7801BD27E200BA002C57E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA7801C027E200BA002C57E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		AA7801C227E200BA002C57E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA7801C227E200BA002C57E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Defend It/Supporting Files/Info.plist"; sourceTree = SOURCE_ROOT; };
 		AA7801C727E200BA002C57E1 /* Defend ItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Defend ItTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7801D127E200BA002C57E1 /* Defend ItUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Defend ItUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7801E927E20291002C57E1 /* HomePageAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageAssemblyProtocol.swift; sourceTree = "<group>"; };
@@ -264,6 +264,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		870B6762288E85570089D3CB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA7801BF27E200BA002C57E1 /* LaunchScreen.storyboard */,
+				AA7801C227E200BA002C57E1 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		870B6763288E85650089D3CB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AAFD65E927E4FFC500450C52 /* art.scnassets */,
+				AA7801BD27E200BA002C57E1 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		870B6764288E856B0089D3CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AAE886EF27EF2D6900CA4E5D /* Factories */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		870B6765288E85720089D3CB /* BusinessLogicLayer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BusinessLogicLayer;
+			sourceTree = "<group>";
+		};
+		870B6766288E85790089D3CB /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				878DDC9A287B858B00B37154 /* Controllers */,
+				AA7801E427E2011C002C57E1 /* VIPER Modules */,
+			);
+			path = PresentationLayer;
+			sourceTree = "<group>";
+		};
+		870B6767288E85800089D3CB /* ApplicationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				AA7801B427E200B6002C57E1 /* AppDelegate.swift */,
+				AA7801B627E200B6002C57E1 /* SceneDelegate.swift */,
+				AAE886D427EE112200CA4E5D /* Enums */,
+				878DDC99287ABE3800B37154 /* DataManagers */,
+			);
+			path = ApplicationLayer;
+			sourceTree = "<group>";
+		};
 		875CB7DA283056F4003B4412 /* CamerasManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,13 +354,10 @@
 			isa = PBXGroup;
 			children = (
 				87CA3D4A28267CF1000F952F /* WeakPropertyWrapper.swift */,
-				AA7801BF27E200BA002C57E1 /* LaunchScreen.storyboard */,
-				AA7801B427E200B6002C57E1 /* AppDelegate.swift */,
 				AA1B66BE27F624E60092F6C8 /* TestFunctions.swift */,
 				875CB7DB28327D98003B4412 /* Extensions.swift */,
 				AAF4C9DA27E8DB0E00D5B6F8 /* Converter.swift */,
 				AA78022527E207C2002C57E1 /* DataManager.swift */,
-				AA7801B627E200B6002C57E1 /* SceneDelegate.swift */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -431,15 +481,13 @@
 		AA7801B327E200B6002C57E1 /* Defend It */ = {
 			isa = PBXGroup;
 			children = (
-				878DDC9A287B858B00B37154 /* Controllers */,
-				AAE886EF27EF2D6900CA4E5D /* Factories */,
-				AA7801E427E2011C002C57E1 /* VIPER Modules */,
-				878DDC99287ABE3800B37154 /* DataManagers */,
+				870B6767288E85800089D3CB /* ApplicationLayer */,
+				870B6766288E85790089D3CB /* PresentationLayer */,
+				870B6765288E85720089D3CB /* BusinessLogicLayer */,
+				870B6764288E856B0089D3CB /* Model */,
+				870B6763288E85650089D3CB /* Resources */,
+				870B6762288E85570089D3CB /* Supporting Files */,
 				87B606C328790D59003549AF /* utilities */,
-				AA7801C227E200BA002C57E1 /* Info.plist */,
-				AAE886D427EE112200CA4E5D /* Enums */,
-				AAFD65E927E4FFC500450C52 /* art.scnassets */,
-				AA7801BD27E200BA002C57E1 /* Assets.xcassets */,
 			);
 			path = "Defend It";
 			sourceTree = "<group>";
@@ -1116,7 +1164,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BGTZ6TGNVV;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Defend It/Info.plist";
+				INFOPLIST_FILE = "Defend It/Supporting Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Defend It";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1146,7 +1194,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BGTZ6TGNVV;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Defend It/Info.plist";
+				INFOPLIST_FILE = "Defend It/Supporting Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Defend It";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
