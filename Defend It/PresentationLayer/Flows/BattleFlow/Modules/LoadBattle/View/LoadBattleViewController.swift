@@ -1,5 +1,5 @@
 //
-//  BattleLoadViewController.swift
+//  LoadBattleViewController.swift
 //  Defend It
 //
 //  Created by Роман Сенкевич on 11.07.22.
@@ -7,7 +7,14 @@
 
 import UIKit
 
-class BattleLoadViewController: UIViewController {
+class LoadBattleViewController: UIViewController, LoadBattleViewInput, LoadBattleViewCoordinatorOutput {
+    var onAccept: (() -> Void)?
+    
+    var output: LoadBattleViewOutput!
+    
+    func setupInitialState() {
+        print("LoadBattleViewController func setupInitialState()")
+    }
     
     // VC's
     var battleFieldVC: BattleFieldLoadDelegate = BattleFieldViewController()
@@ -19,8 +26,13 @@ class BattleLoadViewController: UIViewController {
     // others vars
     var loadProgress: Float = 0.0
     
+    let assembler = LoadBattleModuleAssembly()
+    
+    
     override func viewDidLoad() {
+        assembler.assemblyModuleForViewInput(viewInput: self)
         view.backgroundColor = .blue
+        output.viewDidLoad()
         setLoadProgressBar()
         setProgressLabel()
     }
@@ -44,12 +56,12 @@ class BattleLoadViewController: UIViewController {
 
 
 // funcs for timer
-extension BattleLoadViewController {
+extension LoadBattleViewController {
     
 }
 
 // funcs for set labels
-extension BattleLoadViewController {
+extension LoadBattleViewController {
     func setLoadProgressBar() {
         loadProgressBar.progressTintColor = .white
         loadProgressBar.backgroundColor = .gray
@@ -89,7 +101,7 @@ extension BattleLoadViewController {
 }
 
 
-extension BattleLoadViewController: BattleFieldAssemblyDelagate {
+extension LoadBattleViewController: BattleFieldAssemblyDelagate {
     func createViperModelues(completed percent: Float) {
         DispatchQueue.main.async {
             self.changeProgress(into: percent/100.0)
