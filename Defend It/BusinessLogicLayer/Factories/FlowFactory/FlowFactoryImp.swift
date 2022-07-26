@@ -14,6 +14,10 @@ class FlowFactoryImp: BattleFlowFactory {
     func produceLoadBattleOutput() -> LoadBattleViewCoordinatorOutput {
         return LoadBattleViewController()
     }
+    
+    func produceLoseBattleOutput() -> LoseBattleViewCoordinatorOutput {
+        return LoseBattleViewController()
+    }
 }
 
 extension FlowFactoryImp: MainFlowFactory {

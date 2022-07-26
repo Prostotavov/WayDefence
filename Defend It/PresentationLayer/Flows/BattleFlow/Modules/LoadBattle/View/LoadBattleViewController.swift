@@ -134,7 +134,8 @@ extension LoadBattleViewController: BattleFieldAssemblyDelagate {
         DispatchQueue.main.async {
             self.changeProgress(into: 1)
             self.changeLabel(into: "Go!!!")
-            self.showBattleField()
+//            self.showBattleField()
+            self.output.onAcceptTap()
         }
     }
 }

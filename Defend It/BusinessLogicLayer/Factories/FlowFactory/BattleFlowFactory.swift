@@ -10,5 +10,6 @@ import Foundation
 protocol BattleFlowFactory {
     
     func produceLoadBattleOutput() -> LoadBattleViewCoordinatorOutput
+    func produceLoseBattleOutput() -> LoseBattleViewCoordinatorOutput
 
 }
