@@ -7,10 +7,10 @@
 
 import UIKit
 
-class BattleMapViewController: UIViewController, ___VARIABLE_productName___ViewInput, ___VARIABLE_productName___ViewCoordinatorOutput {
+class BattleMapViewController: UIViewController, BattleMapViewInput, BattleMapViewCoordinatorOutput {
 
-    var output: ___VARIABLE_productName___ViewOutput!
-    var assembler: ___VARIABLE_productName___AssemblyProtocol = ___VARIABLE_productName___Assembly()
+    var output: BattleMapViewOutput!
+    var assembler: BattleMapAssemblyProtocol = BattleMapAssembly()
     
     var onAccept: (() -> Void)?
     

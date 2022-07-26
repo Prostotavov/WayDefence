@@ -75,6 +75,16 @@
 		877F102B289025EE00571F26 /* PauseBattleInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F1021289025EE00571F26 /* PauseBattleInteractorInput.swift */; };
 		877F102C289025EE00571F26 /* PauseBattleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F1022289025EE00571F26 /* PauseBattleInteractor.swift */; };
 		877F102F2890262B00571F26 /* PauseBattleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F102E2890262B00571F26 /* PauseBattleView.swift */; };
+		877F104A28906BB800571F26 /* BattleMapAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F103D28906BB700571F26 /* BattleMapAssembly.swift */; };
+		877F104B28906BB800571F26 /* BattleMapAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F103E28906BB700571F26 /* BattleMapAssemblyProtocol.swift */; };
+		877F104C28906BB800571F26 /* BattleMapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F104028906BB700571F26 /* BattleMapPresenter.swift */; };
+		877F104D28906BB800571F26 /* BattleMapViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F104228906BB700571F26 /* BattleMapViewInput.swift */; };
+		877F104E28906BB800571F26 /* BattleMapViewCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F104328906BB700571F26 /* BattleMapViewCoordinatorOutput.swift */; };
+		877F104F28906BB800571F26 /* BattleMapViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F104428906BB700571F26 /* BattleMapViewOutput.swift */; };
+		877F105028906BB800571F26 /* BattleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F104528906BB700571F26 /* BattleMapViewController.swift */; };
+		877F105128906BB800571F26 /* BattleMapInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F104728906BB700571F26 /* BattleMapInteractorOutput.swift */; };
+		877F105228906BB800571F26 /* BattleMapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F104828906BB700571F26 /* BattleMapInteractor.swift */; };
+		877F105328906BB800571F26 /* BattleMapInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F104928906BB700571F26 /* BattleMapInteractorInput.swift */; };
 		878DDC97287AB62100B37154 /* BattleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC96287AB62100B37154 /* BattleValues.swift */; };
 		878DDC9C287B85CC00B37154 /* LoadBattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */; };
 		87B606BD2878FF0C003549AF /* EnemyWavesCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B606BC2878FF0C003549AF /* EnemyWavesCreator.swift */; };
@@ -261,6 +271,16 @@
 		877F1021289025EE00571F26 /* PauseBattleInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseBattleInteractorInput.swift; sourceTree = "<group>"; };
 		877F1022289025EE00571F26 /* PauseBattleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseBattleInteractor.swift; sourceTree = "<group>"; };
 		877F102E2890262B00571F26 /* PauseBattleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseBattleView.swift; sourceTree = "<group>"; };
+		877F103D28906BB700571F26 /* BattleMapAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapAssembly.swift; sourceTree = "<group>"; };
+		877F103E28906BB700571F26 /* BattleMapAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapAssemblyProtocol.swift; sourceTree = "<group>"; };
+		877F104028906BB700571F26 /* BattleMapPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapPresenter.swift; sourceTree = "<group>"; };
+		877F104228906BB700571F26 /* BattleMapViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapViewInput.swift; sourceTree = "<group>"; };
+		877F104328906BB700571F26 /* BattleMapViewCoordinatorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapViewCoordinatorOutput.swift; sourceTree = "<group>"; };
+		877F104428906BB700571F26 /* BattleMapViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapViewOutput.swift; sourceTree = "<group>"; };
+		877F104528906BB700571F26 /* BattleMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapViewController.swift; sourceTree = "<group>"; };
+		877F104728906BB700571F26 /* BattleMapInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapInteractorOutput.swift; sourceTree = "<group>"; };
+		877F104828906BB700571F26 /* BattleMapInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapInteractor.swift; sourceTree = "<group>"; };
+		877F104928906BB700571F26 /* BattleMapInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapInteractorInput.swift; sourceTree = "<group>"; };
 		878DDC96287AB62100B37154 /* BattleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleValues.swift; sourceTree = "<group>"; };
 		878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBattleViewController.swift; sourceTree = "<group>"; };
 		87B606BC2878FF0C003549AF /* EnemyWavesCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyWavesCreator.swift; sourceTree = "<group>"; };
@@ -505,6 +525,7 @@
 		870B6796288E8FA80089D3CB /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				877F103528906B5500571F26 /* BattleMapFlow */,
 				870B6799288E8FC30089D3CB /* MainFlow */,
 				870B6798288E8FBA0089D3CB /* BattleFlow */,
 			);
@@ -819,6 +840,79 @@
 				877F102E2890262B00571F26 /* PauseBattleView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		877F103528906B5500571F26 /* BattleMapFlow */ = {
+			isa = PBXGroup;
+			children = (
+				877F103628906B6A00571F26 /* Modules */,
+				877F103728906B7300571F26 /* Coordinator */,
+			);
+			path = BattleMapFlow;
+			sourceTree = "<group>";
+		};
+		877F103628906B6A00571F26 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				877F103B28906BB700571F26 /* BattleMap */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		877F103728906B7300571F26 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		877F103B28906BB700571F26 /* BattleMap */ = {
+			isa = PBXGroup;
+			children = (
+				877F103C28906BB700571F26 /* Assembly */,
+				877F103F28906BB700571F26 /* Presenter */,
+				877F104128906BB700571F26 /* View */,
+				877F104628906BB700571F26 /* Interactor */,
+			);
+			path = BattleMap;
+			sourceTree = "<group>";
+		};
+		877F103C28906BB700571F26 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				877F103D28906BB700571F26 /* BattleMapAssembly.swift */,
+				877F103E28906BB700571F26 /* BattleMapAssemblyProtocol.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		877F103F28906BB700571F26 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				877F104028906BB700571F26 /* BattleMapPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		877F104128906BB700571F26 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				877F104228906BB700571F26 /* BattleMapViewInput.swift */,
+				877F104328906BB700571F26 /* BattleMapViewCoordinatorOutput.swift */,
+				877F104428906BB700571F26 /* BattleMapViewOutput.swift */,
+				877F104528906BB700571F26 /* BattleMapViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		877F104628906BB700571F26 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				877F104728906BB700571F26 /* BattleMapInteractorOutput.swift */,
+				877F104828906BB700571F26 /* BattleMapInteractor.swift */,
+				877F104928906BB700571F26 /* BattleMapInteractorInput.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		878DDC99287ABE3800B37154 /* DataManagers */ = {
@@ -1393,6 +1487,7 @@
 				AA78024127E20B8E002C57E1 /* BattleFieldInteractorOutput.swift in Sources */,
 				AACC7BDF27FB2C5D0022384E /* WallFL.swift in Sources */,
 				870B67C6288ECA150089D3CB /* HomePageViewCoordinatorOutput.swift in Sources */,
+				877F105128906BB800571F26 /* BattleMapInteractorOutput.swift in Sources */,
 				877F10092890083F00571F26 /* WinBattleViewCoordinatorOutput.swift in Sources */,
 				AA0B68D627E5FA450078003D /* CamerasManager.swift in Sources */,
 				AAF4C9DD27E8E6A200D5B6F8 /* GroundSquare.swift in Sources */,
@@ -1442,8 +1537,10 @@
 				AAE886EA27EEFF9800CA4E5D /* BattleMeadow.swift in Sources */,
 				8711C62A286FACA300E84876 /* EnemiesWave.swift in Sources */,
 				877F100E2890083F00571F26 /* WinBattleInteractorOutput.swift in Sources */,
+				877F104B28906BB800571F26 /* BattleMapAssemblyProtocol.swift in Sources */,
 				AA78020027E20291002C57E1 /* HomePageInteractorOutput.swift in Sources */,
 				AAE886F827EF30B300CA4E5D /* OrcFL.swift in Sources */,
+				877F104A28906BB800571F26 /* BattleMapAssembly.swift in Sources */,
 				870B67A0288E90470089D3CB /* FlowNavigationController.swift in Sources */,
 				AA7801FC27E20291002C57E1 /* HomePageViewOutput.swift in Sources */,
 				AAE8870D27EF35F400CA4E5D /* TrollFL.swift in Sources */,
@@ -1453,6 +1550,7 @@
 				870B67BB288E97290089D3CB /* LoadBattleAssembly.swift in Sources */,
 				AACC7BEF27FB36D30022384E /* BuiltTowers.swift in Sources */,
 				870B6793288E8F530089D3CB /* CoordinatorFactory.swift in Sources */,
+				877F105028906BB800571F26 /* BattleMapViewController.swift in Sources */,
 				870B677D288E8E540089D3CB /* Presentable.swift in Sources */,
 				AAE8870327EF342D00CA4E5D /* GoblinFactory.swift in Sources */,
 				AA0B68C827E5BDC20078003D /* ElphTowerFL.swift in Sources */,
@@ -1466,6 +1564,7 @@
 				87B606BD2878FF0C003549AF /* EnemyWavesCreator.swift in Sources */,
 				870B6775288E8A450089D3CB /* Converter.swift in Sources */,
 				877F0FE9288FF32400571F26 /* LoseBattleInteractorOutput.swift in Sources */,
+				877F104D28906BB800571F26 /* BattleMapViewInput.swift in Sources */,
 				877F0FE3288FF32400571F26 /* LoseBattleAssemblyProtocol.swift in Sources */,
 				AA7801F927E20291002C57E1 /* HomePageAssembly.swift in Sources */,
 				877F102A289025EE00571F26 /* PauseBattleInteractorOutput.swift in Sources */,
@@ -1481,7 +1580,11 @@
 				877F1023289025EE00571F26 /* PauseBattleAssembly.swift in Sources */,
 				877F100B2890083F00571F26 /* WinBattleViewInput.swift in Sources */,
 				87ECCC562878E84F00E66C09 /* BattleMissionFactory.swift in Sources */,
+				877F104C28906BB800571F26 /* BattleMapPresenter.swift in Sources */,
+				877F104E28906BB800571F26 /* BattleMapViewCoordinatorOutput.swift in Sources */,
+				877F105328906BB800571F26 /* BattleMapInteractorInput.swift in Sources */,
 				AACC7BDD27FB2C1A0022384E /* BallistaFL.swift in Sources */,
+				877F105228906BB800571F26 /* BattleMapInteractor.swift in Sources */,
 				877F102C289025EE00571F26 /* PauseBattleInteractor.swift in Sources */,
 				AAF4C9D727E8D9E500D5B6F8 /* EnemiesManager.swift in Sources */,
 				AAE886FF27EF33A600CA4E5D /* OrcSL.swift in Sources */,
@@ -1490,6 +1593,7 @@
 				87ECCC582878E87400E66C09 /* BattleMission.swift in Sources */,
 				AA0B68D827E5FD7F0078003D /* TowerSelectionPanel.swift in Sources */,
 				AAF4C9D927E8DA0300D5B6F8 /* BuildingsManager.swift in Sources */,
+				877F104F28906BB800571F26 /* BattleMapViewOutput.swift in Sources */,
 				AA78023E27E20B8E002C57E1 /* BattleFieldViewOutput.swift in Sources */,
 				877F0FEE288FF5DE00571F26 /* LoseBattleView.swift in Sources */,
 				AACC7BE127FB2C850022384E /* BallistaSL.swift in Sources */,

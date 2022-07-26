@@ -1,5 +1,5 @@
 // 
-//  BattleMapAssembly.swift
+//  PauseBattleAssembly.swift
 //  Defend It
 //
 //  Created by Роман Сенкевич on 26.07.22.
@@ -7,18 +7,18 @@
 
 import UIKit
 
-class BattleMapAssembly: BattleMapAssemblyProtocol {
+class PauseBattleAssembly: PauseBattleAssemblyProtocol {
     
     func assemblyModuleForViewInput<UIViewController>(viewInput: UIViewController) {
-        if let viewController = viewInput as? BattleMapViewController {
+        if let viewController = viewInput as? PauseBattleViewController {
             assembly(viewController: viewController)
         }
     }
     
-    private func assembly(viewController: BattleMapViewController) {
+    private func assembly(viewController: PauseBattleViewController) {
         
-        let presenter = BattleMapPresenter()
-        let interactor = BattleMapInteractor()
+        let presenter = PauseBattlePresenter()
+        let interactor = PauseBattleInteractor()
         
         presenter.view = viewController
         presenter.coordinator = viewController

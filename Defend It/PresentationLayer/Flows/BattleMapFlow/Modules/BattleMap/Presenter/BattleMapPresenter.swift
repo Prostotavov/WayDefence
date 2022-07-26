@@ -7,11 +7,11 @@
 
 import Foundation
 
-class BattleMapPresenter: ___VARIABLE_productName___ViewOutput, ___VARIABLE_productName___InteractorOutput {
+class BattleMapPresenter: BattleMapViewOutput, BattleMapInteractorOutput {
 
-    weak var view: ___VARIABLE_productName___ViewInput!
-    weak var coordinator: ___VARIABLE_productName___ViewCoordinatorOutput!
-    var interactor: ___VARIABLE_productName___InteractorInput!
+    weak var view: BattleMapViewInput!
+    weak var coordinator: BattleMapViewCoordinatorOutput!
+    var interactor: BattleMapInteractorInput!
     
     func viewDidLoad() {
         view.setupInitialState()

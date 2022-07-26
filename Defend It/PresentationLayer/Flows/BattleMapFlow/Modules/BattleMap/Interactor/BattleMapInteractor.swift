@@ -7,8 +7,8 @@
 
 import Foundation
 
-class BattleMapInteractor: ___VARIABLE_productName___InteractorInput {
+class BattleMapInteractor: BattleMapInteractorInput {
     
-    weak var output: ___VARIABLE_productName___InteractorOutput!
+    weak var output: BattleMapInteractorOutput!
     
 }
