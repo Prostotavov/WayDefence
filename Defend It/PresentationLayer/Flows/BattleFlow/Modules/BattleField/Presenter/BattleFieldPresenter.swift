@@ -11,8 +11,17 @@ import SceneKit
 class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
 
     weak var view: BattleFieldViewInput!
+    weak var coordinator: BattleFieldViewCoordinatorOutput!
     var interactor: BattleFieldInteractorInput!
-    var router: BattleFieldRouterInput!
+    
+    
+    /// func for flow coordinator
+    func finishBattle() {
+        coordinator.onLoseBattle?()
+    }
+    func onAcceptTap() {
+        coordinator.onLoseBattle?()
+    }
     
     /// view run loop funcs
     func loadView() {

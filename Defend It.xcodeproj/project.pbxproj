@@ -52,6 +52,7 @@
 		877F0FEA288FF32400571F26 /* LoseBattleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FE0288FF32400571F26 /* LoseBattleInteractor.swift */; };
 		877F0FEB288FF32400571F26 /* LoseBattleInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FE1288FF32400571F26 /* LoseBattleInteractorInput.swift */; };
 		877F0FEE288FF5DE00571F26 /* LoseBattleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FED288FF5DE00571F26 /* LoseBattleView.swift */; };
+		877F0FF3288FFBBB00571F26 /* BattleFieldViewCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FF2288FFBBB00571F26 /* BattleFieldViewCoordinatorOutput.swift */; };
 		878DDC97287AB62100B37154 /* BattleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC96287AB62100B37154 /* BattleValues.swift */; };
 		878DDC9C287B85CC00B37154 /* LoadBattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */; };
 		87B606BD2878FF0C003549AF /* EnemyWavesCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B606BC2878FF0C003549AF /* EnemyWavesCreator.swift */; };
@@ -95,8 +96,6 @@
 		AA78024027E20B8E002C57E1 /* BattleFieldInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023427E20B8D002C57E1 /* BattleFieldInteractorInput.swift */; };
 		AA78024127E20B8E002C57E1 /* BattleFieldInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023527E20B8D002C57E1 /* BattleFieldInteractorOutput.swift */; };
 		AA78024227E20B8E002C57E1 /* BattleFieldInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023627E20B8D002C57E1 /* BattleFieldInteractor.swift */; };
-		AA78024327E20B8E002C57E1 /* BattleFieldRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023827E20B8D002C57E1 /* BattleFieldRouterInput.swift */; };
-		AA78024427E20B8E002C57E1 /* BattleFieldRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78023927E20B8D002C57E1 /* BattleFieldRouter.swift */; };
 		AACC7BD227FAE9CD0022384E /* BuildingIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BD127FAE9CD0022384E /* BuildingIcons.swift */; };
 		AACC7BD627FB01F10022384E /* BuildingIconPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BD527FB01F10022384E /* BuildingIconPlaces.swift */; };
 		AACC7BD927FB28000022384E /* MagicTowerTL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC7BD827FB28000022384E /* MagicTowerTL.swift */; };
@@ -217,6 +216,7 @@
 		877F0FE0288FF32400571F26 /* LoseBattleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseBattleInteractor.swift; sourceTree = "<group>"; };
 		877F0FE1288FF32400571F26 /* LoseBattleInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseBattleInteractorInput.swift; sourceTree = "<group>"; };
 		877F0FED288FF5DE00571F26 /* LoseBattleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseBattleView.swift; sourceTree = "<group>"; };
+		877F0FF2288FFBBB00571F26 /* BattleFieldViewCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleFieldViewCoordinatorOutput.swift; sourceTree = "<group>"; };
 		878DDC96287AB62100B37154 /* BattleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleValues.swift; sourceTree = "<group>"; };
 		878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBattleViewController.swift; sourceTree = "<group>"; };
 		87B606BC2878FF0C003549AF /* EnemyWavesCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyWavesCreator.swift; sourceTree = "<group>"; };
@@ -264,8 +264,6 @@
 		AA78023427E20B8D002C57E1 /* BattleFieldInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldInteractorInput.swift; sourceTree = "<group>"; };
 		AA78023527E20B8D002C57E1 /* BattleFieldInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldInteractorOutput.swift; sourceTree = "<group>"; };
 		AA78023627E20B8D002C57E1 /* BattleFieldInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldInteractor.swift; sourceTree = "<group>"; };
-		AA78023827E20B8D002C57E1 /* BattleFieldRouterInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldRouterInput.swift; sourceTree = "<group>"; };
-		AA78023927E20B8D002C57E1 /* BattleFieldRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleFieldRouter.swift; sourceTree = "<group>"; };
 		AACC7BD127FAE9CD0022384E /* BuildingIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingIcons.swift; sourceTree = "<group>"; };
 		AACC7BD527FB01F10022384E /* BuildingIconPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingIconPlaces.swift; sourceTree = "<group>"; };
 		AACC7BD827FB28000022384E /* MagicTowerTL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicTowerTL.swift; sourceTree = "<group>"; };
@@ -865,7 +863,6 @@
 				AA78022D27E20B8D002C57E1 /* Presenter */,
 				AA78022F27E20B8D002C57E1 /* View */,
 				AA78023327E20B8D002C57E1 /* Interactor */,
-				AA78023727E20B8D002C57E1 /* Router */,
 			);
 			path = BattleField;
 			sourceTree = "<group>";
@@ -893,6 +890,7 @@
 				AA78023027E20B8D002C57E1 /* BattleFieldViewController.swift */,
 				AA78023127E20B8D002C57E1 /* BattleFieldViewOutput.swift */,
 				AA78023227E20B8D002C57E1 /* BattleFieldViewInput.swift */,
+				877F0FF2288FFBBB00571F26 /* BattleFieldViewCoordinatorOutput.swift */,
 				87CA3D5228293CAA000F952F /* GameUtilitsView */,
 			);
 			path = View;
@@ -907,15 +905,6 @@
 				87D51616285CC1AD00E3D7B8 /* Battle */,
 			);
 			path = Interactor;
-			sourceTree = "<group>";
-		};
-		AA78023727E20B8D002C57E1 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				AA78023827E20B8D002C57E1 /* BattleFieldRouterInput.swift */,
-				AA78023927E20B8D002C57E1 /* BattleFieldRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		AACC7BD727FB03C90022384E /* ThirdLevelBuildings */ = {
@@ -1221,7 +1210,6 @@
 				870B67AB288E95390089D3CB /* LoadBattleViewOutput.swift in Sources */,
 				877F0FE6288FF32400571F26 /* LoseBattleViewInput.swift in Sources */,
 				AACC7BF127FB66B20022384E /* BuildingNodes.swift in Sources */,
-				AA78024427E20B8E002C57E1 /* BattleFieldRouter.swift in Sources */,
 				878DDC97287AB62100B37154 /* BattleValues.swift in Sources */,
 				877F0FE5288FF32400571F26 /* LoseBattleViewCoordinatorOutput.swift in Sources */,
 				8711C632287564CA00E84876 /* Battle01.swift in Sources */,
@@ -1263,13 +1251,13 @@
 				870B67D0288FC6460089D3CB /* MainFlowFactory.swift in Sources */,
 				AA78024227E20B8E002C57E1 /* BattleFieldInteractor.swift in Sources */,
 				AAF4C9AD27E855D700D5B6F8 /* AStar.swift in Sources */,
+				877F0FF3288FFBBB00571F26 /* BattleFieldViewCoordinatorOutput.swift in Sources */,
 				AA78022427E2043D002C57E1 /* HomePageView.swift in Sources */,
 				870B676F288E896B0089D3CB /* Extensions.swift in Sources */,
 				AAE8870F27EF35FC00CA4E5D /* TrollSL.swift in Sources */,
 				870B67C1288E97F20089D3CB /* BattleCoordinator.swift in Sources */,
 				AAE886EB27EEFF9800CA4E5D /* MeadowManager.swift in Sources */,
 				AA0B68CC27E5BDFD0078003D /* ElphTowerSL.swift in Sources */,
-				AA78024327E20B8E002C57E1 /* BattleFieldRouterInput.swift in Sources */,
 				AA7801FA27E20291002C57E1 /* HomePagePresenter.swift in Sources */,
 				AA7801B527E200B6002C57E1 /* AppDelegate.swift in Sources */,
 				AAE886F327EF2DC500CA4E5D /* AbstractFactoryEnemies.swift in Sources */,

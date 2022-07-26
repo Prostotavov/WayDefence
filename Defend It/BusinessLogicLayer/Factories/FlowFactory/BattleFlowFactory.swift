@@ -11,5 +11,6 @@ protocol BattleFlowFactory {
     
     func produceLoadBattleOutput() -> LoadBattleViewCoordinatorOutput
     func produceLoseBattleOutput() -> LoseBattleViewCoordinatorOutput
+    func produceBattleFieldOutput() -> BattleFieldViewCoordinatorOutput
 
 }

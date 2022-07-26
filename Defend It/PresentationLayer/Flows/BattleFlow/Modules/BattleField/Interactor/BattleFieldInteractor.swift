@@ -17,6 +17,7 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     
     func loadView() {
         setupCamera()
+        battle.output = self
         battle.startBattle()
     }
     
@@ -95,5 +96,11 @@ extension BattleFieldInteractor: BattleDelegate {
     
     func removeNodeFromScene(with name: String) {
         output.removeNodeFromScene(with: name)
+    }
+}
+
+extension BattleFieldInteractor: BattleOutput {
+    func finishBattle() {
+        output.finishBattle()
     }
 }

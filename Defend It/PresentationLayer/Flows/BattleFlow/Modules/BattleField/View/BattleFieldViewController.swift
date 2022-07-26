@@ -13,7 +13,10 @@ protocol BattleFieldLoadDelegate: UIViewController {
     func assemblyModule(delegate: BattleFieldAssemblyDelagate)
 }
 
-class BattleFieldViewController: UIViewController, BattleFieldViewInput, BattleFieldLoadDelegate {
+class BattleFieldViewController: UIViewController, BattleFieldViewInput,
+                                 BattleFieldLoadDelegate, BattleFieldViewCoordinatorOutput {
+    
+    var onLoseBattle: (() -> Void)?
     
     var output: BattleFieldViewOutput!
     var assembler: BattleFieldAssemblyProtocol = BattleFieldAssembly()
@@ -32,9 +35,11 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput, BattleF
         sceneView.delegate = self
     }
     
+    
+    
     func assemblyModule(delegate: BattleFieldAssemblyDelagate) {
         assembler.setDelegate(delegate: delegate)
-        assembler.assembly(with: self)
+        assembler.assemblyModuleForViewInput(viewInput: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {

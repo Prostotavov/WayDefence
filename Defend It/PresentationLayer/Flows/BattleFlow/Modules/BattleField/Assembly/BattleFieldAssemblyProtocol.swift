@@ -9,6 +9,6 @@ import Foundation
 
 protocol BattleFieldAssemblyProtocol: AnyObject {
     
-    func assembly(with viewController: BattleFieldViewController)
+    func assemblyModuleForViewInput<UIViewController>(viewInput: UIViewController)
     func setDelegate(delegate: BattleFieldAssemblyDelagate)
 }

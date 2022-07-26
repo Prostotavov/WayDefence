@@ -11,12 +11,19 @@ import UIKit.UIViewController
 
 class FlowFactoryImp: BattleFlowFactory {
     
+    var vc: LoadBattleViewController!
+    
     func produceLoadBattleOutput() -> LoadBattleViewCoordinatorOutput {
-        return LoadBattleViewController()
+        vc = LoadBattleViewController()
+        return vc
     }
     
     func produceLoseBattleOutput() -> LoseBattleViewCoordinatorOutput {
         return LoseBattleViewController()
+    }
+    
+    func produceBattleFieldOutput() -> BattleFieldViewCoordinatorOutput {
+        return vc.battleFieldVC as! BattleFieldViewCoordinatorOutput
     }
 }
 

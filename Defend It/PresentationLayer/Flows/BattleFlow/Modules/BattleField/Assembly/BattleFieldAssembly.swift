@@ -23,12 +23,17 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         self.delegate = delegate
     }
     
-    func assembly(with viewController: BattleFieldViewController) {
+    func assemblyModuleForViewInput<UIViewController>(viewInput: UIViewController) {
+        if let viewController = viewInput as? BattleFieldViewController {
+            assembly(viewController: viewController)
+        }
+    }
+    
+    private func assembly(viewController: BattleFieldViewController) {
         
         // init viper modules
         let presenter = BattleFieldPresenter()
         let interactor = BattleFieldInteractor()
-        let router = BattleFieldRouter()
         delegate.createViperModelues(completed: 5)        // 5% load
         
         
@@ -58,14 +63,12 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         viewController.output = presenter
         
         presenter.view = viewController
-        presenter.router = router
         presenter.interactor = interactor
+        presenter.coordinator = viewController
         
         interactor.battle = battle
         interactor.camerasManager = camerasManager
         interactor.output = presenter
-        
-        router.view = viewController
         
         // assembly delegates for managers
         buildingsManager.delegate = battle

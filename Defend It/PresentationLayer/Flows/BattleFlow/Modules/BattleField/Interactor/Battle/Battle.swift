@@ -15,6 +15,10 @@ enum BattleStates: String {
     case lose
 }
 
+protocol BattleOutput: AnyObject {
+    func finishBattle()
+}
+
 protocol BattleDelegate: AnyObject {
     func addNodeToScene(_ node: SCNNode)
     func removeNodeFromScene(with name: String)
@@ -43,6 +47,8 @@ protocol Battle {
     func update()
     
     func displayBattleValues()
+    
+    var output: BattleOutput! {get set}
 }
 
 class BattleImpl: MeadowManagerDelagate, BuildingsManagerDelegate, Battle {
@@ -56,6 +62,8 @@ class BattleImpl: MeadowManagerDelagate, BuildingsManagerDelegate, Battle {
     
     var battleMission: BattleMission!
     weak var delegate: BattleDelegate!
+    
+    weak var output: BattleOutput!
     
     var battleCounter: Int = 0
     
@@ -121,6 +129,7 @@ extension BattleImpl {
     }
     func finishBattle() {
         stopBattle()
+        output.finishBattle()
         changeBattleState(into: .lose)
     }
     func speedUpBattle(by times: Int) {

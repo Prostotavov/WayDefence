@@ -33,19 +33,19 @@ class BattleCoordinator: BaseCoordinator , BattleCoordinatorOutput {
     private func showLoadBattle() {
         let loadBattleOutput = factory.produceLoadBattleOutput()
         loadBattleOutput.onAccept = { [weak self] in
-            self?.showLoseBattle()
+            self?.showBattleField()
         }
         
         router.setRootModule(loadBattleOutput, hideBar: true)
     }
     
     private func showBattleField() {
-        let battleFieldOutput = factory.produceLoadBattleOutput()
-        battleFieldOutput.onAccept = { [weak self] in
-            self?.finishFlow?()
+        let battleFieldOutput = factory.produceBattleFieldOutput()
+        battleFieldOutput.onLoseBattle = { [weak self] in
+            self?.showLoseBattle()
         }
         
-        router.present(battleFieldOutput, animated: true)
+        router.push(battleFieldOutput, animated: false)
     }
     
     private func showLoseBattle() {
