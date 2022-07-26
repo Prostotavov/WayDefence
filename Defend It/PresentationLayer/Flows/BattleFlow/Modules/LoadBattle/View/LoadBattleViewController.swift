@@ -13,7 +13,6 @@ class LoadBattleViewController: UIViewController, LoadBattleViewInput, LoadBattl
     var output: LoadBattleViewOutput!
     
     func setupInitialState() {
-        print("LoadBattleViewController func setupInitialState()")
     }
     
     // VC's

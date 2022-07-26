@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol WinBattleViewDelegate {
+protocol WinBattleViewDelegate: AnyObject {
     func goToHomePagePressed()
 }
 
@@ -22,7 +22,7 @@ class WinBattleView: UIView {
     var startButton = UIButton()
     var statusLabel = UILabel()
     
-    var delegate: WinBattleViewDelegate!
+    weak var delegate: WinBattleViewDelegate!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

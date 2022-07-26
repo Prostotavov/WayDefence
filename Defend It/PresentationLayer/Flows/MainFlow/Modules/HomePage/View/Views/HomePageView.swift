@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol HomePageViewDelegate {
+protocol HomePageViewDelegate: AnyObject {
     func startButtonPressed()
 }
 
@@ -17,7 +17,7 @@ class HomePageView: UIView {
     let startButtonWidth: CGFloat = 130
     
     var startButton = UIButton()
-    var delegate: HomePageViewDelegate!
+    weak var delegate: HomePageViewDelegate!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

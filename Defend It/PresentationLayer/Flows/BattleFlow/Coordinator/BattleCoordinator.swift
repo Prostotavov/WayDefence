@@ -51,8 +51,11 @@ class BattleCoordinator: BaseCoordinator , BattleCoordinatorOutput {
         battleFieldOutput.onLoseBattle = { [weak self] in
             self?.showLoseBattle()
         }
+        battleFieldOutput.onPauseBattle = { [weak self] in
+            self?.showPauseBattle()
+        }
         
-        router.push(battleFieldOutput, animated: false)
+        router.push(battleFieldOutput, animated: true)
     }
     
     private func showLoseBattle() {
@@ -61,7 +64,7 @@ class BattleCoordinator: BaseCoordinator , BattleCoordinatorOutput {
             self?.finishFlow?()
         }
         
-        router.push(loseBattleOutput, animated: false)
+        router.push(loseBattleOutput, animated: true)
     }
     
     private func showWinBattle() {
@@ -70,7 +73,19 @@ class BattleCoordinator: BaseCoordinator , BattleCoordinatorOutput {
             self?.finishFlow?()
         }
         
-        router.push(winBattleOutput, animated: false)
+        router.push(winBattleOutput, animated: true)
+    }
+    
+    private func showPauseBattle() {
+        let pauseBattleOutput = factory.producePauseBattleOutput()
+        pauseBattleOutput.onPlay = { [weak self] in
+            self?.router.popModule(animated: true)
+        }
+        pauseBattleOutput.onQuit = { [weak self] in
+            self?.finishFlow?()
+        }
+        
+        router.push(pauseBattleOutput)
     }
 
 }

@@ -29,6 +29,10 @@ class FlowFactoryImp: BattleFlowFactory {
     func produceWinBattleOutput() -> WinBattleViewCoordinatorOutput {
         return WinBattleViewController()
     }
+    
+    func producePauseBattleOutput() -> PauseBattleViewCoordinatorOutput {
+        return PauseBattleViewController()
+    }
 }
 
 extension FlowFactoryImp: MainFlowFactory {

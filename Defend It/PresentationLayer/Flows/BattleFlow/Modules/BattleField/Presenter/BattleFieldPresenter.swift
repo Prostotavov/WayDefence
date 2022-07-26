@@ -25,8 +25,9 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     func battleIsLost() {
         coordinator.onLoseBattle?()
     }
-    func onAcceptTap() {
-        coordinator.onFinishBattle?()
+    func onPauseTap() {
+        interactor.stopGame()
+        coordinator.onPauseBattle?()
     }
     
     /// view run loop funcs

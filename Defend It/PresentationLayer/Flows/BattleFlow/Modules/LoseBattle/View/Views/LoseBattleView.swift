@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol LoseBattleViewDelegate {
+protocol LoseBattleViewDelegate: AnyObject {
     func goToHomePagePressed()
 }
 
@@ -22,7 +22,7 @@ class LoseBattleView: UIView {
     var startButton = UIButton()
     var statusLabel = UILabel()
     
-    var delegate: LoseBattleViewDelegate!
+    weak var delegate: LoseBattleViewDelegate!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

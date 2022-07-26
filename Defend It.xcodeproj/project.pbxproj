@@ -64,6 +64,17 @@
 		877F100D2890083F00571F26 /* WinBattleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F10032890083F00571F26 /* WinBattleInteractor.swift */; };
 		877F100E2890083F00571F26 /* WinBattleInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F10042890083F00571F26 /* WinBattleInteractorOutput.swift */; };
 		877F10112890089000571F26 /* WinBattleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F10102890089000571F26 /* WinBattleView.swift */; };
+		877F1023289025EE00571F26 /* PauseBattleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F1016289025EE00571F26 /* PauseBattleAssembly.swift */; };
+		877F1024289025EE00571F26 /* PauseBattleAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F1017289025EE00571F26 /* PauseBattleAssemblyProtocol.swift */; };
+		877F1025289025EE00571F26 /* PauseBattlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F1019289025EE00571F26 /* PauseBattlePresenter.swift */; };
+		877F1026289025EE00571F26 /* PauseBattleViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F101B289025EE00571F26 /* PauseBattleViewOutput.swift */; };
+		877F1027289025EE00571F26 /* PauseBattleViewCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F101C289025EE00571F26 /* PauseBattleViewCoordinatorOutput.swift */; };
+		877F1028289025EE00571F26 /* PauseBattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F101D289025EE00571F26 /* PauseBattleViewController.swift */; };
+		877F1029289025EE00571F26 /* PauseBattleViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F101E289025EE00571F26 /* PauseBattleViewInput.swift */; };
+		877F102A289025EE00571F26 /* PauseBattleInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F1020289025EE00571F26 /* PauseBattleInteractorOutput.swift */; };
+		877F102B289025EE00571F26 /* PauseBattleInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F1021289025EE00571F26 /* PauseBattleInteractorInput.swift */; };
+		877F102C289025EE00571F26 /* PauseBattleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F1022289025EE00571F26 /* PauseBattleInteractor.swift */; };
+		877F102F2890262B00571F26 /* PauseBattleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F102E2890262B00571F26 /* PauseBattleView.swift */; };
 		878DDC97287AB62100B37154 /* BattleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC96287AB62100B37154 /* BattleValues.swift */; };
 		878DDC9C287B85CC00B37154 /* LoadBattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */; };
 		87B606BD2878FF0C003549AF /* EnemyWavesCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B606BC2878FF0C003549AF /* EnemyWavesCreator.swift */; };
@@ -239,6 +250,17 @@
 		877F10032890083F00571F26 /* WinBattleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinBattleInteractor.swift; sourceTree = "<group>"; };
 		877F10042890083F00571F26 /* WinBattleInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinBattleInteractorOutput.swift; sourceTree = "<group>"; };
 		877F10102890089000571F26 /* WinBattleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinBattleView.swift; sourceTree = "<group>"; };
+		877F1016289025EE00571F26 /* PauseBattleAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseBattleAssembly.swift; sourceTree = "<group>"; };
+		877F1017289025EE00571F26 /* PauseBattleAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseBattleAssemblyProtocol.swift; sourceTree = "<group>"; };
+		877F1019289025EE00571F26 /* PauseBattlePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseBattlePresenter.swift; sourceTree = "<group>"; };
+		877F101B289025EE00571F26 /* PauseBattleViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseBattleViewOutput.swift; sourceTree = "<group>"; };
+		877F101C289025EE00571F26 /* PauseBattleViewCoordinatorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseBattleViewCoordinatorOutput.swift; sourceTree = "<group>"; };
+		877F101D289025EE00571F26 /* PauseBattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseBattleViewController.swift; sourceTree = "<group>"; };
+		877F101E289025EE00571F26 /* PauseBattleViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseBattleViewInput.swift; sourceTree = "<group>"; };
+		877F1020289025EE00571F26 /* PauseBattleInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseBattleInteractorOutput.swift; sourceTree = "<group>"; };
+		877F1021289025EE00571F26 /* PauseBattleInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseBattleInteractorInput.swift; sourceTree = "<group>"; };
+		877F1022289025EE00571F26 /* PauseBattleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseBattleInteractor.swift; sourceTree = "<group>"; };
+		877F102E2890262B00571F26 /* PauseBattleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseBattleView.swift; sourceTree = "<group>"; };
 		878DDC96287AB62100B37154 /* BattleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleValues.swift; sourceTree = "<group>"; };
 		878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBattleViewController.swift; sourceTree = "<group>"; };
 		87B606BC2878FF0C003549AF /* EnemyWavesCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyWavesCreator.swift; sourceTree = "<group>"; };
@@ -535,6 +557,7 @@
 		870B679C288E8FE20089D3CB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				877F1014289025EE00571F26 /* PauseBattle */,
 				877F0FF62890083F00571F26 /* WinBattle */,
 				877F0FD3288FF32400571F26 /* LoseBattle */,
 				870B67A1288E90940089D3CB /* LoadBattle */,
@@ -736,6 +759,64 @@
 			isa = PBXGroup;
 			children = (
 				877F10102890089000571F26 /* WinBattleView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		877F1014289025EE00571F26 /* PauseBattle */ = {
+			isa = PBXGroup;
+			children = (
+				877F1015289025EE00571F26 /* Assembly */,
+				877F1018289025EE00571F26 /* Presenter */,
+				877F101A289025EE00571F26 /* View */,
+				877F101F289025EE00571F26 /* Interactor */,
+			);
+			path = PauseBattle;
+			sourceTree = "<group>";
+		};
+		877F1015289025EE00571F26 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				877F1016289025EE00571F26 /* PauseBattleAssembly.swift */,
+				877F1017289025EE00571F26 /* PauseBattleAssemblyProtocol.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		877F1018289025EE00571F26 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				877F1019289025EE00571F26 /* PauseBattlePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		877F101A289025EE00571F26 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				877F101D289025EE00571F26 /* PauseBattleViewController.swift */,
+				877F101B289025EE00571F26 /* PauseBattleViewOutput.swift */,
+				877F101C289025EE00571F26 /* PauseBattleViewCoordinatorOutput.swift */,
+				877F101E289025EE00571F26 /* PauseBattleViewInput.swift */,
+				877F102D2890261500571F26 /* Views */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		877F101F289025EE00571F26 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				877F1020289025EE00571F26 /* PauseBattleInteractorOutput.swift */,
+				877F1021289025EE00571F26 /* PauseBattleInteractorInput.swift */,
+				877F1022289025EE00571F26 /* PauseBattleInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		877F102D2890261500571F26 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				877F102E2890262B00571F26 /* PauseBattleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1272,6 +1353,7 @@
 				AAE8870927EF350F00CA4E5D /* GoblinTL.swift in Sources */,
 				877F0FEB288FF32400571F26 /* LoseBattleInteractorInput.swift in Sources */,
 				AA0B68C027E5BA7D0078003D /* MagicTowerFactory.swift in Sources */,
+				877F1028289025EE00571F26 /* PauseBattleViewController.swift in Sources */,
 				870B6779288E8E420089D3CB /* Coordinator.swift in Sources */,
 				AA78024027E20B8E002C57E1 /* BattleFieldInteractorInput.swift in Sources */,
 				AA0B68CA27E5BDF10078003D /* MagicTowerSL.swift in Sources */,
@@ -1297,7 +1379,11 @@
 				8711C632287564CA00E84876 /* Battle01.swift in Sources */,
 				870B677B288E8E4C0089D3CB /* DeepLinkOption.swift in Sources */,
 				AACC7BDB27FB28200022384E /* ElphTowerTL.swift in Sources */,
+				877F1025289025EE00571F26 /* PauseBattlePresenter.swift in Sources */,
+				877F1029289025EE00571F26 /* PauseBattleViewInput.swift in Sources */,
 				87CA3D5728294F17000F952F /* BattleManager.swift in Sources */,
+				877F102B289025EE00571F26 /* PauseBattleInteractorInput.swift in Sources */,
+				877F1027289025EE00571F26 /* PauseBattleViewCoordinatorOutput.swift in Sources */,
 				870B67B1288E964B0089D3CB /* LoadBattleInteractorOutput.swift in Sources */,
 				870B6786288E8EF60089D3CB /* Router.swift in Sources */,
 				877F0FE4288FF32400571F26 /* LoseBattlePresenter.swift in Sources */,
@@ -1314,6 +1400,7 @@
 				AAE8870B27EF35AF00CA4E5D /* TrollFactory.swift in Sources */,
 				878DDC9C287B85CC00B37154 /* LoadBattleViewController.swift in Sources */,
 				870B67B3288E96590089D3CB /* LoadBattleInteractor.swift in Sources */,
+				877F102F2890262B00571F26 /* PauseBattleView.swift in Sources */,
 				877F10062890083F00571F26 /* WinBattleAssemblyProtocol.swift in Sources */,
 				877F0FEA288FF32400571F26 /* LoseBattleInteractor.swift in Sources */,
 				870B676B288E892A0089D3CB /* WeakPropertyWrapper.swift in Sources */,
@@ -1373,6 +1460,7 @@
 				877F10112890089000571F26 /* WinBattleView.swift in Sources */,
 				AAE886D627EE115A00CA4E5D /* NodeNames.swift in Sources */,
 				AACC7BE727FB2C9B0022384E /* WallTL.swift in Sources */,
+				877F1024289025EE00571F26 /* PauseBattleAssemblyProtocol.swift in Sources */,
 				870B67AD288E95590089D3CB /* LoadBattleViewCoordinatorOutput.swift in Sources */,
 				AACC7BE927FB2CFF0022384E /* BallistaFactory.swift in Sources */,
 				87B606BD2878FF0C003549AF /* EnemyWavesCreator.swift in Sources */,
@@ -1380,6 +1468,7 @@
 				877F0FE9288FF32400571F26 /* LoseBattleInteractorOutput.swift in Sources */,
 				877F0FE3288FF32400571F26 /* LoseBattleAssemblyProtocol.swift in Sources */,
 				AA7801F927E20291002C57E1 /* HomePageAssembly.swift in Sources */,
+				877F102A289025EE00571F26 /* PauseBattleInteractorOutput.swift in Sources */,
 				AA7801FF27E20291002C57E1 /* HomePageInteractorInput.swift in Sources */,
 				AAE886FB27EF317400CA4E5D /* Enemy.swift in Sources */,
 				AACC7BD927FB28000022384E /* MagicTowerTL.swift in Sources */,
@@ -1389,9 +1478,11 @@
 				87D51618285CC1BD00E3D7B8 /* Battle.swift in Sources */,
 				8711C628286F945500E84876 /* OneEnemiesTypeWave.swift in Sources */,
 				AA7801B727E200B6002C57E1 /* SceneDelegate.swift in Sources */,
+				877F1023289025EE00571F26 /* PauseBattleAssembly.swift in Sources */,
 				877F100B2890083F00571F26 /* WinBattleViewInput.swift in Sources */,
 				87ECCC562878E84F00E66C09 /* BattleMissionFactory.swift in Sources */,
 				AACC7BDD27FB2C1A0022384E /* BallistaFL.swift in Sources */,
+				877F102C289025EE00571F26 /* PauseBattleInteractor.swift in Sources */,
 				AAF4C9D727E8D9E500D5B6F8 /* EnemiesManager.swift in Sources */,
 				AAE886FF27EF33A600CA4E5D /* OrcSL.swift in Sources */,
 				AACC7BD227FAE9CD0022384E /* BuildingIcons.swift in Sources */,
@@ -1402,6 +1493,7 @@
 				AA78023E27E20B8E002C57E1 /* BattleFieldViewOutput.swift in Sources */,
 				877F0FEE288FF5DE00571F26 /* LoseBattleView.swift in Sources */,
 				AACC7BE127FB2C850022384E /* BallistaSL.swift in Sources */,
+				877F1026289025EE00571F26 /* PauseBattleViewOutput.swift in Sources */,
 				870B67B9288E96BD0089D3CB /* LoadBattlePresenter.swift in Sources */,
 				877F0FE7288FF32400571F26 /* LoseBattleViewController.swift in Sources */,
 				870B67BF288E97E50089D3CB /* BattleCoordinatorOutput.swift in Sources */,

@@ -16,6 +16,7 @@ protocol BattleFieldLoadDelegate: UIViewController {
 class BattleFieldViewController: UIViewController, BattleFieldViewInput,
                                  BattleFieldLoadDelegate, BattleFieldViewCoordinatorOutput {
     
+    var onPauseBattle: (() -> Void)?
     var onFinishBattle: (() -> Void)?
     var onWinBattle: (() -> Void)?
     var onLoseBattle: (() -> Void)?
@@ -154,6 +155,7 @@ extension BattleFieldViewController: SCNSceneRendererDelegate {
 extension BattleFieldViewController {
     func setupTopBarView() {
         topBarView = TopBarView(frame: view.frame)
+        topBarView.delegate = self
         view.addSubview(topBarView)
         topBarView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -194,3 +196,8 @@ extension BattleFieldViewController: BottomBarViewDelegate {
     }
 }
 
+extension BattleFieldViewController: TopBarViewDelegate {
+    func pauseButtonPressed() {
+        output.onPauseTap()
+    }
+}
