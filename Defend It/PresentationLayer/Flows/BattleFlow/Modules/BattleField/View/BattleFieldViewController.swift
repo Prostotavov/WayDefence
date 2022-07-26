@@ -16,6 +16,8 @@ protocol BattleFieldLoadDelegate: UIViewController {
 class BattleFieldViewController: UIViewController, BattleFieldViewInput,
                                  BattleFieldLoadDelegate, BattleFieldViewCoordinatorOutput {
     
+    var onFinishBattle: (() -> Void)?
+    var onWinBattle: (() -> Void)?
     var onLoseBattle: (() -> Void)?
     
     var output: BattleFieldViewOutput!

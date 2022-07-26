@@ -11,7 +11,7 @@ final class Battle01: BattleMission {
     var id: Int = 1
     
     var battleFieldSize: Int = 7
-    
+    var countOfEnemies: Int = 0
     
     var battleMeadow: BattleMeadow
     var enemiesWaves: [EnemiesWave] = []
@@ -25,10 +25,11 @@ final class Battle01: BattleMission {
         battleMeadow = BattleMeadowImpl(size: battleFieldSize)
         battleValues = BattleValuesImpl()
         createMeadow()
-//        testWave()
+//        smallQuick()
         quickWaves()
 //        createWave()
         setupBattleValues()
+        calculateEnemies()
     }
     
     func createMeadow() {
@@ -40,6 +41,14 @@ final class Battle01: BattleMission {
         battleValues.set(.coins, to: 3400)
         battleValues.set(.points, to: 0)
         battleValues.set(.lives, to: 10)
+    }
+    
+    func calculateEnemies() {
+        for enemiesWave in enemiesWaves {
+            for wave in enemiesWave.oneEnemiesTypeWaves {
+                countOfEnemies += wave.enemies.count
+            }
+        }
     }
     
     func createWave() {
@@ -71,9 +80,9 @@ final class Battle01: BattleMission {
         enemiesWaves = wavesCreator.enemiesWaves
     }
     
-    func testWave() {
+    func smallQuick() {
         wavesCreator.createWave(startFrame: 0)
-        wavesCreator.addOneRaceWave(id: 0, race: .goblin, level: .secondLevel, count: 3, interval: 40, startFrame: 10)
+        wavesCreator.addOneRaceWave(id: 0, race: .goblin, level: .secondLevel, count: 10, interval: 40, startFrame: 10)
         wavesCreator.setupEnemiesWaves()
         enemiesWaves = wavesCreator.enemiesWaves
     }

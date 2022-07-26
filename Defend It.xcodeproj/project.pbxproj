@@ -53,6 +53,17 @@
 		877F0FEB288FF32400571F26 /* LoseBattleInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FE1288FF32400571F26 /* LoseBattleInteractorInput.swift */; };
 		877F0FEE288FF5DE00571F26 /* LoseBattleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FED288FF5DE00571F26 /* LoseBattleView.swift */; };
 		877F0FF3288FFBBB00571F26 /* BattleFieldViewCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FF2288FFBBB00571F26 /* BattleFieldViewCoordinatorOutput.swift */; };
+		877F10052890083F00571F26 /* WinBattleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FF82890083F00571F26 /* WinBattleAssembly.swift */; };
+		877F10062890083F00571F26 /* WinBattleAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FF92890083F00571F26 /* WinBattleAssemblyProtocol.swift */; };
+		877F10072890083F00571F26 /* WinBattlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FFB2890083F00571F26 /* WinBattlePresenter.swift */; };
+		877F10082890083F00571F26 /* WinBattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FFD2890083F00571F26 /* WinBattleViewController.swift */; };
+		877F10092890083F00571F26 /* WinBattleViewCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FFE2890083F00571F26 /* WinBattleViewCoordinatorOutput.swift */; };
+		877F100A2890083F00571F26 /* WinBattleViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FFF2890083F00571F26 /* WinBattleViewOutput.swift */; };
+		877F100B2890083F00571F26 /* WinBattleViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F10002890083F00571F26 /* WinBattleViewInput.swift */; };
+		877F100C2890083F00571F26 /* WinBattleInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F10022890083F00571F26 /* WinBattleInteractorInput.swift */; };
+		877F100D2890083F00571F26 /* WinBattleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F10032890083F00571F26 /* WinBattleInteractor.swift */; };
+		877F100E2890083F00571F26 /* WinBattleInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F10042890083F00571F26 /* WinBattleInteractorOutput.swift */; };
+		877F10112890089000571F26 /* WinBattleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F10102890089000571F26 /* WinBattleView.swift */; };
 		878DDC97287AB62100B37154 /* BattleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC96287AB62100B37154 /* BattleValues.swift */; };
 		878DDC9C287B85CC00B37154 /* LoadBattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */; };
 		87B606BD2878FF0C003549AF /* EnemyWavesCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B606BC2878FF0C003549AF /* EnemyWavesCreator.swift */; };
@@ -217,6 +228,17 @@
 		877F0FE1288FF32400571F26 /* LoseBattleInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseBattleInteractorInput.swift; sourceTree = "<group>"; };
 		877F0FED288FF5DE00571F26 /* LoseBattleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseBattleView.swift; sourceTree = "<group>"; };
 		877F0FF2288FFBBB00571F26 /* BattleFieldViewCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleFieldViewCoordinatorOutput.swift; sourceTree = "<group>"; };
+		877F0FF82890083F00571F26 /* WinBattleAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinBattleAssembly.swift; sourceTree = "<group>"; };
+		877F0FF92890083F00571F26 /* WinBattleAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinBattleAssemblyProtocol.swift; sourceTree = "<group>"; };
+		877F0FFB2890083F00571F26 /* WinBattlePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinBattlePresenter.swift; sourceTree = "<group>"; };
+		877F0FFD2890083F00571F26 /* WinBattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinBattleViewController.swift; sourceTree = "<group>"; };
+		877F0FFE2890083F00571F26 /* WinBattleViewCoordinatorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinBattleViewCoordinatorOutput.swift; sourceTree = "<group>"; };
+		877F0FFF2890083F00571F26 /* WinBattleViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinBattleViewOutput.swift; sourceTree = "<group>"; };
+		877F10002890083F00571F26 /* WinBattleViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinBattleViewInput.swift; sourceTree = "<group>"; };
+		877F10022890083F00571F26 /* WinBattleInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinBattleInteractorInput.swift; sourceTree = "<group>"; };
+		877F10032890083F00571F26 /* WinBattleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinBattleInteractor.swift; sourceTree = "<group>"; };
+		877F10042890083F00571F26 /* WinBattleInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinBattleInteractorOutput.swift; sourceTree = "<group>"; };
+		877F10102890089000571F26 /* WinBattleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinBattleView.swift; sourceTree = "<group>"; };
 		878DDC96287AB62100B37154 /* BattleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleValues.swift; sourceTree = "<group>"; };
 		878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBattleViewController.swift; sourceTree = "<group>"; };
 		87B606BC2878FF0C003549AF /* EnemyWavesCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyWavesCreator.swift; sourceTree = "<group>"; };
@@ -513,6 +535,7 @@
 		870B679C288E8FE20089D3CB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				877F0FF62890083F00571F26 /* WinBattle */,
 				877F0FD3288FF32400571F26 /* LoseBattle */,
 				870B67A1288E90940089D3CB /* LoadBattle */,
 				AA78022927E20B8D002C57E1 /* BattleField */,
@@ -659,6 +682,64 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		877F0FF62890083F00571F26 /* WinBattle */ = {
+			isa = PBXGroup;
+			children = (
+				877F0FF72890083F00571F26 /* Assembly */,
+				877F0FFA2890083F00571F26 /* Presenter */,
+				877F0FFC2890083F00571F26 /* View */,
+				877F10012890083F00571F26 /* Interactor */,
+			);
+			path = WinBattle;
+			sourceTree = "<group>";
+		};
+		877F0FF72890083F00571F26 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				877F0FF82890083F00571F26 /* WinBattleAssembly.swift */,
+				877F0FF92890083F00571F26 /* WinBattleAssemblyProtocol.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		877F0FFA2890083F00571F26 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				877F0FFB2890083F00571F26 /* WinBattlePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		877F0FFC2890083F00571F26 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				877F0FFD2890083F00571F26 /* WinBattleViewController.swift */,
+				877F0FFE2890083F00571F26 /* WinBattleViewCoordinatorOutput.swift */,
+				877F0FFF2890083F00571F26 /* WinBattleViewOutput.swift */,
+				877F10002890083F00571F26 /* WinBattleViewInput.swift */,
+				877F100F2890088100571F26 /* Views */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		877F10012890083F00571F26 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				877F10022890083F00571F26 /* WinBattleInteractorInput.swift */,
+				877F10032890083F00571F26 /* WinBattleInteractor.swift */,
+				877F10042890083F00571F26 /* WinBattleInteractorOutput.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		877F100F2890088100571F26 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				877F10102890089000571F26 /* WinBattleView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		878DDC99287ABE3800B37154 /* DataManagers */ = {
 			isa = PBXGroup;
 			children = (
@@ -705,7 +786,6 @@
 		87ECCC522878E7DA00E66C09 /* BattleMission */ = {
 			isa = PBXGroup;
 			children = (
-				87ECCC572878E87400E66C09 /* BattleMission.swift */,
 				87B606C02878FF9E003549AF /* BattleCreators */,
 				87ECCC5B2878E8D600E66C09 /* Battles */,
 			);
@@ -715,6 +795,7 @@
 		87ECCC5B2878E8D600E66C09 /* Battles */ = {
 			isa = PBXGroup;
 			children = (
+				87ECCC572878E87400E66C09 /* BattleMission.swift */,
 				8711C631287564CA00E84876 /* Battle01.swift */,
 			);
 			path = Battles;
@@ -1197,6 +1278,7 @@
 				870B67C3288E98880089D3CB /* FlowFactoryImp.swift in Sources */,
 				877F0FE2288FF32400571F26 /* LoseBattleAssembly.swift in Sources */,
 				AA7801FB27E20291002C57E1 /* HomePageViewInput.swift in Sources */,
+				877F100D2890083F00571F26 /* WinBattleInteractor.swift in Sources */,
 				87B606C228790173003549AF /* BattleMeadowCreator.swift in Sources */,
 				AA0B68C627E5BD1E0078003D /* MagicTowerFL.swift in Sources */,
 				AAF4C9B027E856D600D5B6F8 /* BattleFieldGraph.swift in Sources */,
@@ -1225,18 +1307,22 @@
 				AA78024127E20B8E002C57E1 /* BattleFieldInteractorOutput.swift in Sources */,
 				AACC7BDF27FB2C5D0022384E /* WallFL.swift in Sources */,
 				870B67C6288ECA150089D3CB /* HomePageViewCoordinatorOutput.swift in Sources */,
+				877F10092890083F00571F26 /* WinBattleViewCoordinatorOutput.swift in Sources */,
 				AA0B68D627E5FA450078003D /* CamerasManager.swift in Sources */,
 				AAF4C9DD27E8E6A200D5B6F8 /* GroundSquare.swift in Sources */,
 				AACC7BE527FB2C940022384E /* WallSL.swift in Sources */,
 				AAE8870B27EF35AF00CA4E5D /* TrollFactory.swift in Sources */,
 				878DDC9C287B85CC00B37154 /* LoadBattleViewController.swift in Sources */,
 				870B67B3288E96590089D3CB /* LoadBattleInteractor.swift in Sources */,
+				877F10062890083F00571F26 /* WinBattleAssemblyProtocol.swift in Sources */,
 				877F0FEA288FF32400571F26 /* LoseBattleInteractor.swift in Sources */,
 				870B676B288E892A0089D3CB /* WeakPropertyWrapper.swift in Sources */,
 				AA7801FE27E20291002C57E1 /* HomePageInteractor.swift in Sources */,
 				870B6788288E8F030089D3CB /* RouterImp.swift in Sources */,
 				870B67CE288FC5D20089D3CB /* MainCoordinator.swift in Sources */,
+				877F100C2890083F00571F26 /* WinBattleInteractorInput.swift in Sources */,
 				AAE8870527EF34FA00CA4E5D /* GoblinFL.swift in Sources */,
+				877F100A2890083F00571F26 /* WinBattleViewOutput.swift in Sources */,
 				AAE8870727EF350400CA4E5D /* GoblinSL.swift in Sources */,
 				AAE886D327EE0FC800CA4E5D /* ScenePaths.swift in Sources */,
 				AA78023C27E20B8E002C57E1 /* BattleFieldPresenter.swift in Sources */,
@@ -1244,10 +1330,12 @@
 				870B6795288E8F5C0089D3CB /* CoordinatorFactoryImpl.swift in Sources */,
 				AA7801FD27E20291002C57E1 /* HomePageViewController.swift in Sources */,
 				AA78023A27E20B8E002C57E1 /* BattleFieldAssembly.swift in Sources */,
+				877F10082890083F00571F26 /* WinBattleViewController.swift in Sources */,
 				870B67CC288FC5BE0089D3CB /* MainCoordinatorOutput.swift in Sources */,
 				AACC7BF327FB66D00022384E /* EnemyNodes.swift in Sources */,
 				AA7801F827E20291002C57E1 /* HomePageAssemblyProtocol.swift in Sources */,
 				AAF4C9AC27E855D700D5B6F8 /* HashedHeap.swift in Sources */,
+				877F10052890083F00571F26 /* WinBattleAssembly.swift in Sources */,
 				870B67D0288FC6460089D3CB /* MainFlowFactory.swift in Sources */,
 				AA78024227E20B8E002C57E1 /* BattleFieldInteractor.swift in Sources */,
 				AAF4C9AD27E855D700D5B6F8 /* AStar.swift in Sources */,
@@ -1266,6 +1354,7 @@
 				87CA3D512829024C000F952F /* BottomBarView.swift in Sources */,
 				AAE886EA27EEFF9800CA4E5D /* BattleMeadow.swift in Sources */,
 				8711C62A286FACA300E84876 /* EnemiesWave.swift in Sources */,
+				877F100E2890083F00571F26 /* WinBattleInteractorOutput.swift in Sources */,
 				AA78020027E20291002C57E1 /* HomePageInteractorOutput.swift in Sources */,
 				AAE886F827EF30B300CA4E5D /* OrcFL.swift in Sources */,
 				870B67A0288E90470089D3CB /* FlowNavigationController.swift in Sources */,
@@ -1273,6 +1362,7 @@
 				AAE8870D27EF35F400CA4E5D /* TrollFL.swift in Sources */,
 				AA0B68C427E5BC140078003D /* Building.swift in Sources */,
 				AA78023B27E20B8E002C57E1 /* BattleFieldAssemblyProtocol.swift in Sources */,
+				877F10072890083F00571F26 /* WinBattlePresenter.swift in Sources */,
 				870B67BB288E97290089D3CB /* LoadBattleAssembly.swift in Sources */,
 				AACC7BEF27FB36D30022384E /* BuiltTowers.swift in Sources */,
 				870B6793288E8F530089D3CB /* CoordinatorFactory.swift in Sources */,
@@ -1280,6 +1370,7 @@
 				AAE8870327EF342D00CA4E5D /* GoblinFactory.swift in Sources */,
 				AA0B68C827E5BDC20078003D /* ElphTowerFL.swift in Sources */,
 				AAE8871127EF360600CA4E5D /* TrollTL.swift in Sources */,
+				877F10112890089000571F26 /* WinBattleView.swift in Sources */,
 				AAE886D627EE115A00CA4E5D /* NodeNames.swift in Sources */,
 				AACC7BE727FB2C9B0022384E /* WallTL.swift in Sources */,
 				870B67AD288E95590089D3CB /* LoadBattleViewCoordinatorOutput.swift in Sources */,
@@ -1298,6 +1389,7 @@
 				87D51618285CC1BD00E3D7B8 /* Battle.swift in Sources */,
 				8711C628286F945500E84876 /* OneEnemiesTypeWave.swift in Sources */,
 				AA7801B727E200B6002C57E1 /* SceneDelegate.swift in Sources */,
+				877F100B2890083F00571F26 /* WinBattleViewInput.swift in Sources */,
 				87ECCC562878E84F00E66C09 /* BattleMissionFactory.swift in Sources */,
 				AACC7BDD27FB2C1A0022384E /* BallistaFL.swift in Sources */,
 				AAF4C9D727E8D9E500D5B6F8 /* EnemiesManager.swift in Sources */,

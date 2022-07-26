@@ -17,10 +17,16 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     
     /// func for flow coordinator
     func finishBattle() {
+        coordinator.onFinishBattle?()
+    }
+    func battleIsWon() {
+        coordinator.onWinBattle?()
+    }
+    func battleIsLost() {
         coordinator.onLoseBattle?()
     }
     func onAcceptTap() {
-        coordinator.onLoseBattle?()
+        coordinator.onFinishBattle?()
     }
     
     /// view run loop funcs

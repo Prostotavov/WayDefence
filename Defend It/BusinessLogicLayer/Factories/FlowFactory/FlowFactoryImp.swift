@@ -18,12 +18,16 @@ class FlowFactoryImp: BattleFlowFactory {
         return vc
     }
     
+    func produceBattleFieldOutput() -> BattleFieldViewCoordinatorOutput {
+        return vc.battleFieldVC as! BattleFieldViewCoordinatorOutput
+    }
+    
     func produceLoseBattleOutput() -> LoseBattleViewCoordinatorOutput {
         return LoseBattleViewController()
     }
     
-    func produceBattleFieldOutput() -> BattleFieldViewCoordinatorOutput {
-        return vc.battleFieldVC as! BattleFieldViewCoordinatorOutput
+    func produceWinBattleOutput() -> WinBattleViewCoordinatorOutput {
+        return WinBattleViewController()
     }
 }
 

@@ -18,6 +18,7 @@ protocol OneEnemiesTypeWave {
     func runAllEnemies()
     func addEnemiesToScene()
     func getStartCounter() -> Int
+    var enemies: Set<AnyEnemy> {get}
 }
 
 protocol OneEnemiesTypeWaveDelegate: AnyObject {

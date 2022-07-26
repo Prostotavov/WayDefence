@@ -103,4 +103,10 @@ extension BattleFieldInteractor: BattleOutput {
     func finishBattle() {
         output.finishBattle()
     }
+    func battleIsWon() {
+        output.battleIsWon()
+    }
+    func battleIsLost() {
+        output.battleIsLost()
+    }
 }

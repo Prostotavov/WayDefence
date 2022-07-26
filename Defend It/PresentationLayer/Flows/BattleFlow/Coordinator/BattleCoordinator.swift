@@ -41,6 +41,13 @@ class BattleCoordinator: BaseCoordinator , BattleCoordinatorOutput {
     
     private func showBattleField() {
         let battleFieldOutput = factory.produceBattleFieldOutput()
+        
+        battleFieldOutput.onFinishBattle = { [weak self] in
+            self?.showLoseBattle()
+        }
+        battleFieldOutput.onWinBattle = { [weak self] in
+            self?.showWinBattle()
+        }
         battleFieldOutput.onLoseBattle = { [weak self] in
             self?.showLoseBattle()
         }
@@ -55,6 +62,15 @@ class BattleCoordinator: BaseCoordinator , BattleCoordinatorOutput {
         }
         
         router.push(loseBattleOutput, animated: false)
+    }
+    
+    private func showWinBattle() {
+        let winBattleOutput = factory.produceWinBattleOutput()
+        winBattleOutput.onAccept = { [weak self] in
+            self?.finishFlow?()
+        }
+        
+        router.push(winBattleOutput, animated: false)
     }
 
 }

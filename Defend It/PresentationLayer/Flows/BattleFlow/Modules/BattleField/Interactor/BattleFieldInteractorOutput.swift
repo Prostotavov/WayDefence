@@ -24,5 +24,7 @@ protocol BattleFieldInteractorOutput: AnyObject {
     func setViewVerticalOrientation()
     
     func finishBattle()
+    func battleIsWon()
+    func battleIsLost()
 }
 

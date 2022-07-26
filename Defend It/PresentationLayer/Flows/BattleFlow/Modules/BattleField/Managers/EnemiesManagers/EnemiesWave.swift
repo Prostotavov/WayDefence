@@ -26,6 +26,7 @@ protocol EnemiesWave {
     var startFrame: Int {get set}
     
     func setupDelegate(delegate: EnemiesWaveDelegate)
+    var oneEnemiesTypeWaves: [OneEnemiesTypeWave] {get}
 }
 
 class EnemiesWaveImpl: EnemiesWave, OneEnemiesTypeWaveDelegate {

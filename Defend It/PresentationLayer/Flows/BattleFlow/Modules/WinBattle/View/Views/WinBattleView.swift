@@ -1,5 +1,5 @@
 //
-//  LoseBattleView.swift
+//  WinBattleView.swift
 //  Defend It
 //
 //  Created by Роман Сенкевич on 26.07.22.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol LoseBattleViewDelegate {
+protocol WinBattleViewDelegate {
     func goToHomePagePressed()
 }
 
-class LoseBattleView: UIView {
+class WinBattleView: UIView {
     
     let startButtonHeight: CGFloat = 50
     let startButtonWidth: CGFloat = 300
@@ -22,7 +22,7 @@ class LoseBattleView: UIView {
     var startButton = UIButton()
     var statusLabel = UILabel()
     
-    var delegate: LoseBattleViewDelegate!
+    var delegate: WinBattleViewDelegate!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,7 +50,7 @@ class LoseBattleView: UIView {
         ])
         
         statusLabel.backgroundColor = .systemBlue
-        statusLabel.text = "You Are Lose"
+        statusLabel.text = "You Are Win"
         statusLabel.textAlignment = .center
     }
     
@@ -76,4 +76,5 @@ class LoseBattleView: UIView {
     }
     
 }
+
 

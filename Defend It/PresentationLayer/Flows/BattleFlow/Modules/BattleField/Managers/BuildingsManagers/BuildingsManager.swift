@@ -195,7 +195,7 @@ extension BuildingsManagerImpl {
     func pushProjectileNodeFrom(_ building: Building) {
         let projectileNode = building.buildingNode.childNode(withName: NodeNames.projectileNode.rawValue, recursively: true)
         projectileNode!.removeAllActions()
-        let enemyPosition = building.enemiesInRadius.first!.enemyNode.position
+        guard let enemyPosition = building.enemiesInRadius.first?.enemyNode.position else {return}
         let buildingPosition = building.buildingNode.position
         let endPosition = SCNVector3(enemyPosition.x - buildingPosition.x, enemyPosition.y, enemyPosition.z - buildingPosition.z)
         let duration = 0.3

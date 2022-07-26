@@ -17,6 +17,8 @@ enum BattleStates: String {
 
 protocol BattleOutput: AnyObject {
     func finishBattle()
+    func battleIsWon()
+    func battleIsLost()
 }
 
 protocol BattleDelegate: AnyObject {
@@ -84,7 +86,6 @@ class BattleImpl: MeadowManagerDelagate, BuildingsManagerDelegate, Battle {
     
     func startBattle() {
         changeBattleState(into: .pause)
-//        enemiesManager.addEnemiesToScene()
         meadowManager.addGroundToScene()
     }
     
@@ -128,9 +129,12 @@ extension BattleImpl {
         
     }
     func finishBattle() {
+        switch battleState {
+        case .win: output.battleIsWon()
+        case .lose: output.battleIsLost()
+        default: output.finishBattle()
+        }
         stopBattle()
-        output.finishBattle()
-        changeBattleState(into: .lose)
     }
     func speedUpBattle(by times: Int) {
         print("add this later")
@@ -202,19 +206,39 @@ extension BattleImpl: EnemiesManagerDelegate, BattleManagerDelegate {
             self.battleValuesManager.increase(.coins, by: enemy.coinMurderReward)
             self.battleValuesManager.increase(.points, by: enemy.pointsMurderReward)
             self.displayBattleValues()
+            if self.battleMission.countOfEnemies != 1 {
+                self.battleMission.countOfEnemies -= 1
+            } else {
+                self.changeBattleState(into: .win)
+                self.finishBattle()
+            }
         }
         enemiesManager.removeEnemy(enemy)
     }
     func allEnemiesMurdered() {
+        print("allEnemiesMurdered")
+        changeBattleState(into: .win)
         finishBattle()
     }
     func enemyReachedCastle() {
         DispatchQueue.main.async {
             self.battleValuesManager.reduce(.lives, by: 1)
             self.displayBattleValues()
+            
+            if self.battleMission.countOfEnemies != 1 {
+                self.battleMission.countOfEnemies -= 1
+            } else {
+                if self.battleValuesManager.get(.lives) == 0 {
+                    self.changeBattleState(into: .lose)
+                } else {
+                    self.changeBattleState(into: .win)
+                }
+                self.finishBattle()
+            }
         }
     }
     func livesAreOver() {
+        changeBattleState(into: .lose)
         finishBattle()
     }
     func towerDamaged() {
