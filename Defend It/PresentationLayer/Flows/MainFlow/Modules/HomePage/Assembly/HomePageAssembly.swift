@@ -9,24 +9,24 @@ import UIKit
 
 class HomePageAssembly: NSObject, HomePageAssemblyProtocol {
     
-    func assembly(with viewController: HomePageViewController) {
+    func assemblyModuleForViewInput<UIViewController>(viewInput: UIViewController) {
+        if let viewController = viewInput as? HomePageViewController {
+            assembly(with: viewController)
+        }
+    }
+    
+    private func assembly(with viewController: HomePageViewController) {
         
         let presenter = HomePagePresenter()
         let interactor = HomePageInteractor()
-        let router = HomePageRouter()
-        let dataManager = DataManagerImpl()
-        
-        viewController.output = presenter
-        
+            
         presenter.view = viewController
-        presenter.router = router
+        presenter.coordinator = viewController
         presenter.interactor = interactor
         
-        interactor.dataManager = dataManager
         interactor.output = presenter
         
-        router.view = viewController
-        
+        viewController.output = presenter
     }
     
 }

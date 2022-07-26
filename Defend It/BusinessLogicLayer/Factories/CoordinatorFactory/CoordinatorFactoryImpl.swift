@@ -14,6 +14,12 @@ class CoordinatorFactoryImp: CoordinatorFactory {
         let coordinator = BattleCoordinator(router: router, factory: flowFactory)
         return coordinator
     }
+    
+    func produceMainCoordinator(router: Router, flowFactory: MainFlowFactory) -> Coordinator & MainCoordinatorOutput {
+        
+        let coordinator = MainCoordinator(router: router, factory: flowFactory)
+        return coordinator
+    }
 
     private func router(_ controller: UINavigationController?) -> Router {
         

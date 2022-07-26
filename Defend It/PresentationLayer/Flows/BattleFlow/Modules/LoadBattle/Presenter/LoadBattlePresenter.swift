@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LoadBattlePresenter: LoadBattleModuleInput, LoadBattleViewOutput, LoadBattleInteractorOutput {
+class LoadBattlePresenter: LoadBattleViewOutput, LoadBattleInteractorOutput {
 
     weak var view: LoadBattleViewInput!
     weak var coordinator: LoadBattleViewCoordinatorOutput!

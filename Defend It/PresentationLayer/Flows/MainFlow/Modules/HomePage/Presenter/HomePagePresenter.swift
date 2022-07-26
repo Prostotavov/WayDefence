@@ -10,12 +10,11 @@ import Foundation
 class HomePagePresenter: HomePageViewOutput, HomePageInteractorOutput {
     
     weak var view: HomePageViewInput!
+    weak var coordinator: HomePageViewCoordinatorOutput!
     var interactor: HomePageInteractorInput!
-    var router: HomePageRouterInput!
     
-    func startGame() {
-//        router.showBattleField()
-        router.showBattleLoadView()
+    func onStartBattle() {
+        coordinator.onStartBattle?()
     }
     
 }

@@ -38,5 +38,14 @@ class BattleCoordinator: BaseCoordinator , BattleCoordinatorOutput {
         
         router.setRootModule(loadBattleOutput, hideBar: true)
     }
+    
+    private func showBattleField() {
+        let battleFieldOutput = factory.produceLoadBattleOutput()
+        battleFieldOutput.onAccept = { [weak self] in
+            self?.finishFlow?()
+        }
+        
+        router.push(battleFieldOutput)
+    }
 
 }

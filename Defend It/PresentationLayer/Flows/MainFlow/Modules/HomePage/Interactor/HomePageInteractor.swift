@@ -10,6 +10,4 @@ import Foundation
 class HomePageInteractor: HomePageInteractorInput {
     
     weak var output: HomePageInteractorOutput!
-    var dataManager: DataManager!
-    
 }

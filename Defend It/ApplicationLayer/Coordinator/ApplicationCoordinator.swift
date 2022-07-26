@@ -23,13 +23,25 @@ final class ApplicationCoordinator: BaseCoordinator {
     }
 
     override func start() {
-        runBattleFlow()
+        runMainFlow()
+    }
+    
+    private func runMainFlow() {
+
+        let coordinator = coordinatorFactory.produceMainCoordinator(router: router, flowFactory: flowFactory)
+
+        coordinator.finishFlow = { [weak self, weak coordinator] in
+            self?.runBattleFlow()
+            self?.removeDependency(coordinator)
+        }
+
+        addDependency(coordinator)
+        coordinator.start()
     }
 
     private func runBattleFlow() {
 
         let coordinator = coordinatorFactory.produceBattleCoordinator(router: router, flowFactory: flowFactory)
-
         
         coordinator.finishFlow = { [weak self, weak coordinator] in
 

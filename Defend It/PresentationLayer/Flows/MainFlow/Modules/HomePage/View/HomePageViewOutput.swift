@@ -8,5 +8,6 @@
 import Foundation
 
 protocol HomePageViewOutput: AnyObject {
-    func startGame()
+    
+    func onStartBattle()
 }

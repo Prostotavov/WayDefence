@@ -14,7 +14,10 @@ class FlowFactoryImp: BattleFlowFactory {
     func produceLoadBattleOutput() -> LoadBattleViewCoordinatorOutput {
         return LoadBattleViewController()
     }
+}
 
-    
-
+extension FlowFactoryImp: MainFlowFactory {
+    func produceHomePageOutput() -> HomePageViewCoordinatorOutput {
+        return HomePageViewController()
+    }
 }

@@ -7,10 +7,12 @@
 
 import UIKit
 
-class HomePageViewController: UIViewController, HomePageViewInput, HomePageViewDelegate {
+class HomePageViewController: UIViewController, HomePageViewInput, HomePageViewDelegate, HomePageViewCoordinatorOutput {
     
     var output: HomePageViewOutput!
     var assembler: HomePageAssemblyProtocol = HomePageAssembly()
+    
+    var onStartBattle: (() -> Void)?
     
     var homePageView = HomePageView()
     
@@ -20,12 +22,12 @@ class HomePageViewController: UIViewController, HomePageViewInput, HomePageViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        assembler.assembly(with: self)
+        assembler.assemblyModuleForViewInput(viewInput: self)
         homePageView.delegate = self
     }
     
     func startButtonPressed() {
-        output.startGame()
+        output.onStartBattle()
     }
     
 }

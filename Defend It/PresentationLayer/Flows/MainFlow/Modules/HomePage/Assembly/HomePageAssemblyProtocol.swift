@@ -9,5 +9,5 @@ import Foundation
 
 protocol HomePageAssemblyProtocol: AnyObject {
     
-    func assembly(with viewController: HomePageViewController)
+    func assemblyModuleForViewInput<UIViewController>(viewInput: UIViewController)
 }
