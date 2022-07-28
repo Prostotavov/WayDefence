@@ -16,6 +16,7 @@ class BattleMapViewController: UIViewController, BattleMapViewInput, BattleMapVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .yellow
         assembler.assemblyModuleForViewInput(viewInput: self)
         output.viewDidLoad()
     }
