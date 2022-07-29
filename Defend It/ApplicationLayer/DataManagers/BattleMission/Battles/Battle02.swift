@@ -1,16 +1,16 @@
 //
-//  Battle01.swift
+//  Battle02.swift
 //  Defend It
 //
-//  Created by Роман Сенкевич on 6.07.22.
+//  Created by Роман Сенкевич on 29.07.22.
 //
 
 import SceneKit
 
-final class Battle01: BattleMission {
-    var id: Int = 1
+final class Battle02: BattleMission {
+    var id: Int = 2
     
-    var battleFieldSize: Int = 7
+    var battleFieldSize: Int = 10
     var countOfEnemies: Int = 0
     
     var battleMeadow: BattleMeadow
@@ -31,9 +31,9 @@ final class Battle01: BattleMission {
         battleMeadow = BattleMeadowImpl(size: battleFieldSize)
         battleValues = BattleValuesImpl()
         createMeadow()
-        //        smallQuick()
+//        smallQuick()
         quickWaves()
-        //        createWave()
+//        createWave()
         setupBattleValues()
         calculateEnemies()
     }
@@ -44,9 +44,9 @@ final class Battle01: BattleMission {
     }
     
     func setupBattleValues() {
-        battleValues.set(.coins, to: 3400)
+        battleValues.set(.coins, to: 1500)
         battleValues.set(.points, to: 0)
-        battleValues.set(.lives, to: 10)
+        battleValues.set(.lives, to: 15)
     }
     
     func calculateEnemies() {
@@ -62,7 +62,7 @@ final class Battle01: BattleMission {
         wavesCreator.createWave(startFrame: 0)
         wavesCreator.addOneRaceWave(id: 0, race: .goblin, level: .firstLevel, count: 2, interval: 40, startFrame: 10)
         wavesCreator.addOneRaceWave(id: 0, race: .troll, level: .firstLevel, count: 2, interval: 90, startFrame: 100)
-        
+
         //wave 1
         wavesCreator.createWave(startFrame: 1000)
         wavesCreator.addOneRaceWave(id: 1, race: .troll, level: .secondLevel, count: 3, interval: 100, startFrame: 10)
@@ -98,7 +98,7 @@ final class Battle01: BattleMission {
         wavesCreator.createWave(startFrame: 0)
         wavesCreator.addOneRaceWave(id: 0, race: .goblin, level: .firstLevel, count: 2, interval: 40, startFrame: 10)
         wavesCreator.addOneRaceWave(id: 0, race: .troll, level: .firstLevel, count: 2, interval: 90, startFrame: 100)
-        
+
         //wave 1
         wavesCreator.createWave(startFrame: 100)
         wavesCreator.addOneRaceWave(id: 1, race: .troll, level: .secondLevel, count: 3, interval: 100, startFrame: 10)

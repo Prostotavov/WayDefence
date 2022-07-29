@@ -10,5 +10,7 @@ import Foundation
 protocol BattleMapViewOutput: AnyObject {
     
     func viewDidLoad()
-    func onAcceptTap()
+    func onBattleIconPressed()
+    
+    func battleIconPressed(byId id: Int)
 }

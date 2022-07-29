@@ -15,7 +15,11 @@ protocol BattleMeadowCreator {
 }
 
 class BattleMeadowCreatorImpl: BattleMeadowCreator {
-    var battleMeadow: BattleMeadow = BattleMeadowImpl(size: 7)
+    var battleMeadow: BattleMeadow
+    
+    init(size: Int) {
+        self.battleMeadow = BattleMeadowImpl(size: size)
+    }
     
     func getBattleMeadow() -> BattleMeadow {
         battleMeadow

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol BattleMapInteractorInput: AnyObject {
-
+    func battleIconPressed(byId id: Int)
 }

@@ -10,5 +10,9 @@ import Foundation
 class BattleMapInteractor: BattleMapInteractorInput {
     
     weak var output: BattleMapInteractorOutput!
+    var dataManager: DataManager!
     
+    func battleIconPressed(byId id: Int) {
+        print("interactor id: \(id)")
+    }
 }

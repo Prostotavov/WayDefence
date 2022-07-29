@@ -22,7 +22,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput,
     var onLoseBattle: (() -> Void)?
     
     var output: BattleFieldViewOutput!
-    var assembler: BattleFieldAssemblyProtocol = BattleFieldAssembly()
+    var assembler: BattleFieldAssemblyProtocol = BattleFieldAssembly(battleMission: .second)
     
     var sceneView: SCNView!
     var scene: SCNScene!

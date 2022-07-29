@@ -8,6 +8,10 @@
 import SpriteKit
 import GameplayKit
 
+protocol BattleMapSceneOutput: AnyObject {
+    func battleIconPressed(byId id: Int)
+}
+
 class BattleMapScene: SKScene, UIGestureRecognizerDelegate {
     
     // MARK: Properties
@@ -20,6 +24,7 @@ class BattleMapScene: SKScene, UIGestureRecognizerDelegate {
     
     // The whole point of this project is to demonstrate our SKCameraNode subclass!
     let battleMapCamera: BattleMapCamera!
+    weak var output: BattleMapSceneOutput!
     
     var initialScale: CGFloat = 1.0
     
@@ -75,6 +80,7 @@ class BattleMapScene: SKScene, UIGestureRecognizerDelegate {
         self.view!.addGestureRecognizer(pinchGesture)
         
         addGamePieces()
+        setupBattleIcons()
     }
     
     // Called before each frame is rendered

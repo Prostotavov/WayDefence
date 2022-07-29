@@ -103,6 +103,9 @@
 		87D51618285CC1BD00E3D7B8 /* Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D51617285CC1BD00E3D7B8 /* Battle.swift */; };
 		87E1286428946515006CEF02 /* BattleMapScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1286328946515006CEF02 /* BattleMapScene.swift */; };
 		87E1286628946535006CEF02 /* BattleMapCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1286528946535006CEF02 /* BattleMapCamera.swift */; };
+		87E1286928947031006CEF02 /* BattleMapIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1286828947031006CEF02 /* BattleMapIcon.swift */; };
+		87E1286B2894707C006CEF02 /* BattleMapScene_BattleIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1286A2894707C006CEF02 /* BattleMapScene_BattleIcons.swift */; };
+		87E1286D28947A7C006CEF02 /* Battle02.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1286C28947A7C006CEF02 /* Battle02.swift */; };
 		87ECCC562878E84F00E66C09 /* BattleMissionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECCC552878E84F00E66C09 /* BattleMissionFactory.swift */; };
 		87ECCC582878E87400E66C09 /* BattleMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECCC572878E87400E66C09 /* BattleMission.swift */; };
 		AA0B68BE27E5B95C0078003D /* AbstactFactoryBuildings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68BD27E5B95C0078003D /* AbstactFactoryBuildings.swift */; };
@@ -309,6 +312,9 @@
 		87D51617285CC1BD00E3D7B8 /* Battle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle.swift; sourceTree = "<group>"; };
 		87E1286328946515006CEF02 /* BattleMapScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapScene.swift; sourceTree = "<group>"; };
 		87E1286528946535006CEF02 /* BattleMapCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapCamera.swift; sourceTree = "<group>"; };
+		87E1286828947031006CEF02 /* BattleMapIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapIcon.swift; sourceTree = "<group>"; };
+		87E1286A2894707C006CEF02 /* BattleMapScene_BattleIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapScene_BattleIcons.swift; sourceTree = "<group>"; };
+		87E1286C28947A7C006CEF02 /* Battle02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle02.swift; sourceTree = "<group>"; };
 		87ECCC552878E84F00E66C09 /* BattleMissionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionFactory.swift; sourceTree = "<group>"; };
 		87ECCC572878E87400E66C09 /* BattleMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMission.swift; sourceTree = "<group>"; };
 		AA0B68BD27E5B95C0078003D /* AbstactFactoryBuildings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstactFactoryBuildings.swift; sourceTree = "<group>"; };
@@ -481,7 +487,6 @@
 				870B676C288E89560089D3CB /* TestFunctions.swift */,
 				870B676E288E896B0089D3CB /* Extensions.swift */,
 				870B6774288E8A450089D3CB /* Converter.swift */,
-				870B6772288E89A50089D3CB /* DataManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -979,6 +984,7 @@
 		878DDC99287ABE3800B37154 /* DataManagers */ = {
 			isa = PBXGroup;
 			children = (
+				870B6772288E89A50089D3CB /* DataManager.swift */,
 				87ECCC522878E7DA00E66C09 /* BattleMission */,
 			);
 			path = DataManagers;
@@ -1023,7 +1029,9 @@
 			isa = PBXGroup;
 			children = (
 				87E1286328946515006CEF02 /* BattleMapScene.swift */,
+				87E1286A2894707C006CEF02 /* BattleMapScene_BattleIcons.swift */,
 				87E1286528946535006CEF02 /* BattleMapCamera.swift */,
+				87E1286828947031006CEF02 /* BattleMapIcon.swift */,
 			);
 			path = SpriteKit;
 			sourceTree = "<group>";
@@ -1042,6 +1050,7 @@
 			children = (
 				87ECCC572878E87400E66C09 /* BattleMission.swift */,
 				8711C631287564CA00E84876 /* Battle01.swift */,
+				87E1286C28947A7C006CEF02 /* Battle02.swift */,
 			);
 			path = Battles;
 			sourceTree = "<group>";
@@ -1517,6 +1526,7 @@
 				AAE8870927EF350F00CA4E5D /* GoblinTL.swift in Sources */,
 				877F0FEB288FF32400571F26 /* LoseBattleInteractorInput.swift in Sources */,
 				AA0B68C027E5BA7D0078003D /* MagicTowerFactory.swift in Sources */,
+				87E1286928947031006CEF02 /* BattleMapIcon.swift in Sources */,
 				873F65302893224C00A67F43 /* BattleMapFlowFactory.swift in Sources */,
 				877F1028289025EE00571F26 /* PauseBattleViewController.swift in Sources */,
 				870B6779288E8E420089D3CB /* Coordinator.swift in Sources */,
@@ -1576,6 +1586,7 @@
 				870B676B288E892A0089D3CB /* WeakPropertyWrapper.swift in Sources */,
 				AA7801FE27E20291002C57E1 /* HomePageInteractor.swift in Sources */,
 				870B6788288E8F030089D3CB /* RouterImp.swift in Sources */,
+				87E1286D28947A7C006CEF02 /* Battle02.swift in Sources */,
 				870B67CE288FC5D20089D3CB /* MainCoordinator.swift in Sources */,
 				877F100C2890083F00571F26 /* WinBattleInteractorInput.swift in Sources */,
 				AAE8870527EF34FA00CA4E5D /* GoblinFL.swift in Sources */,
@@ -1611,6 +1622,7 @@
 				AAE886F327EF2DC500CA4E5D /* AbstractFactoryEnemies.swift in Sources */,
 				870B676D288E89560089D3CB /* TestFunctions.swift in Sources */,
 				870B6773288E89A50089D3CB /* DataManager.swift in Sources */,
+				87E1286B2894707C006CEF02 /* BattleMapScene_BattleIcons.swift in Sources */,
 				87CA3D512829024C000F952F /* BottomBarView.swift in Sources */,
 				AAE886EA27EEFF9800CA4E5D /* BattleMeadow.swift in Sources */,
 				8711C62A286FACA300E84876 /* EnemiesWave.swift in Sources */,

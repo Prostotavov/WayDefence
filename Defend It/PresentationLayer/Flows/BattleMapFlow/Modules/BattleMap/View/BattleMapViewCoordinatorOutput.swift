@@ -8,5 +8,5 @@
 import Foundation
 
 protocol BattleMapViewCoordinatorOutput: Presentable {
-    var onAccept: (() -> Void)? { get set }
+    var onBattleIcon: (() -> Void)? { get set }
 }

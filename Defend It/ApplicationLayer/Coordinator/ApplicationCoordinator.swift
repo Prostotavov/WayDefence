@@ -32,7 +32,8 @@ final class ApplicationCoordinator: BaseCoordinator {
         let coordinator = coordinatorFactory.produceMainCoordinator(router: router, flowFactory: flowFactory)
 
         coordinator.finishFlow = { [weak self, weak coordinator] in
-            self?.runBattleFlow()
+            // MARK: number
+            self?.runBattleFlow(byId: 1)
             self?.removeDependency(coordinator)
         }
 
@@ -40,7 +41,7 @@ final class ApplicationCoordinator: BaseCoordinator {
         coordinator.start()
     }
 
-    private func runBattleFlow() {
+    private func runBattleFlow(byId: Int) {
         
         let coordinator = coordinatorFactory.produceBattleCoordinator(router: router, flowFactory: flowFactory)
         
@@ -61,8 +62,9 @@ final class ApplicationCoordinator: BaseCoordinator {
             self?.runMainFlow()
             self?.removeDependency(coordinator)
         }
-        coordinator.startBattleFlow = { [weak self] in
-            self?.runBattleFlow()
+        coordinator.startBattleFlow = { [weak self] intNum in
+            // MARK: number
+            self?.runBattleFlow(byId: 0)
             self?.removeDependency(coordinator)
         }
         coordinator.startMainFlow = { [weak self] in

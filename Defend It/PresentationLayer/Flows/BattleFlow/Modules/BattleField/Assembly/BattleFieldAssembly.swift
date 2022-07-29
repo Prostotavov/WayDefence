@@ -19,6 +19,12 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
     
     weak var delegate: BattleFieldAssemblyDelagate!
     
+    var battleMission: BattleMissions
+    
+    init(battleMission: BattleMissions) {
+        self.battleMission = battleMission
+    }
+    
     func setDelegate(delegate: BattleFieldAssemblyDelagate) {
         self.delegate = delegate
     }
@@ -37,7 +43,7 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         delegate.createViperModelues(completed: 5)        // 5% load
         
         
-        let battleMission = Battle01()
+        let battleMission = FactoryBattleMission().createBattleMission(id: battleMission)
         delegate.createBattleMission(completed: 17)       // 22% load
         
         // init managers
@@ -48,6 +54,9 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         let camerasManager = CamerasManagerImpl()
         delegate.createManagers(completed: 33)           // 65% load
         
+        
+        enemiesManager.battleMision = battleMission
+        battleMission.wavesCreator.delegate = enemiesManager
         
         // init and assembly battle
         let battle = BattleImpl()

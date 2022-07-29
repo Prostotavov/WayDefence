@@ -17,7 +17,12 @@ class BattleMapPresenter: BattleMapViewOutput, BattleMapInteractorOutput {
         view.setupInitialState()
     }
     
-    func onAcceptTap() {
-        coordinator.onAccept?()
+    func onBattleIconPressed() {
+        coordinator.onBattleIcon?()
+    }
+    
+    func battleIconPressed(byId id: Int) {
+        
+        interactor.battleIconPressed(byId: id)
     }
 }

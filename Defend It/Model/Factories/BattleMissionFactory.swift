@@ -7,7 +7,7 @@
 
 import SceneKit
 
-enum battleIds: Int {
+enum BattleMissions: Int {
     case first = 1
     case second = 2
     case third = 3
@@ -25,9 +25,10 @@ class FactoryBattleMission: EnemiesWaveDelegate, OneEnemiesTypeWaveDelegate {
     
     weak var delegate: FactoryBattleMissionDelegate!
         
-    func createBattleMission(id: Int) -> BattleMission {
+    func createBattleMission(id: BattleMissions) -> BattleMission {
         switch id {
-        case 1: return Battle01()
+        case .first: return Battle01()
+        case .second: return Battle02()
         default: return Battle01()
         }
     }

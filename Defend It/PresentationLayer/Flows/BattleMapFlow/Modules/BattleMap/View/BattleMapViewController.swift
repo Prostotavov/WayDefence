@@ -9,14 +9,14 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class BattleMapViewController: UIViewController, BattleMapViewInput, BattleMapViewCoordinatorOutput, UIGestureRecognizerDelegate {
+class BattleMapViewController: UIViewController, BattleMapViewInput, BattleMapViewCoordinatorOutput, UIGestureRecognizerDelegate, BattleMapSceneOutput {
     
     // MARK: Properties
 
     var output: BattleMapViewOutput!
     var assembler: BattleMapAssemblyProtocol = BattleMapAssembly()
     
-    var onAccept: (() -> Void)?
+    var onBattleIcon: (() -> Void)?
     
     var battleMapScene: BattleMapScene!
     
@@ -37,6 +37,7 @@ class BattleMapViewController: UIViewController, BattleMapViewInput, BattleMapVi
         
         // Configure the scene.
         battleMapScene = BattleMapScene(size: skView.bounds.size)
+        battleMapScene.output = self
         battleMapScene.scaleMode = .resizeFill
         
         // Present the scene.
@@ -78,7 +79,10 @@ class BattleMapViewController: UIViewController, BattleMapViewInput, BattleMapVi
     }
 
     
-    
+    func battleIconPressed(byId id: Int) {
+        output.battleIconPressed(byId: id)
+        output.onBattleIconPressed()
+    }
     
     func setupInitialState() {
         
