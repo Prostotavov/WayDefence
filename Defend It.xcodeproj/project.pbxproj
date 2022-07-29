@@ -44,6 +44,11 @@
 		873F65302893224C00A67F43 /* BattleMapFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F652F2893224C00A67F43 /* BattleMapFlowFactory.swift */; };
 		873F65352893235B00A67F43 /* BattleMapCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F65342893235B00A67F43 /* BattleMapCoordinatorOutput.swift */; };
 		873F65372893236900A67F43 /* BattleMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F65362893236900A67F43 /* BattleMapCoordinator.swift */; };
+		873F653D2893258F00A67F43 /* TabbarCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F653C2893258F00A67F43 /* TabbarCoordinatorOutput.swift */; };
+		873F653F289325A900A67F43 /* TabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F653E289325A900A67F43 /* TabbarCoordinator.swift */; };
+		873F6541289325C900A67F43 /* FlowTabbarCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F6540289325C900A67F43 /* FlowTabbarCoordinatorOutput.swift */; };
+		873F6543289325DA00A67F43 /* FlowTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F6542289325DA00A67F43 /* FlowTabbarController.swift */; };
+		873F6545289325E900A67F43 /* FlowTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F6544289325E900A67F43 /* FlowTabbar.swift */; };
 		877F0FE2288FF32400571F26 /* LoseBattleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FD5288FF32400571F26 /* LoseBattleAssembly.swift */; };
 		877F0FE3288FF32400571F26 /* LoseBattleAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FD6288FF32400571F26 /* LoseBattleAssemblyProtocol.swift */; };
 		877F0FE4288FF32400571F26 /* LoseBattlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FD8288FF32400571F26 /* LoseBattlePresenter.swift */; };
@@ -243,6 +248,11 @@
 		873F652F2893224C00A67F43 /* BattleMapFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapFlowFactory.swift; sourceTree = "<group>"; };
 		873F65342893235B00A67F43 /* BattleMapCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapCoordinatorOutput.swift; sourceTree = "<group>"; };
 		873F65362893236900A67F43 /* BattleMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapCoordinator.swift; sourceTree = "<group>"; };
+		873F653C2893258F00A67F43 /* TabbarCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCoordinatorOutput.swift; sourceTree = "<group>"; };
+		873F653E289325A900A67F43 /* TabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCoordinator.swift; sourceTree = "<group>"; };
+		873F6540289325C900A67F43 /* FlowTabbarCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarCoordinatorOutput.swift; sourceTree = "<group>"; };
+		873F6542289325DA00A67F43 /* FlowTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarController.swift; sourceTree = "<group>"; };
+		873F6544289325E900A67F43 /* FlowTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbar.swift; sourceTree = "<group>"; };
 		877F0FD5288FF32400571F26 /* LoseBattleAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseBattleAssembly.swift; sourceTree = "<group>"; };
 		877F0FD6288FF32400571F26 /* LoseBattleAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseBattleAssemblyProtocol.swift; sourceTree = "<group>"; };
 		877F0FD8288FF32400571F26 /* LoseBattlePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseBattlePresenter.swift; sourceTree = "<group>"; };
@@ -532,6 +542,7 @@
 		870B6796288E8FA80089D3CB /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				873F65382893256600A67F43 /* TabbarFlow */,
 				877F103528906B5500571F26 /* BattleMapFlow */,
 				870B6799288E8FC30089D3CB /* MainFlow */,
 				870B6798288E8FBA0089D3CB /* BattleFlow */,
@@ -665,6 +676,42 @@
 				AA78022327E2043D002C57E1 /* HomePageView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		873F65382893256600A67F43 /* TabbarFlow */ = {
+			isa = PBXGroup;
+			children = (
+				873F65392893256F00A67F43 /* Module */,
+				873F653A2893257700A67F43 /* Coordinator */,
+			);
+			path = TabbarFlow;
+			sourceTree = "<group>";
+		};
+		873F65392893256F00A67F43 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				873F653B2893258000A67F43 /* FlowTabbarController */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		873F653A2893257700A67F43 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				873F653C2893258F00A67F43 /* TabbarCoordinatorOutput.swift */,
+				873F653E289325A900A67F43 /* TabbarCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		873F653B2893258000A67F43 /* FlowTabbarController */ = {
+			isa = PBXGroup;
+			children = (
+				873F6540289325C900A67F43 /* FlowTabbarCoordinatorOutput.swift */,
+				873F6542289325DA00A67F43 /* FlowTabbarController.swift */,
+				873F6544289325E900A67F43 /* FlowTabbar.swift */,
+			);
+			path = FlowTabbarController;
 			sourceTree = "<group>";
 		};
 		875CB7DA283056F4003B4412 /* CamerasManager */ = {
@@ -1492,6 +1539,7 @@
 				870B6786288E8EF60089D3CB /* Router.swift in Sources */,
 				877F0FE4288FF32400571F26 /* LoseBattlePresenter.swift in Sources */,
 				870B67A9288E95260089D3CB /* LoadBattleViewInput.swift in Sources */,
+				873F6543289325DA00A67F43 /* FlowTabbarController.swift in Sources */,
 				870B678F288E8F3E0089D3CB /* BattleFlowFactory.swift in Sources */,
 				AA0B68BE27E5B95C0078003D /* AbstactFactoryBuildings.swift in Sources */,
 				AA78024127E20B8E002C57E1 /* BattleFieldInteractorOutput.swift in Sources */,
@@ -1507,6 +1555,7 @@
 				870B67B3288E96590089D3CB /* LoadBattleInteractor.swift in Sources */,
 				877F102F2890262B00571F26 /* PauseBattleView.swift in Sources */,
 				877F10062890083F00571F26 /* WinBattleAssemblyProtocol.swift in Sources */,
+				873F6545289325E900A67F43 /* FlowTabbar.swift in Sources */,
 				877F0FEA288FF32400571F26 /* LoseBattleInteractor.swift in Sources */,
 				870B676B288E892A0089D3CB /* WeakPropertyWrapper.swift in Sources */,
 				AA7801FE27E20291002C57E1 /* HomePageInteractor.swift in Sources */,
@@ -1534,6 +1583,8 @@
 				AAF4C9AD27E855D700D5B6F8 /* AStar.swift in Sources */,
 				877F0FF3288FFBBB00571F26 /* BattleFieldViewCoordinatorOutput.swift in Sources */,
 				AA78022427E2043D002C57E1 /* HomePageView.swift in Sources */,
+				873F653D2893258F00A67F43 /* TabbarCoordinatorOutput.swift in Sources */,
+				873F653F289325A900A67F43 /* TabbarCoordinator.swift in Sources */,
 				870B676F288E896B0089D3CB /* Extensions.swift in Sources */,
 				AAE8870F27EF35FC00CA4E5D /* TrollSL.swift in Sources */,
 				870B67C1288E97F20089D3CB /* BattleCoordinator.swift in Sources */,
@@ -1590,6 +1641,7 @@
 				AA7801B727E200B6002C57E1 /* SceneDelegate.swift in Sources */,
 				877F1023289025EE00571F26 /* PauseBattleAssembly.swift in Sources */,
 				877F100B2890083F00571F26 /* WinBattleViewInput.swift in Sources */,
+				873F6541289325C900A67F43 /* FlowTabbarCoordinatorOutput.swift in Sources */,
 				87ECCC562878E84F00E66C09 /* BattleMissionFactory.swift in Sources */,
 				877F104C28906BB800571F26 /* BattleMapPresenter.swift in Sources */,
 				877F104E28906BB800571F26 /* BattleMapViewCoordinatorOutput.swift in Sources */,

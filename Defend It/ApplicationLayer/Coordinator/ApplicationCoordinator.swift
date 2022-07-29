@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class ApplicationCoordinator: BaseCoordinator {
 
@@ -23,7 +24,7 @@ final class ApplicationCoordinator: BaseCoordinator {
     }
 
     override func start() {
-        runMainFlow()
+        runTabbarFlow()
     }
     
     private func runMainFlow() {
@@ -40,7 +41,7 @@ final class ApplicationCoordinator: BaseCoordinator {
     }
 
     private func runBattleFlow() {
-
+        
         let coordinator = coordinatorFactory.produceBattleCoordinator(router: router, flowFactory: flowFactory)
         
         coordinator.finishFlow = { [weak self, weak coordinator] in
@@ -49,6 +50,28 @@ final class ApplicationCoordinator: BaseCoordinator {
         }
 
         addDependency(coordinator)
+        coordinator.start()
+    }
+    
+    private func runTabbarFlow() {
+        
+         let (coordinator, module) = coordinatorFactory.produceTabbarCoordinator(coordinatorFactory: coordinatorFactory)
+        
+        coordinator.finishFlow = { [weak self] in
+            self?.runMainFlow()
+            self?.removeDependency(coordinator)
+        }
+        coordinator.startBattleFlow = { [weak self] in
+            self?.runBattleFlow()
+            self?.removeDependency(coordinator)
+        }
+        coordinator.startMainFlow = { [weak self] in
+            self?.runMainFlow()
+            self?.removeDependency(coordinator)
+        }
+        
+        addDependency(coordinator)
+        router.setRootModule(module, hideBar: true)
         coordinator.start()
     }
 
