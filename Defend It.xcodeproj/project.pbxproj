@@ -101,6 +101,8 @@
 		87CA3D512829024C000F952F /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D502829024C000F952F /* BottomBarView.swift */; };
 		87CA3D5728294F17000F952F /* BattleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D5628294F17000F952F /* BattleManager.swift */; };
 		87D51618285CC1BD00E3D7B8 /* Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D51617285CC1BD00E3D7B8 /* Battle.swift */; };
+		87E1286428946515006CEF02 /* BattleMapScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1286328946515006CEF02 /* BattleMapScene.swift */; };
+		87E1286628946535006CEF02 /* BattleMapCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1286528946535006CEF02 /* BattleMapCamera.swift */; };
 		87ECCC562878E84F00E66C09 /* BattleMissionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECCC552878E84F00E66C09 /* BattleMissionFactory.swift */; };
 		87ECCC582878E87400E66C09 /* BattleMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECCC572878E87400E66C09 /* BattleMission.swift */; };
 		AA0B68BE27E5B95C0078003D /* AbstactFactoryBuildings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68BD27E5B95C0078003D /* AbstactFactoryBuildings.swift */; };
@@ -305,6 +307,8 @@
 		87CA3D502829024C000F952F /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
 		87CA3D5628294F17000F952F /* BattleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleManager.swift; sourceTree = "<group>"; };
 		87D51617285CC1BD00E3D7B8 /* Battle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle.swift; sourceTree = "<group>"; };
+		87E1286328946515006CEF02 /* BattleMapScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapScene.swift; sourceTree = "<group>"; };
+		87E1286528946535006CEF02 /* BattleMapCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapCamera.swift; sourceTree = "<group>"; };
 		87ECCC552878E84F00E66C09 /* BattleMissionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionFactory.swift; sourceTree = "<group>"; };
 		87ECCC572878E87400E66C09 /* BattleMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMission.swift; sourceTree = "<group>"; };
 		AA0B68BD27E5B95C0078003D /* AbstactFactoryBuildings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstactFactoryBuildings.swift; sourceTree = "<group>"; };
@@ -957,6 +961,7 @@
 				877F104328906BB700571F26 /* BattleMapViewCoordinatorOutput.swift */,
 				877F104428906BB700571F26 /* BattleMapViewOutput.swift */,
 				877F104528906BB700571F26 /* BattleMapViewController.swift */,
+				87E12867289468E0006CEF02 /* SpriteKit */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1012,6 +1017,15 @@
 				87D51617285CC1BD00E3D7B8 /* Battle.swift */,
 			);
 			path = Battle;
+			sourceTree = "<group>";
+		};
+		87E12867289468E0006CEF02 /* SpriteKit */ = {
+			isa = PBXGroup;
+			children = (
+				87E1286328946515006CEF02 /* BattleMapScene.swift */,
+				87E1286528946535006CEF02 /* BattleMapCamera.swift */,
+			);
+			path = SpriteKit;
 			sourceTree = "<group>";
 		};
 		87ECCC522878E7DA00E66C09 /* BattleMission */ = {
@@ -1548,6 +1562,7 @@
 				877F105128906BB800571F26 /* BattleMapInteractorOutput.swift in Sources */,
 				877F10092890083F00571F26 /* WinBattleViewCoordinatorOutput.swift in Sources */,
 				AA0B68D627E5FA450078003D /* CamerasManager.swift in Sources */,
+				87E1286628946535006CEF02 /* BattleMapCamera.swift in Sources */,
 				AAF4C9DD27E8E6A200D5B6F8 /* GroundSquare.swift in Sources */,
 				AACC7BE527FB2C940022384E /* WallSL.swift in Sources */,
 				AAE8870B27EF35AF00CA4E5D /* TrollFactory.swift in Sources */,
@@ -1555,6 +1570,7 @@
 				870B67B3288E96590089D3CB /* LoadBattleInteractor.swift in Sources */,
 				877F102F2890262B00571F26 /* PauseBattleView.swift in Sources */,
 				877F10062890083F00571F26 /* WinBattleAssemblyProtocol.swift in Sources */,
+				87E1286428946515006CEF02 /* BattleMapScene.swift in Sources */,
 				873F6545289325E900A67F43 /* FlowTabbar.swift in Sources */,
 				877F0FEA288FF32400571F26 /* LoseBattleInteractor.swift in Sources */,
 				870B676B288E892A0089D3CB /* WeakPropertyWrapper.swift in Sources */,

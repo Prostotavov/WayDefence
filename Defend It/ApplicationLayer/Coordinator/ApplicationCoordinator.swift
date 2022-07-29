@@ -45,7 +45,7 @@ final class ApplicationCoordinator: BaseCoordinator {
         let coordinator = coordinatorFactory.produceBattleCoordinator(router: router, flowFactory: flowFactory)
         
         coordinator.finishFlow = { [weak self, weak coordinator] in
-            self?.runMainFlow()
+            self?.runTabbarFlow()
             self?.removeDependency(coordinator)
         }
 
