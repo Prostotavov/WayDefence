@@ -8,8 +8,5 @@
 protocol TabbarCoordinatorOutput: AnyObject {
     
     var finishFlow: (() -> Void)? { get set }
-    var startMainFlow: (() -> Void)? { get set }
-    
-    
     var startBattleFlow: (() -> Void)? { get set }
 }

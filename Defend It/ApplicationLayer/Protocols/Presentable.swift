@@ -7,7 +7,7 @@
 
 import UIKit.UIViewController
 
-protocol Presentable: class {
+protocol Presentable: AnyObject {
     
     func toPresent() -> UIViewController?
 }

@@ -9,12 +9,11 @@ import UIKit
 
 class TabbarCoordinator: BaseCoordinator, TabbarCoordinatorOutput {
     
-    var startMainFlow: (() -> Void)?
+
     var finishFlow: (() -> Void)?
-    
     var startBattleFlow: (() -> Void)?
     
-    private let tabbarOutput: FlowTabbarCoordinatorOutput
+    private weak var tabbarOutput: (FlowTabbarCoordinatorOutput)?
     private let coordinatorFactory: CoordinatorFactory
     
     init(tabbarOutput: FlowTabbarCoordinatorOutput, coordinatorFactory: CoordinatorFactory) {
@@ -25,8 +24,8 @@ class TabbarCoordinator: BaseCoordinator, TabbarCoordinatorOutput {
     
     override func start() {
         
-        tabbarOutput.onMainFlow = runMainFlow()
-        tabbarOutput.onBattleMapFlow = runBattleMapFlow()
+        tabbarOutput!.onMainFlow = runMainFlow()
+        tabbarOutput!.onBattleMapFlow = runBattleMapFlow()
     }
     
     private func runMainFlow() -> ((UINavigationController) -> ()) {
@@ -42,8 +41,6 @@ class TabbarCoordinator: BaseCoordinator, TabbarCoordinatorOutput {
             
             self.addDependency(mainCoordinator)
             mainCoordinator.start()
-            
-            
         }
     }
     
@@ -53,7 +50,7 @@ class TabbarCoordinator: BaseCoordinator, TabbarCoordinatorOutput {
             
             let battleMapCoordinator = self.coordinatorFactory.produceBattleMapCoordinator(navigationController: navigationController, flowFactory: FlowFactoryImp.defaultFactory)
             
-            battleMapCoordinator.finishFlow = { [weak self] in
+            battleMapCoordinator.finishFlow = { [weak self, weak battleMapCoordinator] in
                 self?.startBattleFlow?()
                 self?.removeDependency(battleMapCoordinator)
             }

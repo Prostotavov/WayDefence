@@ -57,16 +57,12 @@ final class ApplicationCoordinator: BaseCoordinator {
         
          let (coordinator, module) = coordinatorFactory.produceTabbarCoordinator(coordinatorFactory: coordinatorFactory)
         
-        coordinator.finishFlow = { [weak self] in
+        coordinator.finishFlow = { [weak self, weak coordinator] in
             self?.runMainFlow()
             self?.removeDependency(coordinator)
         }
-        coordinator.startBattleFlow = { [weak self] in
+        coordinator.startBattleFlow = { [weak self, weak coordinator] in
             self?.runBattleFlow()
-            self?.removeDependency(coordinator)
-        }
-        coordinator.startMainFlow = { [weak self] in
-            self?.runMainFlow()
             self?.removeDependency(coordinator)
         }
         

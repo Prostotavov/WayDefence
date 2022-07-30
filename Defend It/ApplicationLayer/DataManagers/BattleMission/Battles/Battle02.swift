@@ -19,14 +19,12 @@ final class Battle02: BattleMission {
     
     var wavesCreator: EnemyWavesCreatorImpl
     var meadowCreator: BattleMeadowCreator
-    var battlevaluesCreator: BattleMeadowCreatorImpl
     
     init() {
         
         wavesCreator = EnemyWavesCreatorImpl(size: battleFieldSize)
         
         meadowCreator = BattleMeadowCreatorImpl(size: battleFieldSize)
-        battlevaluesCreator = BattleMeadowCreatorImpl(size: battleFieldSize)
         
         battleMeadow = BattleMeadowImpl(size: battleFieldSize)
         battleValues = BattleValuesImpl()
