@@ -35,9 +35,11 @@ class EnemiesWaveImpl: EnemiesWave, OneEnemiesTypeWaveDelegate {
     var oneEnemiesTypeWaves: [OneEnemiesTypeWave] = []
     var waveCounter: Int = 0
     var startFrame: Int
+    var size: Int
     
-    init(startFrame: Int) {
+    init(startFrame: Int, size: Int) {
         self.startFrame = startFrame
+        self.size = size
     }
     
     func setupDelegate(delegate: EnemiesWaveDelegate) {
@@ -45,7 +47,7 @@ class EnemiesWaveImpl: EnemiesWave, OneEnemiesTypeWaveDelegate {
     }
     
     func addOneRaceWave(race: EnemyRaces, level: EnemyLevels, count: Int, intervalBetweenEnemies: Int, startFrame: Int) {
-        let oneRaceWave = OneEnemiesTypeWaveImpl(7, race: race, level: level, count: count, interval: intervalBetweenEnemies, startFrame: startFrame)
+        let oneRaceWave = OneEnemiesTypeWaveImpl(size, race: race, level: level, count: count, interval: intervalBetweenEnemies, startFrame: startFrame)
         oneRaceWave.delegate = self
         oneEnemiesTypeWaves.append(oneRaceWave)
     }

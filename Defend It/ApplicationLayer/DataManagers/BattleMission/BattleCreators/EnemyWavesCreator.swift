@@ -23,8 +23,14 @@ final class EnemyWavesCreatorImpl: EnemyWavesCreator {
     var enemiesWaves: [EnemiesWave] = []
     weak var delegate: EnemyWavesCreatorDelegate!
     
+    var size: Int
+    
+    init(size: Int) {
+        self.size = size
+    }
+    
     func createWave(startFrame: Int) {
-        let enemyWave = EnemiesWaveImpl(startFrame: startFrame)
+        let enemyWave = EnemiesWaveImpl(startFrame: startFrame, size: size)
         enemiesWaves.append(enemyWave)
     }
     

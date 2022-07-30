@@ -23,22 +23,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         var rootController: UINavigationController {
             return window!.rootViewController as! UINavigationController
         }
-        rootController.view.backgroundColor = .white
-        func produceApplicationCoordinator() -> Coordinator {
-            let router = RouterImp(rootController: rootController)
-            let coordinatorFactory = CoordinatorFactoryImp()
-            let flowCoordinator = FlowFactoryImp()
-            
-            return ApplicationCoordinator(router: router,
-                                          coordinatorFactory: coordinatorFactory,
-                                          flowFactory: flowCoordinator)
-        }
         
-        applicationCoordinator = produceApplicationCoordinator()
-        
+        applicationCoordinator = produceApplicationCoordinator(rootController: rootController)
         applicationCoordinator.start()
-        
         window?.makeKeyAndVisible()
+    }
+    
+    private func produceApplicationCoordinator(rootController: UINavigationController) -> Coordinator {
+        let router = RouterImp(rootController: rootController)
+        let coordinatorFactory = CoordinatorFactoryImp.defaultFactory
+        let flowCoordinator = FlowFactoryImp.defaultFactory
+        
+        return ApplicationCoordinator(router: router,
+                                      coordinatorFactory: coordinatorFactory,
+                                      flowFactory: flowCoordinator)
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

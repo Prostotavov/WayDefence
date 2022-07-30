@@ -32,6 +32,7 @@ class MainCoordinator: BaseCoordinator , MainCoordinatorOutput {
 
     private func showHomePage() {
         let homePageOutput = factory.produceHomePageOutput()
+        
         homePageOutput.onStartBattle = { [weak self] in
             self?.finishFlow?()
         }

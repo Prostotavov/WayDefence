@@ -23,6 +23,8 @@ protocol EnemiesManager {
     func stopAllEnemies()
     func runAllEnemies()
     func addEnemiesToScene()
+    
+    var battleMision: BattleMission! {get set}
 }
 
 protocol EnemiesManagerDelegate: AnyObject {
@@ -40,12 +42,11 @@ class EnemiesManagerImpl: EnemiesManager, EnemiesWaveDelegate, EnemyWavesCreator
     weak var delegate: EnemiesManagerDelegate!
 
     
-    let battleMision = Battle01()
+    var battleMision: BattleMission!
     var wavesCounter: Int = 0
 
     init(_ battleFieldSize: Int) {
         self.battleFieldSize = battleFieldSize
-        battleMision.wavesCreator.delegate = self
     }
 }
 

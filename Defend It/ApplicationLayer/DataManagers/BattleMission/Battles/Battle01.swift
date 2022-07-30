@@ -17,17 +17,22 @@ final class Battle01: BattleMission {
     var enemiesWaves: [EnemiesWave] = []
     var battleValues: BattleValues
     
-    let wavesCreator = EnemyWavesCreatorImpl()
-    let meadowCreator: BattleMeadowCreator = BattleMeadowCreatorImpl()
-    let battlevaluesCreator = BattleMeadowCreatorImpl()
+    var wavesCreator: EnemyWavesCreatorImpl
+    var meadowCreator: BattleMeadowCreator
+
     
     init() {
+        
+        wavesCreator = EnemyWavesCreatorImpl(size: battleFieldSize)
+        
+        meadowCreator = BattleMeadowCreatorImpl(size: battleFieldSize)
+        
         battleMeadow = BattleMeadowImpl(size: battleFieldSize)
         battleValues = BattleValuesImpl()
         createMeadow()
-//        smallQuick()
+        //        smallQuick()
         quickWaves()
-//        createWave()
+        //        createWave()
         setupBattleValues()
         calculateEnemies()
     }
@@ -56,7 +61,7 @@ final class Battle01: BattleMission {
         wavesCreator.createWave(startFrame: 0)
         wavesCreator.addOneRaceWave(id: 0, race: .goblin, level: .firstLevel, count: 2, interval: 40, startFrame: 10)
         wavesCreator.addOneRaceWave(id: 0, race: .troll, level: .firstLevel, count: 2, interval: 90, startFrame: 100)
-
+        
         //wave 1
         wavesCreator.createWave(startFrame: 1000)
         wavesCreator.addOneRaceWave(id: 1, race: .troll, level: .secondLevel, count: 3, interval: 100, startFrame: 10)
@@ -92,7 +97,7 @@ final class Battle01: BattleMission {
         wavesCreator.createWave(startFrame: 0)
         wavesCreator.addOneRaceWave(id: 0, race: .goblin, level: .firstLevel, count: 2, interval: 40, startFrame: 10)
         wavesCreator.addOneRaceWave(id: 0, race: .troll, level: .firstLevel, count: 2, interval: 90, startFrame: 100)
-
+        
         //wave 1
         wavesCreator.createWave(startFrame: 100)
         wavesCreator.addOneRaceWave(id: 1, race: .troll, level: .secondLevel, count: 3, interval: 100, startFrame: 10)
