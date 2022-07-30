@@ -11,6 +11,8 @@ import UIKit.UIViewController
 
 class FlowFactoryImp: BattleFlowFactory {
     
+    static let defaultFactory = FlowFactoryImp()
+    
     var vc: LoadBattleViewController!
     
     func produceLoadBattleOutput() -> LoadBattleViewCoordinatorOutput {
@@ -38,5 +40,11 @@ class FlowFactoryImp: BattleFlowFactory {
 extension FlowFactoryImp: MainFlowFactory {
     func produceHomePageOutput() -> HomePageViewCoordinatorOutput {
         return HomePageViewController()
+    }
+}
+
+extension FlowFactoryImp: BattleMapFlowFactory {
+    func produceBattleMapOutput() -> BattleMapViewCoordinatorOutput {
+        return BattleMapViewController()
     }
 }

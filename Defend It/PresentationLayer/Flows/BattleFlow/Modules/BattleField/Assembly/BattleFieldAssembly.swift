@@ -37,7 +37,7 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         delegate.createViperModelues(completed: 5)        // 5% load
         
         
-        let battleMission = Battle01()
+        let battleMission = FactoryBattleMission().createBattleMission(id: CurrentBattleImp.shared.chosenBattleMission)
         delegate.createBattleMission(completed: 17)       // 22% load
         
         // init managers
@@ -48,6 +48,9 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         let camerasManager = CamerasManagerImpl()
         delegate.createManagers(completed: 33)           // 65% load
         
+        
+        enemiesManager.battleMision = battleMission
+        battleMission.wavesCreator.delegate = enemiesManager
         
         // init and assembly battle
         let battle = BattleImpl()
