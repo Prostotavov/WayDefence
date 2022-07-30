@@ -33,7 +33,7 @@ class BattleMapCoordinator: BaseCoordinator , BattleMapCoordinatorOutput {
     private func showBattleMap() {
         let battleMapOutput = factory.produceBattleMapOutput()
         battleMapOutput.onBattleIcon = { [weak self] in
-//            self?.finishFlow?()
+            self?.finishFlow?()
         }
 
         router.setRootModule(battleMapOutput, hideBar: true)

@@ -11,5 +11,5 @@ protocol TabbarCoordinatorOutput: AnyObject {
     var startMainFlow: (() -> Void)? { get set }
     
     
-    var startBattleFlow: ((Int) -> Void)? { get set }
+    var startBattleFlow: (() -> Void)? { get set }
 }

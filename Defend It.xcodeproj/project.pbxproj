@@ -106,6 +106,9 @@
 		87E1286928947031006CEF02 /* BattleMapIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1286828947031006CEF02 /* BattleMapIcon.swift */; };
 		87E1286B2894707C006CEF02 /* BattleMapScene_BattleIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1286A2894707C006CEF02 /* BattleMapScene_BattleIcons.swift */; };
 		87E1286D28947A7C006CEF02 /* Battle02.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1286C28947A7C006CEF02 /* Battle02.swift */; };
+		87E12872289514A5006CEF02 /* CurrentBattle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E12871289514A5006CEF02 /* CurrentBattle.swift */; };
+		87E1287428951ACC006CEF02 /* Battle03.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1287328951ACC006CEF02 /* Battle03.swift */; };
+		87E1287628951B56006CEF02 /* Battle04.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1287528951B56006CEF02 /* Battle04.swift */; };
 		87ECCC562878E84F00E66C09 /* BattleMissionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECCC552878E84F00E66C09 /* BattleMissionFactory.swift */; };
 		87ECCC582878E87400E66C09 /* BattleMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECCC572878E87400E66C09 /* BattleMission.swift */; };
 		AA0B68BE27E5B95C0078003D /* AbstactFactoryBuildings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68BD27E5B95C0078003D /* AbstactFactoryBuildings.swift */; };
@@ -315,6 +318,9 @@
 		87E1286828947031006CEF02 /* BattleMapIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapIcon.swift; sourceTree = "<group>"; };
 		87E1286A2894707C006CEF02 /* BattleMapScene_BattleIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapScene_BattleIcons.swift; sourceTree = "<group>"; };
 		87E1286C28947A7C006CEF02 /* Battle02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle02.swift; sourceTree = "<group>"; };
+		87E12871289514A5006CEF02 /* CurrentBattle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentBattle.swift; sourceTree = "<group>"; };
+		87E1287328951ACC006CEF02 /* Battle03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle03.swift; sourceTree = "<group>"; };
+		87E1287528951B56006CEF02 /* Battle04.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle04.swift; sourceTree = "<group>"; };
 		87ECCC552878E84F00E66C09 /* BattleMissionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionFactory.swift; sourceTree = "<group>"; };
 		87ECCC572878E87400E66C09 /* BattleMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMission.swift; sourceTree = "<group>"; };
 		AA0B68BD27E5B95C0078003D /* AbstactFactoryBuildings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstactFactoryBuildings.swift; sourceTree = "<group>"; };
@@ -984,6 +990,7 @@
 		878DDC99287ABE3800B37154 /* DataManagers */ = {
 			isa = PBXGroup;
 			children = (
+				87E12871289514A5006CEF02 /* CurrentBattle.swift */,
 				870B6772288E89A50089D3CB /* DataManager.swift */,
 				87ECCC522878E7DA00E66C09 /* BattleMission */,
 			);
@@ -1051,6 +1058,8 @@
 				87ECCC572878E87400E66C09 /* BattleMission.swift */,
 				8711C631287564CA00E84876 /* Battle01.swift */,
 				87E1286C28947A7C006CEF02 /* Battle02.swift */,
+				87E1287328951ACC006CEF02 /* Battle03.swift */,
+				87E1287528951B56006CEF02 /* Battle04.swift */,
 			);
 			path = Battles;
 			sourceTree = "<group>";
@@ -1537,6 +1546,7 @@
 				AA7801FB27E20291002C57E1 /* HomePageViewInput.swift in Sources */,
 				877F100D2890083F00571F26 /* WinBattleInteractor.swift in Sources */,
 				87B606C228790173003549AF /* BattleMeadowCreator.swift in Sources */,
+				87E1287428951ACC006CEF02 /* Battle03.swift in Sources */,
 				AA0B68C627E5BD1E0078003D /* MagicTowerFL.swift in Sources */,
 				AAF4C9B027E856D600D5B6F8 /* BattleFieldGraph.swift in Sources */,
 				870B67AF288E963E0089D3CB /* LoadBattleInteractorInput.swift in Sources */,
@@ -1673,7 +1683,9 @@
 				87ECCC562878E84F00E66C09 /* BattleMissionFactory.swift in Sources */,
 				877F104C28906BB800571F26 /* BattleMapPresenter.swift in Sources */,
 				877F104E28906BB800571F26 /* BattleMapViewCoordinatorOutput.swift in Sources */,
+				87E12872289514A5006CEF02 /* CurrentBattle.swift in Sources */,
 				877F105328906BB800571F26 /* BattleMapInteractorInput.swift in Sources */,
+				87E1287628951B56006CEF02 /* Battle04.swift in Sources */,
 				AACC7BDD27FB2C1A0022384E /* BallistaFL.swift in Sources */,
 				877F105228906BB800571F26 /* BattleMapInteractor.swift in Sources */,
 				877F102C289025EE00571F26 /* PauseBattleInteractor.swift in Sources */,

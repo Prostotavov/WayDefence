@@ -19,12 +19,6 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
     
     weak var delegate: BattleFieldAssemblyDelagate!
     
-    var battleMission: BattleMissions
-    
-    init(battleMission: BattleMissions) {
-        self.battleMission = battleMission
-    }
-    
     func setDelegate(delegate: BattleFieldAssemblyDelagate) {
         self.delegate = delegate
     }
@@ -43,7 +37,7 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         delegate.createViperModelues(completed: 5)        // 5% load
         
         
-        let battleMission = FactoryBattleMission().createBattleMission(id: battleMission)
+        let battleMission = FactoryBattleMission().createBattleMission(id: CurrentBattleImp.shared.chosenBattleMission)
         delegate.createBattleMission(completed: 17)       // 22% load
         
         // init managers

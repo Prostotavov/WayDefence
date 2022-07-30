@@ -29,6 +29,8 @@ class FactoryBattleMission: EnemiesWaveDelegate, OneEnemiesTypeWaveDelegate {
         switch id {
         case .first: return Battle01()
         case .second: return Battle02()
+        case .third: return Battle03()
+        case .four: return Battle04()
         default: return Battle01()
         }
     }

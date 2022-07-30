@@ -15,7 +15,7 @@ extension BattleMapScene: BattleMapIconDelegate {
     
     func setupBattleIcons() {
         
-        for i in 0...3 {
+        for i in 0...4 {
             let battleIcon = BattleMapIcon(imageNamed: "button1")
             battleIcon.delegate = self
             battleIcon.id = i

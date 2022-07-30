@@ -12,7 +12,7 @@ class TabbarCoordinator: BaseCoordinator, TabbarCoordinatorOutput {
     var startMainFlow: (() -> Void)?
     var finishFlow: (() -> Void)?
     
-    var startBattleFlow: ((Int) -> Void)?
+    var startBattleFlow: (() -> Void)?
     
     private let tabbarOutput: FlowTabbarCoordinatorOutput
     private let coordinatorFactory: CoordinatorFactory
@@ -36,8 +36,7 @@ class TabbarCoordinator: BaseCoordinator, TabbarCoordinatorOutput {
             let mainCoordinator = self.coordinatorFactory.produceMainCoordinator(navigationController: navigationController, flowFactory: FlowFactoryImp.defaultFactory)
             
             mainCoordinator.finishFlow = { [weak self, weak mainCoordinator] in
-                //MARK: do something with thiw num
-                self?.startBattleFlow?(1)
+                self?.startBattleFlow?()
                 self?.removeDependency(mainCoordinator)
             }
             
@@ -55,8 +54,7 @@ class TabbarCoordinator: BaseCoordinator, TabbarCoordinatorOutput {
             let battleMapCoordinator = self.coordinatorFactory.produceBattleMapCoordinator(navigationController: navigationController, flowFactory: FlowFactoryImp.defaultFactory)
             
             battleMapCoordinator.finishFlow = { [weak self] in
-                //MARK: do something with thiw num
-                self?.startBattleFlow?(1)
+                self?.startBattleFlow?()
                 self?.removeDependency(battleMapCoordinator)
             }
             battleMapCoordinator.start()
