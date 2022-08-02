@@ -17,8 +17,6 @@ protocol BattleFieldViewInput: AnyObject {
     
     /// funcs for setup camera
     func setupPointOfView(from cameraNode: SCNNode)
-    func setViewHorisontalOrientation()
-    func setViewVerticalOrientation()
     
     /// funcs for display battle values on the TopBarView
     func displayValue(of valueType: BattleValueTypes, to number: Int)

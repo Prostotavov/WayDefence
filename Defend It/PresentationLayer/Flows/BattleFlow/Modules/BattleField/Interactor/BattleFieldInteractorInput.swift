@@ -22,9 +22,9 @@ protocol BattleFieldInteractorInput: AnyObject {
     func didBegin(_ nodeA: SCNNode, contactWith nodeB: SCNNode)
     func didEnd(_ nodeA: SCNNode, contactWith nodeB: SCNNode)
     func update()
-
-    /// funcs for setup camera
-    func fixCurrentPosition()
-    func dragCamera(by position: SCNVector3)
-    func deviceOrientationChanged(to orientation: UIDeviceOrientation)
+    
+    func doubleTapOccurred()
+    func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    func panGestureOccurred(recognizer: UIPanGestureRecognizer, view: inout UIView)
+    func pinchGestureOccurred(recognizer: UIPinchGestureRecognizer, view: inout UIView)
 }

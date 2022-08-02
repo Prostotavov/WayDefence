@@ -20,11 +20,11 @@ protocol BattleFieldInteractorOutput: AnyObject {
     
     // funcs for set the camera
     func setupPointOfView(from cameraNode: SCNNode)
-    func setViewHorisontalOrientation()
-    func setViewVerticalOrientation()
     
     func finishBattle()
     func battleIsWon()
     func battleIsLost()
+    
+
 }
 

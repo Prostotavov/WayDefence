@@ -71,7 +71,7 @@ class BattleImpl: MeadowManagerDelagate, BuildingsManagerDelegate, Battle {
     
     init() {
         battleState = .pause
-        loadBuildngs()
+//        loadBuildngs()
     }
     
     func getBattleCounter() -> Int {
