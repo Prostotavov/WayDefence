@@ -50,27 +50,11 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     }
     
     /// func for device change orientation
-    func deviceOrientationChanged(to orientation: UIDeviceOrientation) {
-        interactor.deviceOrientationChanged(to: orientation)
-    }
     func setupPointOfView(from cameraNode: SCNNode) {
         view.setupPointOfView(from: cameraNode)
     }
-    func setViewHorisontalOrientation() {
-        view.setViewHorisontalOrientation()
-    }
-    func setViewVerticalOrientation() {
-        view.setViewVerticalOrientation()
-    }
     
     /// func for map and pan camera
-    func panGestureChanged(by translation: CGPoint) {
-        let position = Converter.toPosition(from: translation)
-        interactor.dragCamera(by: position)
-    }
-    func panGestureEnded() {
-        interactor.fixCurrentPosition()
-    }
     
     /// game run loop
     func update() {
@@ -101,6 +85,22 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     /// func for handle pressed node by user
     func pressedNode(_ node: SCNNode) {
         interactor.pressedNode(node)
+    }
+    
+    func doubleTapOccurred() {
+        interactor.doubleTapOccurred()
+    }
+    
+    func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        interactor.touchesBegan(touches, with: event)
+    }
+    
+    func panGestureOccurred(recognizer: UIPanGestureRecognizer, view: inout UIView) {
+        interactor.panGestureOccurred(recognizer: recognizer, view: &view)
+    }
+    
+    func pinchGestureOccurred(recognizer: UIPinchGestureRecognizer, view: inout UIView) {
+        interactor.pinchGestureOccurred(recognizer: recognizer, view: &view)
     }
 
 }

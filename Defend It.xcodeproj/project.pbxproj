@@ -111,6 +111,8 @@
 		87E1287628951B56006CEF02 /* Battle04.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1287528951B56006CEF02 /* Battle04.swift */; };
 		87ECCC562878E84F00E66C09 /* BattleMissionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECCC552878E84F00E66C09 /* BattleMissionFactory.swift */; };
 		87ECCC582878E87400E66C09 /* BattleMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECCC572878E87400E66C09 /* BattleMission.swift */; };
+		87FE431928994B6A002DFCEA /* SceneCameraConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FE431828994B6A002DFCEA /* SceneCameraConverter.swift */; };
+		87FE431B28994B80002DFCEA /* SceneCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FE431A28994B80002DFCEA /* SceneCamera.swift */; };
 		AA0B68BE27E5B95C0078003D /* AbstactFactoryBuildings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68BD27E5B95C0078003D /* AbstactFactoryBuildings.swift */; };
 		AA0B68C027E5BA7D0078003D /* MagicTowerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68BF27E5BA7D0078003D /* MagicTowerFactory.swift */; };
 		AA0B68C227E5BB150078003D /* ElphTowerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68C127E5BB150078003D /* ElphTowerFactory.swift */; };
@@ -119,7 +121,6 @@
 		AA0B68C827E5BDC20078003D /* ElphTowerFL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68C727E5BDC20078003D /* ElphTowerFL.swift */; };
 		AA0B68CA27E5BDF10078003D /* MagicTowerSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68C927E5BDF10078003D /* MagicTowerSL.swift */; };
 		AA0B68CC27E5BDFD0078003D /* ElphTowerSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68CB27E5BDFD0078003D /* ElphTowerSL.swift */; };
-		AA0B68D627E5FA450078003D /* CamerasManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68D527E5FA450078003D /* CamerasManager.swift */; };
 		AA0B68D827E5FD7F0078003D /* TowerSelectionPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0B68D727E5FD7F0078003D /* TowerSelectionPanel.swift */; };
 		AA7801B527E200B6002C57E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7801B427E200B6002C57E1 /* AppDelegate.swift */; };
 		AA7801B727E200B6002C57E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7801B627E200B6002C57E1 /* SceneDelegate.swift */; };
@@ -323,6 +324,8 @@
 		87E1287528951B56006CEF02 /* Battle04.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle04.swift; sourceTree = "<group>"; };
 		87ECCC552878E84F00E66C09 /* BattleMissionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionFactory.swift; sourceTree = "<group>"; };
 		87ECCC572878E87400E66C09 /* BattleMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMission.swift; sourceTree = "<group>"; };
+		87FE431828994B6A002DFCEA /* SceneCameraConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCameraConverter.swift; sourceTree = "<group>"; };
+		87FE431A28994B80002DFCEA /* SceneCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCamera.swift; sourceTree = "<group>"; };
 		AA0B68BD27E5B95C0078003D /* AbstactFactoryBuildings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstactFactoryBuildings.swift; sourceTree = "<group>"; };
 		AA0B68BF27E5BA7D0078003D /* MagicTowerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicTowerFactory.swift; sourceTree = "<group>"; };
 		AA0B68C127E5BB150078003D /* ElphTowerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElphTowerFactory.swift; sourceTree = "<group>"; };
@@ -331,7 +334,6 @@
 		AA0B68C727E5BDC20078003D /* ElphTowerFL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElphTowerFL.swift; sourceTree = "<group>"; };
 		AA0B68C927E5BDF10078003D /* MagicTowerSL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicTowerSL.swift; sourceTree = "<group>"; };
 		AA0B68CB27E5BDFD0078003D /* ElphTowerSL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElphTowerSL.swift; sourceTree = "<group>"; };
-		AA0B68D527E5FA450078003D /* CamerasManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasManager.swift; sourceTree = "<group>"; };
 		AA0B68D727E5FD7F0078003D /* TowerSelectionPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerSelectionPanel.swift; sourceTree = "<group>"; };
 		AA7801B127E200B6002C57E1 /* Defend It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Defend It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7801B427E200B6002C57E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -732,7 +734,8 @@
 		875CB7DA283056F4003B4412 /* CamerasManager */ = {
 			isa = PBXGroup;
 			children = (
-				AA0B68D527E5FA450078003D /* CamerasManager.swift */,
+				87FE431828994B6A002DFCEA /* SceneCameraConverter.swift */,
+				87FE431A28994B80002DFCEA /* SceneCamera.swift */,
 			);
 			path = CamerasManager;
 			sourceTree = "<group>";
@@ -1581,7 +1584,6 @@
 				870B67C6288ECA150089D3CB /* HomePageViewCoordinatorOutput.swift in Sources */,
 				877F105128906BB800571F26 /* BattleMapInteractorOutput.swift in Sources */,
 				877F10092890083F00571F26 /* WinBattleViewCoordinatorOutput.swift in Sources */,
-				AA0B68D627E5FA450078003D /* CamerasManager.swift in Sources */,
 				87E1286628946535006CEF02 /* BattleMapCamera.swift in Sources */,
 				AAF4C9DD27E8E6A200D5B6F8 /* GroundSquare.swift in Sources */,
 				AACC7BE527FB2C940022384E /* WallSL.swift in Sources */,
@@ -1632,6 +1634,7 @@
 				AAE886F327EF2DC500CA4E5D /* AbstractFactoryEnemies.swift in Sources */,
 				870B676D288E89560089D3CB /* TestFunctions.swift in Sources */,
 				870B6773288E89A50089D3CB /* DataManager.swift in Sources */,
+				87FE431928994B6A002DFCEA /* SceneCameraConverter.swift in Sources */,
 				87E1286B2894707C006CEF02 /* BattleMapScene_BattleIcons.swift in Sources */,
 				87CA3D512829024C000F952F /* BottomBarView.swift in Sources */,
 				AAE886EA27EEFF9800CA4E5D /* BattleMeadow.swift in Sources */,
@@ -1687,6 +1690,7 @@
 				877F105328906BB800571F26 /* BattleMapInteractorInput.swift in Sources */,
 				87E1287628951B56006CEF02 /* Battle04.swift in Sources */,
 				AACC7BDD27FB2C1A0022384E /* BallistaFL.swift in Sources */,
+				87FE431B28994B80002DFCEA /* SceneCamera.swift in Sources */,
 				877F105228906BB800571F26 /* BattleMapInteractor.swift in Sources */,
 				877F102C289025EE00571F26 /* PauseBattleInteractor.swift in Sources */,
 				AAF4C9D727E8D9E500D5B6F8 /* EnemiesManager.swift in Sources */,

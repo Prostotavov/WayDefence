@@ -45,7 +45,7 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         let buildingsManager = BuildingsManagerImpl(battleMission.battleFieldSize)
         let enemiesManager = EnemiesManagerImpl(battleMission.battleFieldSize)
         let battleValuesManager = BattleManagerImpl(battleValues: battleMission.battleValues)
-        let camerasManager = CamerasManagerImpl()
+        let camerasManager = SceneCamera()
         delegate.createManagers(completed: 33)           // 65% load
         
         
@@ -70,7 +70,6 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         presenter.coordinator = viewController
         
         interactor.battle = battle
-        interactor.camerasManager = camerasManager
         interactor.output = presenter
         
         // assembly delegates for managers

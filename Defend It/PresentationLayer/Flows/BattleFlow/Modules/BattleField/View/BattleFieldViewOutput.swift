@@ -19,12 +19,7 @@ protocol BattleFieldViewOutput: AnyObject {
     
     /// this func called every new frame and update game
     func update()
-    
-    /// camera
-    func deviceOrientationChanged(to orientation: UIDeviceOrientation)
-    func panGestureChanged(by translation: CGPoint)
-    func panGestureEnded()
-    
+        
     /// game state
     func playButtonPressed()
     func stopButtonPressed()
@@ -32,4 +27,9 @@ protocol BattleFieldViewOutput: AnyObject {
     
     /// handle pressed node
     func pressedNode(_ node: SCNNode)
+    
+    func doubleTapOccurred()
+    func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    func panGestureOccurred(recognizer: UIPanGestureRecognizer, view: inout UIView)
+    func pinchGestureOccurred(recognizer: UIPinchGestureRecognizer, view: inout UIView)
 }
