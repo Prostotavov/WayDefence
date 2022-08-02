@@ -79,13 +79,13 @@ class BattleCoordinator: BaseCoordinator , BattleCoordinatorOutput {
     private func showPauseBattle() {
         let pauseBattleOutput = factory.producePauseBattleOutput()
         pauseBattleOutput.onPlay = { [weak self] in
-            self?.router.popModule(animated: true)
+            self?.router.dismissModule()
         }
         pauseBattleOutput.onQuit = { [weak self] in
             self?.finishFlow?()
         }
         
-        router.push(pauseBattleOutput)
+        router.present(pauseBattleOutput, animated: false)
     }
 
 }

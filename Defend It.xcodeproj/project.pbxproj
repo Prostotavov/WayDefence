@@ -109,6 +109,7 @@
 		87E12872289514A5006CEF02 /* CurrentBattle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E12871289514A5006CEF02 /* CurrentBattle.swift */; };
 		87E1287428951ACC006CEF02 /* Battle03.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1287328951ACC006CEF02 /* Battle03.swift */; };
 		87E1287628951B56006CEF02 /* Battle04.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1287528951B56006CEF02 /* Battle04.swift */; };
+		87EB0D322899E19600375CA4 /* CustomVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB0D312899E19600375CA4 /* CustomVisualEffectView.swift */; };
 		87ECCC562878E84F00E66C09 /* BattleMissionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECCC552878E84F00E66C09 /* BattleMissionFactory.swift */; };
 		87ECCC582878E87400E66C09 /* BattleMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECCC572878E87400E66C09 /* BattleMission.swift */; };
 		87FE431928994B6A002DFCEA /* SceneCameraConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FE431828994B6A002DFCEA /* SceneCameraConverter.swift */; };
@@ -322,6 +323,7 @@
 		87E12871289514A5006CEF02 /* CurrentBattle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentBattle.swift; sourceTree = "<group>"; };
 		87E1287328951ACC006CEF02 /* Battle03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle03.swift; sourceTree = "<group>"; };
 		87E1287528951B56006CEF02 /* Battle04.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle04.swift; sourceTree = "<group>"; };
+		87EB0D312899E19600375CA4 /* CustomVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVisualEffectView.swift; sourceTree = "<group>"; };
 		87ECCC552878E84F00E66C09 /* BattleMissionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionFactory.swift; sourceTree = "<group>"; };
 		87ECCC572878E87400E66C09 /* BattleMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMission.swift; sourceTree = "<group>"; };
 		87FE431828994B6A002DFCEA /* SceneCameraConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCameraConverter.swift; sourceTree = "<group>"; };
@@ -910,6 +912,7 @@
 			isa = PBXGroup;
 			children = (
 				877F102E2890262B00571F26 /* PauseBattleView.swift */,
+				87EB0D312899E19600375CA4 /* CustomVisualEffectView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1608,6 +1611,7 @@
 				AA78023C27E20B8E002C57E1 /* BattleFieldPresenter.swift in Sources */,
 				AAE8870127EF33AE00CA4E5D /* OrcTL.swift in Sources */,
 				870B6795288E8F5C0089D3CB /* CoordinatorFactoryImpl.swift in Sources */,
+				87EB0D322899E19600375CA4 /* CustomVisualEffectView.swift in Sources */,
 				AA7801FD27E20291002C57E1 /* HomePageViewController.swift in Sources */,
 				AA78023A27E20B8E002C57E1 /* BattleFieldAssembly.swift in Sources */,
 				877F10082890083F00571F26 /* WinBattleViewController.swift in Sources */,
