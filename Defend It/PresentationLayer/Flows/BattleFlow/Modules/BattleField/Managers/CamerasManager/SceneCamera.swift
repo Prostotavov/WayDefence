@@ -260,7 +260,7 @@ extension SceneCamera {
         
         var yPan = Float(translation.y) * zoomScale / resistance / 290
         + Float(translation.x) * zoomScale / resistance / 290 * yMyltiplayer
-        yPan = yPan * 290 / 165
+        yPan = yPan * 290 / 165 * 0.815
         
         position.x = position.x
         - Float(translation.x) * zoomScale / resistance / 290 / xMyltiplayer
@@ -286,7 +286,7 @@ extension SceneCamera {
                 }
             }
             let xPanVelocity = Float(panVelocity.x) / 30000
-            var yPanVelocity = Float(panVelocity.y) / 30000
+            var yPanVelocity = Float(panVelocity.y) / 30000 * 0.815
             yPanVelocity = yPanVelocity * 290 / 165
             
             setCameraPositionVelocity(x: xPanVelocity / xMyltiplayer,z: yPanVelocity)
