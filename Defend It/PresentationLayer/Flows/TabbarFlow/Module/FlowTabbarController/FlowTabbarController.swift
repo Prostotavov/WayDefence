@@ -62,9 +62,5 @@ class FlowTabbarController: UITabBarController , UITabBarControllerDelegate, Flo
             item.selectedImage = #imageLiteral(resourceName: "doneSelectIcon")
         })
     }
-    
-    deinit {
-        print("deinit        FlowTabbarController")
-    }
 }
 

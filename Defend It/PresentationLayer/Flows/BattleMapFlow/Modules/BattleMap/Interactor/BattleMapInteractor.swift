@@ -10,12 +10,9 @@ import Foundation
 class BattleMapInteractor: BattleMapInteractorInput {
     
     weak var output: BattleMapInteractorOutput!
-    var dataManager: DataManager!
     
     func battleIconPressed(byId id: Int) {
-        print("interactor id: \(id)")
         guard let battleMission = BattleMissions(rawValue: id) else {return}
-        
         CurrentBattleImp.shared.choseBattle(battleMission: battleMission)
     }
 }

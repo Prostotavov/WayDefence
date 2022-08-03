@@ -10,7 +10,6 @@
 		870B676B288E892A0089D3CB /* WeakPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870B676A288E892A0089D3CB /* WeakPropertyWrapper.swift */; };
 		870B676D288E89560089D3CB /* TestFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870B676C288E89560089D3CB /* TestFunctions.swift */; };
 		870B676F288E896B0089D3CB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870B676E288E896B0089D3CB /* Extensions.swift */; };
-		870B6773288E89A50089D3CB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870B6772288E89A50089D3CB /* DataManager.swift */; };
 		870B6775288E8A450089D3CB /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870B6774288E8A450089D3CB /* Converter.swift */; };
 		870B6779288E8E420089D3CB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870B6778288E8E420089D3CB /* Coordinator.swift */; };
 		870B677B288E8E4C0089D3CB /* DeepLinkOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870B677A288E8E4C0089D3CB /* DeepLinkOption.swift */; };
@@ -226,7 +225,6 @@
 		870B676A288E892A0089D3CB /* WeakPropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakPropertyWrapper.swift; sourceTree = "<group>"; };
 		870B676C288E89560089D3CB /* TestFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFunctions.swift; sourceTree = "<group>"; };
 		870B676E288E896B0089D3CB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		870B6772288E89A50089D3CB /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		870B6774288E8A450089D3CB /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		870B6778288E8E420089D3CB /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		870B677A288E8E4C0089D3CB /* DeepLinkOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkOption.swift; sourceTree = "<group>"; };
@@ -1002,7 +1000,6 @@
 			isa = PBXGroup;
 			children = (
 				87E12871289514A5006CEF02 /* CurrentBattle.swift */,
-				870B6772288E89A50089D3CB /* DataManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -1643,7 +1640,6 @@
 				AA7801B527E200B6002C57E1 /* AppDelegate.swift in Sources */,
 				AAE886F327EF2DC500CA4E5D /* AbstractFactoryEnemies.swift in Sources */,
 				870B676D288E89560089D3CB /* TestFunctions.swift in Sources */,
-				870B6773288E89A50089D3CB /* DataManager.swift in Sources */,
 				87FE431928994B6A002DFCEA /* SceneCameraConverter.swift in Sources */,
 				87E1286B2894707C006CEF02 /* BattleMapScene_BattleIcons.swift in Sources */,
 				87CA3D512829024C000F952F /* BottomBarView.swift in Sources */,
