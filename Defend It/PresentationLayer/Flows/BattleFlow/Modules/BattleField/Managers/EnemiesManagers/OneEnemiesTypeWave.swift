@@ -100,6 +100,7 @@ class OneEnemiesTypeWaveImpl: OneEnemiesTypeWave {
     func create(_ rase: EnemyRaces, with level: EnemyLevels) {
         let enemy = AbstractFactoryEnemiesImpl.defaultFactory.create(rase, with: level)
         addPhysicsBody(for: enemy)
+        addHealthProgressBar(for: enemy)
         enemies.insert(enemy)
     }
     
@@ -231,4 +232,16 @@ extension OneEnemiesTypeWaveImpl {
         return nil
     }
     
+}
+
+// add healtpPoints progress bar
+extension OneEnemiesTypeWaveImpl {
+    
+    func addHealthProgressBar(for enemy: AnyEnemy) {
+        let progressBar = SCNProgressBar(width: 0.3, height: 0.05)
+        progressBar.progressTintColor = .red
+        progressBar.progress = 0.7
+        progressBar.position = SCNVector3(0, 0.6, 0)
+        enemy.enemyNode.addChildNode(progressBar)
+    }
 }
