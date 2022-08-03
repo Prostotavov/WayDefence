@@ -11,4 +11,8 @@ class WinBattleInteractor: WinBattleInteractorInput {
     
     weak var output: WinBattleInteractorOutput!
     
+    func battlePassed() {
+        CurrentBattleImp.shared.currentBattlePassed()
+    }
+    
 }

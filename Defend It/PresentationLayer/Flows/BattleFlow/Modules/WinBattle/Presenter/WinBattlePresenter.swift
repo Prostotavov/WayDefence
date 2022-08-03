@@ -15,6 +15,7 @@ class WinBattlePresenter: WinBattleViewOutput, WinBattleInteractorOutput {
     
     func viewDidLoad() {
         view.setupInitialState()
+        interactor.battlePassed()
     }
     
     func onAcceptTap() {

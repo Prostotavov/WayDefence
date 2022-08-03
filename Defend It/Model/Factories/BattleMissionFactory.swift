@@ -7,13 +7,11 @@
 
 import SceneKit
 
-enum BattleMissions: Int {
+enum BattleMissions: Int, CaseIterable {
     case first = 1
     case second = 2
     case third = 3
     case four = 4
-    case five = 5
-    case six = 6
 }
 
 protocol FactoryBattleMissionDelegate: AnyObject {
@@ -31,7 +29,6 @@ class FactoryBattleMission: EnemiesWaveDelegate, OneEnemiesTypeWaveDelegate {
         case .second: return Battle02()
         case .third: return Battle03()
         case .four: return Battle04()
-        default: return Battle01()
         }
     }
     

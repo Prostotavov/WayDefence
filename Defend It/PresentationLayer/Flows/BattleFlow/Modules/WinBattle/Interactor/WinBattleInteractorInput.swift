@@ -9,4 +9,5 @@ import Foundation
 
 protocol WinBattleInteractorInput: AnyObject {
 
+    func battlePassed() 
 }
