@@ -36,6 +36,7 @@ class AnyEnemy: Enemy {
     // adding vars
     var counter: Int
     var isActive: Bool
+    var currentHealthPoints: CGFloat
     
     init<T: Enemy>(_ object: T) {
         id = object.id
@@ -48,6 +49,7 @@ class AnyEnemy: Enemy {
         coinMurderReward = object.coinMurderReward
         pointsMurderReward = object.pointsMurderReward
         // adding vars
+        currentHealthPoints = object.healthPoints
         counter = 0
         isActive = false
     }

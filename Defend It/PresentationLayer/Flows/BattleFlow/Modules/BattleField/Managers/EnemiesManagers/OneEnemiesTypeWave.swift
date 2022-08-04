@@ -19,6 +19,8 @@ protocol OneEnemiesTypeWave {
     func addEnemiesToScene()
     func getStartCounter() -> Int
     var enemies: Set<AnyEnemy> {get}
+    
+    func enemyWounded(enemy: AnyEnemy)
 }
 
 protocol OneEnemiesTypeWaveDelegate: AnyObject {
@@ -240,8 +242,22 @@ extension OneEnemiesTypeWaveImpl {
     func addHealthProgressBar(for enemy: AnyEnemy) {
         let progressBar = SCNProgressBar(width: 0.3, height: 0.05)
         progressBar.progressTintColor = .red
-        progressBar.progress = 0.7
+        progressBar.progress = enemy.currentHealthPoints / enemy.healthPoints
         progressBar.position = SCNVector3(0, 0.6, 0)
         enemy.enemyNode.addChildNode(progressBar)
+    }
+    
+    func updateHealthProgressBar(for enemy: AnyEnemy) {
+        let progressBar = enemy.enemyNode.childNode(withName: NodeNames.progressBar.rawValue, recursively: true)
+        progressBar?.removeFromParentNode()
+        addHealthProgressBar(for: enemy)
+    }
+    
+    func enemyWounded(enemy: AnyEnemy) {
+        for _enemy in enemies {
+            if _enemy.id.uuidString == enemy.enemyNode.name {
+                updateHealthProgressBar(for: enemy)
+            }
+        }
     }
 }

@@ -50,6 +50,7 @@ class SCNProgressBar: SCNNode {
         setupTrackTint()
         setupProgressTint()
         addBillboardConstraint()
+        setNodeNames()
     }
     
     required init?(coder: NSCoder) {
@@ -99,5 +100,13 @@ class SCNProgressBar: SCNNode {
         let billboardConstraint = SCNBillboardConstraint()
         billboardConstraint.freeAxes = .all
         self.constraints = [billboardConstraint]
+    }
+    
+    /// We name all the nodes in order to be able to refer to them later
+    private func setNodeNames() {
+        name = NodeNames.progressBar.rawValue
+        trackPlane.name = NodeNames.trackPlane.rawValue
+        progressNode.name = NodeNames.progressNode.rawValue
+        progressPlane.name = NodeNames.progressPlane.rawValue
     }
 }

@@ -197,6 +197,7 @@ extension BattleImpl {
 extension BattleImpl: EnemiesManagerDelegate, BattleManagerDelegate {
     
     func enemyWounded(enemy: AnyEnemy) {
+        enemiesManager.enemyWounded(enemy: enemy)
 //        print("sound")
 //        print("line of health")
     }
