@@ -23,6 +23,7 @@ protocol EnemiesManager {
     func stopAllEnemies()
     func runAllEnemies()
     func addEnemiesToScene()
+    func enemyWounded(enemy: AnyEnemy)
     
     var battleMision: BattleMission! {get set}
 }
@@ -113,6 +114,13 @@ extension EnemiesManagerImpl {
             }
         }
         return nil
+    }
+    
+    func enemyWounded(enemy: AnyEnemy) {
+        for wave in battleMision.enemiesWaves {
+            if wave.startFrame > wavesCounter {continue} ///  not a prerequisite. if it causes an error in the future, you can delete it
+            wave.enemyWounded(enemy: enemy)
+        }
     }
     
     func stopAllEnemies() {

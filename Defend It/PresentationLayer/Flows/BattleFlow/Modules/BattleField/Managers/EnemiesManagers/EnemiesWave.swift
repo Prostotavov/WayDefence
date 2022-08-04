@@ -24,6 +24,7 @@ protocol EnemiesWave {
     func addEnemiesToScene()
     func addOneRaceWave(race: EnemyRaces, level: EnemyLevels, count: Int, intervalBetweenEnemies: Int, startFrame: Int)
     var startFrame: Int {get set}
+    func enemyWounded(enemy: AnyEnemy)
     
     func setupDelegate(delegate: EnemiesWaveDelegate)
     var oneEnemiesTypeWaves: [OneEnemiesTypeWave] {get}
@@ -120,6 +121,13 @@ extension EnemiesWaveImpl {
             }
         }
         return nil
+    }
+    
+    func enemyWounded(enemy: AnyEnemy) {
+        for wave in oneEnemiesTypeWaves {
+            if wave.getStartCounter() > waveCounter {continue} ///  not a prerequisite. if it causes an error in the future, you can delete it
+            wave.enemyWounded(enemy: enemy)
+        }
     }
     
     func enemyReachedCastle() {
