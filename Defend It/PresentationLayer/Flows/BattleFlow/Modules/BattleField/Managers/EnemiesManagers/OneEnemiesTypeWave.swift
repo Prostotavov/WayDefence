@@ -240,6 +240,7 @@ extension OneEnemiesTypeWaveImpl {
 extension OneEnemiesTypeWaveImpl {
     
     func addHealthProgressBar(for enemy: AnyEnemy) {
+        if enemy.currentHealthPoints == enemy.healthPoints {return}
         let progressBar = SCNProgressBar(width: 0.3, height: 0.05)
         progressBar.progressTintColor = .red
         progressBar.progress = enemy.currentHealthPoints / enemy.healthPoints
