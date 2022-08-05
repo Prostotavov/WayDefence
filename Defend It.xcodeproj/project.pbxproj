@@ -43,6 +43,8 @@
 		873F3F19289D6E9700BF7FF9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F18289D6E9700BF7FF9 /* User.swift */; };
 		873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1A289D6EF400BF7FF9 /* UserSex.swift */; };
 		873F3F1D289D6F8E00BF7FF9 /* GameAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */; };
+		873F3F1F289D72E300BF7FF9 /* GameAccountValueTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1E289D72E300BF7FF9 /* GameAccountValueTypes.swift */; };
+		873F3F21289D742200BF7FF9 /* GameAccountValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F20289D742200BF7FF9 /* GameAccountValues.swift */; };
 		873F65302893224C00A67F43 /* BattleMapFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F652F2893224C00A67F43 /* BattleMapFlowFactory.swift */; };
 		873F65352893235B00A67F43 /* BattleMapCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F65342893235B00A67F43 /* BattleMapCoordinatorOutput.swift */; };
 		873F65372893236900A67F43 /* BattleMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F65362893236900A67F43 /* BattleMapCoordinator.swift */; };
@@ -262,6 +264,8 @@
 		873F3F18289D6E9700BF7FF9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		873F3F1A289D6EF400BF7FF9 /* UserSex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSex.swift; sourceTree = "<group>"; };
 		873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccount.swift; sourceTree = "<group>"; };
+		873F3F1E289D72E300BF7FF9 /* GameAccountValueTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccountValueTypes.swift; sourceTree = "<group>"; };
+		873F3F20289D742200BF7FF9 /* GameAccountValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccountValues.swift; sourceTree = "<group>"; };
 		873F652F2893224C00A67F43 /* BattleMapFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapFlowFactory.swift; sourceTree = "<group>"; };
 		873F65342893235B00A67F43 /* BattleMapCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapCoordinatorOutput.swift; sourceTree = "<group>"; };
 		873F65362893236900A67F43 /* BattleMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapCoordinator.swift; sourceTree = "<group>"; };
@@ -715,6 +719,7 @@
 			children = (
 				873F3F18289D6E9700BF7FF9 /* User.swift */,
 				873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */,
+				873F3F20289D742200BF7FF9 /* GameAccountValues.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1309,6 +1314,7 @@
 				AACC7BF027FB66B20022384E /* BuildingNodes.swift */,
 				AACC7BF227FB66D00022384E /* EnemyNodes.swift */,
 				873F3F1A289D6EF400BF7FF9 /* UserSex.swift */,
+				873F3F1E289D72E300BF7FF9 /* GameAccountValueTypes.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1570,6 +1576,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAE8870927EF350F00CA4E5D /* GoblinTL.swift in Sources */,
+				873F3F21289D742200BF7FF9 /* GameAccountValues.swift in Sources */,
 				877F0FEB288FF32400571F26 /* LoseBattleInteractorInput.swift in Sources */,
 				AA0B68C027E5BA7D0078003D /* MagicTowerFactory.swift in Sources */,
 				87E1286928947031006CEF02 /* BattleMapIcon.swift in Sources */,
@@ -1601,6 +1608,7 @@
 				878DDC97287AB62100B37154 /* BattleValues.swift in Sources */,
 				877F0FE5288FF32400571F26 /* LoseBattleViewCoordinatorOutput.swift in Sources */,
 				8711C632287564CA00E84876 /* Battle01.swift in Sources */,
+				873F3F1F289D72E300BF7FF9 /* GameAccountValueTypes.swift in Sources */,
 				870B677B288E8E4C0089D3CB /* DeepLinkOption.swift in Sources */,
 				AACC7BDB27FB28200022384E /* ElphTowerTL.swift in Sources */,
 				877F1025289025EE00571F26 /* PauseBattlePresenter.swift in Sources */,

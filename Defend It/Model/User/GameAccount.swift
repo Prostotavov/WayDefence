@@ -8,14 +8,36 @@
 import Foundation
 
 protocol GameAccount: AnyObject {
-    
+    func increase(_ valueType: GameAccountValueTypes, by value: Int)
+    func reduce(_ valueType: GameAccountValueTypes, by value: Int)
+    func set(_ valueType: GameAccountValueTypes, to newValue: Int)
+    func get(_ valueType: GameAccountValueTypes) -> Int
 }
 
 class GameAccountImp: GameAccount {
-    private var avatar: String?
-    private var coins: Int?
-    private var points: Int?
-    private var gems: Int?
-    private var level: Int?
-    private var boosters: [Int]? // add later
+    private var gameAccountValues: GameAccountValues?
+    
+    init() {
+        gameAccountValues = GameAccountValuesImp()
+    }
+}
+
+// funcs from class GameAccountValues
+extension GameAccountImp {
+    func increase(_ valueType: GameAccountValueTypes, by value: Int) {
+        gameAccountValues?.increase(valueType, by: value)
+    }
+    
+    func reduce(_ valueType: GameAccountValueTypes, by value: Int) {
+        gameAccountValues?.reduce(valueType, by: value)
+    }
+    
+    func set(_ valueType: GameAccountValueTypes, to newValue: Int) {
+        gameAccountValues?.set(valueType, to: newValue)
+    }
+    
+    func get(_ valueType: GameAccountValueTypes) -> Int {
+        if gameAccountValues == nil {return 0}
+        return gameAccountValues!.get(valueType)
+    }
 }
