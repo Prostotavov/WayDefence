@@ -40,6 +40,9 @@
 		8711C628286F945500E84876 /* OneEnemiesTypeWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711C627286F945500E84876 /* OneEnemiesTypeWave.swift */; };
 		8711C62A286FACA300E84876 /* EnemiesWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711C629286FACA300E84876 /* EnemiesWave.swift */; };
 		8711C632287564CA00E84876 /* Battle01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711C631287564CA00E84876 /* Battle01.swift */; };
+		873F3F19289D6E9700BF7FF9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F18289D6E9700BF7FF9 /* User.swift */; };
+		873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1A289D6EF400BF7FF9 /* UserSex.swift */; };
+		873F3F1D289D6F8E00BF7FF9 /* GameAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */; };
 		873F65302893224C00A67F43 /* BattleMapFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F652F2893224C00A67F43 /* BattleMapFlowFactory.swift */; };
 		873F65352893235B00A67F43 /* BattleMapCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F65342893235B00A67F43 /* BattleMapCoordinatorOutput.swift */; };
 		873F65372893236900A67F43 /* BattleMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F65362893236900A67F43 /* BattleMapCoordinator.swift */; };
@@ -256,6 +259,9 @@
 		8711C627286F945500E84876 /* OneEnemiesTypeWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneEnemiesTypeWave.swift; sourceTree = "<group>"; };
 		8711C629286FACA300E84876 /* EnemiesWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesWave.swift; sourceTree = "<group>"; };
 		8711C631287564CA00E84876 /* Battle01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle01.swift; sourceTree = "<group>"; };
+		873F3F18289D6E9700BF7FF9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		873F3F1A289D6EF400BF7FF9 /* UserSex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSex.swift; sourceTree = "<group>"; };
+		873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccount.swift; sourceTree = "<group>"; };
 		873F652F2893224C00A67F43 /* BattleMapFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapFlowFactory.swift; sourceTree = "<group>"; };
 		873F65342893235B00A67F43 /* BattleMapCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapCoordinatorOutput.swift; sourceTree = "<group>"; };
 		873F65362893236900A67F43 /* BattleMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapCoordinator.swift; sourceTree = "<group>"; };
@@ -457,6 +463,7 @@
 		870B6764288E856B0089D3CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				873F3F17289D6E8B00BF7FF9 /* User */,
 				87ECCC522878E7DA00E66C09 /* BattleMission */,
 				AAE886EF27EF2D6900CA4E5D /* Factories */,
 			);
@@ -701,6 +708,15 @@
 				AA78022327E2043D002C57E1 /* HomePageView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		873F3F17289D6E8B00BF7FF9 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				873F3F18289D6E9700BF7FF9 /* User.swift */,
+				873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		873F65382893256600A67F43 /* TabbarFlow */ = {
@@ -1292,6 +1308,7 @@
 				AACC7BEE27FB36D30022384E /* BuiltTowers.swift */,
 				AACC7BF027FB66B20022384E /* BuildingNodes.swift */,
 				AACC7BF227FB66D00022384E /* EnemyNodes.swift */,
+				873F3F1A289D6EF400BF7FF9 /* UserSex.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1579,6 +1596,7 @@
 				AACC7BD627FB01F10022384E /* BuildingIconPlaces.swift in Sources */,
 				870B67AB288E95390089D3CB /* LoadBattleViewOutput.swift in Sources */,
 				877F0FE6288FF32400571F26 /* LoseBattleViewInput.swift in Sources */,
+				873F3F1D289D6F8E00BF7FF9 /* GameAccount.swift in Sources */,
 				AACC7BF127FB66B20022384E /* BuildingNodes.swift in Sources */,
 				878DDC97287AB62100B37154 /* BattleValues.swift in Sources */,
 				877F0FE5288FF32400571F26 /* LoseBattleViewCoordinatorOutput.swift in Sources */,
@@ -1620,6 +1638,7 @@
 				870B67CE288FC5D20089D3CB /* MainCoordinator.swift in Sources */,
 				877F100C2890083F00571F26 /* WinBattleInteractorInput.swift in Sources */,
 				AAE8870527EF34FA00CA4E5D /* GoblinFL.swift in Sources */,
+				873F3F19289D6E9700BF7FF9 /* User.swift in Sources */,
 				877F100A2890083F00571F26 /* WinBattleViewOutput.swift in Sources */,
 				AAE8870727EF350400CA4E5D /* GoblinSL.swift in Sources */,
 				AAE886D327EE0FC800CA4E5D /* ScenePaths.swift in Sources */,
@@ -1671,6 +1690,7 @@
 				870B67BB288E97290089D3CB /* LoadBattleAssembly.swift in Sources */,
 				AACC7BEF27FB36D30022384E /* BuiltTowers.swift in Sources */,
 				870B6793288E8F530089D3CB /* CoordinatorFactory.swift in Sources */,
+				873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */,
 				877F105028906BB800571F26 /* BattleMapViewController.swift in Sources */,
 				870B677D288E8E540089D3CB /* Presentable.swift in Sources */,
 				AAE8870327EF342D00CA4E5D /* GoblinFactory.swift in Sources */,
