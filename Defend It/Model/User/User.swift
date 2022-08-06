@@ -7,10 +7,8 @@
 
 import Foundation
 
-
-
 protocol User {
-    
+    var gameAccount: GameAccount? {get}
 }
 
 class UserImp: User {
@@ -21,4 +19,12 @@ class UserImp: User {
     
     private var login: String?
     private var password: String?
+    
+    var gameAccount: GameAccount?
+    
+    static let shared = UserImp()
+    
+    init() {
+        self.gameAccount = GameAccountImp()
+    }
 }
