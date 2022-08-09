@@ -22,7 +22,6 @@ protocol EnemiesManager {
     func removeEnemies()
     func stopAllEnemies()
     func runAllEnemies()
-    func addEnemiesToScene()
     func enemyWounded(enemy: AnyEnemy)
 }
 
@@ -76,13 +75,6 @@ extension EnemiesManagerImpl {
         for wave in enemiesWaves {
             if wave.startFrame > wavesCounter {continue}
             wave.removeEnemies()
-        }
-    }
-    
-    func addEnemiesToScene() {
-        for wave in enemiesWaves {
-            if wave.startFrame > wavesCounter {continue}
-            wave.addEnemiesToScene()
         }
     }
 }

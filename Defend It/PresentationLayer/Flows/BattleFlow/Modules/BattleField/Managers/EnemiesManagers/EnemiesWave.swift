@@ -21,7 +21,6 @@ protocol EnemiesWave {
     func removeEnemies()
     func stopAllEnemies()
     func runAllEnemies()
-    func addEnemiesToScene()
     func addOneRaceWave(race: EnemyRaces, level: EnemyLevels, count: Int, intervalBetweenEnemies: Int, startFrame: Int)
     var startFrame: Int {get set}
     func enemyWounded(enemy: AnyEnemy)
@@ -103,13 +102,6 @@ extension EnemiesWaveImpl {
         for wave in oneEnemiesTypeWaves {
             if wave.getStartCounter() > waveCounter {continue}
             wave.runAllEnemies()
-        }
-    }
-    
-    func addEnemiesToScene() {
-        for wave in oneEnemiesTypeWaves {
-            if wave.getStartCounter() > waveCounter {continue}
-            wave.addEnemiesToScene()
         }
     }
     
