@@ -40,6 +40,20 @@
 		8711C628286F945500E84876 /* OneEnemiesTypeWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711C627286F945500E84876 /* OneEnemiesTypeWave.swift */; };
 		8711C62A286FACA300E84876 /* EnemiesWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711C629286FACA300E84876 /* EnemiesWave.swift */; };
 		8711C632287564CA00E84876 /* Battle01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711C631287564CA00E84876 /* Battle01.swift */; };
+		873F3F19289D6E9700BF7FF9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F18289D6E9700BF7FF9 /* User.swift */; };
+		873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1A289D6EF400BF7FF9 /* UserSex.swift */; };
+		873F3F1D289D6F8E00BF7FF9 /* GameAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */; };
+		873F3F1F289D72E300BF7FF9 /* GameAccountValueTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1E289D72E300BF7FF9 /* GameAccountValueTypes.swift */; };
+		873F3F21289D742200BF7FF9 /* GameAccountValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F20289D742200BF7FF9 /* GameAccountValues.swift */; };
+		873F3F23289DBFA500BF7FF9 /* FlowNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F22289DBFA500BF7FF9 /* FlowNavigationBarView.swift */; };
+		873F3F2B289E6B1F00BF7FF9 /* FlowTabbarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F2A289E6B1F00BF7FF9 /* FlowTabbarPresenter.swift */; };
+		873F3F2D289E6B7600BF7FF9 /* FlowTabbarInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F2C289E6B7600BF7FF9 /* FlowTabbarInteractorOutput.swift */; };
+		873F3F2F289E6B8300BF7FF9 /* FlowTabbarInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F2E289E6B8300BF7FF9 /* FlowTabbarInteractorInput.swift */; };
+		873F3F31289E6B8A00BF7FF9 /* FlowTabbarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F30289E6B8A00BF7FF9 /* FlowTabbarInteractor.swift */; };
+		873F3F33289E6B9B00BF7FF9 /* FlowTabbarViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F32289E6B9B00BF7FF9 /* FlowTabbarViewInput.swift */; };
+		873F3F35289E6BA900BF7FF9 /* FlowTabbarViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F34289E6BA900BF7FF9 /* FlowTabbarViewOutput.swift */; };
+		873F3F37289E6BC000BF7FF9 /* FlowTabbarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F36289E6BC000BF7FF9 /* FlowTabbarAssembly.swift */; };
+		873F3F39289E6BCB00BF7FF9 /* FlowTabbarAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F38289E6BCB00BF7FF9 /* FlowTabbarAssemblyProtocol.swift */; };
 		873F65302893224C00A67F43 /* BattleMapFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F652F2893224C00A67F43 /* BattleMapFlowFactory.swift */; };
 		873F65352893235B00A67F43 /* BattleMapCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F65342893235B00A67F43 /* BattleMapCoordinatorOutput.swift */; };
 		873F65372893236900A67F43 /* BattleMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F65362893236900A67F43 /* BattleMapCoordinator.swift */; };
@@ -256,6 +270,20 @@
 		8711C627286F945500E84876 /* OneEnemiesTypeWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneEnemiesTypeWave.swift; sourceTree = "<group>"; };
 		8711C629286FACA300E84876 /* EnemiesWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesWave.swift; sourceTree = "<group>"; };
 		8711C631287564CA00E84876 /* Battle01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle01.swift; sourceTree = "<group>"; };
+		873F3F18289D6E9700BF7FF9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		873F3F1A289D6EF400BF7FF9 /* UserSex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSex.swift; sourceTree = "<group>"; };
+		873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccount.swift; sourceTree = "<group>"; };
+		873F3F1E289D72E300BF7FF9 /* GameAccountValueTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccountValueTypes.swift; sourceTree = "<group>"; };
+		873F3F20289D742200BF7FF9 /* GameAccountValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccountValues.swift; sourceTree = "<group>"; };
+		873F3F22289DBFA500BF7FF9 /* FlowNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowNavigationBarView.swift; sourceTree = "<group>"; };
+		873F3F2A289E6B1F00BF7FF9 /* FlowTabbarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarPresenter.swift; sourceTree = "<group>"; };
+		873F3F2C289E6B7600BF7FF9 /* FlowTabbarInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarInteractorOutput.swift; sourceTree = "<group>"; };
+		873F3F2E289E6B8300BF7FF9 /* FlowTabbarInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarInteractorInput.swift; sourceTree = "<group>"; };
+		873F3F30289E6B8A00BF7FF9 /* FlowTabbarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarInteractor.swift; sourceTree = "<group>"; };
+		873F3F32289E6B9B00BF7FF9 /* FlowTabbarViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarViewInput.swift; sourceTree = "<group>"; };
+		873F3F34289E6BA900BF7FF9 /* FlowTabbarViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarViewOutput.swift; sourceTree = "<group>"; };
+		873F3F36289E6BC000BF7FF9 /* FlowTabbarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarAssembly.swift; sourceTree = "<group>"; };
+		873F3F38289E6BCB00BF7FF9 /* FlowTabbarAssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarAssemblyProtocol.swift; sourceTree = "<group>"; };
 		873F652F2893224C00A67F43 /* BattleMapFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapFlowFactory.swift; sourceTree = "<group>"; };
 		873F65342893235B00A67F43 /* BattleMapCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapCoordinatorOutput.swift; sourceTree = "<group>"; };
 		873F65362893236900A67F43 /* BattleMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapCoordinator.swift; sourceTree = "<group>"; };
@@ -457,6 +485,7 @@
 		870B6764288E856B0089D3CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				873F3F17289D6E8B00BF7FF9 /* User */,
 				87ECCC522878E7DA00E66C09 /* BattleMission */,
 				AAE886EF27EF2D6900CA4E5D /* Factories */,
 			);
@@ -703,6 +732,64 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		873F3F17289D6E8B00BF7FF9 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				873F3F18289D6E9700BF7FF9 /* User.swift */,
+				873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */,
+				873F3F20289D742200BF7FF9 /* GameAccountValues.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		873F3F24289E6A8200BF7FF9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				873F6540289325C900A67F43 /* FlowTabbarCoordinatorOutput.swift */,
+				873F6542289325DA00A67F43 /* FlowTabbarController.swift */,
+				873F6544289325E900A67F43 /* FlowTabbar.swift */,
+				873F3F32289E6B9B00BF7FF9 /* FlowTabbarViewInput.swift */,
+				873F3F34289E6BA900BF7FF9 /* FlowTabbarViewOutput.swift */,
+				873F3F28289E6AF600BF7FF9 /* Views */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		873F3F25289E6A8F00BF7FF9 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				873F3F2A289E6B1F00BF7FF9 /* FlowTabbarPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		873F3F26289E6A9800BF7FF9 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				873F3F2C289E6B7600BF7FF9 /* FlowTabbarInteractorOutput.swift */,
+				873F3F2E289E6B8300BF7FF9 /* FlowTabbarInteractorInput.swift */,
+				873F3F30289E6B8A00BF7FF9 /* FlowTabbarInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		873F3F27289E6AB400BF7FF9 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				873F3F36289E6BC000BF7FF9 /* FlowTabbarAssembly.swift */,
+				873F3F38289E6BCB00BF7FF9 /* FlowTabbarAssemblyProtocol.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		873F3F28289E6AF600BF7FF9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				873F3F22289DBFA500BF7FF9 /* FlowNavigationBarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		873F65382893256600A67F43 /* TabbarFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -715,7 +802,10 @@
 		873F65392893256F00A67F43 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				873F653B2893258000A67F43 /* FlowTabbarController */,
+				873F3F27289E6AB400BF7FF9 /* Assembly */,
+				873F3F25289E6A8F00BF7FF9 /* Presenter */,
+				873F3F26289E6A9800BF7FF9 /* Interactor */,
+				873F3F24289E6A8200BF7FF9 /* View */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -727,16 +817,6 @@
 				873F653E289325A900A67F43 /* TabbarCoordinator.swift */,
 			);
 			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		873F653B2893258000A67F43 /* FlowTabbarController */ = {
-			isa = PBXGroup;
-			children = (
-				873F6540289325C900A67F43 /* FlowTabbarCoordinatorOutput.swift */,
-				873F6542289325DA00A67F43 /* FlowTabbarController.swift */,
-				873F6544289325E900A67F43 /* FlowTabbar.swift */,
-			);
-			path = FlowTabbarController;
 			sourceTree = "<group>";
 		};
 		87425E44289B2BD1000BF422 /* SCNProgressBar */ = {
@@ -1292,6 +1372,8 @@
 				AACC7BEE27FB36D30022384E /* BuiltTowers.swift */,
 				AACC7BF027FB66B20022384E /* BuildingNodes.swift */,
 				AACC7BF227FB66D00022384E /* EnemyNodes.swift */,
+				873F3F1A289D6EF400BF7FF9 /* UserSex.swift */,
+				873F3F1E289D72E300BF7FF9 /* GameAccountValueTypes.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1553,6 +1635,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAE8870927EF350F00CA4E5D /* GoblinTL.swift in Sources */,
+				873F3F21289D742200BF7FF9 /* GameAccountValues.swift in Sources */,
 				877F0FEB288FF32400571F26 /* LoseBattleInteractorInput.swift in Sources */,
 				AA0B68C027E5BA7D0078003D /* MagicTowerFactory.swift in Sources */,
 				87E1286928947031006CEF02 /* BattleMapIcon.swift in Sources */,
@@ -1560,7 +1643,9 @@
 				877F1028289025EE00571F26 /* PauseBattleViewController.swift in Sources */,
 				870B6779288E8E420089D3CB /* Coordinator.swift in Sources */,
 				AA78024027E20B8E002C57E1 /* BattleFieldInteractorInput.swift in Sources */,
+				873F3F33289E6B9B00BF7FF9 /* FlowTabbarViewInput.swift in Sources */,
 				AA0B68CA27E5BDF10078003D /* MagicTowerSL.swift in Sources */,
+				873F3F31289E6B8A00BF7FF9 /* FlowTabbarInteractor.swift in Sources */,
 				870B67C3288E98880089D3CB /* FlowFactoryImp.swift in Sources */,
 				877F0FE2288FF32400571F26 /* LoseBattleAssembly.swift in Sources */,
 				AA7801FB27E20291002C57E1 /* HomePageViewInput.swift in Sources */,
@@ -1572,6 +1657,7 @@
 				870B67AF288E963E0089D3CB /* LoadBattleInteractorInput.swift in Sources */,
 				877F0FE8288FF32400571F26 /* LoseBattleViewOutput.swift in Sources */,
 				87425E46289B2BE4000BF422 /* SCNProgressBar.swift in Sources */,
+				873F3F37289E6BC000BF7FF9 /* FlowTabbarAssembly.swift in Sources */,
 				AAE886F527EF2EDC00CA4E5D /* OrcFactory.swift in Sources */,
 				AA0B68C227E5BB150078003D /* ElphTowerFactory.swift in Sources */,
 				87CA3D4F2828FBE0000F952F /* TopBarView.swift in Sources */,
@@ -1579,10 +1665,12 @@
 				AACC7BD627FB01F10022384E /* BuildingIconPlaces.swift in Sources */,
 				870B67AB288E95390089D3CB /* LoadBattleViewOutput.swift in Sources */,
 				877F0FE6288FF32400571F26 /* LoseBattleViewInput.swift in Sources */,
+				873F3F1D289D6F8E00BF7FF9 /* GameAccount.swift in Sources */,
 				AACC7BF127FB66B20022384E /* BuildingNodes.swift in Sources */,
 				878DDC97287AB62100B37154 /* BattleValues.swift in Sources */,
 				877F0FE5288FF32400571F26 /* LoseBattleViewCoordinatorOutput.swift in Sources */,
 				8711C632287564CA00E84876 /* Battle01.swift in Sources */,
+				873F3F1F289D72E300BF7FF9 /* GameAccountValueTypes.swift in Sources */,
 				870B677B288E8E4C0089D3CB /* DeepLinkOption.swift in Sources */,
 				AACC7BDB27FB28200022384E /* ElphTowerTL.swift in Sources */,
 				877F1025289025EE00571F26 /* PauseBattlePresenter.swift in Sources */,
@@ -1602,6 +1690,7 @@
 				870B67C6288ECA150089D3CB /* HomePageViewCoordinatorOutput.swift in Sources */,
 				877F105128906BB800571F26 /* BattleMapInteractorOutput.swift in Sources */,
 				877F10092890083F00571F26 /* WinBattleViewCoordinatorOutput.swift in Sources */,
+				873F3F2F289E6B8300BF7FF9 /* FlowTabbarInteractorInput.swift in Sources */,
 				87E1286628946535006CEF02 /* BattleMapCamera.swift in Sources */,
 				AAF4C9DD27E8E6A200D5B6F8 /* GroundSquare.swift in Sources */,
 				AACC7BE527FB2C940022384E /* WallSL.swift in Sources */,
@@ -1620,6 +1709,7 @@
 				870B67CE288FC5D20089D3CB /* MainCoordinator.swift in Sources */,
 				877F100C2890083F00571F26 /* WinBattleInteractorInput.swift in Sources */,
 				AAE8870527EF34FA00CA4E5D /* GoblinFL.swift in Sources */,
+				873F3F19289D6E9700BF7FF9 /* User.swift in Sources */,
 				877F100A2890083F00571F26 /* WinBattleViewOutput.swift in Sources */,
 				AAE8870727EF350400CA4E5D /* GoblinSL.swift in Sources */,
 				AAE886D327EE0FC800CA4E5D /* ScenePaths.swift in Sources */,
@@ -1632,6 +1722,7 @@
 				877F10082890083F00571F26 /* WinBattleViewController.swift in Sources */,
 				870B67CC288FC5BE0089D3CB /* MainCoordinatorOutput.swift in Sources */,
 				873F65372893236900A67F43 /* BattleMapCoordinator.swift in Sources */,
+				873F3F2B289E6B1F00BF7FF9 /* FlowTabbarPresenter.swift in Sources */,
 				AACC7BF327FB66D00022384E /* EnemyNodes.swift in Sources */,
 				AA7801F827E20291002C57E1 /* HomePageAssemblyProtocol.swift in Sources */,
 				AAF4C9AC27E855D700D5B6F8 /* HashedHeap.swift in Sources */,
@@ -1671,6 +1762,7 @@
 				870B67BB288E97290089D3CB /* LoadBattleAssembly.swift in Sources */,
 				AACC7BEF27FB36D30022384E /* BuiltTowers.swift in Sources */,
 				870B6793288E8F530089D3CB /* CoordinatorFactory.swift in Sources */,
+				873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */,
 				877F105028906BB800571F26 /* BattleMapViewController.swift in Sources */,
 				870B677D288E8E540089D3CB /* Presentable.swift in Sources */,
 				AAE8870327EF342D00CA4E5D /* GoblinFactory.swift in Sources */,
@@ -1685,6 +1777,7 @@
 				87B606BD2878FF0C003549AF /* EnemyWavesCreator.swift in Sources */,
 				870B6775288E8A450089D3CB /* Converter.swift in Sources */,
 				877F0FE9288FF32400571F26 /* LoseBattleInteractorOutput.swift in Sources */,
+				873F3F35289E6BA900BF7FF9 /* FlowTabbarViewOutput.swift in Sources */,
 				877F104D28906BB800571F26 /* BattleMapViewInput.swift in Sources */,
 				877F0FE3288FF32400571F26 /* LoseBattleAssemblyProtocol.swift in Sources */,
 				AA7801F927E20291002C57E1 /* HomePageAssembly.swift in Sources */,
@@ -1701,6 +1794,7 @@
 				877F1023289025EE00571F26 /* PauseBattleAssembly.swift in Sources */,
 				877F100B2890083F00571F26 /* WinBattleViewInput.swift in Sources */,
 				873F6541289325C900A67F43 /* FlowTabbarCoordinatorOutput.swift in Sources */,
+				873F3F2D289E6B7600BF7FF9 /* FlowTabbarInteractorOutput.swift in Sources */,
 				87ECCC562878E84F00E66C09 /* BattleMissionFactory.swift in Sources */,
 				877F104C28906BB800571F26 /* BattleMapPresenter.swift in Sources */,
 				877F104E28906BB800571F26 /* BattleMapViewCoordinatorOutput.swift in Sources */,
@@ -1714,6 +1808,7 @@
 				877F102C289025EE00571F26 /* PauseBattleInteractor.swift in Sources */,
 				AAF4C9D727E8D9E500D5B6F8 /* EnemiesManager.swift in Sources */,
 				AAE886FF27EF33A600CA4E5D /* OrcSL.swift in Sources */,
+				873F3F39289E6BCB00BF7FF9 /* FlowTabbarAssemblyProtocol.swift in Sources */,
 				AACC7BD227FAE9CD0022384E /* BuildingIcons.swift in Sources */,
 				870B677F288E8E5F0089D3CB /* BaseCoordinator.swift in Sources */,
 				87ECCC582878E87400E66C09 /* BattleMission.swift in Sources */,
@@ -1724,6 +1819,7 @@
 				AA78023E27E20B8E002C57E1 /* BattleFieldViewOutput.swift in Sources */,
 				877F0FEE288FF5DE00571F26 /* LoseBattleView.swift in Sources */,
 				AACC7BE127FB2C850022384E /* BallistaSL.swift in Sources */,
+				873F3F23289DBFA500BF7FF9 /* FlowNavigationBarView.swift in Sources */,
 				877F1026289025EE00571F26 /* PauseBattleViewOutput.swift in Sources */,
 				870B67B9288E96BD0089D3CB /* LoadBattlePresenter.swift in Sources */,
 				877F0FE7288FF32400571F26 /* LoseBattleViewController.swift in Sources */,

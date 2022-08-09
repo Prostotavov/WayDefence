@@ -11,5 +11,6 @@ protocol FlowTabbarCoordinatorOutput: AnyObject {
     
     var onMainFlow: ((UINavigationController) -> ())? { get set }
     var onBattleMapFlow: ((UINavigationController) -> ())? { get set }
+    func viewDidLoad()
 }
 
