@@ -33,8 +33,6 @@ protocol EnemiesManagerDelegate: AnyObject {
 
 class EnemiesManagerImpl: EnemiesManager, EnemiesWaveDelegate {
     
-    
-    var battleFieldSize: Int!
     var enemiesState: EnemiesStates!
     
     weak var delegate: EnemiesManagerDelegate!
@@ -42,10 +40,6 @@ class EnemiesManagerImpl: EnemiesManager, EnemiesWaveDelegate {
     var enemiesWaves: [EnemiesWave]!
     
     var wavesCounter: Int = 0
-
-    init(_ battleFieldSize: Int) {
-        self.battleFieldSize = battleFieldSize
-    }
 }
 
 extension EnemiesManagerImpl {

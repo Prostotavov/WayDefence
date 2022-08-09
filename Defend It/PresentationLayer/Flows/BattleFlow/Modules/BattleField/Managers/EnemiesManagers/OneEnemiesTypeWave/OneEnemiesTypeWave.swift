@@ -29,32 +29,27 @@ protocol OneEnemiesTypeWaveDelegate: AnyObject {
 
 class OneEnemiesTypeWaveImpl: OneEnemiesTypeWave {
 
-    var battleFieldSize: Int!
     var enemies = Set<AnyEnemy>()
-    var enemyPositionManager: EnemyPathManager!
     
-    var pathCounter: Int = 0
-    var enemiesState: EnemiesStates!
+    var enemyMovementManager = EnemyMovementManager()
     
     weak var delegate: OneEnemiesTypeWaveDelegate!
     
     var race: EnemyRaces!
     var level: EnemyLevels!
     let intervalBetweenEnemies: Int!
-    var intervalCounter: Int!
     var countOfEnemies: Int!
     
     var startFrame: Int!
     
-    init(_ battleFieldSize: Int, race: EnemyRaces, level: EnemyLevels, count: Int, interval: Int, startFrame: Int) {
-        self.battleFieldSize = battleFieldSize
+    init(race: EnemyRaces, level: EnemyLevels, count: Int, interval: Int, startFrame: Int) {
         self.race = race
         self.level = level
         self.countOfEnemies = count
         self.intervalBetweenEnemies = interval
-        self.intervalCounter = interval
+        enemyMovementManager.intervalCounter = interval
         self.startFrame = startFrame
-        enemiesState = .inactive
+        enemyMovementManager.enemiesState = .inactive
         createEnemies()
         setupEnemies()
     }

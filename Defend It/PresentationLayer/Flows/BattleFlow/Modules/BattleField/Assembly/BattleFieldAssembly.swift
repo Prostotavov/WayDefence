@@ -43,7 +43,7 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         // init managers
         let meadowManager = MeadowManagerImpl(ground: battleMission.battleMeadow)
         let buildingsManager = BuildingsManagerImpl(battleMission.battleFieldSize)
-        let enemiesManager = EnemiesManagerImpl(battleMission.battleFieldSize)
+        let enemiesManager = EnemiesManagerImpl()
         let battleValuesManager = BattleManagerImpl(battleValues: battleMission.battleValues)
         let camerasManager = SceneCamera()
         delegate.createManagers(completed: 33)           // 65% load
