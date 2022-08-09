@@ -79,7 +79,6 @@ final class Battle02: BattleMission {
         wavesCreator.addOneRaceWave(id: 3, race: .goblin, level: .firstLevel, count: 7, interval: 20, startFrame: 60)
         
         // set delegates for waves
-        wavesCreator.setupEnemiesWaves()
         
         enemiesWaves = wavesCreator.enemiesWaves
     }
@@ -87,7 +86,6 @@ final class Battle02: BattleMission {
     func smallQuick() {
         wavesCreator.createWave(startFrame: 0)
         wavesCreator.addOneRaceWave(id: 0, race: .goblin, level: .secondLevel, count: 10, interval: 40, startFrame: 10)
-        wavesCreator.setupEnemiesWaves()
         enemiesWaves = wavesCreator.enemiesWaves
     }
     
@@ -115,7 +113,6 @@ final class Battle02: BattleMission {
         wavesCreator.addOneRaceWave(id: 3, race: .goblin, level: .firstLevel, count: 7, interval: 20, startFrame: 60)
         
         // set delegates for waves
-        wavesCreator.setupEnemiesWaves()
         
         enemiesWaves = wavesCreator.enemiesWaves
     }

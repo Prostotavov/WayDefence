@@ -49,8 +49,8 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         delegate.createManagers(completed: 33)           // 65% load
         
         
-        enemiesManager.battleMision = battleMission
-        battleMission.wavesCreator.delegate = enemiesManager
+        enemiesManager.enemiesWaves = battleMission.enemiesWaves
+        enemiesManager.setupDelegates()
         
         // init and assembly battle
         let battle = BattleImpl()

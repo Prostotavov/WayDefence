@@ -77,7 +77,6 @@ final class Battle05: BattleMission {
         wavesCreator.addOneRaceWave(id: 3, race: .goblin, level: .firstLevel, count: 7, interval: 20, startFrame: 60)
         
         // set delegates for waves
-        wavesCreator.setupEnemiesWaves()
         
         enemiesWaves = wavesCreator.enemiesWaves
     }
