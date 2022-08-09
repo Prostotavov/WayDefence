@@ -129,6 +129,7 @@ extension BattleImpl {
         
     }
     func finishBattle() {
+        EnemyPathManager.shared.battleFieldSize = nil
         switch battleState {
         case .win: output.battleIsWon()
         case .lose: output.battleIsLost()

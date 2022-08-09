@@ -7,27 +7,17 @@
 
 import SceneKit
 
-protocol EnemyPositionManager {
+class EnemyPathManager {
     
-    func culculateStartPosition() -> SCNVector3
-    func prohibitWalking(On coordination: (Int, Int))
-    func allowWalking(On coordination: (Int, Int))
-    func calculatePath<T: Enemy>(for enemy: T) -> [SCNVector3]
-}
-
-class EnemyPositionManagerImpl: EnemyPositionManager {
+    static let shared = EnemyPathManager()
+    
     var battleFieldSize: Int!
     private var graph: BattleFieldGraph!
-    private let start: (Int, Int) = (3, 0)
-    private let target: (Int, Int) = (3, 6)
-    
-    init(_ battleFieldSize: Int) {
-        self.battleFieldSize = battleFieldSize
-        createBattleFieldGraph()
-    }
+    private var start: (Int, Int)!
+    private var target: (Int, Int)!
     
     func culculateStartPosition() -> SCNVector3 {
-        SCNVector3(-0.25 + CGFloat(battleFieldSize)/4, 0, 0)
+        Converter.toPosition(from: start)
     }
     
     func calculatePath<T: Enemy>(for enemy: T) -> [SCNVector3] {
@@ -42,8 +32,16 @@ class EnemyPositionManagerImpl: EnemyPositionManager {
         return Converter.toPositions(from: path)
     }
     
-    private func createBattleFieldGraph() {
-        graph = BattleFieldGraph(size: battleFieldSize)
+    func setStart(coordinate: (Int, Int)) {
+        start = coordinate
+    }
+    
+    func setTarget(coordinate: (Int, Int)) {
+        target = coordinate
+    }
+    
+    func createBattleFieldGraph(size: Int) {
+        graph = BattleFieldGraph(size: size)
     }
     
     func prohibitWalking(On coordination: (Int, Int)) {

@@ -21,6 +21,17 @@ final class EnemyWavesCreatorImpl: EnemyWavesCreator {
     
     init(size: Int) {
         self.size = size
+        setEnemyPathManaget()
+    }
+    
+    //MARK: this function should be in the BattleFieldAssembly
+    func setEnemyPathManaget() {
+        if EnemyPathManager.shared.battleFieldSize == nil {
+            EnemyPathManager.shared.battleFieldSize = size
+            EnemyPathManager.shared.createBattleFieldGraph(size: size)
+            EnemyPathManager.shared.setStart(coordinate: (3, 0))
+            EnemyPathManager.shared.setTarget(coordinate: (3, 6))
+        }
     }
     
     func createWave(startFrame: Int) {

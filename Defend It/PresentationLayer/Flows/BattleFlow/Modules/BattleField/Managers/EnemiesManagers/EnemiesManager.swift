@@ -81,12 +81,14 @@ extension EnemiesManagerImpl {
 
 extension EnemiesManagerImpl {
     func prohibitWalking(On coordination: (Int, Int)) {
+        EnemyPathManager.shared.prohibitWalking(On: coordination)
         for wave in enemiesWaves {
             wave.prohibitWalking(On: coordination)
         }
     }
     
     func allowWalking(On coordination: (Int, Int)) {
+        EnemyPathManager.shared.allowWalking(On: coordination)
         for wave in enemiesWaves {
             wave.allowWalking(On: coordination)
         }

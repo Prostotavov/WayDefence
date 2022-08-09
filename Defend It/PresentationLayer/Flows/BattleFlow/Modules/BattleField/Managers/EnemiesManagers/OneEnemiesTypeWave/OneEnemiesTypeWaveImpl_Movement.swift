@@ -41,14 +41,12 @@ extension OneEnemiesTypeWaveImpl {
     func prohibitWalking(On coordination: (Int, Int)) {
         resetEnemyCounter()
         pathCounter = 0
-        enemyPositionManager.prohibitWalking(On: coordination)
         runEnemies()
     }
     
     func allowWalking(On coordination: (Int, Int)) {
         resetEnemyCounter()
         pathCounter = 0
-        enemyPositionManager.allowWalking(On: coordination)
         runEnemies()
     }
     
@@ -69,7 +67,7 @@ extension OneEnemiesTypeWaveImpl {
     func runEnemies() {
         if enemiesState == .inactive {return}
         for enemy in enemies {
-            let path = enemyPositionManager.calculatePath(for: enemy)
+            let path = EnemyPathManager.shared.calculatePath(for: enemy)
             enemy.setPath(path)
         }
     }
@@ -116,8 +114,8 @@ extension OneEnemiesTypeWaveImpl {
     
     func setupEnemies() {
         for enemy in enemies {
-            enemy.enemyNode.position = enemyPositionManager.culculateStartPosition()
-            enemy.path = enemyPositionManager.calculatePath(for: enemy)
+            enemy.enemyNode.position = EnemyPathManager.shared.culculateStartPosition()
+            enemy.path = EnemyPathManager.shared.calculatePath(for: enemy)
         }
     }
 }

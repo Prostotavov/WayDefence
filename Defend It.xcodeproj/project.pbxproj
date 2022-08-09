@@ -184,7 +184,7 @@
 		AAE886D627EE115A00CA4E5D /* NodeNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886D527EE115A00CA4E5D /* NodeNames.swift */; };
 		AAE886EA27EEFF9800CA4E5D /* BattleMeadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886E827EEFF9800CA4E5D /* BattleMeadow.swift */; };
 		AAE886EB27EEFF9800CA4E5D /* MeadowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886E927EEFF9800CA4E5D /* MeadowManager.swift */; };
-		AAE886EE27EEFFE000CA4E5D /* EnemyPositionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886ED27EEFFE000CA4E5D /* EnemyPositionManager.swift */; };
+		AAE886EE27EEFFE000CA4E5D /* EnemyPathManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886ED27EEFFE000CA4E5D /* EnemyPathManager.swift */; };
 		AAE886F327EF2DC500CA4E5D /* AbstractFactoryEnemies.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886F227EF2DC500CA4E5D /* AbstractFactoryEnemies.swift */; };
 		AAE886F527EF2EDC00CA4E5D /* OrcFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886F427EF2EDC00CA4E5D /* OrcFactory.swift */; };
 		AAE886F827EF30B300CA4E5D /* OrcFL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE886F727EF30B300CA4E5D /* OrcFL.swift */; };
@@ -421,7 +421,7 @@
 		AAE886D527EE115A00CA4E5D /* NodeNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeNames.swift; sourceTree = "<group>"; };
 		AAE886E827EEFF9800CA4E5D /* BattleMeadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMeadow.swift; sourceTree = "<group>"; };
 		AAE886E927EEFF9800CA4E5D /* MeadowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeadowManager.swift; sourceTree = "<group>"; };
-		AAE886ED27EEFFE000CA4E5D /* EnemyPositionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyPositionManager.swift; sourceTree = "<group>"; };
+		AAE886ED27EEFFE000CA4E5D /* EnemyPathManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyPathManager.swift; sourceTree = "<group>"; };
 		AAE886F227EF2DC500CA4E5D /* AbstractFactoryEnemies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractFactoryEnemies.swift; sourceTree = "<group>"; };
 		AAE886F427EF2EDC00CA4E5D /* OrcFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrcFactory.swift; sourceTree = "<group>"; };
 		AAE886F727EF30B300CA4E5D /* OrcFL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrcFL.swift; sourceTree = "<group>"; };
@@ -817,7 +817,7 @@
 		873F3F4A28A2D1C800BF7FF9 /* EnemyManagers */ = {
 			isa = PBXGroup;
 			children = (
-				AAE886ED27EEFFE000CA4E5D /* EnemyPositionManager.swift */,
+				AAE886ED27EEFFE000CA4E5D /* EnemyPathManager.swift */,
 				873F3F4B28A2D1D900BF7FF9 /* EnemyHealthBarManager.swift */,
 				873F3F4D28A2D1FE00BF7FF9 /* EnemyPhysicsManager.swift */,
 			);
@@ -1821,7 +1821,7 @@
 				AA7801FF27E20291002C57E1 /* HomePageInteractorInput.swift in Sources */,
 				AAE886FB27EF317400CA4E5D /* Enemy.swift in Sources */,
 				AACC7BD927FB28000022384E /* MagicTowerTL.swift in Sources */,
-				AAE886EE27EEFFE000CA4E5D /* EnemyPositionManager.swift in Sources */,
+				AAE886EE27EEFFE000CA4E5D /* EnemyPathManager.swift in Sources */,
 				AA78023F27E20B8E002C57E1 /* BattleFieldViewInput.swift in Sources */,
 				AACC7BEB27FB2D0B0022384E /* WallFactory.swift in Sources */,
 				87D51618285CC1BD00E3D7B8 /* Battle.swift in Sources */,

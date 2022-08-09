@@ -31,7 +31,7 @@ class OneEnemiesTypeWaveImpl: OneEnemiesTypeWave {
 
     var battleFieldSize: Int!
     var enemies = Set<AnyEnemy>()
-    var enemyPositionManager: EnemyPositionManager!
+    var enemyPositionManager: EnemyPathManager!
     
     var pathCounter: Int = 0
     var enemiesState: EnemiesStates!
@@ -55,7 +55,6 @@ class OneEnemiesTypeWaveImpl: OneEnemiesTypeWave {
         self.intervalCounter = interval
         self.startFrame = startFrame
         enemiesState = .inactive
-        enemyPositionManager = EnemyPositionManagerImpl(battleFieldSize)
         createEnemies()
         setupEnemies()
     }

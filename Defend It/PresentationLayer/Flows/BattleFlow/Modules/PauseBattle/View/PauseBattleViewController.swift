@@ -91,6 +91,9 @@ class PauseBattleViewController: UIViewController, PauseBattleViewInput, PauseBa
         hide()
     }
     func quit(){
+        //MARK: very bad practice
+        EnemyPathManager.shared.battleFieldSize = nil
+        
         output.goToHomePagePressed()
         fastHide()
     }

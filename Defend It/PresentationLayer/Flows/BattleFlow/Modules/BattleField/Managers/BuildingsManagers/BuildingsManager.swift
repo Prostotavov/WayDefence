@@ -149,7 +149,7 @@ extension BuildingsManagerImpl {
     
     func attackEnemy(by building: Building) {
         pushProjectileNodeFrom(building)
-        let attackedEnemy = building.enemiesInRadius.first!
+        guard let attackedEnemy = building.enemiesInRadius.first else {return}
         attackedEnemy.currentHealthPoints -= building.damage
         delegate.enemyWounded(enemy: attackedEnemy)
         if attackedEnemy.currentHealthPoints <= 0 {
