@@ -37,8 +37,8 @@
 		870B67CC288FC5BE0089D3CB /* MainCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870B67CB288FC5BE0089D3CB /* MainCoordinatorOutput.swift */; };
 		870B67CE288FC5D20089D3CB /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870B67CD288FC5D20089D3CB /* MainCoordinator.swift */; };
 		870B67D0288FC6460089D3CB /* MainFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870B67CF288FC6460089D3CB /* MainFlowFactory.swift */; };
-		8711C628286F945500E84876 /* OneEnemiesTypeWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711C627286F945500E84876 /* OneEnemiesTypeWave.swift */; };
-		8711C62A286FACA300E84876 /* EnemiesWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711C629286FACA300E84876 /* EnemiesWave.swift */; };
+		8711C628286F945500E84876 /* OneRaceWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711C627286F945500E84876 /* OneRaceWave.swift */; };
+		8711C62A286FACA300E84876 /* EnemyWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711C629286FACA300E84876 /* EnemyWave.swift */; };
 		8711C632287564CA00E84876 /* Battle01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711C631287564CA00E84876 /* Battle01.swift */; };
 		873F3F19289D6E9700BF7FF9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F18289D6E9700BF7FF9 /* User.swift */; };
 		873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1A289D6EF400BF7FF9 /* UserSex.swift */; };
@@ -271,8 +271,8 @@
 		870B67CB288FC5BE0089D3CB /* MainCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorOutput.swift; sourceTree = "<group>"; };
 		870B67CD288FC5D20089D3CB /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		870B67CF288FC6460089D3CB /* MainFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowFactory.swift; sourceTree = "<group>"; };
-		8711C627286F945500E84876 /* OneEnemiesTypeWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneEnemiesTypeWave.swift; sourceTree = "<group>"; };
-		8711C629286FACA300E84876 /* EnemiesWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesWave.swift; sourceTree = "<group>"; };
+		8711C627286F945500E84876 /* OneRaceWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRaceWave.swift; sourceTree = "<group>"; };
+		8711C629286FACA300E84876 /* EnemyWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyWave.swift; sourceTree = "<group>"; };
 		8711C631287564CA00E84876 /* Battle01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle01.swift; sourceTree = "<group>"; };
 		873F3F18289D6E9700BF7FF9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		873F3F1A289D6EF400BF7FF9 /* UserSex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSex.swift; sourceTree = "<group>"; };
@@ -797,14 +797,6 @@
 				873F3F22289DBFA500BF7FF9 /* FlowNavigationBarView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		873F3F4828A2CE4A00BF7FF9 /* OneEnemiesTypeWave */ = {
-			isa = PBXGroup;
-			children = (
-				8711C627286F945500E84876 /* OneEnemiesTypeWave.swift */,
-			);
-			path = OneEnemiesTypeWave;
 			sourceTree = "<group>";
 		};
 		873F3F4928A2D1C300BF7FF9 /* Managers */ = {
@@ -1531,8 +1523,8 @@
 			isa = PBXGroup;
 			children = (
 				AAF4C9D627E8D9E500D5B6F8 /* EnemiesManager.swift */,
-				8711C629286FACA300E84876 /* EnemiesWave.swift */,
-				873F3F4828A2CE4A00BF7FF9 /* OneEnemiesTypeWave */,
+				8711C629286FACA300E84876 /* EnemyWave.swift */,
+				8711C627286F945500E84876 /* OneRaceWave.swift */,
 				AAF4C9A927E855BB00D5B6F8 /* AStar  */,
 			);
 			path = EnemiesManagers;
@@ -1785,7 +1777,7 @@
 				87E1286B2894707C006CEF02 /* BattleMapScene_BattleIcons.swift in Sources */,
 				87CA3D512829024C000F952F /* BottomBarView.swift in Sources */,
 				AAE886EA27EEFF9800CA4E5D /* BattleMeadow.swift in Sources */,
-				8711C62A286FACA300E84876 /* EnemiesWave.swift in Sources */,
+				8711C62A286FACA300E84876 /* EnemyWave.swift in Sources */,
 				877F100E2890083F00571F26 /* WinBattleInteractorOutput.swift in Sources */,
 				877F104B28906BB800571F26 /* BattleMapAssemblyProtocol.swift in Sources */,
 				AA78020027E20291002C57E1 /* HomePageInteractorOutput.swift in Sources */,
@@ -1828,7 +1820,7 @@
 				AA78023F27E20B8E002C57E1 /* BattleFieldViewInput.swift in Sources */,
 				AACC7BEB27FB2D0B0022384E /* WallFactory.swift in Sources */,
 				87D51618285CC1BD00E3D7B8 /* Battle.swift in Sources */,
-				8711C628286F945500E84876 /* OneEnemiesTypeWave.swift in Sources */,
+				8711C628286F945500E84876 /* OneRaceWave.swift in Sources */,
 				AA7801B727E200B6002C57E1 /* SceneDelegate.swift in Sources */,
 				877F1023289025EE00571F26 /* PauseBattleAssembly.swift in Sources */,
 				877F100B2890083F00571F26 /* WinBattleViewInput.swift in Sources */,

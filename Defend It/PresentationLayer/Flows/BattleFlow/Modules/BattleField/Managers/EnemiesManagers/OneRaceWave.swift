@@ -1,5 +1,5 @@
 //
-//  OneEnemiesType.swift
+//  OneRaceWave.swift
 //  Defend It
 //
 //  Created by Роман Сенкевич on 1.07.22.
@@ -7,57 +7,50 @@
 
 import SceneKit
 
-protocol OneEnemiesTypeWave {
+protocol OneRaceWaveInput {
+    
     func removeEnemy(_ enemy: AnyEnemy)
     func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy?
+    
     func removeEnemies()
-    func getStartCounter() -> Int
-    var enemies: Set<AnyEnemy> {get}
+
     func enemyWounded(enemy: AnyEnemy)
     func sendEnemyMovementManager(command: EnemyMovementManagerCommands)
+    
+    var enemies: Set<AnyEnemy> {get}
+    var startFrame: Int! {get}
 }
 
-protocol OneEnemiesTypeWaveDelegate: AnyObject {
+protocol OneRaceWaveOutput: AnyObject {
     func enemyReachedCastle()
     func addNodeToScene(_ node: SCNNode)
 }
 
-class OneEnemiesTypeWaveImpl: OneEnemiesTypeWave, EnemyMovementManagerOutput {
+class OneRaceWave: OneRaceWaveInput, EnemyMovementManagerOutput {
 
     var enemies = Set<AnyEnemy>()
     
     var enemyMovementManager: EnemyMovementManagerInput = EnemyMovementManager()
     
-    weak var delegate: OneEnemiesTypeWaveDelegate!
-    
-    var race: EnemyRaces!
-    var level: EnemyLevels!
-    var countOfEnemies: Int!
+    weak var output: OneRaceWaveOutput!
     
     var startFrame: Int!
     
     init(race: EnemyRaces, level: EnemyLevels, count: Int, interval: Int, startFrame: Int) {
-        self.race = race
-        self.level = level
-        self.countOfEnemies = count
         self.startFrame = startFrame
         enemyMovementManager.setupManager(interval: interval, output: self)
-        createEnemies()
+        createEnemies(race: race, level: level, count: count)
         setupEnemies()
     }
 
-    func createEnemies() {
-        for _ in 0..<countOfEnemies {
+    func createEnemies(race: EnemyRaces, level: EnemyLevels, count: Int) {
+        for _ in 0..<count {
             create(race, with: level)
         }
     }
     
     func removeEnemies() {
         enemies.removeAll()
-    }
-    
-    func getStartCounter() -> Int {
-        startFrame
     }
     
     func create(_ rase: EnemyRaces, with level: EnemyLevels) {
@@ -91,16 +84,15 @@ class OneEnemiesTypeWaveImpl: OneEnemiesTypeWave, EnemyMovementManagerOutput {
 
 }
 
-extension OneEnemiesTypeWaveImpl {
+extension OneRaceWave {
     
     func addNodeToScene(_ node: SCNNode) {
-        delegate.addNodeToScene(node)
+        output.addNodeToScene(node)
     }
 
     func enemyReachedCastle(enemy: AnyEnemy) {
-        enemy.enemyNode.removeFromParentNode()
         removeEnemy(enemy)
-        delegate.enemyReachedCastle()
+        output.enemyReachedCastle()
     }
     
     func enemyWounded(enemy: AnyEnemy) {

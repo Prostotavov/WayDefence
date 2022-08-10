@@ -14,7 +14,7 @@ final class Battle05: BattleMission {
     var countOfEnemies: Int = 0
     
     var battleMeadow: BattleMeadow
-    var enemiesWaves: [EnemiesWave] = []
+    var battleEnemyWaves: [EnemyWaveInput] = []
     var battleValues: BattleValues
     
     var wavesCreator: EnemyWavesCreatorImpl
@@ -46,9 +46,9 @@ final class Battle05: BattleMission {
     }
     
     func calculateEnemies() {
-        for enemiesWave in enemiesWaves {
-            for wave in enemiesWave.oneEnemiesTypeWaves {
-                countOfEnemies += wave.enemies.count
+        for enemyWave in battleEnemyWaves {
+            for oneRaceWave in enemyWave.oneRaceWaves {
+                countOfEnemies += oneRaceWave.enemies.count
             }
         }
     }
@@ -78,7 +78,7 @@ final class Battle05: BattleMission {
         
         // set delegates for waves
         
-        enemiesWaves = wavesCreator.enemiesWaves
+        battleEnemyWaves = wavesCreator.enemiesWaves
     }
     
     

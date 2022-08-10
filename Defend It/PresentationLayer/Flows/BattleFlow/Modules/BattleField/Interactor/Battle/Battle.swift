@@ -195,7 +195,7 @@ extension BattleImpl {
 }
 
 // interactions
-extension BattleImpl: EnemiesManagerDelegate, BattleManagerDelegate {
+extension BattleImpl: EnemiesManagerOutput, BattleManagerDelegate {
     
     func enemyWounded(enemy: AnyEnemy) {
         enemiesManager.enemyWounded(enemy: enemy)

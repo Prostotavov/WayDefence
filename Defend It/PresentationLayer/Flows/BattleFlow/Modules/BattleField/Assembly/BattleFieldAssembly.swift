@@ -49,7 +49,7 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         delegate.createManagers(completed: 33)           // 65% load
         
         
-        enemiesManager.enemiesWaves = battleMission.enemiesWaves
+        enemiesManager.enemyWaves = battleMission.battleEnemyWaves
         enemiesManager.setupDelegates()
         
         // init and assembly battle

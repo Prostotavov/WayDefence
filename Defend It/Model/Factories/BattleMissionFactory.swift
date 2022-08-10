@@ -12,7 +12,7 @@ protocol FactoryBattleMissionDelegate: AnyObject {
     func addNodeToScene(_ node: SCNNode)
 }
 
-class FactoryBattleMission: EnemiesWaveDelegate, OneEnemiesTypeWaveDelegate {
+class FactoryBattleMission: EnemyWaveOutput, OneRaceWaveOutput {
     
     weak var delegate: FactoryBattleMissionDelegate!
         

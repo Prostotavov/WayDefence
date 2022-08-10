@@ -8,14 +8,14 @@
 import SceneKit
 
 protocol EnemyWavesCreator {
-    var enemiesWaves: [EnemiesWave] {get}
+    var enemiesWaves: [EnemyWaveInput] {get}
     func createWave(startFrame: Int)
     func addOneRaceWave(id: Int, race: EnemyRaces, level: EnemyLevels, count: Int, interval: Int, startFrame: Int)
 }
 
 
 final class EnemyWavesCreatorImpl: EnemyWavesCreator {
-    var enemiesWaves: [EnemiesWave] = []
+    var enemiesWaves: [EnemyWaveInput] = []
     
     var size: Int
     
