@@ -14,19 +14,17 @@ protocol EnemiesWaveDelegate: AnyObject {
 
 protocol EnemiesWave {
     func removeEnemy(_ enemy: AnyEnemy)
-    func prohibitWalking(On coordination: (Int, Int))
-    func allowWalking(On coordination: (Int, Int))
     func updateCounter()
     func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy?
     func removeEnemies()
-    func stopAllEnemies()
-    func runAllEnemies()
     func addOneRaceWave(race: EnemyRaces, level: EnemyLevels, count: Int, intervalBetweenEnemies: Int, startFrame: Int)
     var startFrame: Int {get set}
     func enemyWounded(enemy: AnyEnemy)
     
     func setupDelegate(delegate: EnemiesWaveDelegate)
     var oneEnemiesTypeWaves: [OneEnemiesTypeWave] {get}
+    
+    func sendEnemyMovementManager(command: EnemyMovementManagerCommands)
 }
 
 class EnemiesWaveImpl: EnemiesWave, OneEnemiesTypeWaveDelegate {
@@ -49,6 +47,13 @@ class EnemiesWaveImpl: EnemiesWave, OneEnemiesTypeWaveDelegate {
         oneRaceWave.delegate = self
         oneEnemiesTypeWaves.append(oneRaceWave)
     }
+    
+    func sendEnemyMovementManager(command: EnemyMovementManagerCommands) {
+        for wave in oneEnemiesTypeWaves {
+            if wave.getStartCounter() > waveCounter {continue}
+            wave.sendEnemyMovementManager(command: command)
+        }
+    }
 }
 
 // funcs for oneRaceWave
@@ -61,24 +66,14 @@ extension EnemiesWaveImpl {
         }
     }
     
-    func prohibitWalking(On coordination: (Int, Int)) {
-        for wave in oneEnemiesTypeWaves {
-            wave.prohibitWalking(On: coordination)
-        }
-    }
-    
-    func allowWalking(On coordination: (Int, Int)) {
-        for wave in oneEnemiesTypeWaves {
-            wave.allowWalking(On: coordination)
-        }
-    }
+
     
     func updateCounter() {
         waveCounter += 1
         for wave in oneEnemiesTypeWaves {
             if wave.getStartCounter() > waveCounter {continue}
-            if wave.getStartCounter() == waveCounter {wave.runAllEnemies()}
-            wave.updateCounter()
+            if wave.getStartCounter() == waveCounter {wave.sendEnemyMovementManager(command: .runAllEnemies)}
+            wave.sendEnemyMovementManager(command: .updateCounter)
         }
     }
     
@@ -86,20 +81,6 @@ extension EnemiesWaveImpl {
         for wave in oneEnemiesTypeWaves {
             if wave.getStartCounter() > waveCounter {continue}
             wave.removeEnemies()
-        }
-    }
-    
-    func stopAllEnemies() {
-        for wave in oneEnemiesTypeWaves {
-            if wave.getStartCounter() > waveCounter {continue}
-            wave.stopAllEnemies()
-        }
-    }
-    
-    func runAllEnemies() {
-        for wave in oneEnemiesTypeWaves {
-            if wave.getStartCounter() > waveCounter {continue}
-            wave.runAllEnemies()
         }
     }
     

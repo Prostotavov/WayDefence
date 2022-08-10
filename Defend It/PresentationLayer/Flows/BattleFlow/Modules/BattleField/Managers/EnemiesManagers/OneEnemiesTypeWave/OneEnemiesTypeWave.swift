@@ -9,17 +9,12 @@ import SceneKit
 
 protocol OneEnemiesTypeWave {
     func removeEnemy(_ enemy: AnyEnemy)
-    func prohibitWalking(On coordination: (Int, Int))
-    func allowWalking(On coordination: (Int, Int))
-    func updateCounter()
     func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy?
     func removeEnemies()
-    func stopAllEnemies()
-    func runAllEnemies()
     func getStartCounter() -> Int
     var enemies: Set<AnyEnemy> {get}
-    
     func enemyWounded(enemy: AnyEnemy)
+    func sendEnemyMovementManager(command: EnemyMovementManagerCommands)
 }
 
 protocol OneEnemiesTypeWaveDelegate: AnyObject {
@@ -27,17 +22,16 @@ protocol OneEnemiesTypeWaveDelegate: AnyObject {
     func addNodeToScene(_ node: SCNNode)
 }
 
-class OneEnemiesTypeWaveImpl: OneEnemiesTypeWave {
+class OneEnemiesTypeWaveImpl: OneEnemiesTypeWave, EnemyMovementManagerOutput {
 
     var enemies = Set<AnyEnemy>()
     
-    var enemyMovementManager = EnemyMovementManager()
+    var enemyMovementManager: EnemyMovementManagerInput = EnemyMovementManager()
     
     weak var delegate: OneEnemiesTypeWaveDelegate!
     
     var race: EnemyRaces!
     var level: EnemyLevels!
-    let intervalBetweenEnemies: Int!
     var countOfEnemies: Int!
     
     var startFrame: Int!
@@ -46,10 +40,8 @@ class OneEnemiesTypeWaveImpl: OneEnemiesTypeWave {
         self.race = race
         self.level = level
         self.countOfEnemies = count
-        self.intervalBetweenEnemies = interval
-        enemyMovementManager.intervalCounter = interval
         self.startFrame = startFrame
-        enemyMovementManager.enemiesState = .inactive
+        enemyMovementManager.setupManager(interval: interval, output: self)
         createEnemies()
         setupEnemies()
     }
@@ -89,10 +81,21 @@ class OneEnemiesTypeWaveImpl: OneEnemiesTypeWave {
         }
         return nil
     }
+    
+    func setupEnemies() {
+        for enemy in enemies {
+            enemy.enemyNode.position = EnemyPathManager.shared.culculateStartPosition()
+            enemy.path = EnemyPathManager.shared.calculatePath(for: enemy)
+        }
+    }
 
 }
 
 extension OneEnemiesTypeWaveImpl {
+    
+    func addNodeToScene(_ node: SCNNode) {
+        delegate.addNodeToScene(node)
+    }
 
     func enemyReachedCastle(enemy: AnyEnemy) {
         enemy.enemyNode.removeFromParentNode()
@@ -106,6 +109,10 @@ extension OneEnemiesTypeWaveImpl {
                 EnemyHealthBarManager.updateHealthProgressBar(for: enemy)
             }
         }
+    }
+    
+    func sendEnemyMovementManager(command: EnemyMovementManagerCommands) {
+        enemyMovementManager.execute(command: command, for: enemies)
     }
 }
 

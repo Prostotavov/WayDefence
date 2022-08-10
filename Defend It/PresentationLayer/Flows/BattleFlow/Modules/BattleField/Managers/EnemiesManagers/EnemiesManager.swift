@@ -23,6 +23,8 @@ protocol EnemiesManager {
     func stopAllEnemies()
     func runAllEnemies()
     func enemyWounded(enemy: AnyEnemy)
+    
+    
 }
 
 protocol EnemiesManagerDelegate: AnyObject {
@@ -40,6 +42,8 @@ class EnemiesManagerImpl: EnemiesManager, EnemiesWaveDelegate {
     var enemiesWaves: [EnemiesWave]!
     
     var wavesCounter: Int = 0
+    
+
 }
 
 extension EnemiesManagerImpl {
@@ -76,16 +80,12 @@ extension EnemiesManagerImpl {
 extension EnemiesManagerImpl {
     func prohibitWalking(On coordination: (Int, Int)) {
         EnemyPathManager.shared.prohibitWalking(On: coordination)
-        for wave in enemiesWaves {
-            wave.prohibitWalking(On: coordination)
-        }
+        sendEnemyMovementManager(command: .runByNewPath)
     }
     
     func allowWalking(On coordination: (Int, Int)) {
         EnemyPathManager.shared.allowWalking(On: coordination)
-        for wave in enemiesWaves {
-            wave.allowWalking(On: coordination)
-        }
+        sendEnemyMovementManager(command: .runByNewPath)
     }
     
     func updateCounter() {
@@ -93,7 +93,7 @@ extension EnemiesManagerImpl {
         for wave in enemiesWaves {
             if wave.startFrame > wavesCounter {continue}
             if wave.startFrame == wavesCounter {
-                wave.runAllEnemies()
+                wave.sendEnemyMovementManager(command: .runAllEnemies)
             }
             wave.updateCounter()
         }
@@ -117,16 +117,18 @@ extension EnemiesManagerImpl {
     }
     
     func stopAllEnemies() {
-        for wave in enemiesWaves {
-            if wave.startFrame > wavesCounter {continue}
-            wave.stopAllEnemies()
-        }
+        sendEnemyMovementManager(command: .stopAllEnemies)
     }
     
     func runAllEnemies() {
+        sendEnemyMovementManager(command: .runAllEnemies)
+    }
+    
+    func sendEnemyMovementManager(command: EnemyMovementManagerCommands) {
         for wave in enemiesWaves {
             if wave.startFrame > wavesCounter {continue}
-            wave.runAllEnemies()
+            wave.sendEnemyMovementManager(command: command)
         }
     }
+    
 }

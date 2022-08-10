@@ -54,10 +54,10 @@
 		873F3F35289E6BA900BF7FF9 /* FlowTabbarViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F34289E6BA900BF7FF9 /* FlowTabbarViewOutput.swift */; };
 		873F3F37289E6BC000BF7FF9 /* FlowTabbarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F36289E6BC000BF7FF9 /* FlowTabbarAssembly.swift */; };
 		873F3F39289E6BCB00BF7FF9 /* FlowTabbarAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F38289E6BCB00BF7FF9 /* FlowTabbarAssemblyProtocol.swift */; };
-		873F3F4528A2CCB600BF7FF9 /* OneEnemiesTypeWaveImpl_Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F4428A2CCB600BF7FF9 /* OneEnemiesTypeWaveImpl_Movement.swift */; };
 		873F3F4C28A2D1D900BF7FF9 /* EnemyHealthBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F4B28A2D1D900BF7FF9 /* EnemyHealthBarManager.swift */; };
 		873F3F4E28A2D1FE00BF7FF9 /* EnemyPhysicsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F4D28A2D1FE00BF7FF9 /* EnemyPhysicsManager.swift */; };
 		873F3F5228A2E9FE00BF7FF9 /* EnemyMovementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F5128A2E9FE00BF7FF9 /* EnemyMovementManager.swift */; };
+		873F3F5428A3B5E200BF7FF9 /* EnemyMovementManagerCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F5328A3B5E200BF7FF9 /* EnemyMovementManagerCommands.swift */; };
 		873F65302893224C00A67F43 /* BattleMapFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F652F2893224C00A67F43 /* BattleMapFlowFactory.swift */; };
 		873F65352893235B00A67F43 /* BattleMapCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F65342893235B00A67F43 /* BattleMapCoordinatorOutput.swift */; };
 		873F65372893236900A67F43 /* BattleMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F65362893236900A67F43 /* BattleMapCoordinator.swift */; };
@@ -288,10 +288,10 @@
 		873F3F34289E6BA900BF7FF9 /* FlowTabbarViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarViewOutput.swift; sourceTree = "<group>"; };
 		873F3F36289E6BC000BF7FF9 /* FlowTabbarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarAssembly.swift; sourceTree = "<group>"; };
 		873F3F38289E6BCB00BF7FF9 /* FlowTabbarAssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarAssemblyProtocol.swift; sourceTree = "<group>"; };
-		873F3F4428A2CCB600BF7FF9 /* OneEnemiesTypeWaveImpl_Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneEnemiesTypeWaveImpl_Movement.swift; sourceTree = "<group>"; };
 		873F3F4B28A2D1D900BF7FF9 /* EnemyHealthBarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyHealthBarManager.swift; sourceTree = "<group>"; };
 		873F3F4D28A2D1FE00BF7FF9 /* EnemyPhysicsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyPhysicsManager.swift; sourceTree = "<group>"; };
 		873F3F5128A2E9FE00BF7FF9 /* EnemyMovementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyMovementManager.swift; sourceTree = "<group>"; };
+		873F3F5328A3B5E200BF7FF9 /* EnemyMovementManagerCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyMovementManagerCommands.swift; sourceTree = "<group>"; };
 		873F652F2893224C00A67F43 /* BattleMapFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapFlowFactory.swift; sourceTree = "<group>"; };
 		873F65342893235B00A67F43 /* BattleMapCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapCoordinatorOutput.swift; sourceTree = "<group>"; };
 		873F65362893236900A67F43 /* BattleMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapCoordinator.swift; sourceTree = "<group>"; };
@@ -803,7 +803,6 @@
 			isa = PBXGroup;
 			children = (
 				8711C627286F945500E84876 /* OneEnemiesTypeWave.swift */,
-				873F3F4428A2CCB600BF7FF9 /* OneEnemiesTypeWaveImpl_Movement.swift */,
 			);
 			path = OneEnemiesTypeWave;
 			sourceTree = "<group>";
@@ -1411,6 +1410,7 @@
 				AACC7BF227FB66D00022384E /* EnemyNodes.swift */,
 				873F3F1A289D6EF400BF7FF9 /* UserSex.swift */,
 				873F3F1E289D72E300BF7FF9 /* GameAccountValueTypes.swift */,
+				873F3F5328A3B5E200BF7FF9 /* EnemyMovementManagerCommands.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1733,6 +1733,7 @@
 				AACC7BE527FB2C940022384E /* WallSL.swift in Sources */,
 				AAE8870B27EF35AF00CA4E5D /* TrollFactory.swift in Sources */,
 				878DDC9C287B85CC00B37154 /* LoadBattleViewController.swift in Sources */,
+				873F3F5428A3B5E200BF7FF9 /* EnemyMovementManagerCommands.swift in Sources */,
 				870B67B3288E96590089D3CB /* LoadBattleInteractor.swift in Sources */,
 				877F102F2890262B00571F26 /* PauseBattleView.swift in Sources */,
 				877F10062890083F00571F26 /* WinBattleAssemblyProtocol.swift in Sources */,
@@ -1811,7 +1812,6 @@
 				AACC7BE727FB2C9B0022384E /* WallTL.swift in Sources */,
 				877F1024289025EE00571F26 /* PauseBattleAssemblyProtocol.swift in Sources */,
 				870B67AD288E95590089D3CB /* LoadBattleViewCoordinatorOutput.swift in Sources */,
-				873F3F4528A2CCB600BF7FF9 /* OneEnemiesTypeWaveImpl_Movement.swift in Sources */,
 				AACC7BE927FB2CFF0022384E /* BallistaFactory.swift in Sources */,
 				87B606BD2878FF0C003549AF /* EnemyWavesCreator.swift in Sources */,
 				870B6775288E8A450089D3CB /* Converter.swift in Sources */,
