@@ -19,11 +19,9 @@ protocol EnemiesManager {
     func allowWalking(On coordination: (Int, Int))
     func updateCounter()
     func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy?
-    func removeEnemies()
     func stopAllEnemies()
     func runAllEnemies()
     func enemyWounded(enemy: AnyEnemy)
-    
     
 }
 
@@ -33,19 +31,16 @@ protocol EnemiesManagerOutput: AnyObject {
     func getBattleCounter() -> Int
 }
 
-class EnemiesManagerImpl: EnemiesManager, EnemyWaveOutput {
+class EnemiesManagerImpl: EnemiesManager, OneRaceWaveOutput {
     
     var enemiesState: EnemiesStates!
     weak var output: EnemiesManagerOutput!
     var enemyWaves: [EnemyWaveInput]!
     var wavesCounter: Int = 0
-}
 
-extension EnemiesManagerImpl {
-    
     func setupDelegates() {
-        for wave in enemyWaves {
-            wave.setupDelegate(delegate: self)
+        iterateByOneRaceWaves { oneRaceWave in
+            oneRaceWave.setupDelegate(delegate: self)
         }
     }
     
@@ -58,21 +53,11 @@ extension EnemiesManagerImpl {
     }
     
     func removeEnemy(_ enemy: AnyEnemy) {
-        for wave in enemyWaves {
-            if wave.startFrame > wavesCounter {continue}
-            wave.removeEnemy(enemy)
+        iterateByOneRaceWaves { oneRaceWave in
+            oneRaceWave.removeEnemy(enemy)
         }
     }
-    
-    func removeEnemies() {
-        for wave in enemyWaves {
-            if wave.startFrame > wavesCounter {continue}
-            wave.removeEnemies()
-        }
-    }
-}
 
-extension EnemiesManagerImpl {
     func prohibitWalking(On coordination: (Int, Int)) {
         EnemyPathManager.shared.prohibitWalking(On: coordination)
         sendEnemyMovementManager(command: .runByNewPath)
@@ -85,8 +70,7 @@ extension EnemiesManagerImpl {
     
     func updateCounter() {
         wavesCounter += 1
-        for wave in enemyWaves {
-            if wave.startFrame > wavesCounter {continue}
+        iterateByActiveWaves { wave in
             if wave.startFrame == wavesCounter {
                 wave.sendEnemyMovementManager(command: .runAllEnemies)
             }
@@ -95,19 +79,22 @@ extension EnemiesManagerImpl {
     }
     
     func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy? {
-        for wave in enemyWaves {
-            if wave.startFrame > wavesCounter {continue} ///  not a prerequisite. if it causes an error in the future, you can delete it
-            if let enemy = wave.getEnemyBy(enemyNode) {
-                return enemy
+        var enemy: AnyEnemy?
+        iterateByEnemies { currentEnemy in
+            if currentEnemy.id.uuidString == enemyNode.name {
+                enemy = currentEnemy
+                return
             }
         }
-        return nil
+        return enemy
     }
     
     func enemyWounded(enemy: AnyEnemy) {
-        for wave in enemyWaves {
-            if wave.startFrame > wavesCounter {continue} ///  not a prerequisite. if it causes an error in the future, you can delete it
-            wave.enemyWounded(enemy: enemy)
+        iterateByEnemies { currentEnemy in
+            if currentEnemy.id.uuidString == enemy.enemyNode.name {
+                EnemyHealthBarManager.updateHealthProgressBar(for: enemy)
+                return
+            }
         }
     }
     
@@ -119,11 +106,9 @@ extension EnemiesManagerImpl {
         sendEnemyMovementManager(command: .runAllEnemies)
     }
     
-    func sendEnemyMovementManager(command: EnemyMovementManagerCommands) {
-        for wave in enemyWaves {
-            if wave.startFrame > wavesCounter {continue}
+    private func sendEnemyMovementManager(command: EnemyMovementManagerCommands) {
+        iterateByActiveWaves { wave in
             wave.sendEnemyMovementManager(command: command)
         }
     }
-    
 }

@@ -115,6 +115,7 @@
 		878DDC97287AB62100B37154 /* BattleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC96287AB62100B37154 /* BattleValues.swift */; };
 		878DDC9C287B85CC00B37154 /* LoadBattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */; };
 		8797F77928A5C16D000D776E /* BattleMissionsEnemiesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F77828A5C16D000D776E /* BattleMissionsEnemiesData.swift */; };
+		8797F78828A7195C000D776E /* EnemiesManager_Iterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F78728A7195C000D776E /* EnemiesManager_Iterator.swift */; };
 		87B606C228790173003549AF /* BattleMeadowCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B606C128790173003549AF /* BattleMeadowCreator.swift */; };
 		87CA3D4F2828FBE0000F952F /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D4E2828FBE0000F952F /* TopBarView.swift */; };
 		87CA3D512829024C000F952F /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D502829024C000F952F /* BottomBarView.swift */; };
@@ -350,6 +351,7 @@
 		878DDC96287AB62100B37154 /* BattleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleValues.swift; sourceTree = "<group>"; };
 		878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBattleViewController.swift; sourceTree = "<group>"; };
 		8797F77828A5C16D000D776E /* BattleMissionsEnemiesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionsEnemiesData.swift; sourceTree = "<group>"; };
+		8797F78728A7195C000D776E /* EnemiesManager_Iterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesManager_Iterator.swift; sourceTree = "<group>"; };
 		87B606C128790173003549AF /* BattleMeadowCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMeadowCreator.swift; sourceTree = "<group>"; };
 		87CA3D4E2828FBE0000F952F /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		87CA3D502829024C000F952F /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
@@ -1526,6 +1528,7 @@
 			isa = PBXGroup;
 			children = (
 				AAF4C9D627E8D9E500D5B6F8 /* EnemiesManager.swift */,
+				8797F78728A7195C000D776E /* EnemiesManager_Iterator.swift */,
 				8711C629286FACA300E84876 /* EnemyWave.swift */,
 				8711C627286F945500E84876 /* OneRaceWave.swift */,
 				AAF4C9A927E855BB00D5B6F8 /* AStar  */,
@@ -1782,6 +1785,7 @@
 				87CA3D512829024C000F952F /* BottomBarView.swift in Sources */,
 				AAE886EA27EEFF9800CA4E5D /* BattleMeadow.swift in Sources */,
 				8711C62A286FACA300E84876 /* EnemyWave.swift in Sources */,
+				8797F78828A7195C000D776E /* EnemiesManager_Iterator.swift in Sources */,
 				877F100E2890083F00571F26 /* WinBattleInteractorOutput.swift in Sources */,
 				877F104B28906BB800571F26 /* BattleMapAssemblyProtocol.swift in Sources */,
 				AA78020027E20291002C57E1 /* HomePageInteractorOutput.swift in Sources */,

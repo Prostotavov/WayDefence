@@ -36,12 +36,18 @@ class EnemyCreationManager {
         return enemies
     }
     
-    /// This function creates an enemy and adds the necessary SceneNodes to it:
+    /// 1) This function creates an enemy and adds the necessary SceneNodes to it:
     /// HealthProgressBar and PhysicsBody
+    /// 2) This function setup:
+    /// enemy start posiiton and enemy path
     private func createEnemy(_ race: EnemyRaces, with level: EnemyLevels) -> AnyEnemy {
         let enemy = AbstractFactoryEnemiesImpl.defaultFactory.create(race, with: level)
+        /// 1) add nodes
         EnemyPhysicsManager.addPhysicsBody(for: enemy)
         EnemyHealthBarManager.addHealthProgressBar(for: enemy)
+        /// 2) setup position and path
+        enemy.enemyNode.position = EnemyPathManager.shared.culculateStartPosition()
+        enemy.path = EnemyPathManager.shared.calculatePath(for: enemy)
         return enemy
     }
     

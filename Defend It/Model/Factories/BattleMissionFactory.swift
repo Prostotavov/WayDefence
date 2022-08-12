@@ -7,15 +7,10 @@
 
 import SceneKit
 
-protocol FactoryBattleMissionDelegate: AnyObject {
-    func enemyReachedCastle()
-    func addNodeToScene(_ node: SCNNode)
-}
 
-class FactoryBattleMission: EnemyWaveOutput, OneRaceWaveOutput {
+
+class FactoryBattleMission {
     
-    weak var delegate: FactoryBattleMissionDelegate!
-        
     func createBattleMission(id: BattleMissions) -> BattleMission {
         switch id {
         case .first: return Battle01()
@@ -24,13 +19,5 @@ class FactoryBattleMission: EnemyWaveOutput, OneRaceWaveOutput {
         case .four: return Battle04()
         case .five: return Battle05()
         }
-    }
-    
-    func enemyReachedCastle() {
-        delegate.enemyReachedCastle()
-    }
-    
-    func addNodeToScene(_ node: SCNNode) {
-        delegate.addNodeToScene(node)
     }
 }

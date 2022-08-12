@@ -10,15 +10,11 @@ import SceneKit
 protocol OneRaceWaveInput {
     
     func removeEnemy(_ enemy: AnyEnemy)
-    func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy?
-    
-    func removeEnemies()
-
-    func enemyWounded(enemy: AnyEnemy)
     func sendEnemyMovementManager(command: EnemyMovementManagerCommands)
     
     var enemies: Set<AnyEnemy> {get}
     var startFrame: Int! {get}
+    func setupDelegate(delegate: OneRaceWaveOutput)
 }
 
 protocol OneRaceWaveOutput: AnyObject {
@@ -37,37 +33,16 @@ class OneRaceWave: OneRaceWaveInput, EnemyMovementManagerOutput {
         self.startFrame = startFrame
         self.enemies = enemies
         enemyMovementManager.setupManager(interval: interval, output: self)
-        setupEnemies()
     }
     
-    //MARK: not here -start-
-    
-    func setupEnemies() {
-        for enemy in enemies {
-            enemy.enemyNode.position = EnemyPathManager.shared.culculateStartPosition()
-            enemy.path = EnemyPathManager.shared.calculatePath(for: enemy)
-        }
+    func setupDelegate(delegate: OneRaceWaveOutput) {
+        self.output = delegate
     }
     
-    //MARK: not here -end-
-    
-    func removeEnemies() {
-        enemies.removeAll()
-    }
     func removeEnemy(_ enemy: AnyEnemy) {
         enemy.enemyNode.removeFromParentNode()
         enemies.remove(enemy)
     }
-    func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy? {
-        for enemy in enemies {
-            if enemy.id.uuidString == enemyNode.name {
-                return enemy
-            }
-        }
-        return nil
-    }
-    
-
 }
 
 extension OneRaceWave {
@@ -79,14 +54,6 @@ extension OneRaceWave {
     func enemyReachedCastle(enemy: AnyEnemy) {
         removeEnemy(enemy)
         output.enemyReachedCastle()
-    }
-    
-    func enemyWounded(enemy: AnyEnemy) {
-        for _enemy in enemies {
-            if _enemy.id.uuidString == enemy.enemyNode.name {
-                EnemyHealthBarManager.updateHealthProgressBar(for: enemy)
-            }
-        }
     }
     
     func sendEnemyMovementManager(command: EnemyMovementManagerCommands) {
