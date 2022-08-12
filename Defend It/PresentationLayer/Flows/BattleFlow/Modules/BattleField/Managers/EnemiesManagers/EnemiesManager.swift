@@ -36,14 +36,9 @@ protocol EnemiesManagerOutput: AnyObject {
 class EnemiesManagerImpl: EnemiesManager, EnemyWaveOutput {
     
     var enemiesState: EnemiesStates!
-    
     weak var output: EnemiesManagerOutput!
-
     var enemyWaves: [EnemyWaveInput]!
-    
     var wavesCounter: Int = 0
-    
-
 }
 
 extension EnemiesManagerImpl {

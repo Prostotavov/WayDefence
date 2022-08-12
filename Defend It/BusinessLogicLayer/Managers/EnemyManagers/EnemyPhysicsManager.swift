@@ -8,6 +8,7 @@
 import SceneKit
 
 class EnemyPhysicsManager {
+    
     static func addPhysicsBody(for enemy: AnyEnemy) {
         let radius = 0.1
         let physicsShape = SCNPhysicsShape(geometry: SCNSphere(radius: radius))

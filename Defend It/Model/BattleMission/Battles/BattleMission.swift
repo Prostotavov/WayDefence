@@ -16,8 +16,6 @@ protocol BattleMission {
     var battleEnemyWaves: [EnemyWaveInput] {get set}
     var battleMeadow: BattleMeadow {get}
     var battleValues: BattleValues {get}
-    
-    var wavesCreator: EnemyWavesCreatorImpl {get set}
 }
 
 

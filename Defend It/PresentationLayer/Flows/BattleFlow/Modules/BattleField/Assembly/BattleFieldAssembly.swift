@@ -74,7 +74,7 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         
         // assembly delegates for managers
         buildingsManager.delegate = battle
-        enemiesManager.delegate = battle
+        enemiesManager.output = battle
         meadowManager.delegate = battle
         battleValuesManager.delegate = battle
         

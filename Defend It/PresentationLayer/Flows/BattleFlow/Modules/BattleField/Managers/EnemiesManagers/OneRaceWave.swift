@@ -28,44 +28,36 @@ protocol OneRaceWaveOutput: AnyObject {
 
 class OneRaceWave: OneRaceWaveInput, EnemyMovementManagerOutput {
 
-    var enemies = Set<AnyEnemy>()
-    
     var enemyMovementManager: EnemyMovementManagerInput = EnemyMovementManager()
-    
+    var startFrame: Int!
+    var enemies = Set<AnyEnemy>()
     weak var output: OneRaceWaveOutput!
     
-    var startFrame: Int!
-    
-    init(race: EnemyRaces, level: EnemyLevels, count: Int, interval: Int, startFrame: Int) {
+    init(enemies: Set<AnyEnemy>, interval: Int, startFrame: Int) {
         self.startFrame = startFrame
+        self.enemies = enemies
         enemyMovementManager.setupManager(interval: interval, output: self)
-        createEnemies(race: race, level: level, count: count)
         setupEnemies()
     }
-
-    func createEnemies(race: EnemyRaces, level: EnemyLevels, count: Int) {
-        for _ in 0..<count {
-            create(race, with: level)
+    
+    //MARK: not here -start-
+    
+    func setupEnemies() {
+        for enemy in enemies {
+            enemy.enemyNode.position = EnemyPathManager.shared.culculateStartPosition()
+            enemy.path = EnemyPathManager.shared.calculatePath(for: enemy)
         }
     }
+    
+    //MARK: not here -end-
     
     func removeEnemies() {
         enemies.removeAll()
     }
-    
-    func create(_ rase: EnemyRaces, with level: EnemyLevels) {
-        let enemy = AbstractFactoryEnemiesImpl.defaultFactory.create(rase, with: level)
-        EnemyPhysicsManager.addPhysicsBody(for: enemy)
-        EnemyHealthBarManager.addHealthProgressBar(for: enemy)
-        enemies.insert(enemy)
-    }
-    
     func removeEnemy(_ enemy: AnyEnemy) {
         enemy.enemyNode.removeFromParentNode()
         enemies.remove(enemy)
     }
-    
-    
     func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy? {
         for enemy in enemies {
             if enemy.id.uuidString == enemyNode.name {
@@ -75,12 +67,6 @@ class OneRaceWave: OneRaceWaveInput, EnemyMovementManagerOutput {
         return nil
     }
     
-    func setupEnemies() {
-        for enemy in enemies {
-            enemy.enemyNode.position = EnemyPathManager.shared.culculateStartPosition()
-            enemy.path = EnemyPathManager.shared.calculatePath(for: enemy)
-        }
-    }
 
 }
 
