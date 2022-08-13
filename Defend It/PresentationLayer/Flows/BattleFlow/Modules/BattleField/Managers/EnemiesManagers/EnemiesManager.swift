@@ -70,6 +70,7 @@ class EnemiesManagerImpl: EnemiesManager, OneRaceWaveOutput {
     }
     
     func updateCounter() {
+        wavesCounter += 1
         enemyWaveManager.update()
     }
     
