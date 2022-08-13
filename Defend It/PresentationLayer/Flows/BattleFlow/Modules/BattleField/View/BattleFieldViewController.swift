@@ -31,13 +31,13 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput,
     var bottomBarView: BottomBarView!
     
     override func loadView() {
-        super.loadView()
         setupScene()
         output.loadView()
         scene.physicsWorld.contactDelegate = self
         sceneView.delegate = self
+        addGestureRecognizers()
     }
-    
+ 
     
     
     func assemblyModule(delegate: BattleFieldAssemblyDelagate) {
@@ -48,28 +48,18 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput,
     override func viewDidAppear(_ animated: Bool) {
         setupTopBarView()
         setupBottomBarView()
-        runRender()
         output.viewDidAppear()
+        runRender()
     }
     
     func setupScene() {
-        sceneView = SCNView(frame: view.frame)
+        self.view = SCNView()
         scene = SCNScene(named: ScenePaths.battleField.rawValue)!
+        sceneView = self.view as? SCNView
         sceneView.scene = scene
-        sceneView.allowsCameraControl = true
         sceneView.autoenablesDefaultLighting = true
-        view.addSubview(sceneView)
-        
-        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGesture))
-        sceneView.addGestureRecognizer(panRecognizer)
-        
-        let tapRecognizer = UITapGestureRecognizer()
-        tapRecognizer.numberOfTapsRequired = 1
-        tapRecognizer.numberOfTouchesRequired = 1
-        tapRecognizer.addTarget(self, action: #selector(tapHandler))
-        sceneView.addGestureRecognizer(tapRecognizer)
     }
-    
+        
     @objc func tapHandler(recognizer:UITapGestureRecognizer) {
         let location = recognizer.location(in: sceneView)
         let hitResults = sceneView.hitTest(location, options: nil)
@@ -94,37 +84,8 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput,
 
 // cameras
 extension BattleFieldViewController {
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        let deviceOrientation = UIDevice.current.orientation
-        output.deviceOrientationChanged(to: deviceOrientation)
-    }
-    
     func setupPointOfView(from cameraNode: SCNNode) {
         sceneView.pointOfView = cameraNode
-    }
-    
-    func setViewHorisontalOrientation() {
-        if sceneView.frame.height > sceneView.frame.width {
-            sceneView.frame = CGRect(x: 0, y: 0, width: sceneView.frame.height, height: sceneView.frame.width)
-        }
-    }
-    
-    func setViewVerticalOrientation() {
-        if sceneView.frame.height < sceneView.frame.width {
-            sceneView.frame = CGRect(x: 0, y: 0, width: sceneView.frame.height, height: sceneView.frame.width)
-        }
-    }
-    
-    @objc func panGesture(recognizer: UIPanGestureRecognizer) {
-        switch recognizer.state {
-        case .changed:
-            let translation = recognizer.translation(in: view)
-            output.panGestureChanged(by: translation)
-        case .ended:
-            output.panGestureEnded()
-        default:
-            print("default panGesture switch BattleFieldViewController")
-        }
     }
 }
 
@@ -166,7 +127,7 @@ extension BattleFieldViewController {
         ])
     }
     
-    func displayValue(of valueType: BattleValueTypes, to number: Int) {
+    func displayValue(of valueType: EconomicBattleValueTypes, to number: Int) {
         topBarView.displayValue(of: valueType, to: number)
     }
 }
@@ -199,5 +160,57 @@ extension BattleFieldViewController: BottomBarViewDelegate {
 extension BattleFieldViewController: TopBarViewDelegate {
     func pauseButtonPressed() {
         output.onPauseTap()
+    }
+}
+
+extension BattleFieldViewController: UIGestureRecognizerDelegate {
+    func addGestureRecognizers() {
+        addPanGestureRecognizer()
+        addPinchGestureRecognizer()
+        addDoubleTapGestureRecognizer()
+        addSingleTapGestoreRecognizer()
+    }
+    
+    func addSingleTapGestoreRecognizer() {
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.numberOfTouchesRequired = 1
+        tapRecognizer.addTarget(self, action: #selector(tapHandler))
+        self.view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    func addDoubleTapGestureRecognizer() {
+        let doubleTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
+        doubleTap.numberOfTapsRequired = 2
+        self.view.addGestureRecognizer(doubleTap)
+    }
+    
+    func addPinchGestureRecognizer() {
+        let pinchGesture = UIPinchGestureRecognizer()
+        pinchGesture.addTarget(self, action: #selector(handlePinchGesture(recognizer:)))
+        self.view!.addGestureRecognizer(pinchGesture)
+    }
+    
+    func addPanGestureRecognizer() {
+        let panGesture = UIPanGestureRecognizer()
+        panGesture.addTarget(self, action: #selector(handlePanGesture(recognizer:)))
+        panGesture.delegate = self
+        self.view!.addGestureRecognizer(panGesture)
+    }
+    
+    @objc func handleDoubleTap() {
+        output.doubleTapOccurred()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        output.touchesBegan(touches, with: event)
+    }
+    
+    @objc func handlePanGesture(recognizer: UIPanGestureRecognizer) {
+        output.panGestureOccurred(recognizer: recognizer, view: &self.view)
+    }
+    
+    @objc func handlePinchGesture(recognizer: UIPinchGestureRecognizer) {
+        output.pinchGestureOccurred(recognizer: recognizer, view: &self.view)
     }
 }

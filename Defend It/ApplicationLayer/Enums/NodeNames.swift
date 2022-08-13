@@ -14,4 +14,9 @@ enum NodeNames: String {
     case radiusNode = "radiusNode"
     case physicsRadiusNode = "physicsRadiusNode"
     case projectileNode = "projectileNode"
+    
+    case progressBar = "progressBar"
+    case trackPlane = "trackPlane"
+    case progressNode = "progressNode"
+    case progressPlane = "progressPlane"
 }
