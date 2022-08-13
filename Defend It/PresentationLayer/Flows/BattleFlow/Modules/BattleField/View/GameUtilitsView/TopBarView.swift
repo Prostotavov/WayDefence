@@ -121,7 +121,7 @@ class TopBarView: UIView {
 
 extension TopBarView {
     
-    func displayValue(of value: BattleValueTypes, to number: Int) {
+    func displayValue(of value: EconomicBattleValueTypes, to number: Int) {
         switch value {
         case .coins: coinsLabel.text = "🤑 \(number)"
         case .lives: livesLabel.text = "❤️ \(number)"

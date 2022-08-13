@@ -70,7 +70,7 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     }
     
     /// func for display values to the topBarView
-    func displayValue(of valueType: BattleValueTypes, to number: Int) {
+    func displayValue(of valueType: EconomicBattleValueTypes, to number: Int) {
         view.displayValue(of: valueType, to: number)
     }
 

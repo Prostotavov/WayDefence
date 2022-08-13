@@ -12,12 +12,9 @@ import SceneKit
 class FactoryBattleMission {
     
     func createBattleMission(id: BattleMissions) -> BattleMission {
-        switch id {
-        case .first: return Battle01()
-        case .second: return Battle02()
-        case .third: return Battle03()
-        case .four: return Battle04()
-        case .five: return Battle05()
-        }
+        let meadow = BattleMissionsMeadowData.shared.getMeadowForBattle(id: id)
+        let enemies = BattleMissionsEnemyData.shared.getEnemiesForBattle(id: id)
+        let missionValues = BattleMissionsValuesData.shared.getMeadowForBattle(id: id)
+        return BattleMissionImp(enemies: enemies, meadow: meadow, battleValues: missionValues)
     }
 }

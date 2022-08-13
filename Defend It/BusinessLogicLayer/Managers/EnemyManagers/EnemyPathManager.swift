@@ -11,7 +11,6 @@ class EnemyPathManager {
     
     static let shared = EnemyPathManager()
     
-    var battleFieldSize: Int!
     private var graph: BattleFieldGraph!
     private var start: (Int, Int)!
     private var target: (Int, Int)!

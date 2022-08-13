@@ -41,14 +41,14 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         delegate.createBattleMission(completed: 17)       // 22% load
         
         // init managers
-        let meadowManager = MeadowManagerImpl(ground: battleMission.battleMeadow)
+        let meadowManager = MeadowManagerImpl(ground: battleMission.meadow)
         let buildingsManager = BuildingsManagerImpl(battleMission.battleFieldSize)
         let enemiesManager = EnemiesManagerImpl()
         let battleValuesManager = BattleManagerImpl(battleValues: battleMission.battleValues)
         delegate.createManagers(completed: 33)           // 65% load
         
         
-        enemiesManager.enemyWaves = battleMission.battleEnemyWaves
+        enemiesManager.enemyWaves = battleMission.enemies
         enemiesManager.setupDelegates()
         enemiesManager.enemyWaveManager = EnemyWaveManager(enemyWaves: enemiesManager.enemyWaves)
         

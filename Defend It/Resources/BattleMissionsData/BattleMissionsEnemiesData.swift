@@ -11,6 +11,23 @@ struct BattleMissionsEnemyData {
     
     static var shared = BattleMissionsEnemyData()
     
+    mutating func getEnemiesForBattle(id: BattleMissions) -> [EnemyWaveInput] {
+        switch id {
+        case .first:
+            return getEnemiesForBattle01()
+        case .second:
+            return getEnemiesForBattle02()
+        case .third:
+            return getEnemiesForBattle03()
+        case .four:
+            return getEnemiesForBattle04()
+        case .five:
+            return getEnemiesForBattle05()
+        }
+    }
+}
+
+private extension BattleMissionsEnemyData {
     //MARK: -1-
     mutating func getEnemiesForBattle01() -> [EnemyWaveInput] {
         let creator = EnemyCreationManager()
