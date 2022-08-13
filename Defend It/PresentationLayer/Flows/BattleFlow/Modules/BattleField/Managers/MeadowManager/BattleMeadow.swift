@@ -9,6 +9,7 @@ import SceneKit
 
 protocol BattleMeadow {
     var squares: [[GroundSquareImpl]]! {get set}
+    var size: Int! {get set}
 }
 
 class BattleMeadowImpl: BattleMeadow, Equatable {
@@ -16,8 +17,10 @@ class BattleMeadowImpl: BattleMeadow, Equatable {
     var squareScene: SCNScene!
     var squareNode: SCNNode!
     var squares: [[GroundSquareImpl]]!
+    var size: Int!
     
     init(size: Int) {
+        self.size = size
         setupScene()
         setupNodes()
         createGround(size: size)

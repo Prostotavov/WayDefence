@@ -71,7 +71,7 @@ class BattleImpl: MeadowManagerDelagate, BuildingsManagerDelegate, Battle {
     
     init() {
         battleState = .pause
-//        loadBuildngs()
+        loadBuildngs()
     }
     
     func getBattleCounter() -> Int {
@@ -129,7 +129,6 @@ extension BattleImpl {
         
     }
     func finishBattle() {
-        EnemyPathManager.shared.battleFieldSize = nil
         switch battleState {
         case .win: output.battleIsWon()
         case .lose: output.battleIsLost()
