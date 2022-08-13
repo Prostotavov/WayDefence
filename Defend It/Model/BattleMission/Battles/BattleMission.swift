@@ -15,7 +15,7 @@ protocol BattleMission {
     var battleFieldSize: Int {get}
     var battleEnemyWaves: [EnemyWaveInput] {get set}
     var battleMeadow: BattleMeadow {get}
-    var battleValues: BattleValues {get}
+    var battleValues: BattleMissionValues! {get}
 }
 
 

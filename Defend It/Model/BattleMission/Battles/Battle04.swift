@@ -15,7 +15,7 @@ final class Battle04: BattleMission {
     
     var battleMeadow: BattleMeadow
     var battleEnemyWaves: [EnemyWaveInput] = []
-    var battleValues: BattleValues
+    var battleValues: BattleMissionValues!
     
     
     var meadowCreator: BattleMeadowCreator
@@ -33,7 +33,6 @@ final class Battle04: BattleMission {
         meadowCreator = BattleMeadowCreatorImpl(size: battleFieldSize)
         
         battleMeadow = BattleMeadowImpl(size: battleFieldSize)
-        battleValues = BattleValuesImpl()
         createMeadow()
 
         setupBattleValues()
@@ -46,9 +45,7 @@ final class Battle04: BattleMission {
     }
     
     func setupBattleValues() {
-        battleValues.set(.coins, to: 1300)
-        battleValues.set(.points, to: 0)
-        battleValues.set(.lives, to: 10)
+        battleValues = BattleMissionsValuesData.shared.getValuesForBattle04()
     }
     
     func calculateEnemies() {

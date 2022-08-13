@@ -8,5 +8,5 @@
 import Foundation
 
 protocol FlowTabbarViewInput: AnyObject {
-    func displayValue(of valueType: GameAccountValueTypes, to value: Int)
+    func displayValue(of valueType: EconomicAccountValueTypes, to value: Int)
 }

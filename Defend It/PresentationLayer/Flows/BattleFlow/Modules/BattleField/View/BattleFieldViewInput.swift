@@ -19,5 +19,5 @@ protocol BattleFieldViewInput: AnyObject {
     func setupPointOfView(from cameraNode: SCNNode)
     
     /// funcs for display battle values on the TopBarView
-    func displayValue(of valueType: BattleValueTypes, to number: Int)
+    func displayValue(of valueType: EconomicBattleValueTypes, to number: Int)
 }

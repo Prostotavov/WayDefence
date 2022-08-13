@@ -13,6 +13,14 @@ class WinBattleInteractor: WinBattleInteractorInput {
     
     func battlePassed() {
         CurrentBattleImp.shared.currentBattlePassed()
+        rewarded()
+    }
+    
+    func rewarded() {
+        let reward = BattleMissionsValuesData.shared.getValuesForBattle01().economicAccountReward
+        UserImp.shared.gameAccount?.gameAccountValues?.increase(.points, by: reward.get(.points))
+        UserImp.shared.gameAccount?.gameAccountValues?.increase(.coins, by: reward.get(.coins))
+        UserImp.shared.gameAccount?.gameAccountValues?.increase(.gems, by: reward.get(.gems))
     }
     
 }

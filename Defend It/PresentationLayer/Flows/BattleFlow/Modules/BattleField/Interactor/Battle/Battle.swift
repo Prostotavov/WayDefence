@@ -24,7 +24,7 @@ protocol BattleOutput: AnyObject {
 protocol BattleDelegate: AnyObject {
     func addNodeToScene(_ node: SCNNode)
     func removeNodeFromScene(with name: String)
-    func displayValues(of value: BattleValueTypes, to number: Int)
+    func displayValues(of value: EconomicBattleValueTypes, to number: Int)
 }
 
 protocol Battle {
@@ -79,9 +79,9 @@ class BattleImpl: MeadowManagerDelagate, BuildingsManagerDelegate, Battle {
     }
     
     func displayBattleValues() {
-        delegate.displayValues(of: .coins, to: battleValuesManager.get(.coins))
-        delegate.displayValues(of: .lives, to: battleValuesManager.get(.lives))
-        delegate.displayValues(of: .points, to: battleValuesManager.get(.points))
+        delegate.displayValues(of: .coins, to: battleValuesManager.battleValues.economicBattleValues.get(.coins))
+        delegate.displayValues(of: .lives, to: battleValuesManager.battleValues.economicBattleValues.get(.lives))
+        delegate.displayValues(of: .points, to: battleValuesManager.battleValues.economicBattleValues.get(.points))
     }
     
     func startBattle() {
@@ -156,7 +156,7 @@ extension BattleImpl {
         buildingsManager.buildTower(with: type, by: coordinate)
         enemiesManager.prohibitWalking(On: coordinate)
         /// battle values
-        battleValuesManager.reduce(.coins, by: tempTower.buildingCost)
+        battleValuesManager.battleValues.economicBattleValues.reduce(.coins, by: tempTower.buildingCost)
         displayBattleValues()
     }
     func upgradeTower(by coordinate: (Int, Int)) {
@@ -168,7 +168,7 @@ extension BattleImpl {
         if !isThereEnoughMoney(for: upTower) {return}
         buildingsManager.updateTower(by: coordinate)
         /// battle values
-        battleValuesManager.reduce(.coins, by: upTower.buildingCost)
+        battleValuesManager.battleValues.economicBattleValues.reduce(.coins, by: upTower.buildingCost)
         displayBattleValues()
     }
     func sellTower(by coordinate: (Int, Int)) {
@@ -176,7 +176,7 @@ extension BattleImpl {
         buildingsManager.deleteBuilding(with: coordinate)
         enemiesManager.allowWalking(On: coordinate)
         /// battle values
-        battleValuesManager.increase(.coins, by: oldTower.saleCost)
+        battleValuesManager.battleValues.economicBattleValues.increase(.coins, by: oldTower.saleCost)
         displayBattleValues()
     }
     func repairTower(by coordinate: (Int, Int)) {
@@ -205,8 +205,8 @@ extension BattleImpl: EnemiesManagerOutput, BattleManagerDelegate {
     func enemyMurdered(enemy: AnyEnemy) {
 //        print("sound")
         DispatchQueue.main.async {
-            self.battleValuesManager.increase(.coins, by: enemy.coinMurderReward)
-            self.battleValuesManager.increase(.points, by: enemy.pointsMurderReward)
+            self.battleValuesManager.battleValues.economicBattleValues.increase(.coins, by: enemy.coinMurderReward)
+            self.battleValuesManager.battleValues.economicBattleValues.increase(.points, by: enemy.pointsMurderReward)
             self.displayBattleValues()
             if self.battleMission.countOfEnemies != 1 {
                 self.battleMission.countOfEnemies -= 1
@@ -224,13 +224,13 @@ extension BattleImpl: EnemiesManagerOutput, BattleManagerDelegate {
     }
     func enemyReachedCastle() {
         DispatchQueue.main.async {
-            self.battleValuesManager.reduce(.lives, by: 1)
+            self.battleValuesManager.battleValues.economicBattleValues.reduce(.lives, by: 1)
             self.displayBattleValues()
             
             if self.battleMission.countOfEnemies != 1 {
                 self.battleMission.countOfEnemies -= 1
             } else {
-                if self.battleValuesManager.get(.lives) == 0 {
+                if self.battleValuesManager.battleValues.economicBattleValues.get(.lives) == 0 {
                     self.changeBattleState(into: .lose)
                 } else {
                     self.changeBattleState(into: .win)
@@ -254,7 +254,7 @@ extension BattleImpl: EnemiesManagerOutput, BattleManagerDelegate {
 // checks
 extension BattleImpl {
     func isThereEnoughMoney(for tower: Building) -> Bool {
-        if (battleValuesManager.get(.coins) - tower.buildingCost) > 0 {
+        if (battleValuesManager.battleValues.economicBattleValues.get(.coins) - tower.buildingCost) > 0 {
             return true
         } else {
             return false

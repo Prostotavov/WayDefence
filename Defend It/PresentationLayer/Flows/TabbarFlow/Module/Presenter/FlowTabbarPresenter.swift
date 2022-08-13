@@ -13,7 +13,7 @@ class FlowTabbarPresenter: FlowTabbarViewOutput, FlowTabbarInteractorOutput {
     weak var coordinator: FlowTabbarCoordinatorOutput!
     var interactor: FlowTabbarInteractorInput!
     
-    func displayValue(of valueType: GameAccountValueTypes, to value: Int) {
+    func displayValue(of valueType: EconomicAccountValueTypes, to value: Int) {
         view.displayValue(of: valueType, to: value)
     }
     

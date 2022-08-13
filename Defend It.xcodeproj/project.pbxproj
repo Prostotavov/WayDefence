@@ -43,8 +43,8 @@
 		873F3F19289D6E9700BF7FF9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F18289D6E9700BF7FF9 /* User.swift */; };
 		873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1A289D6EF400BF7FF9 /* UserSex.swift */; };
 		873F3F1D289D6F8E00BF7FF9 /* GameAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */; };
-		873F3F1F289D72E300BF7FF9 /* GameAccountValueTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1E289D72E300BF7FF9 /* GameAccountValueTypes.swift */; };
-		873F3F21289D742200BF7FF9 /* GameAccountValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F20289D742200BF7FF9 /* GameAccountValues.swift */; };
+		873F3F1F289D72E300BF7FF9 /* EconomicAccountValueTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1E289D72E300BF7FF9 /* EconomicAccountValueTypes.swift */; };
+		873F3F21289D742200BF7FF9 /* EconomicAccountValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F20289D742200BF7FF9 /* EconomicAccountValues.swift */; };
 		873F3F23289DBFA500BF7FF9 /* FlowNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F22289DBFA500BF7FF9 /* FlowNavigationBarView.swift */; };
 		873F3F2B289E6B1F00BF7FF9 /* FlowTabbarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F2A289E6B1F00BF7FF9 /* FlowTabbarPresenter.swift */; };
 		873F3F2D289E6B7600BF7FF9 /* FlowTabbarInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F2C289E6B7600BF7FF9 /* FlowTabbarInteractorOutput.swift */; };
@@ -112,11 +112,14 @@
 		877F105128906BB800571F26 /* BattleMapInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F104728906BB700571F26 /* BattleMapInteractorOutput.swift */; };
 		877F105228906BB800571F26 /* BattleMapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F104828906BB700571F26 /* BattleMapInteractor.swift */; };
 		877F105328906BB800571F26 /* BattleMapInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F104928906BB700571F26 /* BattleMapInteractorInput.swift */; };
-		878DDC97287AB62100B37154 /* BattleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC96287AB62100B37154 /* BattleValues.swift */; };
+		878DDC97287AB62100B37154 /* EconomicBattleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC96287AB62100B37154 /* EconomicBattleValues.swift */; };
 		878DDC9C287B85CC00B37154 /* LoadBattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */; };
 		8797F77928A5C16D000D776E /* BattleMissionsEnemiesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F77828A5C16D000D776E /* BattleMissionsEnemiesData.swift */; };
 		8797F78828A7195C000D776E /* EnemiesManager_Iterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F78728A7195C000D776E /* EnemiesManager_Iterator.swift */; };
 		8797F78C28A7B23B000D776E /* EnemyWaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F78B28A7B23B000D776E /* EnemyWaveManager.swift */; };
+		8797F79028A7D280000D776E /* BattleMissionsMeadowData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F78F28A7D280000D776E /* BattleMissionsMeadowData.swift */; };
+		8797F79228A7D28D000D776E /* BattleMissionsValuesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F79128A7D28D000D776E /* BattleMissionsValuesData.swift */; };
+		8797F79428A7D311000D776E /* BattleMissionValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F79328A7D311000D776E /* BattleMissionValues.swift */; };
 		87B606C228790173003549AF /* BattleMeadowCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B606C128790173003549AF /* BattleMeadowCreator.swift */; };
 		87CA3D4F2828FBE0000F952F /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D4E2828FBE0000F952F /* TopBarView.swift */; };
 		87CA3D512829024C000F952F /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D502829024C000F952F /* BottomBarView.swift */; };
@@ -280,8 +283,8 @@
 		873F3F18289D6E9700BF7FF9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		873F3F1A289D6EF400BF7FF9 /* UserSex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSex.swift; sourceTree = "<group>"; };
 		873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccount.swift; sourceTree = "<group>"; };
-		873F3F1E289D72E300BF7FF9 /* GameAccountValueTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccountValueTypes.swift; sourceTree = "<group>"; };
-		873F3F20289D742200BF7FF9 /* GameAccountValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccountValues.swift; sourceTree = "<group>"; };
+		873F3F1E289D72E300BF7FF9 /* EconomicAccountValueTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomicAccountValueTypes.swift; sourceTree = "<group>"; };
+		873F3F20289D742200BF7FF9 /* EconomicAccountValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomicAccountValues.swift; sourceTree = "<group>"; };
 		873F3F22289DBFA500BF7FF9 /* FlowNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowNavigationBarView.swift; sourceTree = "<group>"; };
 		873F3F2A289E6B1F00BF7FF9 /* FlowTabbarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarPresenter.swift; sourceTree = "<group>"; };
 		873F3F2C289E6B7600BF7FF9 /* FlowTabbarInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarInteractorOutput.swift; sourceTree = "<group>"; };
@@ -349,11 +352,14 @@
 		877F104728906BB700571F26 /* BattleMapInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapInteractorOutput.swift; sourceTree = "<group>"; };
 		877F104828906BB700571F26 /* BattleMapInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapInteractor.swift; sourceTree = "<group>"; };
 		877F104928906BB700571F26 /* BattleMapInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapInteractorInput.swift; sourceTree = "<group>"; };
-		878DDC96287AB62100B37154 /* BattleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleValues.swift; sourceTree = "<group>"; };
+		878DDC96287AB62100B37154 /* EconomicBattleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomicBattleValues.swift; sourceTree = "<group>"; };
 		878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBattleViewController.swift; sourceTree = "<group>"; };
 		8797F77828A5C16D000D776E /* BattleMissionsEnemiesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionsEnemiesData.swift; sourceTree = "<group>"; };
 		8797F78728A7195C000D776E /* EnemiesManager_Iterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesManager_Iterator.swift; sourceTree = "<group>"; };
 		8797F78B28A7B23B000D776E /* EnemyWaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyWaveManager.swift; sourceTree = "<group>"; };
+		8797F78F28A7D280000D776E /* BattleMissionsMeadowData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionsMeadowData.swift; sourceTree = "<group>"; };
+		8797F79128A7D28D000D776E /* BattleMissionsValuesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionsValuesData.swift; sourceTree = "<group>"; };
+		8797F79328A7D311000D776E /* BattleMissionValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionValues.swift; sourceTree = "<group>"; };
 		87B606C128790173003549AF /* BattleMeadowCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMeadowCreator.swift; sourceTree = "<group>"; };
 		87CA3D4E2828FBE0000F952F /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		87CA3D502829024C000F952F /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
@@ -492,7 +498,7 @@
 			children = (
 				AAFD65E927E4FFC500450C52 /* art.scnassets */,
 				AA7801BD27E200BA002C57E1 /* Assets.xcassets */,
-				8797F77828A5C16D000D776E /* BattleMissionsEnemiesData.swift */,
+				8797F78E28A7D269000D776E /* BattleMissionsData */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -753,7 +759,7 @@
 			children = (
 				873F3F18289D6E9700BF7FF9 /* User.swift */,
 				873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */,
-				873F3F20289D742200BF7FF9 /* GameAccountValues.swift */,
+				873F3F20289D742200BF7FF9 /* EconomicAccountValues.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1132,6 +1138,17 @@
 			path = DataManagers;
 			sourceTree = "<group>";
 		};
+		8797F78E28A7D269000D776E /* BattleMissionsData */ = {
+			isa = PBXGroup;
+			children = (
+				8797F77828A5C16D000D776E /* BattleMissionsEnemiesData.swift */,
+				8797F78F28A7D280000D776E /* BattleMissionsMeadowData.swift */,
+				8797F79128A7D28D000D776E /* BattleMissionsValuesData.swift */,
+				8797F79328A7D311000D776E /* BattleMissionValues.swift */,
+			);
+			path = BattleMissionsData;
+			sourceTree = "<group>";
+		};
 		87B606C02878FF9E003549AF /* BattleCreators */ = {
 			isa = PBXGroup;
 			children = (
@@ -1153,7 +1170,7 @@
 			isa = PBXGroup;
 			children = (
 				87CA3D5628294F17000F952F /* BattleManager.swift */,
-				878DDC96287AB62100B37154 /* BattleValues.swift */,
+				878DDC96287AB62100B37154 /* EconomicBattleValues.swift */,
 			);
 			path = BattleValuesManager;
 			sourceTree = "<group>";
@@ -1409,7 +1426,7 @@
 				AACC7BF027FB66B20022384E /* BuildingNodes.swift */,
 				AACC7BF227FB66D00022384E /* EnemyNodes.swift */,
 				873F3F1A289D6EF400BF7FF9 /* UserSex.swift */,
-				873F3F1E289D72E300BF7FF9 /* GameAccountValueTypes.swift */,
+				873F3F1E289D72E300BF7FF9 /* EconomicAccountValueTypes.swift */,
 				873F3F5328A3B5E200BF7FF9 /* EnemyMovementManagerCommands.swift */,
 			);
 			path = Enums;
@@ -1672,7 +1689,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAE8870927EF350F00CA4E5D /* GoblinTL.swift in Sources */,
-				873F3F21289D742200BF7FF9 /* GameAccountValues.swift in Sources */,
+				873F3F21289D742200BF7FF9 /* EconomicAccountValues.swift in Sources */,
 				877F0FEB288FF32400571F26 /* LoseBattleInteractorInput.swift in Sources */,
 				AA0B68C027E5BA7D0078003D /* MagicTowerFactory.swift in Sources */,
 				87E1286928947031006CEF02 /* BattleMapIcon.swift in Sources */,
@@ -1685,6 +1702,7 @@
 				873F3F31289E6B8A00BF7FF9 /* FlowTabbarInteractor.swift in Sources */,
 				870B67C3288E98880089D3CB /* FlowFactoryImp.swift in Sources */,
 				877F0FE2288FF32400571F26 /* LoseBattleAssembly.swift in Sources */,
+				8797F79028A7D280000D776E /* BattleMissionsMeadowData.swift in Sources */,
 				AA7801FB27E20291002C57E1 /* HomePageViewInput.swift in Sources */,
 				877F100D2890083F00571F26 /* WinBattleInteractor.swift in Sources */,
 				87B606C228790173003549AF /* BattleMeadowCreator.swift in Sources */,
@@ -1704,10 +1722,11 @@
 				877F0FE6288FF32400571F26 /* LoseBattleViewInput.swift in Sources */,
 				873F3F1D289D6F8E00BF7FF9 /* GameAccount.swift in Sources */,
 				AACC7BF127FB66B20022384E /* BuildingNodes.swift in Sources */,
-				878DDC97287AB62100B37154 /* BattleValues.swift in Sources */,
+				8797F79228A7D28D000D776E /* BattleMissionsValuesData.swift in Sources */,
+				878DDC97287AB62100B37154 /* EconomicBattleValues.swift in Sources */,
 				877F0FE5288FF32400571F26 /* LoseBattleViewCoordinatorOutput.swift in Sources */,
 				8711C632287564CA00E84876 /* Battle01.swift in Sources */,
-				873F3F1F289D72E300BF7FF9 /* GameAccountValueTypes.swift in Sources */,
+				873F3F1F289D72E300BF7FF9 /* EconomicAccountValueTypes.swift in Sources */,
 				870B677B288E8E4C0089D3CB /* DeepLinkOption.swift in Sources */,
 				AACC7BDB27FB28200022384E /* ElphTowerTL.swift in Sources */,
 				877F1025289025EE00571F26 /* PauseBattlePresenter.swift in Sources */,
@@ -1805,6 +1824,7 @@
 				AACC7BEF27FB36D30022384E /* BuiltTowers.swift in Sources */,
 				870B6793288E8F530089D3CB /* CoordinatorFactory.swift in Sources */,
 				873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */,
+				8797F79428A7D311000D776E /* BattleMissionValues.swift in Sources */,
 				877F105028906BB800571F26 /* BattleMapViewController.swift in Sources */,
 				870B677D288E8E540089D3CB /* Presentable.swift in Sources */,
 				AAE8870327EF342D00CA4E5D /* GoblinFactory.swift in Sources */,

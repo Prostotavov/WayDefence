@@ -25,7 +25,7 @@ class FlowTabbarTopBarView: UIView {
         super.init(coder: coder)
     }
     
-    func displayValue(of valueType: GameAccountValueTypes, to value: Int) {
+    func displayValue(of valueType: EconomicAccountValueTypes, to value: Int) {
         switch valueType {
         case .coins: coinsLabel.text = "🤑 \(value)"
         case .gems: gemsLabel.text = "💎 \(value)"

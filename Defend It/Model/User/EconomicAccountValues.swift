@@ -1,5 +1,5 @@
 //
-//  GameAccountValues.swift
+//  EconomicAccountValues.swift
 //  Defend It
 //
 //  Created by Роман Сенкевич on 5.08.22.
@@ -7,15 +7,17 @@
 
 import Foundation
 
-protocol GameAccountValues {
-    func increase(_ valueType: GameAccountValueTypes, by value: Int)
-    func reduce(_ valueType: GameAccountValueTypes, by value: Int)
-    func set(_ valueType: GameAccountValueTypes, to newValue: Int)
-    func get(_ valueType: GameAccountValueTypes) -> Int
+import Foundation
+
+protocol EconomicAccountValues {
+    func increase(_ valueType: EconomicAccountValueTypes, by value: Int)
+    func reduce(_ valueType: EconomicAccountValueTypes, by value: Int)
+    func set(_ valueType: EconomicAccountValueTypes, to newValue: Int)
+    func get(_ valueType: EconomicAccountValueTypes) -> Int
 
 }
 
-class GameAccountValuesImp: GameAccountValues {
+class EconomicAccountValuesImp: EconomicAccountValues {
         
     private var coins: Int?
     private var points: Int?
@@ -36,8 +38,8 @@ class GameAccountValuesImp: GameAccountValues {
 }
 
 // realization get func
-extension GameAccountValuesImp {
-    func get(_ valueType: GameAccountValueTypes) -> Int {
+extension EconomicAccountValuesImp {
+    func get(_ valueType: EconomicAccountValueTypes) -> Int {
         switch valueType {
         case .coins: return getCoins()
         case .gems: return getGems()
@@ -62,8 +64,8 @@ extension GameAccountValuesImp {
 }
 
 // realization set func
-extension GameAccountValuesImp {
-    func set(_ valueType: GameAccountValueTypes, to newValue: Int) {
+extension EconomicAccountValuesImp {
+    func set(_ valueType: EconomicAccountValueTypes, to newValue: Int) {
         switch valueType {
         case .coins: setCoins(to: newValue)
         case .gems: setGems(to: newValue)
@@ -85,8 +87,8 @@ extension GameAccountValuesImp {
 }
 
 // realization reduce func
-extension GameAccountValuesImp {
-    func reduce(_ valueType: GameAccountValueTypes, by value: Int) {
+extension EconomicAccountValuesImp {
+    func reduce(_ valueType: EconomicAccountValueTypes, by value: Int) {
         switch valueType {
         case .coins: reduceCoins(by: value)
         case .gems: reduceGems(by: value)
@@ -108,8 +110,8 @@ extension GameAccountValuesImp {
 }
 
 // realization increase func
-extension GameAccountValuesImp {
-    func increase(_ valueType: GameAccountValueTypes, by value: Int) {
+extension EconomicAccountValuesImp {
+    func increase(_ valueType: EconomicAccountValueTypes, by value: Int) {
         switch valueType {
         case .coins: increaseCoins(by: value)
         case .gems: increaseGems(by: value)

@@ -85,7 +85,7 @@ extension FlowTabbarController {
         ])
     }
     
-    func displayValue(of valueType: GameAccountValueTypes, to value: Int) {
+    func displayValue(of valueType: EconomicAccountValueTypes, to value: Int) {
         topBarView.displayValue(of: valueType, to: value)
     }
 }

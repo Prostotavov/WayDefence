@@ -22,8 +22,8 @@ class FlowTabbarInteractor: FlowTabbarInteractorInput {
     }
     
     func displayValues() {
-        output.displayValue(of: .coins, to: gameAccount!.get(.coins))
-        output.displayValue(of: .gems, to: gameAccount!.get(.gems))
-        output.displayValue(of: .points, to: gameAccount!.get(.points))
+        output.displayValue(of: .coins, to: gameAccount!.gameAccountValues!.get(.coins))
+        output.displayValue(of: .gems, to: gameAccount!.gameAccountValues!.get(.gems))
+        output.displayValue(of: .points, to: gameAccount!.gameAccountValues!.get(.points))
     }
 }
