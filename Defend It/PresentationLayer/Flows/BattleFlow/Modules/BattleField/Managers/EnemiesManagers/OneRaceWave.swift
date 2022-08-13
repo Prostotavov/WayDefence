@@ -40,6 +40,8 @@ class OneRaceWave: OneRaceWaveInput, EnemyMovementManagerOutput {
     }
     
     func removeEnemy(_ enemy: AnyEnemy) {
+        let progressBar = enemy.enemyNode.childNode(withName: NodeNames.progressBar.rawValue, recursively: true)
+        progressBar?.removeFromParentNode()
         enemy.enemyNode.removeFromParentNode()
         enemies.remove(enemy)
     }

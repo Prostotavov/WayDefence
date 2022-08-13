@@ -37,7 +37,8 @@ class EnemiesManagerImpl: EnemiesManager, OneRaceWaveOutput {
     weak var output: EnemiesManagerOutput!
     var enemyWaves: [EnemyWaveInput]!
     var wavesCounter: Int = 0
-
+    var enemyWaveManager: EnemyWaveManager!
+    
     func setupDelegates() {
         iterateByOneRaceWaves { oneRaceWave in
             oneRaceWave.setupDelegate(delegate: self)
@@ -57,7 +58,7 @@ class EnemiesManagerImpl: EnemiesManager, OneRaceWaveOutput {
             oneRaceWave.removeEnemy(enemy)
         }
     }
-
+    
     func prohibitWalking(On coordination: (Int, Int)) {
         EnemyPathManager.shared.prohibitWalking(On: coordination)
         sendEnemyMovementManager(command: .runByNewPath)
@@ -69,13 +70,7 @@ class EnemiesManagerImpl: EnemiesManager, OneRaceWaveOutput {
     }
     
     func updateCounter() {
-        wavesCounter += 1
-        iterateByActiveWaves { wave in
-            if wave.startFrame == wavesCounter {
-                wave.sendEnemyMovementManager(command: .runAllEnemies)
-            }
-            wave.updateCounter()
-        }
+        enemyWaveManager.update()
     }
     
     func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy? {
@@ -107,8 +102,8 @@ class EnemiesManagerImpl: EnemiesManager, OneRaceWaveOutput {
     }
     
     private func sendEnemyMovementManager(command: EnemyMovementManagerCommands) {
-        iterateByActiveWaves { wave in
-            wave.sendEnemyMovementManager(command: command)
+        iterateByActiveOneRaceWaves { oneRaceWave in
+            oneRaceWave.sendEnemyMovementManager(command: command)
         }
     }
 }

@@ -31,6 +31,14 @@ extension EnemiesManagerImpl {
         }
     }
     
+    func iterateByActiveOneRaceWaves(completion: (_ oneRaceWave: OneRaceWaveInput) -> Void) {
+        iterateByActiveWaves { wave in
+            for oneRaceWave in wave.oneRaceWaves {
+                completion(oneRaceWave)
+            }
+        }
+    }
+    
     func iterateByActiveWaves(completion: (_ wave: EnemyWaveInput) -> Void) {
         for wave in enemyWaves {
             if wave.startFrame > wavesCounter {continue}

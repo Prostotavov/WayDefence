@@ -321,7 +321,7 @@ extension BattleImpl {
         
         let parentNode = getParentNodeFor(node)
         let coordinate = Converter.toCoordinate(from: parentNode.position)
-        
+        // node.name? must be
         switch node.name {
         case _ where node.name! == RecognitionNodes.sellSelectIcon.rawValue:
             sellTower(by: coordinate)

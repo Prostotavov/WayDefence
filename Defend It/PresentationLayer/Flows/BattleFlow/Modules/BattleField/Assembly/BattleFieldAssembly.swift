@@ -45,12 +45,12 @@ class BattleFieldAssembly: NSObject, BattleFieldAssemblyProtocol {
         let buildingsManager = BuildingsManagerImpl(battleMission.battleFieldSize)
         let enemiesManager = EnemiesManagerImpl()
         let battleValuesManager = BattleManagerImpl(battleValues: battleMission.battleValues)
-        let camerasManager = SceneCamera()
         delegate.createManagers(completed: 33)           // 65% load
         
         
         enemiesManager.enemyWaves = battleMission.battleEnemyWaves
         enemiesManager.setupDelegates()
+        enemiesManager.enemyWaveManager = EnemyWaveManager(enemyWaves: enemiesManager.enemyWaves)
         
         // init and assembly battle
         let battle = BattleImpl()
