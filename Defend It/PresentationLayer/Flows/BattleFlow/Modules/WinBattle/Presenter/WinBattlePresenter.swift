@@ -21,4 +21,8 @@ class WinBattlePresenter: WinBattleViewOutput, WinBattleInteractorOutput {
     func onAcceptTap() {
         coordinator.onAccept?()
     }
+    
+    func test(reward: EconomicAccountValues) {
+        
+    }
 }

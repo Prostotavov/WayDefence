@@ -119,6 +119,7 @@
 		8797F79028A7D280000D776E /* BattleMissionsMeadowData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F78F28A7D280000D776E /* BattleMissionsMeadowData.swift */; };
 		8797F79228A7D28D000D776E /* BattleMissionsValuesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F79128A7D28D000D776E /* BattleMissionsValuesData.swift */; };
 		8797F79428A7D311000D776E /* BattleMissionValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F79328A7D311000D776E /* BattleMissionValues.swift */; };
+		8797F79A28ABD4E5000D776E /* UIKitCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F79928ABD4E5000D776E /* UIKitCanvas.swift */; };
 		87B606C228790173003549AF /* BattleMeadowCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B606C128790173003549AF /* BattleMeadowCreator.swift */; };
 		87CA3D4F2828FBE0000F952F /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D4E2828FBE0000F952F /* TopBarView.swift */; };
 		87CA3D512829024C000F952F /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D502829024C000F952F /* BottomBarView.swift */; };
@@ -354,6 +355,7 @@
 		8797F78F28A7D280000D776E /* BattleMissionsMeadowData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionsMeadowData.swift; sourceTree = "<group>"; };
 		8797F79128A7D28D000D776E /* BattleMissionsValuesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionsValuesData.swift; sourceTree = "<group>"; };
 		8797F79328A7D311000D776E /* BattleMissionValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionValues.swift; sourceTree = "<group>"; };
+		8797F79928ABD4E5000D776E /* UIKitCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitCanvas.swift; sourceTree = "<group>"; };
 		87B606C128790173003549AF /* BattleMeadowCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMeadowCreator.swift; sourceTree = "<group>"; };
 		87CA3D4E2828FBE0000F952F /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		87CA3D502829024C000F952F /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
@@ -618,6 +620,7 @@
 		870B6797288E8FB00089D3CB /* ReuseableComponents */ = {
 			isa = PBXGroup;
 			children = (
+				8797F79828ABD4D2000D776E /* UIKitCanvas */,
 				87425E44289B2BD1000BF422 /* SCNProgressBar */,
 				870B679E288E903A0089D3CB /* FlowNavigationController */,
 			);
@@ -1137,6 +1140,14 @@
 				8797F79328A7D311000D776E /* BattleMissionValues.swift */,
 			);
 			path = BattleMissionsData;
+			sourceTree = "<group>";
+		};
+		8797F79828ABD4D2000D776E /* UIKitCanvas */ = {
+			isa = PBXGroup;
+			children = (
+				8797F79928ABD4E5000D776E /* UIKitCanvas.swift */,
+			);
+			path = UIKitCanvas;
 			sourceTree = "<group>";
 		};
 		87B606C02878FF9E003549AF /* BattleCreators */ = {
@@ -1838,6 +1849,7 @@
 				AA7801B727E200B6002C57E1 /* SceneDelegate.swift in Sources */,
 				877F1023289025EE00571F26 /* PauseBattleAssembly.swift in Sources */,
 				877F100B2890083F00571F26 /* WinBattleViewInput.swift in Sources */,
+				8797F79A28ABD4E5000D776E /* UIKitCanvas.swift in Sources */,
 				873F6541289325C900A67F43 /* FlowTabbarCoordinatorOutput.swift in Sources */,
 				873F3F2D289E6B7600BF7FF9 /* FlowTabbarInteractorOutput.swift in Sources */,
 				87ECCC562878E84F00E66C09 /* BattleMissionFactory.swift in Sources */,

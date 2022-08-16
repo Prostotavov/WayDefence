@@ -24,8 +24,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return window!.rootViewController as! UINavigationController
         }
         
-        applicationCoordinator = produceApplicationCoordinator(rootController: rootController)
-        applicationCoordinator.start()
+        rootController.view = WinBattleView()
+//        applicationCoordinator = produceApplicationCoordinator(rootController: rootController)
+//        applicationCoordinator.start()
         window?.makeKeyAndVisible()
     }
     
