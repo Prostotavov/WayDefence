@@ -34,6 +34,8 @@ private extension BattleMissionsEnemyData {
         // wave 1
         creator.addWave(startFrame: 10)
         creator.addOneRaceWave(.goblin, .firstLevel, count: 3, interval: 60, startFrame: 10)
+        creator.addOneRaceWave(.orc, .secondLevel, count: 3, interval: 60, startFrame: 210)
+        creator.addOneRaceWave(.goblin, .secondLevel, count: 3, interval: 60, startFrame: 430)
         return creator.getWaves()
     }
     

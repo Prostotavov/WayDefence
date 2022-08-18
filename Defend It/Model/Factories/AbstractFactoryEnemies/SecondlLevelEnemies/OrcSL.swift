@@ -11,7 +11,7 @@ struct OrcSL: Enemy, Hashable {
     
     var id: UUID
     var race: EnemyRaces = .orc
-    var level: EnemyLevels = .firstLevel
+    var level: EnemyLevels = .secondLevel
     var speed: Int = 6
     var enemyNode: SCNNode
     var path: [SCNVector3] = []

@@ -11,7 +11,7 @@ struct TrollSL: Enemy, Hashable {
     
     var id: UUID
     var race: EnemyRaces = .troll
-    var level: EnemyLevels = .firstLevel
+    var level: EnemyLevels = .secondLevel
     var speed: Int = 4
     var enemyNode: SCNNode
     var path: [SCNVector3] = []
