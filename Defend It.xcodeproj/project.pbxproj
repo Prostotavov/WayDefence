@@ -67,6 +67,8 @@
 		873F6543289325DA00A67F43 /* FlowTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F6542289325DA00A67F43 /* FlowTabbarController.swift */; };
 		873F6545289325E900A67F43 /* FlowTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F6544289325E900A67F43 /* FlowTabbar.swift */; };
 		87425E46289B2BE4000BF422 /* SCNProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87425E45289B2BE4000BF422 /* SCNProgressBar.swift */; };
+		8762BED428AD48B700005445 /* EnemyRotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762BED328AD48B700005445 /* EnemyRotationManager.swift */; };
+		8762BED828AD9B4900005445 /* EnemyAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762BED728AD9B4900005445 /* EnemyAnimationManager.swift */; };
 		877F0FE2288FF32400571F26 /* LoseBattleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FD5288FF32400571F26 /* LoseBattleAssembly.swift */; };
 		877F0FE3288FF32400571F26 /* LoseBattleAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FD6288FF32400571F26 /* LoseBattleAssemblyProtocol.swift */; };
 		877F0FE4288FF32400571F26 /* LoseBattlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FD8288FF32400571F26 /* LoseBattlePresenter.swift */; };
@@ -302,6 +304,8 @@
 		873F6542289325DA00A67F43 /* FlowTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarController.swift; sourceTree = "<group>"; };
 		873F6544289325E900A67F43 /* FlowTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbar.swift; sourceTree = "<group>"; };
 		87425E45289B2BE4000BF422 /* SCNProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNProgressBar.swift; sourceTree = "<group>"; };
+		8762BED328AD48B700005445 /* EnemyRotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyRotationManager.swift; sourceTree = "<group>"; };
+		8762BED728AD9B4900005445 /* EnemyAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyAnimationManager.swift; sourceTree = "<group>"; };
 		877F0FD5288FF32400571F26 /* LoseBattleAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseBattleAssembly.swift; sourceTree = "<group>"; };
 		877F0FD6288FF32400571F26 /* LoseBattleAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseBattleAssemblyProtocol.swift; sourceTree = "<group>"; };
 		877F0FD8288FF32400571F26 /* LoseBattlePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseBattlePresenter.swift; sourceTree = "<group>"; };
@@ -813,6 +817,7 @@
 		873F3F4A28A2D1C800BF7FF9 /* EnemyManagers */ = {
 			isa = PBXGroup;
 			children = (
+				8762BED228AD48A300005445 /* EnemyAnamitaions */,
 				873F3F5828A3D27A00BF7FF9 /* EnemyCreationManager.swift */,
 				873F3F5128A2E9FE00BF7FF9 /* EnemyMovementManager.swift */,
 				AAE886ED27EEFFE000CA4E5D /* EnemyPathManager.swift */,
@@ -867,6 +872,15 @@
 				87FE431A28994B80002DFCEA /* SceneCamera.swift */,
 			);
 			path = CamerasManager;
+			sourceTree = "<group>";
+		};
+		8762BED228AD48A300005445 /* EnemyAnamitaions */ = {
+			isa = PBXGroup;
+			children = (
+				8762BED328AD48B700005445 /* EnemyRotationManager.swift */,
+				8762BED728AD9B4900005445 /* EnemyAnimationManager.swift */,
+			);
+			path = EnemyAnamitaions;
 			sourceTree = "<group>";
 		};
 		877F0FD3288FF32400571F26 /* LoseBattle */ = {
@@ -1865,10 +1879,12 @@
 				AACC7BE127FB2C850022384E /* BallistaSL.swift in Sources */,
 				873F3F23289DBFA500BF7FF9 /* FlowNavigationBarView.swift in Sources */,
 				877F1026289025EE00571F26 /* PauseBattleViewOutput.swift in Sources */,
+				8762BED428AD48B700005445 /* EnemyRotationManager.swift in Sources */,
 				870B67B9288E96BD0089D3CB /* LoadBattlePresenter.swift in Sources */,
 				877F0FE7288FF32400571F26 /* LoseBattleViewController.swift in Sources */,
 				870B67BF288E97E50089D3CB /* BattleCoordinatorOutput.swift in Sources */,
 				873F65352893235B00A67F43 /* BattleMapCoordinatorOutput.swift in Sources */,
+				8762BED828AD9B4900005445 /* EnemyAnimationManager.swift in Sources */,
 				AACC7BE327FB2C8C0022384E /* BallistaTL.swift in Sources */,
 				AA78023D27E20B8E002C57E1 /* BattleFieldViewController.swift in Sources */,
 			);

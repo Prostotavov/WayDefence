@@ -11,7 +11,7 @@ struct GoblinTL: Enemy, Hashable {
     
     var id: UUID
     var race: EnemyRaces = .goblin
-    var level: EnemyLevels = .firstLevel
+    var level: EnemyLevels = .thirdLevel
     var speed: Int = 10
     var enemyNode: SCNNode
     var path: [SCNVector3] = []

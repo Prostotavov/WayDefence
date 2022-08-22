@@ -5,7 +5,7 @@
 //  Created by Роман Сенкевич on 10.08.22.
 //
 
-import Foundation
+import SceneKit
 
 class EnemyCreationManager {
     
@@ -40,6 +40,7 @@ class EnemyCreationManager {
     /// HealthProgressBar and PhysicsBody
     /// 2) This function setup:
     /// enemy start posiiton and enemy path
+    /// 3) adds animation
     private func createEnemy(_ race: EnemyRaces, with level: EnemyLevels) -> AnyEnemy {
         let enemy = AbstractFactoryEnemiesImpl.defaultFactory.create(race, with: level)
         /// 1) add nodes
@@ -48,6 +49,8 @@ class EnemyCreationManager {
         /// 2) setup position and path
         enemy.enemyNode.position = EnemyPathManager.shared.culculateStartPosition()
         enemy.path = EnemyPathManager.shared.calculatePath(for: enemy)
+        /// 3) add Animation
+        EnemyAnimationManager.addAnimation(for: enemy)
         return enemy
     }
     

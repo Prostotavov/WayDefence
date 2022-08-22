@@ -37,6 +37,7 @@ class EnemyMovementManager: EnemyMovementManagerInput {
         for enemy in enemies {
             let path = EnemyPathManager.shared.calculatePath(for: enemy)
             enemy.setPath(path)
+            EnemyRotationManager.rotate(enemy: enemy)
         }
     }
     
@@ -136,10 +137,15 @@ extension EnemyMovementManager {
         enemiesState = .inactive
         resetEnemyCounter(enemies: enemies)
         pathCounter = 0
-        _ = enemies.map{$0.enemyNode.removeAllActions()}
+        _ = enemies.map{$0.enemyNode.removeAllActions()
+            EnemyAnimationManager.stopAnimation(for: $0)
+        }
     }
     
     private func runAllEnemies(enemies: Set<AnyEnemy>) {
+        _ = enemies.map{
+            EnemyAnimationManager.resumeAnimation(for: $0)
+        }
         enemiesState = .active
         resetEnemyCounter(enemies: enemies)
         pathCounter = 0

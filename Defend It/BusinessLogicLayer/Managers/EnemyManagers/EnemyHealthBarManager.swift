@@ -13,7 +13,15 @@ class EnemyHealthBarManager {
         let progressBar = SCNProgressBar(width: 0.3, height: 0.05)
         progressBar.progressTintColor = .red
         progressBar.progress = enemy.currentHealthPoints / enemy.healthPoints
-        progressBar.position = SCNVector3(0, 0.6, 0)
+        
+        let enemyHeight: Float
+        let scale = enemy.enemyNode.childNode(withName: "scale", recursively: true)?.scale.z
+        if scale != nil {
+            enemyHeight = enemy.enemyNode.boundingBox.max.y * scale!
+        } else {
+            enemyHeight = enemy.enemyNode.boundingBox.max.y
+        }
+        progressBar.position = SCNVector3(0, enemyHeight + 0.1 , 0)
         enemy.enemyNode.addChildNode(progressBar)
     }
     
