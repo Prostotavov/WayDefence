@@ -38,10 +38,11 @@ private extension BattleMissionsMeadowData {
     
     mutating func getMeadowForBattle01() -> BattleMeadow {
         let size = 10
-        let start: (Int, Int) = (0, 0)
+        let start: (Int, Int) = (5, 5)
         let target: (Int, Int) = (size - 1, size - 1)
         meadowCreator = BattleMeadowCreatorImpl(size: size)
         setEnemyPathManager(size: size, start: start, target: target)
+        meadowCreator.add(groundType: .snow, on: [(5, 5)])
         meadowCreator.add(groundType: .water, on: [(0, 1), (3, 4)])
         meadowCreator.add(groundType: .lava, on: [(4, 2), (5, 4)])
         meadowCreator.add(groundType: .swamp, on: [(3, 1), (2, 2)])
