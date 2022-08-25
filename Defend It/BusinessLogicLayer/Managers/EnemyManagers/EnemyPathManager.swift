@@ -24,9 +24,38 @@ class EnemyPathManager {
     
     
     func calculatePath<T: Enemy>(for enemy: T) -> [SCNVector3] {
-        
+        findPathInGridGraph(for: enemy)
+        return findPathInObtacleGraph(for: enemy)
+    }
+    
+    func setStart(coordinate: (Int, Int)) {
+        start = coordinate
+    }
+    
+    func setTarget(coordinate: (Int, Int)) {
+        target = coordinate
+    }
+    
+    func createBattleFieldGraph(size: Int) {
+        createGridGraph(size: size)
+        createObstacleGraph(size: size)
+    }
+    
+    func prohibitWalking(On coordination: (Int, Int)) {
+        prohibitWalkingInObstacleGraph(on: coordination)
+        prohibitWalkingInGridGraph(on: coordination)
+    }
+    
+    func allowWalking(On coordination: (Int, Int)) {
+        allowWalkingInGridGraph(on: coordination)
+        allowWalkingInObstacleGraph(on: coordination)
+    }
+}
 
-        
+/// grid graph
+extension EnemyPathManager {
+    
+    func findPathInGridGraph<T: Enemy>(for enemy: T) -> [(Int, Int)] {
         /// create and setup start and target nodes -start-
         let startCoordinate = Converter.toCoordinate(from: enemy.enemyNode.position)
         let startGridPosition = vector_int2(x: Int32(startCoordinate.0), y: Int32(startCoordinate.1))
@@ -41,10 +70,46 @@ class EnemyPathManager {
 
         /// parce result to convinience way
         let pathGridPoints: [(Int, Int)] = pathGridNodes.map{ (Int($0.gridPosition.x), Int($0.gridPosition.y)) }
-        
-        print("11. \(pathGridPoints)")
-        
+        return pathGridPoints
+    }
+    
+    func createGridGraph(size: Int) {
+        let height: Int32 = Int32(size)
+        let width: Int32 = Int32(size)
+        let startGrid = vector_int2(x: 0, y: 0)
+        gridGraph = GKGridGraph(fromGridStartingAt: startGrid, width: width, height: height, diagonalsAllowed: false)
+    }
+    
+    
+    func allowWalkingInGridGraph(on coordinate: (Int, Int)) {
+        let position = vector_int2(x: Int32(coordinate.0), y: Int32(coordinate.1))
+        let node = GKGridGraphNode(gridPosition: position)
 
+        var nodes: [GKGridGraphNode?] = []
+        nodes.append(gridGraph.node(atGridPosition: vector_int2(x: position.x + 1, y: position.y)) ?? nil)
+        nodes.append(gridGraph.node(atGridPosition: vector_int2(x: position.x - 1, y: position.y)) ?? nil)
+        nodes.append(gridGraph.node(atGridPosition: vector_int2(x: position.x, y: position.y + 1)) ?? nil)
+        nodes.append(gridGraph.node(atGridPosition: vector_int2(x: position.x, y: position.y - 1)) ?? nil)
+
+        
+        for _node in nodes {
+            guard let _node = _node else {return}
+            node.addConnections(to: [_node], bidirectional: true)
+        }
+        gridGraph.add([node])
+    }
+    
+    func prohibitWalkingInGridGraph(on coordinate: (Int, Int)) {
+        let position = vector_int2(x: Int32(coordinate.0), y: Int32(coordinate.1))
+        guard let node = gridGraph.node(atGridPosition: position) else {return}
+        gridGraph.remove([node])
+    }
+}
+
+/// obstacle graph
+extension EnemyPathManager {
+    
+    func findPathInObtacleGraph<T: Enemy>(for enemy: T) -> [SCNVector3] {
         /// create and setup start and target nodes -start-
         let startPosition = vector_float2(x: enemy.enemyNode.position.x, y: enemy.enemyNode.position.z)
         let targetPosition = vector_float2(x: Float(target.0) * 0.5 ,y: Float(target.1) * 0.5)
@@ -66,23 +131,7 @@ class EnemyPathManager {
         return pathPoints
     }
     
-    func setStart(coordinate: (Int, Int)) {
-        start = coordinate
-    }
-    
-    func setTarget(coordinate: (Int, Int)) {
-        target = coordinate
-    }
-    
-    func createBattleFieldGraph(size: Int) {
-        
-        // create 
-        let height: Int32 = Int32(size)
-        let width: Int32 = Int32(size)
-        let startGrid = vector_int2(x: 0, y: 0)
-        gridGraph = GKGridGraph(fromGridStartingAt: startGrid, width: width, height: height, diagonalsAllowed: false)
-        
-        
+    func createObstacleGraph(size: Int) {
         /// if size = 1, then height = 0.5
         let borderLength = CGFloat(size) * 0.5
         let sprite0 = SKSpriteNode(color: .red, size: CGSize(width: 0.1, height: borderLength))       // up
@@ -107,44 +156,24 @@ class EnemyPathManager {
         /// create and setup graph -end-
     }
     
-    func prohibitWalking(On coordination: (Int, Int)) {
-        let obstacleSprite = SKSpriteNode(color: .red, size: CGSize(width: 0.5, height: 0.5))
-        obstacleSprite.name = "\(coordination)"
-        obstacleSprite.position = CGPoint(x: CGFloat(coordination.0) * 0.5, y: CGFloat(coordination.1) * 0.5)
-        let obstaclePolygon = SKNode.obstacles(fromNodeBounds: [obstacleSprite])
-        obstacleGraph.addObstacles(obstaclePolygon)
-        
-        /// lines below is for gridGraph
-        let position = vector_int2(x: Int32(coordination.0), y: Int32(coordination.1))
-        guard let node = gridGraph.node(atGridPosition: position) else {return}
-        gridGraph.remove([node])
-    }
-    
-    func allowWalking(On coordination: (Int, Int)) {
+    func allowWalkingInObstacleGraph(on coordinate: (Int, Int)) {
         // drop first 4 because first 4 obstacles is the border og battleField
         for obstacle in obstacleGraph.obstacles.dropFirst(4) {
-            if obstacle.centerCoordinate == coordination {
+            if obstacle.centerCoordinate == coordinate {
                 obstacleGraph.removeObstacles([obstacle])
             }
         }
-        
-        /// lines below is for gridGraph
-        let position = vector_int2(x: Int32(coordination.0), y: Int32(coordination.1))
-        let node = GKGridGraphNode(gridPosition: position)
-
-        var nodes: [GKGridGraphNode?] = []
-        nodes.append(gridGraph.node(atGridPosition: vector_int2(x: position.x + 1, y: position.y)) ?? nil)
-        nodes.append(gridGraph.node(atGridPosition: vector_int2(x: position.x - 1, y: position.y)) ?? nil)
-        nodes.append(gridGraph.node(atGridPosition: vector_int2(x: position.x, y: position.y + 1)) ?? nil)
-        nodes.append(gridGraph.node(atGridPosition: vector_int2(x: position.x, y: position.y - 1)) ?? nil)
-
-        
-        for _node in nodes {
-            guard let _node = _node else {return}
-            node.addConnections(to: [_node], bidirectional: true)
-        }
-        gridGraph.add([node])
     }
+    
+    func prohibitWalkingInObstacleGraph(on coordinate: (Int, Int)) {
+        let obstacleSprite = SKSpriteNode(color: .red, size: CGSize(width: 0.5, height: 0.5))
+        obstacleSprite.name = "\(coordinate)"
+        obstacleSprite.position = CGPoint(x: CGFloat(coordinate.0) * 0.5, y: CGFloat(coordinate.1) * 0.5)
+        let obstaclePolygon = SKNode.obstacles(fromNodeBounds: [obstacleSprite])
+        obstacleGraph.addObstacles(obstaclePolygon)
+    }
+    
+    
 }
 
 
