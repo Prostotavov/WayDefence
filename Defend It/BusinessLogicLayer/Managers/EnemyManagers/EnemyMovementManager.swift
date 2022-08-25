@@ -35,10 +35,11 @@ class EnemyMovementManager: EnemyMovementManagerInput {
         if enemiesState == .inactive {return}
         
         for enemy in enemies {
-            
+            if !enemy.isActive {continue}
             let path = EnemyPathManager.shared.calculatePath(for: enemy)
             enemy.setPath(path)
             
+            // all path actions
             var actions: [SCNAction] = []
             
             for i in 0...enemy.path.count {
@@ -48,39 +49,30 @@ class EnemyMovementManager: EnemyMovementManagerInput {
                     break
                 }
                 
-                let different = SCNVector3(x: enemy.path[i].x - enemy.path[i + 1].x,
-                                           y: enemy.path[i].y - enemy.path[i + 1].y,
-                                           z: enemy.path[i].z - enemy.path[i + 1].z)
-                
+                let different = SCNVector3(x: enemy.path[i + 1].x - enemy.path[i].x,
+                                           y: enemy.path[i + 1].y - enemy.path[i].y,
+                                           z: enemy.path[i + 1].z - enemy.path[i].z)
+                // create rotate action
                 var angle: Double = 0
-                
-                if abs(different.x) < 0.01 && different.z < 0 {
+                if abs(different.x) < 0 || different.z < 0 {
                     angle = atan(Double(different.x/different.z)) + 3.14
                 } else {
                     angle = atan(Double(different.x/different.z))
                 }
-               
-                
                 let rotationAction = SCNAction.rotateTo(x: 0, y: angle, z: 0, duration: 0.5, usesShortestUnitArc: true)
                 
-                
-                
+                // create displacement action
                 let distance = pow(pow(different.x, 2) + pow(different.y, 2) + pow(different.z, 2), 0.5)
-                
                 let duration = distance / Float(enemy.speed) * 20
-                
                 let displacementAction = SCNAction.move(to: enemy.path[i + 1], duration: TimeInterval(duration))
                 
-                
+                // create group of actions
                 let stepAction = SCNAction.group([rotationAction, displacementAction])
-                
-                
                 actions.append(stepAction)
             }
             let sequenceActions = SCNAction.sequence(actions)
             enemy.enemyNode.runAction(sequenceActions)
         }
-        
     }
     
     private func activateEnemies(enemies: Set<AnyEnemy>) {

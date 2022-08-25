@@ -90,11 +90,6 @@ extension EnemyPathManager {
         sprite2.position = CGPoint(x: -0.5, y: -0.5)                  // right
         sprite3.position = CGPoint(x: -0.5, y: borderLength - 1)       // right
         
-        print("0. \(sprite0.frame)")
-        print("1. \(sprite1.frame)")
-        print("2. \(sprite2.frame)")
-        print("3. \(sprite3.frame)")
-        
         /// create and setup graph -start-
         let obstacleSpriteNodes: [SKSpriteNode] = [sprite0, sprite1, sprite2, sprite3]
         let polygonObstacles: [GKPolygonObstacle] = SKNode.obstacles(fromNodeBounds: obstacleSpriteNodes)
@@ -113,7 +108,6 @@ extension EnemyPathManager {
     
     func prohibitWalkingInObstacleGraph(on coordinate: (Int, Int)) {
         let obstacleSprite = SKSpriteNode(color: .red, size: CGSize(width: 0.5, height: 0.5))
-        obstacleSprite.name = "\(coordinate)"
         obstacleSprite.position = CGPoint(x: CGFloat(coordinate.0) * 0.5, y: CGFloat(coordinate.1) * 0.5)
         let obstaclePolygon = SKNode.obstacles(fromNodeBounds: [obstacleSprite])
         obstacleGraph.addObstacles(obstaclePolygon)
