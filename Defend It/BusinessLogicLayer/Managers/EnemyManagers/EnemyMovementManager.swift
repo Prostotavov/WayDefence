@@ -19,7 +19,6 @@ protocol EnemyMovementManagerInput: AnyObject {
 
 class EnemyMovementManager: EnemyMovementManagerInput {
     
-    private var pathCounter: Int = 0
     private var intervalCounter: Int!
     private var intervalBetweenEnemies: Int!
     private var enemiesState: EnemiesStates = .inactive
@@ -34,36 +33,45 @@ class EnemyMovementManager: EnemyMovementManagerInput {
     
     private func runEnemies(enemies: Set<AnyEnemy>) {
         if enemiesState == .inactive {return}
+        
         for enemy in enemies {
+            if !enemy.isActive {continue}
             let path = EnemyPathManager.shared.calculatePath(for: enemy)
             enemy.setPath(path)
-            EnemyRotationManager.rotate(enemy: enemy)
-        }
-    }
-    
-    private func runOneSquare(_ enemy: AnyEnemy, to location: SCNVector3) {
-        var duration: TimeInterval
-        if pathCounter == 0 {
-            duration = getDurationForStepAfterBuilding(for: enemy)
-        } else {
-            duration = Converter.toTimeInterval(from: enemy.speed)
-        }
-        enemy.counter += Converter.toCounter(from: duration)
-        let action = SCNAction.move(to: location, duration: duration)
-        enemy.enemyNode.removeAllActions()
-        enemy.enemyNode.runAction(action)
-    }
-    
-    private func getDurationForStepAfterBuilding<T: Enemy>(for enemy: T) -> TimeInterval {
-        let distination = Converter.toDistination(between: enemy.enemyNode.position, and: enemy.path.first!)
-        let defaultDuration = Converter.toTimeInterval(from: enemy.speed)
-        return  TimeInterval(defaultDuration * distination / 0.5)
-    }
-    
-    
-    private func resetEnemyCounter(enemies: Set<AnyEnemy>) {
-        for enemy in enemies {
-            enemy.counter = 0
+            
+            // all path actions
+            var actions: [SCNAction] = []
+            
+            for i in 0...enemy.path.count {
+                
+                if i == enemy.path.count - 1 {break}
+                if enemy.path.isEmpty {
+                    break
+                }
+                
+                let different = SCNVector3(x: enemy.path[i + 1].x - enemy.path[i].x,
+                                           y: enemy.path[i + 1].y - enemy.path[i].y,
+                                           z: enemy.path[i + 1].z - enemy.path[i].z)
+                // create rotate action
+                var angle: Double = 0
+                if abs(different.x) < 0 || different.z < 0 {
+                    angle = atan(Double(different.x/different.z)) + 3.14
+                } else {
+                    angle = atan(Double(different.x/different.z))
+                }
+                let rotationAction = SCNAction.rotateTo(x: 0, y: angle, z: 0, duration: 0.5, usesShortestUnitArc: true)
+                
+                // create displacement action
+                let distance = pow(pow(different.x, 2) + pow(different.y, 2) + pow(different.z, 2), 0.5)
+                let duration = distance / Float(enemy.speed) * 20
+                let displacementAction = SCNAction.move(to: enemy.path[i + 1], duration: TimeInterval(duration))
+                
+                // create group of actions
+                let stepAction = SCNAction.group([rotationAction, displacementAction])
+                actions.append(stepAction)
+            }
+            let sequenceActions = SCNAction.sequence(actions)
+            enemy.enemyNode.runAction(sequenceActions)
         }
     }
     
@@ -74,9 +82,7 @@ class EnemyMovementManager: EnemyMovementManagerInput {
                     enemy.isActive = true
                     output.addNodeToScene(enemy.enemyNode)
                     intervalCounter = 0
-                    resetEnemyCounter(enemies: enemies)
-                    pathCounter = 0
-                    runEnemies(enemies: enemies)
+                    runEnemies(enemies: [enemy])
                     return
                 }
             }
@@ -100,43 +106,17 @@ extension EnemyMovementManager {
     }
     
     private func updateCounter(enemies: Set<AnyEnemy>) {
-        
         if enemiesState == .inactive {return}
         intervalCounter += 1
         activateEnemies(enemies: enemies)
-        
-        // MARK: biggest bad practice in my code
-        if pathCounter%5 == 0 { runEnemies(enemies: enemies)}
-        
-        for enemy in enemies {
-            if !enemy.isActive {continue}
-            if pathCounter == enemy.counter {
-                if enemy.path.isEmpty {
-                    output.enemyReachedCastle(enemy: enemy)
-                    continue
-                }
-                let location = enemy.path.first!
-                runOneSquare(enemy, to: location)
-                enemy.path.removeFirst()
-            }
-        }
-        pathCounter += 1
-        // MARK: bad practice
-        if pathCounter >= 99999 {
-            pathCounter = 0
-        }
     }
     
     private func runByNewPath(enemies: Set<AnyEnemy>) {
-        resetEnemyCounter(enemies: enemies)
-        pathCounter = 0
         runEnemies(enemies: enemies)
     }
     
     private func stopAllEnemies(enemies: Set<AnyEnemy>) {
         enemiesState = .inactive
-        resetEnemyCounter(enemies: enemies)
-        pathCounter = 0
         _ = enemies.map{$0.enemyNode.removeAllActions()
             EnemyAnimationManager.stopAnimation(for: $0)
         }
@@ -147,8 +127,6 @@ extension EnemyMovementManager {
             EnemyAnimationManager.resumeAnimation(for: $0)
         }
         enemiesState = .active
-        resetEnemyCounter(enemies: enemies)
-        pathCounter = 0
         runEnemies(enemies: enemies)
     }
     

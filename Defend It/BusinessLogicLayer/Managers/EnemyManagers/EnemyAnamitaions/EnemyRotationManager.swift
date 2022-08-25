@@ -10,12 +10,7 @@ import SceneKit
 struct EnemyRotationManager {
     
     static func rotate(enemy: AnyEnemy) {
-        
-        let angle45 = 3.14/4
-        let angle90 = 3.14/2
-        let angle180 = 3.14
-        
-        
+                
         let currentX = enemy.enemyNode.position.x
         let currentZ = enemy.enemyNode.position.z
         
@@ -27,14 +22,7 @@ struct EnemyRotationManager {
         let difX = targerX - currentX
         let difZ = targerZ - currentZ
         
-        
-        
-        let currentAngle = enemy.enemyNode.eulerAngles.y
         let targetAngle = calculateAngle(difX: difX, difZ: difZ)
-        
-        let float = 0.1
-        let rotateBy = SCNAction.rotateBy(x: 0, y: float, z: 0, duration: 0.4)
-        
         
         let action = SCNAction.rotateTo(x: 0, y: targetAngle, z: 0, duration: 0.4)
         enemy.enemyNode.runAction(action)

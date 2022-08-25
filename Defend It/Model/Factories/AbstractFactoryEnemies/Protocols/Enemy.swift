@@ -34,7 +34,6 @@ class AnyEnemy: Enemy {
     var pointsMurderReward: Int
     
     // adding vars
-    var counter: Int
     var isActive: Bool
     var currentHealthPoints: CGFloat
     
@@ -50,16 +49,11 @@ class AnyEnemy: Enemy {
         pointsMurderReward = object.pointsMurderReward
         // adding vars
         currentHealthPoints = object.healthPoints
-        counter = 0
         isActive = false
     }
     
     func setPath(_ path: [SCNVector3]) {
         self.path = path
-    }
-    
-    func removeFirstStep() {
-        path.removeFirst()
     }
     
     static func == (lhs: AnyEnemy, rhs: AnyEnemy) -> Bool {
