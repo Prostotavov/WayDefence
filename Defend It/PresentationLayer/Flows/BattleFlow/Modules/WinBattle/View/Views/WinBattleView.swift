@@ -11,7 +11,7 @@ protocol WinBattleViewDelegate: AnyObject {
     func goToHomePagePressed()
 }
 
-class WinBattleView: UIView {
+class WinBattleView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
     
     let startButtonHeight: CGFloat = 50
     let startButtonWidth: CGFloat = 300
@@ -22,6 +22,7 @@ class WinBattleView: UIView {
     var startButton = UIButton()
     var statusLabel = UILabel()
     var rewardLabel = UILabel()
+    var collectionView: UICollectionView?
     
     weak var delegate: WinBattleViewDelegate!
     
@@ -31,11 +32,43 @@ class WinBattleView: UIView {
         setStartButton()
         setStatusLabel()
         setRewardLabel()
+        setCollectionView()
         startButton.addTarget(self, action: #selector(goToHomePagePressed), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    func setCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        guard let collectionView = collectionView else {return}
+        collectionView.register(EquipmentCell.self, forCellWithReuseIdentifier: EquipmentCell.identifier)
+        
+        self.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            collectionView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            collectionView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 100),
+            collectionView.heightAnchor.constraint(equalToConstant: 200),
+            collectionView.widthAnchor.constraint(equalToConstant: 300)
+        ])
+        
+        collectionView.backgroundColor = .yellow
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EquipmentCell.identifier, for: indexPath)
+        return cell
     }
     
     func setStatusLabel() {
@@ -64,7 +97,7 @@ class WinBattleView: UIView {
         
         NSLayoutConstraint.activate([
             rewardLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            rewardLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            rewardLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -70),
             rewardLabel.heightAnchor.constraint(equalToConstant: statusLabelHeight),
             rewardLabel.widthAnchor.constraint(equalToConstant: statusLabelWidth)
         ])
@@ -82,7 +115,7 @@ class WinBattleView: UIView {
         
         NSLayoutConstraint.activate([
             startButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            startButton.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 100),
+            startButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -50),
             startButton.heightAnchor.constraint(equalToConstant: startButtonHeight),
             startButton.widthAnchor.constraint(equalToConstant: startButtonWidth)
         ])

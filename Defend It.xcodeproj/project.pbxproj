@@ -113,6 +113,7 @@
 		877F105328906BB800571F26 /* BattleMapInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F104928906BB700571F26 /* BattleMapInteractorInput.swift */; };
 		878DDC97287AB62100B37154 /* EconomicBattleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC96287AB62100B37154 /* EconomicBattleValues.swift */; };
 		878DDC9C287B85CC00B37154 /* LoadBattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */; };
+		879292BC28BD0D53003309FB /* EquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292BA28BD0D53003309FB /* EquipmentCell.swift */; };
 		8797F77928A5C16D000D776E /* BattleMissionsEnemiesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F77828A5C16D000D776E /* BattleMissionsEnemiesData.swift */; };
 		8797F78828A7195C000D776E /* EnemiesManager_Iterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F78728A7195C000D776E /* EnemiesManager_Iterator.swift */; };
 		8797F78C28A7B23B000D776E /* EnemyWaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F78B28A7B23B000D776E /* EnemyWaveManager.swift */; };
@@ -349,6 +350,7 @@
 		877F104928906BB700571F26 /* BattleMapInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapInteractorInput.swift; sourceTree = "<group>"; };
 		878DDC96287AB62100B37154 /* EconomicBattleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomicBattleValues.swift; sourceTree = "<group>"; };
 		878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBattleViewController.swift; sourceTree = "<group>"; };
+		879292BA28BD0D53003309FB /* EquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCell.swift; sourceTree = "<group>"; };
 		8797F77828A5C16D000D776E /* BattleMissionsEnemiesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionsEnemiesData.swift; sourceTree = "<group>"; };
 		8797F78728A7195C000D776E /* EnemiesManager_Iterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesManager_Iterator.swift; sourceTree = "<group>"; };
 		8797F78B28A7B23B000D776E /* EnemyWaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyWaveManager.swift; sourceTree = "<group>"; };
@@ -620,6 +622,7 @@
 		870B6797288E8FB00089D3CB /* ReuseableComponents */ = {
 			isa = PBXGroup;
 			children = (
+				879292B928BD0D24003309FB /* EquipmentCell */,
 				8797F79828ABD4D2000D776E /* UIKitCanvas */,
 				87425E44289B2BD1000BF422 /* SCNProgressBar */,
 				870B679E288E903A0089D3CB /* FlowNavigationController */,
@@ -1129,6 +1132,14 @@
 				87E12871289514A5006CEF02 /* CurrentBattle.swift */,
 			);
 			path = DataManagers;
+			sourceTree = "<group>";
+		};
+		879292B928BD0D24003309FB /* EquipmentCell */ = {
+			isa = PBXGroup;
+			children = (
+				879292BA28BD0D53003309FB /* EquipmentCell.swift */,
+			);
+			path = EquipmentCell;
 			sourceTree = "<group>";
 		};
 		8797F78E28A7D269000D776E /* BattleMissionsData */ = {
@@ -1738,6 +1749,7 @@
 				AA78024127E20B8E002C57E1 /* BattleFieldInteractorOutput.swift in Sources */,
 				AACC7BDF27FB2C5D0022384E /* WallFL.swift in Sources */,
 				8797F78C28A7B23B000D776E /* EnemyWaveManager.swift in Sources */,
+				879292BC28BD0D53003309FB /* EquipmentCell.swift in Sources */,
 				873F3F4C28A2D1D900BF7FF9 /* EnemyHealthBarManager.swift in Sources */,
 				870B67C6288ECA150089D3CB /* HomePageViewCoordinatorOutput.swift in Sources */,
 				877F105128906BB800571F26 /* BattleMapInteractorOutput.swift in Sources */,
