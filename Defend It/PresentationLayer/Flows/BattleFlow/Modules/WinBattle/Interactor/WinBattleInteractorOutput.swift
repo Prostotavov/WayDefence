@@ -8,5 +8,5 @@
 import Foundation
 
 protocol WinBattleInteractorOutput: AnyObject {
-    
+    func test(reward: EconomicAccountValues)
 }

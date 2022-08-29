@@ -23,9 +23,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         var rootController: UINavigationController {
             return window!.rootViewController as! UINavigationController
         }
+        // you can test your view here -start-
+        // example
+        // rootController.view = WinBattleView()
+        // you can test your view here -end-
         
+        // if you test view you need to comment this lines of code -start-
         applicationCoordinator = produceApplicationCoordinator(rootController: rootController)
         applicationCoordinator.start()
+        // if you test view you need to comment this lines of code -end-
+        
         window?.makeKeyAndVisible()
     }
     
