@@ -7,9 +7,25 @@
 
 import UIKit
 
-class EquipmentCell: UICollectionViewCell {
+enum ImageNames: String {
+    case arch = "arch"
+    case blade = "blade"
+    case hammer = "hammer"
+    case shield = "shield"
+    case diamond = "diamond"
+    case flask = "flask"
+    case money = "money"
+}
+
+protocol EquipmentCell: UICollectionViewCell {
+    func configure(image: ImageNames, text: String)
+}
+
+class EquipmentCellImp: UICollectionViewCell, EquipmentCell {
     
     static let identifier = "EquipmentCell"
+    private var label: UILabel?
+    private var imageView: UIImageView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,9 +37,24 @@ class EquipmentCell: UICollectionViewCell {
         setLabel(size: frame.size)
     }
     
-    func setLabel(size: CGSize) {
-        let label = UILabel()
-        
+    private func configureLabel(text: String) {
+        let strokeTextAttributes = [
+          NSAttributedString.Key.strokeColor : UIColor.black,
+          NSAttributedString.Key.foregroundColor : UIColor.white,
+          NSAttributedString.Key.strokeWidth : -4.0,
+          NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)]
+          as [NSAttributedString.Key : Any]
+
+        label?.attributedText = NSMutableAttributedString(string: text, attributes: strokeTextAttributes)
+    }
+    
+    private func configureImage(image: ImageNames) {
+        imageView?.image = UIImage(named: image.rawValue)
+    }
+    
+    private func setLabel(size: CGSize) {
+        label = UILabel()
+        guard let label = label else {return}
         self.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -31,16 +62,11 @@ class EquipmentCell: UICollectionViewCell {
             label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5),
             label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -7)
         ])
-        label.text = "10"
-        label.font = label.font.withSize(10)
-        label.textAlignment = .center
-        label.textColor = .white
     }
     
-    func setImage(size: CGSize) {
-        let image = UIImage(named: "arch")
-        let imageView = UIImageView(image: image)
-        
+    private func setImage(size: CGSize) {
+        imageView = UIImageView()
+        guard let imageView = imageView else {return}
         self.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -54,7 +80,7 @@ class EquipmentCell: UICollectionViewCell {
         imageView.sizeToFit()
     }
     
-    func firstBorder(size: CGSize) {
+    private func firstBorder(size: CGSize) {
         let rectangle = UIView(frame: .zero)
 
         self.addSubview(rectangle)
@@ -71,7 +97,7 @@ class EquipmentCell: UICollectionViewCell {
         rectangle.backgroundColor = .black
     }
     
-    func secondBorder(size: CGSize) {
+    private func secondBorder(size: CGSize) {
         let rectangle = UIView(frame: .zero)
         
         self.addSubview(rectangle)
@@ -88,7 +114,7 @@ class EquipmentCell: UICollectionViewCell {
         rectangle.backgroundColor = UIColor(red: 1, green: 0.9, blue: 0.7, alpha: 1)
     }
     
-    func thirdBorder(size: CGSize) {
+    private func thirdBorder(size: CGSize) {
         let rectangle = UIView(frame: .zero)
         
         self.addSubview(rectangle)
@@ -105,7 +131,7 @@ class EquipmentCell: UICollectionViewCell {
         rectangle.backgroundColor = UIColor(red: 0.2, green: 0.07, blue: 0, alpha: 1)
     }
     
-    func fourthBorder(size: CGSize) {
+    private func fourthBorder(size: CGSize) {
         let rectangle = UIView(frame: .zero)
         
         self.addSubview(rectangle)
@@ -124,5 +150,15 @@ class EquipmentCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    func configure(image: ImageNames, text: String) {
+        configureLabel(text: text)
+        configureImage(image: image)
+    }
+    
+    override func prepareForReuse() {
+        label = nil
+        imageView = nil
     }
 }

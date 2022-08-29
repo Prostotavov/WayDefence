@@ -22,7 +22,16 @@ class WinBattleView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
     var startButton = UIButton()
     var statusLabel = UILabel()
     var rewardLabel = UILabel()
+    
+    
+    let collectionViewHeight: CGFloat = 200
+    let collectionViewWidth: CGFloat = 300
     var collectionView: UICollectionView?
+    
+    let testArrayOfRewardItems: [(ImageNames, String)] = [
+        (ImageNames.blade, "1"), (ImageNames.arch, "2"), (ImageNames.hammer, "1"),
+        (ImageNames.diamond, "10"), (ImageNames.money, "175"), (ImageNames.flask, "7")
+    ]
     
     weak var delegate: WinBattleViewDelegate!
     
@@ -42,9 +51,13 @@ class WinBattleView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
     
     func setCollectionView() {
         let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: (collectionViewWidth / 5) - 1,
+                                 height: (collectionViewWidth / 5) - 1)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         guard let collectionView = collectionView else {return}
-        collectionView.register(EquipmentCell.self, forCellWithReuseIdentifier: EquipmentCell.identifier)
+        collectionView.register(EquipmentCellImp.self, forCellWithReuseIdentifier: EquipmentCellImp.identifier)
+        collectionView.contentInset = UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7, right: 7.0)
         
         self.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -52,8 +65,8 @@ class WinBattleView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
         NSLayoutConstraint.activate([
             collectionView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             collectionView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 100),
-            collectionView.heightAnchor.constraint(equalToConstant: 200),
-            collectionView.widthAnchor.constraint(equalToConstant: 300)
+            collectionView.heightAnchor.constraint(equalToConstant: collectionViewHeight),
+            collectionView.widthAnchor.constraint(equalToConstant: collectionViewWidth)
         ])
         
         collectionView.backgroundColor = .yellow
@@ -63,11 +76,16 @@ class WinBattleView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        testArrayOfRewardItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EquipmentCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EquipmentCellImp.identifier, for: indexPath) as! EquipmentCell
+        
+        let imageName = testArrayOfRewardItems[indexPath.row].0
+        let text = testArrayOfRewardItems[indexPath.row].1
+        
+        cell.configure(image: imageName, text: text)
         return cell
     }
     
