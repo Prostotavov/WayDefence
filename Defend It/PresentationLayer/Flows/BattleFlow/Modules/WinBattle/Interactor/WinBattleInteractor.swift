@@ -22,6 +22,9 @@ class WinBattleInteractor: WinBattleInteractorInput {
         UserImp.shared.gameAccount?.gameAccountValues?.increase(.points, by: reward.get(.points))
         UserImp.shared.gameAccount?.gameAccountValues?.increase(.coins, by: reward.get(.coins))
         UserImp.shared.gameAccount?.gameAccountValues?.increase(.gems, by: reward.get(.gems))
+        
+        let itemsReward = BattleMissionsRewardData.shared.getRewardForBattle(id: id).equipments
+        UserImp.shared.gameAccount?.equipmentBag?.addItems(items: itemsReward)
     }
     
 }
