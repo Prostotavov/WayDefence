@@ -10,4 +10,5 @@ import Foundation
 protocol HomePageViewOutput: AnyObject {
     
     func onStartBattle()
+    func onBagButton()
 }

@@ -67,6 +67,9 @@
 		873F6543289325DA00A67F43 /* FlowTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F6542289325DA00A67F43 /* FlowTabbarController.swift */; };
 		873F6545289325E900A67F43 /* FlowTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F6544289325E900A67F43 /* FlowTabbar.swift */; };
 		87425E46289B2BE4000BF422 /* SCNProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87425E45289B2BE4000BF422 /* SCNProgressBar.swift */; };
+		874F307228BE920700DA4051 /* BagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F307128BE920700DA4051 /* BagView.swift */; };
+		874F307428BE973C00DA4051 /* BagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F307328BE973C00DA4051 /* BagCollectionView.swift */; };
+		874F307528BE9D2C00DA4051 /* BagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0C928BE4865001D3E67 /* BagButton.swift */; };
 		8762BED428AD48B700005445 /* EnemyRotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762BED328AD48B700005445 /* EnemyRotationManager.swift */; };
 		8762BED828AD9B4900005445 /* EnemyAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762BED728AD9B4900005445 /* EnemyAnimationManager.swift */; };
 		877F0FE2288FF32400571F26 /* LoseBattleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FD5288FF32400571F26 /* LoseBattleAssembly.swift */; };
@@ -117,17 +120,51 @@
 		878DDC9C287B85CC00B37154 /* LoadBattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */; };
 		879292BC28BD0D53003309FB /* EquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292BA28BD0D53003309FB /* EquipmentCell.swift */; };
 		879292C028BD3BD8003309FB /* RewardsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292BF28BD3BD8003309FB /* RewardsCollectionView.swift */; };
+		879292C228BE20F9003309FB /* EquipmentBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292C128BE20F8003309FB /* EquipmentBag.swift */; };
+		879292CC28BE21DA003309FB /* AbstractFactoryEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292CB28BE21DA003309FB /* AbstractFactoryEquipment.swift */; };
+		879292CE28BE21F0003309FB /* ArchFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292CD28BE21F0003309FB /* ArchFactory.swift */; };
+		879292D028BE21FF003309FB /* HammerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292CF28BE21FF003309FB /* HammerFactory.swift */; };
+		879292D228BE220D003309FB /* BladeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292D128BE220D003309FB /* BladeFactory.swift */; };
+		879292D428BE2231003309FB /* ShieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292D328BE2231003309FB /* ShieldFactory.swift */; };
+		879292D628BE226A003309FB /* ArchFirstLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292D528BE226A003309FB /* ArchFirstLevel.swift */; };
+		879292D828BE227D003309FB /* HammerFirstLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292D728BE227D003309FB /* HammerFirstLevel.swift */; };
+		879292DA28BE2287003309FB /* BladeFirstLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292D928BE2287003309FB /* BladeFirstLevel.swift */; };
+		879292DC28BE2291003309FB /* ShieldFirstLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292DB28BE2291003309FB /* ShieldFirstLevel.swift */; };
+		879292DE28BE22A6003309FB /* ArchSecondLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292DD28BE22A6003309FB /* ArchSecondLevel.swift */; };
+		879292E028BE22AF003309FB /* ArchThirdLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292DF28BE22AF003309FB /* ArchThirdLevel.swift */; };
+		879292E228BE22CC003309FB /* ArchFourthLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292E128BE22CC003309FB /* ArchFourthLevel.swift */; };
+		879292E428BE2316003309FB /* HammerSecondLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292E328BE2316003309FB /* HammerSecondLevel.swift */; };
+		879292E628BE2323003309FB /* HammerThirdLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292E528BE2323003309FB /* HammerThirdLevel.swift */; };
+		879292E828BE232F003309FB /* HammerFourthLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292E728BE232F003309FB /* HammerFourthLevel.swift */; };
+		879292EA28BE233F003309FB /* BladeSecondLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292E928BE233F003309FB /* BladeSecondLevel.swift */; };
+		879292EC28BE234B003309FB /* BladeThirdLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292EB28BE234B003309FB /* BladeThirdLevel.swift */; };
+		879292EE28BE2357003309FB /* BladeFourthLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292ED28BE2357003309FB /* BladeFourthLevel.swift */; };
+		879292F028BE2368003309FB /* ShieldSecondLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292EF28BE2368003309FB /* ShieldSecondLevel.swift */; };
+		879292F228BE2373003309FB /* ShieldThirdLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292F128BE2373003309FB /* ShieldThirdLevel.swift */; };
+		879292F428BE237F003309FB /* ShieldFourthLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292F328BE237F003309FB /* ShieldFourthLevel.swift */; };
+		879292F628BE2390003309FB /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292F528BE2390003309FB /* Equipment.swift */; };
+		879292F828BE3050003309FB /* BattleReward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292F728BE3050003309FB /* BattleReward.swift */; };
+		879292FA28BE3305003309FB /* BattleMissionsRewardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292F928BE3305003309FB /* BattleMissionsRewardData.swift */; };
 		8797F77928A5C16D000D776E /* BattleMissionsEnemiesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F77828A5C16D000D776E /* BattleMissionsEnemiesData.swift */; };
 		8797F78828A7195C000D776E /* EnemiesManager_Iterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F78728A7195C000D776E /* EnemiesManager_Iterator.swift */; };
 		8797F78C28A7B23B000D776E /* EnemyWaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F78B28A7B23B000D776E /* EnemyWaveManager.swift */; };
 		8797F79028A7D280000D776E /* BattleMissionsMeadowData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F78F28A7D280000D776E /* BattleMissionsMeadowData.swift */; };
 		8797F79228A7D28D000D776E /* BattleMissionsValuesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F79128A7D28D000D776E /* BattleMissionsValuesData.swift */; };
-		8797F79428A7D311000D776E /* BattleMissionValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F79328A7D311000D776E /* BattleMissionValues.swift */; };
 		8797F79A28ABD4E5000D776E /* UIKitCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F79928ABD4E5000D776E /* UIKitCanvas.swift */; };
 		87B606C228790173003549AF /* BattleMeadowCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B606C128790173003549AF /* BattleMeadowCreator.swift */; };
 		87CA3D4F2828FBE0000F952F /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D4E2828FBE0000F952F /* TopBarView.swift */; };
 		87CA3D512829024C000F952F /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D502829024C000F952F /* BottomBarView.swift */; };
 		87CA3D5728294F17000F952F /* BattleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D5628294F17000F952F /* BattleManager.swift */; };
+		87D0E0DD28BE8C99001D3E67 /* BagAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0D028BE8C99001D3E67 /* BagAssembly.swift */; };
+		87D0E0DE28BE8C99001D3E67 /* BagAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0D128BE8C99001D3E67 /* BagAssemblyProtocol.swift */; };
+		87D0E0DF28BE8C99001D3E67 /* BagPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0D328BE8C99001D3E67 /* BagPresenter.swift */; };
+		87D0E0E028BE8C99001D3E67 /* BagViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0D528BE8C99001D3E67 /* BagViewOutput.swift */; };
+		87D0E0E128BE8C99001D3E67 /* BagViewCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0D628BE8C99001D3E67 /* BagViewCoordinatorOutput.swift */; };
+		87D0E0E228BE8C99001D3E67 /* BagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0D728BE8C99001D3E67 /* BagViewController.swift */; };
+		87D0E0E328BE8C99001D3E67 /* BagViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0D828BE8C99001D3E67 /* BagViewInput.swift */; };
+		87D0E0E428BE8C99001D3E67 /* BagInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0DA28BE8C99001D3E67 /* BagInteractor.swift */; };
+		87D0E0E528BE8C99001D3E67 /* BagInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0DB28BE8C99001D3E67 /* BagInteractorInput.swift */; };
+		87D0E0E628BE8C99001D3E67 /* BagInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0DC28BE8C99001D3E67 /* BagInteractorOutput.swift */; };
 		87D51618285CC1BD00E3D7B8 /* Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D51617285CC1BD00E3D7B8 /* Battle.swift */; };
 		87E1286428946515006CEF02 /* BattleMapScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1286328946515006CEF02 /* BattleMapScene.swift */; };
 		87E1286628946535006CEF02 /* BattleMapCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1286528946535006CEF02 /* BattleMapCamera.swift */; };
@@ -304,6 +341,8 @@
 		873F6542289325DA00A67F43 /* FlowTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarController.swift; sourceTree = "<group>"; };
 		873F6544289325E900A67F43 /* FlowTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbar.swift; sourceTree = "<group>"; };
 		87425E45289B2BE4000BF422 /* SCNProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNProgressBar.swift; sourceTree = "<group>"; };
+		874F307128BE920700DA4051 /* BagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagView.swift; sourceTree = "<group>"; };
+		874F307328BE973C00DA4051 /* BagCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagCollectionView.swift; sourceTree = "<group>"; };
 		8762BED328AD48B700005445 /* EnemyRotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyRotationManager.swift; sourceTree = "<group>"; };
 		8762BED728AD9B4900005445 /* EnemyAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyAnimationManager.swift; sourceTree = "<group>"; };
 		877F0FD5288FF32400571F26 /* LoseBattleAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseBattleAssembly.swift; sourceTree = "<group>"; };
@@ -354,17 +393,52 @@
 		878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBattleViewController.swift; sourceTree = "<group>"; };
 		879292BA28BD0D53003309FB /* EquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCell.swift; sourceTree = "<group>"; };
 		879292BF28BD3BD8003309FB /* RewardsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsCollectionView.swift; sourceTree = "<group>"; };
+		879292C128BE20F8003309FB /* EquipmentBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentBag.swift; sourceTree = "<group>"; };
+		879292CB28BE21DA003309FB /* AbstractFactoryEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractFactoryEquipment.swift; sourceTree = "<group>"; };
+		879292CD28BE21F0003309FB /* ArchFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchFactory.swift; sourceTree = "<group>"; };
+		879292CF28BE21FF003309FB /* HammerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HammerFactory.swift; sourceTree = "<group>"; };
+		879292D128BE220D003309FB /* BladeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BladeFactory.swift; sourceTree = "<group>"; };
+		879292D328BE2231003309FB /* ShieldFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldFactory.swift; sourceTree = "<group>"; };
+		879292D528BE226A003309FB /* ArchFirstLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchFirstLevel.swift; sourceTree = "<group>"; };
+		879292D728BE227D003309FB /* HammerFirstLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HammerFirstLevel.swift; sourceTree = "<group>"; };
+		879292D928BE2287003309FB /* BladeFirstLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BladeFirstLevel.swift; sourceTree = "<group>"; };
+		879292DB28BE2291003309FB /* ShieldFirstLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldFirstLevel.swift; sourceTree = "<group>"; };
+		879292DD28BE22A6003309FB /* ArchSecondLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchSecondLevel.swift; sourceTree = "<group>"; };
+		879292DF28BE22AF003309FB /* ArchThirdLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchThirdLevel.swift; sourceTree = "<group>"; };
+		879292E128BE22CC003309FB /* ArchFourthLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchFourthLevel.swift; sourceTree = "<group>"; };
+		879292E328BE2316003309FB /* HammerSecondLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HammerSecondLevel.swift; sourceTree = "<group>"; };
+		879292E528BE2323003309FB /* HammerThirdLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HammerThirdLevel.swift; sourceTree = "<group>"; };
+		879292E728BE232F003309FB /* HammerFourthLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HammerFourthLevel.swift; sourceTree = "<group>"; };
+		879292E928BE233F003309FB /* BladeSecondLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BladeSecondLevel.swift; sourceTree = "<group>"; };
+		879292EB28BE234B003309FB /* BladeThirdLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BladeThirdLevel.swift; sourceTree = "<group>"; };
+		879292ED28BE2357003309FB /* BladeFourthLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BladeFourthLevel.swift; sourceTree = "<group>"; };
+		879292EF28BE2368003309FB /* ShieldSecondLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldSecondLevel.swift; sourceTree = "<group>"; };
+		879292F128BE2373003309FB /* ShieldThirdLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldThirdLevel.swift; sourceTree = "<group>"; };
+		879292F328BE237F003309FB /* ShieldFourthLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldFourthLevel.swift; sourceTree = "<group>"; };
+		879292F528BE2390003309FB /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
+		879292F728BE3050003309FB /* BattleReward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleReward.swift; sourceTree = "<group>"; };
+		879292F928BE3305003309FB /* BattleMissionsRewardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionsRewardData.swift; sourceTree = "<group>"; };
 		8797F77828A5C16D000D776E /* BattleMissionsEnemiesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionsEnemiesData.swift; sourceTree = "<group>"; };
 		8797F78728A7195C000D776E /* EnemiesManager_Iterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesManager_Iterator.swift; sourceTree = "<group>"; };
 		8797F78B28A7B23B000D776E /* EnemyWaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyWaveManager.swift; sourceTree = "<group>"; };
 		8797F78F28A7D280000D776E /* BattleMissionsMeadowData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionsMeadowData.swift; sourceTree = "<group>"; };
 		8797F79128A7D28D000D776E /* BattleMissionsValuesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionsValuesData.swift; sourceTree = "<group>"; };
-		8797F79328A7D311000D776E /* BattleMissionValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionValues.swift; sourceTree = "<group>"; };
 		8797F79928ABD4E5000D776E /* UIKitCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitCanvas.swift; sourceTree = "<group>"; };
 		87B606C128790173003549AF /* BattleMeadowCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMeadowCreator.swift; sourceTree = "<group>"; };
 		87CA3D4E2828FBE0000F952F /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		87CA3D502829024C000F952F /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
 		87CA3D5628294F17000F952F /* BattleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleManager.swift; sourceTree = "<group>"; };
+		87D0E0C928BE4865001D3E67 /* BagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagButton.swift; sourceTree = "<group>"; };
+		87D0E0D028BE8C99001D3E67 /* BagAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagAssembly.swift; sourceTree = "<group>"; };
+		87D0E0D128BE8C99001D3E67 /* BagAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagAssemblyProtocol.swift; sourceTree = "<group>"; };
+		87D0E0D328BE8C99001D3E67 /* BagPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagPresenter.swift; sourceTree = "<group>"; };
+		87D0E0D528BE8C99001D3E67 /* BagViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagViewOutput.swift; sourceTree = "<group>"; };
+		87D0E0D628BE8C99001D3E67 /* BagViewCoordinatorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagViewCoordinatorOutput.swift; sourceTree = "<group>"; };
+		87D0E0D728BE8C99001D3E67 /* BagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagViewController.swift; sourceTree = "<group>"; };
+		87D0E0D828BE8C99001D3E67 /* BagViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagViewInput.swift; sourceTree = "<group>"; };
+		87D0E0DA28BE8C99001D3E67 /* BagInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagInteractor.swift; sourceTree = "<group>"; };
+		87D0E0DB28BE8C99001D3E67 /* BagInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagInteractorInput.swift; sourceTree = "<group>"; };
+		87D0E0DC28BE8C99001D3E67 /* BagInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagInteractorOutput.swift; sourceTree = "<group>"; };
 		87D51617285CC1BD00E3D7B8 /* Battle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle.swift; sourceTree = "<group>"; };
 		87E1286328946515006CEF02 /* BattleMapScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapScene.swift; sourceTree = "<group>"; };
 		87E1286528946535006CEF02 /* BattleMapCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapCamera.swift; sourceTree = "<group>"; };
@@ -492,7 +566,6 @@
 			children = (
 				AAFD65E927E4FFC500450C52 /* art.scnassets */,
 				AA7801BD27E200BA002C57E1 /* Assets.xcassets */,
-				8797F78E28A7D269000D776E /* BattleMissionsData */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -532,7 +605,6 @@
 				AA7801B427E200B6002C57E1 /* AppDelegate.swift */,
 				AA7801B627E200B6002C57E1 /* SceneDelegate.swift */,
 				AAE886D427EE112200CA4E5D /* Enums */,
-				878DDC99287ABE3800B37154 /* DataManagers */,
 				870B6769288E890E0089D3CB /* Utilities */,
 				870B6777288E8E2E0089D3CB /* Protocols */,
 				870B6780288E8E6B0089D3CB /* Coordinator */,
@@ -651,6 +723,7 @@
 		870B679A288E8FD40089D3CB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				87D0E0CE28BE8C99001D3E67 /* Bag */,
 				AA7801E727E20291002C57E1 /* HomePage */,
 			);
 			path = Modules;
@@ -746,6 +819,7 @@
 			isa = PBXGroup;
 			children = (
 				AA78022327E2043D002C57E1 /* HomePageView.swift */,
+				87D0E0C928BE4865001D3E67 /* BagButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -756,6 +830,7 @@
 				873F3F18289D6E9700BF7FF9 /* User.swift */,
 				873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */,
 				873F3F20289D742200BF7FF9 /* EconomicAccountValues.swift */,
+				879292C128BE20F8003309FB /* EquipmentBag.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -811,7 +886,10 @@
 		873F3F4928A2D1C300BF7FF9 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				873F3F4A28A2D1C800BF7FF9 /* EnemyManagers */,
+				875CB7DA283056F4003B4412 /* CamerasManager */,
+				AAE886E727EEFF9800CA4E5D /* MeadowManager */,
+				AAF4C9D227E8D98800D5B6F8 /* EnemiesManagers */,
+				AAF4C9D027E8D6D900D5B6F8 /* BuildingsManagers */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1137,14 +1215,6 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
-		878DDC99287ABE3800B37154 /* DataManagers */ = {
-			isa = PBXGroup;
-			children = (
-				87E12871289514A5006CEF02 /* CurrentBattle.swift */,
-			);
-			path = DataManagers;
-			sourceTree = "<group>";
-		};
 		879292B928BD0D24003309FB /* EquipmentCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1153,13 +1223,90 @@
 			path = EquipmentCell;
 			sourceTree = "<group>";
 		};
+		879292C328BE2133003309FB /* AbstractFactoryEquipment */ = {
+			isa = PBXGroup;
+			children = (
+				879292C428BE2161003309FB /* AbstractFactoryEquipment */,
+				879292C628BE217A003309FB /* FirstLevelEquipment */,
+				879292C728BE2186003309FB /* SecondLevelEquipment */,
+				879292C828BE218F003309FB /* ThirdLevelEquipment */,
+				879292C928BE2198003309FB /* FourthLevelEquipment */,
+				879292CA28BE21B0003309FB /* Protocol */,
+			);
+			path = AbstractFactoryEquipment;
+			sourceTree = "<group>";
+		};
+		879292C428BE2161003309FB /* AbstractFactoryEquipment */ = {
+			isa = PBXGroup;
+			children = (
+				879292CB28BE21DA003309FB /* AbstractFactoryEquipment.swift */,
+				879292CD28BE21F0003309FB /* ArchFactory.swift */,
+				879292CF28BE21FF003309FB /* HammerFactory.swift */,
+				879292D128BE220D003309FB /* BladeFactory.swift */,
+				879292D328BE2231003309FB /* ShieldFactory.swift */,
+			);
+			path = AbstractFactoryEquipment;
+			sourceTree = "<group>";
+		};
+		879292C628BE217A003309FB /* FirstLevelEquipment */ = {
+			isa = PBXGroup;
+			children = (
+				879292D528BE226A003309FB /* ArchFirstLevel.swift */,
+				879292D728BE227D003309FB /* HammerFirstLevel.swift */,
+				879292D928BE2287003309FB /* BladeFirstLevel.swift */,
+				879292DB28BE2291003309FB /* ShieldFirstLevel.swift */,
+			);
+			path = FirstLevelEquipment;
+			sourceTree = "<group>";
+		};
+		879292C728BE2186003309FB /* SecondLevelEquipment */ = {
+			isa = PBXGroup;
+			children = (
+				879292DD28BE22A6003309FB /* ArchSecondLevel.swift */,
+				879292E328BE2316003309FB /* HammerSecondLevel.swift */,
+				879292E928BE233F003309FB /* BladeSecondLevel.swift */,
+				879292EF28BE2368003309FB /* ShieldSecondLevel.swift */,
+			);
+			path = SecondLevelEquipment;
+			sourceTree = "<group>";
+		};
+		879292C828BE218F003309FB /* ThirdLevelEquipment */ = {
+			isa = PBXGroup;
+			children = (
+				879292DF28BE22AF003309FB /* ArchThirdLevel.swift */,
+				879292E528BE2323003309FB /* HammerThirdLevel.swift */,
+				879292EB28BE234B003309FB /* BladeThirdLevel.swift */,
+				879292F128BE2373003309FB /* ShieldThirdLevel.swift */,
+			);
+			path = ThirdLevelEquipment;
+			sourceTree = "<group>";
+		};
+		879292C928BE2198003309FB /* FourthLevelEquipment */ = {
+			isa = PBXGroup;
+			children = (
+				879292E128BE22CC003309FB /* ArchFourthLevel.swift */,
+				879292E728BE232F003309FB /* HammerFourthLevel.swift */,
+				879292ED28BE2357003309FB /* BladeFourthLevel.swift */,
+				879292F328BE237F003309FB /* ShieldFourthLevel.swift */,
+			);
+			path = FourthLevelEquipment;
+			sourceTree = "<group>";
+		};
+		879292CA28BE21B0003309FB /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				879292F528BE2390003309FB /* Equipment.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		8797F78E28A7D269000D776E /* BattleMissionsData */ = {
 			isa = PBXGroup;
 			children = (
 				8797F78F28A7D280000D776E /* BattleMissionsMeadowData.swift */,
 				8797F77828A5C16D000D776E /* BattleMissionsEnemiesData.swift */,
 				8797F79128A7D28D000D776E /* BattleMissionsValuesData.swift */,
-				8797F79328A7D311000D776E /* BattleMissionValues.swift */,
+				879292F928BE3305003309FB /* BattleMissionsRewardData.swift */,
 			);
 			path = BattleMissionsData;
 			sourceTree = "<group>";
@@ -1198,12 +1345,63 @@
 			path = BattleValuesManager;
 			sourceTree = "<group>";
 		};
-		87D51616285CC1AD00E3D7B8 /* Battle */ = {
+		87D0E0CE28BE8C99001D3E67 /* Bag */ = {
 			isa = PBXGroup;
 			children = (
-				87D51617285CC1BD00E3D7B8 /* Battle.swift */,
+				87D0E0CF28BE8C99001D3E67 /* Assembly */,
+				87D0E0D228BE8C99001D3E67 /* Presenter */,
+				87D0E0D428BE8C99001D3E67 /* View */,
+				87D0E0D928BE8C99001D3E67 /* Interactor */,
 			);
-			path = Battle;
+			path = Bag;
+			sourceTree = "<group>";
+		};
+		87D0E0CF28BE8C99001D3E67 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				87D0E0D028BE8C99001D3E67 /* BagAssembly.swift */,
+				87D0E0D128BE8C99001D3E67 /* BagAssemblyProtocol.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		87D0E0D228BE8C99001D3E67 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				87D0E0D328BE8C99001D3E67 /* BagPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		87D0E0D428BE8C99001D3E67 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				87D0E0D528BE8C99001D3E67 /* BagViewOutput.swift */,
+				87D0E0D628BE8C99001D3E67 /* BagViewCoordinatorOutput.swift */,
+				87D0E0D728BE8C99001D3E67 /* BagViewController.swift */,
+				87D0E0D828BE8C99001D3E67 /* BagViewInput.swift */,
+				87D0E0E728BE8D6B001D3E67 /* Views */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		87D0E0D928BE8C99001D3E67 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				87D0E0DA28BE8C99001D3E67 /* BagInteractor.swift */,
+				87D0E0DB28BE8C99001D3E67 /* BagInteractorInput.swift */,
+				87D0E0DC28BE8C99001D3E67 /* BagInteractorOutput.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		87D0E0E728BE8D6B001D3E67 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				874F307128BE920700DA4051 /* BagView.swift */,
+				874F307328BE973C00DA4051 /* BagCollectionView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		87E12867289468E0006CEF02 /* SpriteKit */ = {
@@ -1220,6 +1418,10 @@
 		87ECCC522878E7DA00E66C09 /* BattleMission */ = {
 			isa = PBXGroup;
 			children = (
+				87D51617285CC1BD00E3D7B8 /* Battle.swift */,
+				87CA3D5528294F09000F952F /* BattleValuesManager */,
+				87E12871289514A5006CEF02 /* CurrentBattle.swift */,
+				8797F78E28A7D269000D776E /* BattleMissionsData */,
 				87B606C02878FF9E003549AF /* BattleCreators */,
 				87ECCC5B2878E8D600E66C09 /* Battles */,
 			);
@@ -1229,8 +1431,10 @@
 		87ECCC5B2878E8D600E66C09 /* Battles */ = {
 			isa = PBXGroup;
 			children = (
+				87ECCC552878E84F00E66C09 /* BattleMissionFactory.swift */,
 				87EB0D33289ADB2F00375CA4 /* BattleMissions.swift */,
 				87ECCC572878E87400E66C09 /* BattleMission.swift */,
+				879292F728BE3050003309FB /* BattleReward.swift */,
 			);
 			path = Battles;
 			sourceTree = "<group>";
@@ -1373,7 +1577,6 @@
 		AA78022927E20B8D002C57E1 /* BattleField */ = {
 			isa = PBXGroup;
 			children = (
-				AAF4C9CF27E8D6D300D5B6F8 /* Managers */,
 				AA78022A27E20B8D002C57E1 /* Assembly */,
 				AA78022D27E20B8D002C57E1 /* Presenter */,
 				AA78022F27E20B8D002C57E1 /* View */,
@@ -1417,7 +1620,6 @@
 				AA78023627E20B8D002C57E1 /* BattleFieldInteractor.swift */,
 				AA78023427E20B8D002C57E1 /* BattleFieldInteractorInput.swift */,
 				AA78023527E20B8D002C57E1 /* BattleFieldInteractorOutput.swift */,
-				87D51616285CC1AD00E3D7B8 /* Battle */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -1463,7 +1665,7 @@
 		AAE886EF27EF2D6900CA4E5D /* Factories */ = {
 			isa = PBXGroup;
 			children = (
-				87ECCC552878E84F00E66C09 /* BattleMissionFactory.swift */,
+				879292C328BE2133003309FB /* AbstractFactoryEquipment */,
 				AAE886F027EF2D9200CA4E5D /* AbstractFactoryEnemies */,
 				AA0B68B627E5B8750078003D /* AbstractFactoryBuildings */,
 			);
@@ -1531,18 +1733,6 @@
 			path = ThirdLevelEnemies;
 			sourceTree = "<group>";
 		};
-		AAF4C9CF27E8D6D300D5B6F8 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				875CB7DA283056F4003B4412 /* CamerasManager */,
-				87CA3D5528294F09000F952F /* BattleValuesManager */,
-				AAE886E727EEFF9800CA4E5D /* MeadowManager */,
-				AAF4C9D227E8D98800D5B6F8 /* EnemiesManagers */,
-				AAF4C9D027E8D6D900D5B6F8 /* BuildingsManagers */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
 		AAF4C9D027E8D6D900D5B6F8 /* BuildingsManagers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1555,6 +1745,7 @@
 		AAF4C9D227E8D98800D5B6F8 /* EnemiesManagers */ = {
 			isa = PBXGroup;
 			children = (
+				873F3F4A28A2D1C800BF7FF9 /* EnemyManagers */,
 				AAF4C9D627E8D9E500D5B6F8 /* EnemiesManager.swift */,
 				8797F78728A7195C000D776E /* EnemiesManager_Iterator.swift */,
 				8711C629286FACA300E84876 /* EnemyWave.swift */,
@@ -1695,6 +1886,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				874F307528BE9D2C00DA4051 /* BagButton.swift in Sources */,
 				AAE8870927EF350F00CA4E5D /* GoblinTL.swift in Sources */,
 				873F3F21289D742200BF7FF9 /* EconomicAccountValues.swift in Sources */,
 				877F0FEB288FF32400571F26 /* LoseBattleInteractorInput.swift in Sources */,
@@ -1706,9 +1898,12 @@
 				AA78024027E20B8E002C57E1 /* BattleFieldInteractorInput.swift in Sources */,
 				873F3F33289E6B9B00BF7FF9 /* FlowTabbarViewInput.swift in Sources */,
 				AA0B68CA27E5BDF10078003D /* MagicTowerSL.swift in Sources */,
+				879292DE28BE22A6003309FB /* ArchSecondLevel.swift in Sources */,
 				873F3F31289E6B8A00BF7FF9 /* FlowTabbarInteractor.swift in Sources */,
+				879292E028BE22AF003309FB /* ArchThirdLevel.swift in Sources */,
 				870B67C3288E98880089D3CB /* FlowFactoryImp.swift in Sources */,
 				877F0FE2288FF32400571F26 /* LoseBattleAssembly.swift in Sources */,
+				879292EE28BE2357003309FB /* BladeFourthLevel.swift in Sources */,
 				8797F79028A7D280000D776E /* BattleMissionsMeadowData.swift in Sources */,
 				AA7801FB27E20291002C57E1 /* HomePageViewInput.swift in Sources */,
 				877F100D2890083F00571F26 /* WinBattleInteractor.swift in Sources */,
@@ -1716,28 +1911,35 @@
 				AA0B68C627E5BD1E0078003D /* MagicTowerFL.swift in Sources */,
 				870B67AF288E963E0089D3CB /* LoadBattleInteractorInput.swift in Sources */,
 				877F0FE8288FF32400571F26 /* LoseBattleViewOutput.swift in Sources */,
+				879292D828BE227D003309FB /* HammerFirstLevel.swift in Sources */,
 				87425E46289B2BE4000BF422 /* SCNProgressBar.swift in Sources */,
 				873F3F37289E6BC000BF7FF9 /* FlowTabbarAssembly.swift in Sources */,
 				AAE886F527EF2EDC00CA4E5D /* OrcFactory.swift in Sources */,
 				AA0B68C227E5BB150078003D /* ElphTowerFactory.swift in Sources */,
+				879292D428BE2231003309FB /* ShieldFactory.swift in Sources */,
 				87CA3D4F2828FBE0000F952F /* TopBarView.swift in Sources */,
 				870B6782288E8E790089D3CB /* ApplicationCoordinator.swift in Sources */,
 				AACC7BD627FB01F10022384E /* BuildingIconPlaces.swift in Sources */,
+				879292D228BE220D003309FB /* BladeFactory.swift in Sources */,
 				870B67AB288E95390089D3CB /* LoadBattleViewOutput.swift in Sources */,
 				877F0FE6288FF32400571F26 /* LoseBattleViewInput.swift in Sources */,
 				873F3F1D289D6F8E00BF7FF9 /* GameAccount.swift in Sources */,
 				AACC7BF127FB66B20022384E /* BuildingNodes.swift in Sources */,
 				8797F79228A7D28D000D776E /* BattleMissionsValuesData.swift in Sources */,
 				878DDC97287AB62100B37154 /* EconomicBattleValues.swift in Sources */,
+				87D0E0E028BE8C99001D3E67 /* BagViewOutput.swift in Sources */,
 				877F0FE5288FF32400571F26 /* LoseBattleViewCoordinatorOutput.swift in Sources */,
 				873F3F1F289D72E300BF7FF9 /* EconomicAccountValueTypes.swift in Sources */,
 				870B677B288E8E4C0089D3CB /* DeepLinkOption.swift in Sources */,
+				874F307228BE920700DA4051 /* BagView.swift in Sources */,
 				AACC7BDB27FB28200022384E /* ElphTowerTL.swift in Sources */,
 				877F1025289025EE00571F26 /* PauseBattlePresenter.swift in Sources */,
 				877F1029289025EE00571F26 /* PauseBattleViewInput.swift in Sources */,
 				87CA3D5728294F17000F952F /* BattleManager.swift in Sources */,
+				879292F628BE2390003309FB /* Equipment.swift in Sources */,
 				877F102B289025EE00571F26 /* PauseBattleInteractorInput.swift in Sources */,
 				877F1027289025EE00571F26 /* PauseBattleViewCoordinatorOutput.swift in Sources */,
+				87D0E0E628BE8C99001D3E67 /* BagInteractorOutput.swift in Sources */,
 				870B67B1288E964B0089D3CB /* LoadBattleInteractorOutput.swift in Sources */,
 				870B6786288E8EF60089D3CB /* Router.swift in Sources */,
 				877F0FE4288FF32400571F26 /* LoseBattlePresenter.swift in Sources */,
@@ -1748,12 +1950,14 @@
 				AA78024127E20B8E002C57E1 /* BattleFieldInteractorOutput.swift in Sources */,
 				AACC7BDF27FB2C5D0022384E /* WallFL.swift in Sources */,
 				8797F78C28A7B23B000D776E /* EnemyWaveManager.swift in Sources */,
+				879292F028BE2368003309FB /* ShieldSecondLevel.swift in Sources */,
 				879292BC28BD0D53003309FB /* EquipmentCell.swift in Sources */,
 				873F3F4C28A2D1D900BF7FF9 /* EnemyHealthBarManager.swift in Sources */,
 				870B67C6288ECA150089D3CB /* HomePageViewCoordinatorOutput.swift in Sources */,
 				877F105128906BB800571F26 /* BattleMapInteractorOutput.swift in Sources */,
 				877F10092890083F00571F26 /* WinBattleViewCoordinatorOutput.swift in Sources */,
 				873F3F2F289E6B8300BF7FF9 /* FlowTabbarInteractorInput.swift in Sources */,
+				879292EA28BE233F003309FB /* BladeSecondLevel.swift in Sources */,
 				87E1286628946535006CEF02 /* BattleMapCamera.swift in Sources */,
 				AAF4C9DD27E8E6A200D5B6F8 /* GroundSquare.swift in Sources */,
 				AACC7BE527FB2C940022384E /* WallSL.swift in Sources */,
@@ -1764,9 +1968,11 @@
 				877F102F2890262B00571F26 /* PauseBattleView.swift in Sources */,
 				877F10062890083F00571F26 /* WinBattleAssemblyProtocol.swift in Sources */,
 				8797F77928A5C16D000D776E /* BattleMissionsEnemiesData.swift in Sources */,
+				879292F828BE3050003309FB /* BattleReward.swift in Sources */,
 				87E1286428946515006CEF02 /* BattleMapScene.swift in Sources */,
 				873F6545289325E900A67F43 /* FlowTabbar.swift in Sources */,
 				877F0FEA288FF32400571F26 /* LoseBattleInteractor.swift in Sources */,
+				879292F228BE2373003309FB /* ShieldThirdLevel.swift in Sources */,
 				870B676B288E892A0089D3CB /* WeakPropertyWrapper.swift in Sources */,
 				AA7801FE27E20291002C57E1 /* HomePageInteractor.swift in Sources */,
 				870B6788288E8F030089D3CB /* RouterImp.swift in Sources */,
@@ -1791,18 +1997,23 @@
 				AA7801F827E20291002C57E1 /* HomePageAssemblyProtocol.swift in Sources */,
 				877F10052890083F00571F26 /* WinBattleAssembly.swift in Sources */,
 				870B67D0288FC6460089D3CB /* MainFlowFactory.swift in Sources */,
+				87D0E0E428BE8C99001D3E67 /* BagInteractor.swift in Sources */,
 				AA78024227E20B8E002C57E1 /* BattleFieldInteractor.swift in Sources */,
+				87D0E0E528BE8C99001D3E67 /* BagInteractorInput.swift in Sources */,
 				877F0FF3288FFBBB00571F26 /* BattleFieldViewCoordinatorOutput.swift in Sources */,
 				AA78022427E2043D002C57E1 /* HomePageView.swift in Sources */,
 				873F653D2893258F00A67F43 /* TabbarCoordinatorOutput.swift in Sources */,
+				87D0E0E228BE8C99001D3E67 /* BagViewController.swift in Sources */,
 				873F653F289325A900A67F43 /* TabbarCoordinator.swift in Sources */,
 				870B676F288E896B0089D3CB /* Extensions.swift in Sources */,
 				AAE8870F27EF35FC00CA4E5D /* TrollSL.swift in Sources */,
+				879292E828BE232F003309FB /* HammerFourthLevel.swift in Sources */,
 				870B67C1288E97F20089D3CB /* BattleCoordinator.swift in Sources */,
 				AAE886EB27EEFF9800CA4E5D /* MeadowManager.swift in Sources */,
 				AA0B68CC27E5BDFD0078003D /* ElphTowerSL.swift in Sources */,
 				AA7801FA27E20291002C57E1 /* HomePagePresenter.swift in Sources */,
 				AA7801B527E200B6002C57E1 /* AppDelegate.swift in Sources */,
+				879292EC28BE234B003309FB /* BladeThirdLevel.swift in Sources */,
 				AAE886F327EF2DC500CA4E5D /* AbstractFactoryEnemies.swift in Sources */,
 				870B676D288E89560089D3CB /* TestFunctions.swift in Sources */,
 				87FE431928994B6A002DFCEA /* SceneCameraConverter.swift in Sources */,
@@ -1810,34 +2021,43 @@
 				87CA3D512829024C000F952F /* BottomBarView.swift in Sources */,
 				AAE886EA27EEFF9800CA4E5D /* BattleMeadow.swift in Sources */,
 				8711C62A286FACA300E84876 /* EnemyWave.swift in Sources */,
+				87D0E0E328BE8C99001D3E67 /* BagViewInput.swift in Sources */,
 				8797F78828A7195C000D776E /* EnemiesManager_Iterator.swift in Sources */,
 				877F100E2890083F00571F26 /* WinBattleInteractorOutput.swift in Sources */,
 				879292C028BD3BD8003309FB /* RewardsCollectionView.swift in Sources */,
 				877F104B28906BB800571F26 /* BattleMapAssemblyProtocol.swift in Sources */,
 				AA78020027E20291002C57E1 /* HomePageInteractorOutput.swift in Sources */,
 				AAE886F827EF30B300CA4E5D /* OrcFL.swift in Sources */,
+				87D0E0DE28BE8C99001D3E67 /* BagAssemblyProtocol.swift in Sources */,
+				879292C228BE20F9003309FB /* EquipmentBag.swift in Sources */,
+				874F307428BE973C00DA4051 /* BagCollectionView.swift in Sources */,
 				877F104A28906BB800571F26 /* BattleMapAssembly.swift in Sources */,
 				870B67A0288E90470089D3CB /* FlowNavigationController.swift in Sources */,
 				AA7801FC27E20291002C57E1 /* HomePageViewOutput.swift in Sources */,
+				879292CE28BE21F0003309FB /* ArchFactory.swift in Sources */,
+				879292FA28BE3305003309FB /* BattleMissionsRewardData.swift in Sources */,
 				AAE8870D27EF35F400CA4E5D /* TrollFL.swift in Sources */,
 				AA0B68C427E5BC140078003D /* Building.swift in Sources */,
+				879292CC28BE21DA003309FB /* AbstractFactoryEquipment.swift in Sources */,
 				AA78023B27E20B8E002C57E1 /* BattleFieldAssemblyProtocol.swift in Sources */,
 				877F10072890083F00571F26 /* WinBattlePresenter.swift in Sources */,
 				870B67BB288E97290089D3CB /* LoadBattleAssembly.swift in Sources */,
 				AACC7BEF27FB36D30022384E /* BuiltTowers.swift in Sources */,
 				870B6793288E8F530089D3CB /* CoordinatorFactory.swift in Sources */,
 				873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */,
-				8797F79428A7D311000D776E /* BattleMissionValues.swift in Sources */,
 				877F105028906BB800571F26 /* BattleMapViewController.swift in Sources */,
 				870B677D288E8E540089D3CB /* Presentable.swift in Sources */,
 				AAE8870327EF342D00CA4E5D /* GoblinFactory.swift in Sources */,
 				AA0B68C827E5BDC20078003D /* ElphTowerFL.swift in Sources */,
+				87D0E0DF28BE8C99001D3E67 /* BagPresenter.swift in Sources */,
+				879292D028BE21FF003309FB /* HammerFactory.swift in Sources */,
 				AAE8871127EF360600CA4E5D /* TrollTL.swift in Sources */,
 				873F3F4E28A2D1FE00BF7FF9 /* EnemyPhysicsManager.swift in Sources */,
 				877F10112890089000571F26 /* WinBattleView.swift in Sources */,
 				AAE886D627EE115A00CA4E5D /* NodeNames.swift in Sources */,
 				AACC7BE727FB2C9B0022384E /* WallTL.swift in Sources */,
 				877F1024289025EE00571F26 /* PauseBattleAssemblyProtocol.swift in Sources */,
+				879292E228BE22CC003309FB /* ArchFourthLevel.swift in Sources */,
 				870B67AD288E95590089D3CB /* LoadBattleViewCoordinatorOutput.swift in Sources */,
 				AACC7BE927FB2CFF0022384E /* BallistaFactory.swift in Sources */,
 				870B6775288E8A450089D3CB /* Converter.swift in Sources */,
@@ -1858,8 +2078,10 @@
 				8711C628286F945500E84876 /* OneRaceWave.swift in Sources */,
 				AA7801B727E200B6002C57E1 /* SceneDelegate.swift in Sources */,
 				877F1023289025EE00571F26 /* PauseBattleAssembly.swift in Sources */,
+				879292F428BE237F003309FB /* ShieldFourthLevel.swift in Sources */,
 				877F100B2890083F00571F26 /* WinBattleViewInput.swift in Sources */,
 				8797F79A28ABD4E5000D776E /* UIKitCanvas.swift in Sources */,
+				879292D628BE226A003309FB /* ArchFirstLevel.swift in Sources */,
 				873F6541289325C900A67F43 /* FlowTabbarCoordinatorOutput.swift in Sources */,
 				873F3F2D289E6B7600BF7FF9 /* FlowTabbarInteractorOutput.swift in Sources */,
 				87ECCC562878E84F00E66C09 /* BattleMissionFactory.swift in Sources */,
@@ -1874,14 +2096,18 @@
 				877F102C289025EE00571F26 /* PauseBattleInteractor.swift in Sources */,
 				AAF4C9D727E8D9E500D5B6F8 /* EnemiesManager.swift in Sources */,
 				AAE886FF27EF33A600CA4E5D /* OrcSL.swift in Sources */,
+				87D0E0E128BE8C99001D3E67 /* BagViewCoordinatorOutput.swift in Sources */,
 				873F3F39289E6BCB00BF7FF9 /* FlowTabbarAssemblyProtocol.swift in Sources */,
+				879292DC28BE2291003309FB /* ShieldFirstLevel.swift in Sources */,
 				AACC7BD227FAE9CD0022384E /* BuildingIcons.swift in Sources */,
 				870B677F288E8E5F0089D3CB /* BaseCoordinator.swift in Sources */,
 				87ECCC582878E87400E66C09 /* BattleMission.swift in Sources */,
 				AA0B68D827E5FD7F0078003D /* TowerSelectionPanel.swift in Sources */,
 				873F3F5228A2E9FE00BF7FF9 /* EnemyMovementManager.swift in Sources */,
 				AAF4C9D927E8DA0300D5B6F8 /* BuildingsManager.swift in Sources */,
+				879292E428BE2316003309FB /* HammerSecondLevel.swift in Sources */,
 				877F104F28906BB800571F26 /* BattleMapViewOutput.swift in Sources */,
+				87D0E0DD28BE8C99001D3E67 /* BagAssembly.swift in Sources */,
 				AA78023E27E20B8E002C57E1 /* BattleFieldViewOutput.swift in Sources */,
 				877F0FEE288FF5DE00571F26 /* LoseBattleView.swift in Sources */,
 				AACC7BE127FB2C850022384E /* BallistaSL.swift in Sources */,
@@ -1891,6 +2117,8 @@
 				870B67B9288E96BD0089D3CB /* LoadBattlePresenter.swift in Sources */,
 				877F0FE7288FF32400571F26 /* LoseBattleViewController.swift in Sources */,
 				870B67BF288E97E50089D3CB /* BattleCoordinatorOutput.swift in Sources */,
+				879292DA28BE2287003309FB /* BladeFirstLevel.swift in Sources */,
+				879292E628BE2323003309FB /* HammerThirdLevel.swift in Sources */,
 				873F65352893235B00A67F43 /* BattleMapCoordinatorOutput.swift in Sources */,
 				8762BED828AD9B4900005445 /* EnemyAnimationManager.swift in Sources */,
 				AACC7BE327FB2C8C0022384E /* BallistaTL.swift in Sources */,

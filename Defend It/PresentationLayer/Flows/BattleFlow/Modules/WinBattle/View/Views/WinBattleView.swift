@@ -111,34 +111,3 @@ class WinBattleView: UIView {
     }
     
 }
-
-//MARK: -Canvas-
-
-import SwiftUI
-
-struct WinBattleCanvas: PreviewProvider {
-    static var previews: some View {
-        UIViewCanvas().edgesIgnoringSafeArea(.all)
-    }
-    
-    struct UIViewCanvas: UIViewRepresentable {
-        
-        func makeUIView(context: Context) -> some UIView {
-            return WinBattleView(frame: CGRect.zero)
-        }
-        
-        func updateUIView(_ uiView: UIViewType, context: Context) {
-        }
-    }
-    
-    struct UIViewControllerCanvas: UIViewControllerRepresentable {
-        
-        func makeUIViewController(context: Context) -> some UIViewController {
-            return WinBattleViewController()
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-            
-        }
-    }
-}

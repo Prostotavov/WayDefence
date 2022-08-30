@@ -17,4 +17,8 @@ class HomePagePresenter: HomePageViewOutput, HomePageInteractorOutput {
         coordinator.onStartBattle?()
     }
     
+    func onBagButton() {
+        coordinator.onBagButton?()
+    }
+    
 }

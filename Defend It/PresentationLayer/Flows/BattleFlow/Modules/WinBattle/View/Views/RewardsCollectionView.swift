@@ -13,14 +13,16 @@ class RewardsCollectionView: UIView, UICollectionViewDataSource, UICollectionVie
     let collectionViewWidth: CGFloat = 300
     var collectionView: UICollectionView?
     
-    let testArrayOfRewardItems: [(ImageNames, String)] = [
-        (ImageNames.blade, "1"), (ImageNames.arch, "2"), (ImageNames.hammer, "1"),
-        (ImageNames.diamond, "10"), (ImageNames.money, "175"), (ImageNames.flask, "7")
-    ]
+    var valuesReward: EconomicAccountValues!
+    var itemsReward: [(item: Equipment, quantity: Int)] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setCollectionView()
+        
+        let id = CurrentBattleImp.shared.chosenBattleMission
+        valuesReward = BattleMissionsRewardData.shared.getRewardForBattle(id: id).economicAccountVlues
+        itemsReward = BattleMissionsRewardData.shared.getRewardForBattle(id: id).equipments
 
     }
     
@@ -54,14 +56,33 @@ class RewardsCollectionView: UIView, UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        testArrayOfRewardItems.count
+        itemsReward.count + 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EquipmentCellImp.identifier, for: indexPath) as! EquipmentCell
         
-        let imageName = testArrayOfRewardItems[indexPath.row].0
-        let text = testArrayOfRewardItems[indexPath.row].1
+        // display money
+        if indexPath.row == 0 {
+            cell.configure(image: .money, text: String(valuesReward.get(.coins)))
+            return cell
+        }
+        
+        // display gems
+        if indexPath.row == 1 {
+            cell.configure(image: .diamond, text: String(valuesReward.get(.gems)))
+            return cell
+        }
+        
+        // display points
+        if indexPath.row == 2 {
+            cell.configure(image: .flask, text: String(valuesReward.get(.points)))
+            return cell
+        }
+        
+        // display equipments
+        let imageName = itemsReward[indexPath.row - 3].0.imageName
+        let text = String(itemsReward[indexPath.row - 3].1)
         
         cell.configure(image: imageName, text: text)
         return cell

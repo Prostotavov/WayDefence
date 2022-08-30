@@ -41,6 +41,10 @@ extension FlowFactoryImp: MainFlowFactory {
     func produceHomePageOutput() -> HomePageViewCoordinatorOutput {
         return HomePageViewController()
     }
+    
+    func produceBagOutput() -> BagViewCoordinatorOutput {
+        return BagViewController()
+    }
 }
 
 extension FlowFactoryImp: BattleMapFlowFactory {

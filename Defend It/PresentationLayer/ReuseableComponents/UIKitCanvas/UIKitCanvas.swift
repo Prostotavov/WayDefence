@@ -16,7 +16,7 @@ struct UIKitCanvas: PreviewProvider {
     struct UIViewCanvas: UIViewRepresentable {
         
         func makeUIView(context: Context) -> some UIView {
-            return WinBattleView(frame: CGRect.zero)
+            return HomePageView(frame: CGRect.zero)
         }
         
         func updateUIView(_ uiView: UIViewType, context: Context) {
@@ -26,7 +26,7 @@ struct UIKitCanvas: PreviewProvider {
     struct UIViewControllerCanvas: UIViewControllerRepresentable {
         
         func makeUIViewController(context: Context) -> some UIViewController {
-            return WinBattleViewController()
+            return BagViewController()
         }
         
         func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {

@@ -18,16 +18,14 @@ class WinBattleInteractor: WinBattleInteractorInput {
     
     func rewarded() {
         let id = CurrentBattleImp.shared.chosenBattleMission
-        let reward = BattleMissionsValuesData.shared.getMeadowForBattle(id: id).economicAccountReward
+        let reward = BattleMissionsRewardData.shared.getRewardForBattle(id: id).economicAccountVlues
         UserImp.shared.gameAccount?.gameAccountValues?.increase(.points, by: reward.get(.points))
         UserImp.shared.gameAccount?.gameAccountValues?.increase(.coins, by: reward.get(.coins))
         UserImp.shared.gameAccount?.gameAccountValues?.increase(.gems, by: reward.get(.gems))
+        
+        let itemsReward = BattleMissionsRewardData.shared.getRewardForBattle(id: id).equipments
+        UserImp.shared.gameAccount?.equipmentBag?.addItems(items: itemsReward)
     }
     
-    func test() {
-        let id = CurrentBattleImp.shared.chosenBattleMission
-        let reward = BattleMissionsValuesData.shared.getMeadowForBattle(id: id).economicAccountReward
-        output.test(reward: reward)
-    }
     
 }
