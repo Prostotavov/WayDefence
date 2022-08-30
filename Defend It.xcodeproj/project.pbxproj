@@ -152,6 +152,7 @@
 		87CA3D4F2828FBE0000F952F /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D4E2828FBE0000F952F /* TopBarView.swift */; };
 		87CA3D512829024C000F952F /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D502829024C000F952F /* BottomBarView.swift */; };
 		87CA3D5728294F17000F952F /* BattleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D5628294F17000F952F /* BattleManager.swift */; };
+		87D0E0CA28BE4865001D3E67 /* BagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0C928BE4865001D3E67 /* BagView.swift */; };
 		87D51618285CC1BD00E3D7B8 /* Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D51617285CC1BD00E3D7B8 /* Battle.swift */; };
 		87E1286428946515006CEF02 /* BattleMapScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1286328946515006CEF02 /* BattleMapScene.swift */; };
 		87E1286628946535006CEF02 /* BattleMapCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E1286528946535006CEF02 /* BattleMapCamera.swift */; };
@@ -413,6 +414,7 @@
 		87CA3D4E2828FBE0000F952F /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		87CA3D502829024C000F952F /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
 		87CA3D5628294F17000F952F /* BattleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleManager.swift; sourceTree = "<group>"; };
+		87D0E0C928BE4865001D3E67 /* BagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagView.swift; sourceTree = "<group>"; };
 		87D51617285CC1BD00E3D7B8 /* Battle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle.swift; sourceTree = "<group>"; };
 		87E1286328946515006CEF02 /* BattleMapScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapScene.swift; sourceTree = "<group>"; };
 		87E1286528946535006CEF02 /* BattleMapCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMapCamera.swift; sourceTree = "<group>"; };
@@ -851,6 +853,7 @@
 			isa = PBXGroup;
 			children = (
 				873F3F22289DBFA500BF7FF9 /* FlowNavigationBarView.swift */,
+				87D0E0C928BE4865001D3E67 /* BagView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1933,6 +1936,7 @@
 				877F104B28906BB800571F26 /* BattleMapAssemblyProtocol.swift in Sources */,
 				AA78020027E20291002C57E1 /* HomePageInteractorOutput.swift in Sources */,
 				AAE886F827EF30B300CA4E5D /* OrcFL.swift in Sources */,
+				87D0E0CA28BE4865001D3E67 /* BagView.swift in Sources */,
 				879292C228BE20F9003309FB /* EquipmentBag.swift in Sources */,
 				877F104A28906BB800571F26 /* BattleMapAssembly.swift in Sources */,
 				870B67A0288E90470089D3CB /* FlowNavigationController.swift in Sources */,
