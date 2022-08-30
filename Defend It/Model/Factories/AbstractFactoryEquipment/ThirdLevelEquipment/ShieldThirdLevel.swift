@@ -10,12 +10,14 @@ import Foundation
 struct ShieldThirdLevel: Equipment {
     
     var name: String
+    var imageName: EquipmentImageNames
     var type: EquipmentTypes
     var level: EquipmentLevels
     var parameter: EquipmentParameter
     
     init() {
         name = "ShieldThirdLevel"
+        imageName = .shield
         type = .shield
         level = .thirdLevel
         parameter = EquipmentParameter(

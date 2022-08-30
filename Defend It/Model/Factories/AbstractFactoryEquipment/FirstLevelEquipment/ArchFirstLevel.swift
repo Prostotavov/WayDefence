@@ -10,12 +10,14 @@ import Foundation
 struct ArchFirstLevel: Equipment {
     
     var name: String
+    var imageName: EquipmentImageNames
     var type: EquipmentTypes
     var level: EquipmentLevels
     var parameter: EquipmentParameter
     
     init() {
         name = "ArchFirstLevel"
+        imageName = .arch
         type = .arch
         level = .firstLevel
         parameter = EquipmentParameter(

@@ -13,9 +13,9 @@ class RewardsCollectionView: UIView, UICollectionViewDataSource, UICollectionVie
     let collectionViewWidth: CGFloat = 300
     var collectionView: UICollectionView?
     
-    let testArrayOfRewardItems: [(ImageNames, String)] = [
-        (ImageNames.blade, "1"), (ImageNames.arch, "2"), (ImageNames.hammer, "1"),
-        (ImageNames.diamond, "10"), (ImageNames.money, "175"), (ImageNames.flask, "7")
+    let testArrayOfRewardItems: [(EquipmentImageNames, String)] = [
+        (EquipmentImageNames.blade, "1"), (EquipmentImageNames.arch, "2"), (EquipmentImageNames.hammer, "1"),
+        (EquipmentImageNames.diamond, "10"), (EquipmentImageNames.money, "175"), (EquipmentImageNames.flask, "7")
     ]
     
     override init(frame: CGRect) {

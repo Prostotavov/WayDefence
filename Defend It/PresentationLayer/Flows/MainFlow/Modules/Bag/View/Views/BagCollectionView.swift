@@ -15,9 +15,9 @@ class BagCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDel
     let collectionViewWidth: CGFloat = 300
     var collectionView: UICollectionView?
     
-    let testArrayOfRewardItems: [(ImageNames, String)] = [
-        (ImageNames.blade, "1"), (ImageNames.arch, "2"), (ImageNames.hammer, "1"),
-        (ImageNames.diamond, "10"), (ImageNames.money, "175"), (ImageNames.flask, "7")
+    let testArrayOfRewardItems: [(EquipmentImageNames, String)] = [
+        (EquipmentImageNames.blade, "1"), (EquipmentImageNames.arch, "2"), (EquipmentImageNames.hammer, "1"),
+        (EquipmentImageNames.diamond, "10"), (EquipmentImageNames.money, "175"), (EquipmentImageNames.flask, "7")
     ]
     
     override init(frame: CGRect) {
@@ -55,14 +55,16 @@ class BagCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        testArrayOfRewardItems.count
+        guard let bagItems = UserImp.shared.gameAccount?.equipmentBag?.bagItems else {return 0}
+        return bagItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EquipmentCellImp.identifier, for: indexPath) as! EquipmentCell
+        guard let bagItems = UserImp.shared.gameAccount?.equipmentBag?.bagItems else {return cell}
         
-        let imageName = testArrayOfRewardItems[indexPath.row].0
-        let text = testArrayOfRewardItems[indexPath.row].1
+        let imageName = bagItems[indexPath.row].0.imageName
+        let text = String(bagItems[indexPath.row].1)
         
         cell.configure(image: imageName, text: text)
         return cell

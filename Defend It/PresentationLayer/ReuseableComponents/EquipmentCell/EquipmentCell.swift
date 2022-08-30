@@ -7,18 +7,10 @@
 
 import UIKit
 
-enum ImageNames: String {
-    case arch = "arch"
-    case blade = "blade"
-    case hammer = "hammer"
-    case shield = "shield"
-    case diamond = "diamond"
-    case flask = "flask"
-    case money = "money"
-}
+
 
 protocol EquipmentCell: UICollectionViewCell {
-    func configure(image: ImageNames, text: String)
+    func configure(image: EquipmentImageNames, text: String)
 }
 
 class EquipmentCellImp: UICollectionViewCell, EquipmentCell {
@@ -48,7 +40,7 @@ class EquipmentCellImp: UICollectionViewCell, EquipmentCell {
         label?.attributedText = NSMutableAttributedString(string: text, attributes: strokeTextAttributes)
     }
     
-    private func configureImage(image: ImageNames) {
+    private func configureImage(image: EquipmentImageNames) {
         imageView?.image = UIImage(named: image.rawValue)
     }
     
@@ -152,7 +144,7 @@ class EquipmentCellImp: UICollectionViewCell, EquipmentCell {
         super.init(coder: coder)
     }
     
-    func configure(image: ImageNames, text: String) {
+    func configure(image: EquipmentImageNames, text: String) {
         configureLabel(text: text)
         configureImage(image: image)
     }

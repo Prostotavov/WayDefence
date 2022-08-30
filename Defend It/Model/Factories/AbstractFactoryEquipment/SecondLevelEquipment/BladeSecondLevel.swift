@@ -10,12 +10,14 @@ import Foundation
 struct BladeSecondLevel: Equipment {
     
     var name: String
+    var imageName: EquipmentImageNames
     var type: EquipmentTypes
     var level: EquipmentLevels
     var parameter: EquipmentParameter
     
     init() {
         name = "BladeSecondLevel"
+        imageName = .blade
         type = .blade
         level = .secondLevel
         parameter = EquipmentParameter(

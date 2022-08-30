@@ -10,12 +10,14 @@ import Foundation
 struct HammerThirdLevel: Equipment {
     
     var name: String
+    var imageName: EquipmentImageNames
     var type: EquipmentTypes
     var level: EquipmentLevels
     var parameter: EquipmentParameter
     
     init() {
         name = "HammerThirdLevel"
+        imageName = .hammer
         type = .hammer
         level = .thirdLevel
         parameter = EquipmentParameter(

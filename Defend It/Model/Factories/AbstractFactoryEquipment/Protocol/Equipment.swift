@@ -22,6 +22,16 @@ enum EquipmentLevels: Int {
     
 }
 
+enum EquipmentImageNames: String {
+    case arch = "arch"
+    case blade = "blade"
+    case hammer = "hammer"
+    case shield = "shield"
+    case diamond = "diamond"
+    case flask = "flask"
+    case money = "money"
+}
+
 struct EquipmentParameter {
     var healthBonus: Int?
     var damageBonus: Int?
@@ -31,8 +41,8 @@ struct EquipmentParameter {
 }
 
 protocol Equipment {
-    
     var name: String {get set}
+    var imageName: EquipmentImageNames {get set}
     var type: EquipmentTypes {get set}
     var level: EquipmentLevels {get set}
     var parameter: EquipmentParameter {get set}
