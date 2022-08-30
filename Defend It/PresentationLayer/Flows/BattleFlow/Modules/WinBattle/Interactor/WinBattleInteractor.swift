@@ -27,4 +27,5 @@ class WinBattleInteractor: WinBattleInteractorInput {
         UserImp.shared.gameAccount?.equipmentBag?.addItems(items: itemsReward)
     }
     
+    
 }
