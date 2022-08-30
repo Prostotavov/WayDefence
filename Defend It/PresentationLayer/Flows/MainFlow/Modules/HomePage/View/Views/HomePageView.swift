@@ -52,3 +52,34 @@ class HomePageView: UIView {
     }
     
 }
+
+//MARK: -Canvas-
+
+import SwiftUI
+
+struct HomePageCanvas: PreviewProvider {
+    static var previews: some View {
+        UIViewCanvas().edgesIgnoringSafeArea(.all)
+    }
+    
+    struct UIViewCanvas: UIViewRepresentable {
+        
+        func makeUIView(context: Context) -> some UIView {
+            return HomePageView(frame: CGRect.zero)
+        }
+        
+        func updateUIView(_ uiView: UIViewType, context: Context) {
+        }
+    }
+    
+    struct UIViewControllerCanvas: UIViewControllerRepresentable {
+        
+        func makeUIViewController(context: Context) -> some UIViewController {
+            return HomePageViewController()
+        }
+        
+        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+            
+        }
+    }
+}

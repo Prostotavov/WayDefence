@@ -9,13 +9,16 @@ import Foundation
 
 protocol GameAccount: AnyObject {
     var gameAccountValues: EconomicAccountValues? {get}
+    var equipmentBag: EquipmentBag? {get set}
 }
 
 class GameAccountImp: GameAccount {
     var gameAccountValues: EconomicAccountValues?
+    var equipmentBag: EquipmentBag?
     
     init() {
         gameAccountValues = EconomicAccountValuesImp()
+        equipmentBag = EquipmentBagImp()
     }
 }
 
