@@ -16,14 +16,12 @@ class FlowTabbarController: UITabBarController , UITabBarControllerDelegate, Flo
     var onBattleMapFlow: ((UINavigationController) -> ())?
     
     var topBarView: FlowTabbarTopBarView!
-    var bagViewButton: BagViewButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
         assembler.assemblyModuleForViewInput(viewInput: self)
         setupTopBarView()
-        setupBagView()
         output.viewDidLoad()
     }
     
@@ -89,25 +87,5 @@ extension FlowTabbarController {
     
     func displayValue(of valueType: EconomicAccountValueTypes, to value: Int) {
         topBarView.displayValue(of: valueType, to: value)
-    }
-}
-
-// bag view
-extension FlowTabbarController {
-    func setupBagView() {
-        bagViewButton = BagViewButton()
-        view.addSubview(bagViewButton)
-        bagViewButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            bagViewButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
-            bagViewButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50)
-        ])
-        
-        bagViewButton.addTarget(self, action: #selector(bagViewButtonPressed), for: .touchUpInside)
-    }
-    
-    @objc func bagViewButtonPressed() {
-        print("Heeeeelllloooo")
     }
 }

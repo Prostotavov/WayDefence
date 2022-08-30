@@ -37,9 +37,22 @@ class MainCoordinator: BaseCoordinator , MainCoordinatorOutput {
             self?.finishFlow?()
         }
         
+        homePageOutput.onBagButton = { [weak self] in
+            self?.showBag()
+        }
+        
         router.setRootModule(homePageOutput, hideBar: true)
     }
     
-
+    private func showBag() {
+        let bagOutput = factory.produceBagOutput()
+        
+        bagOutput.onBack = { [weak self] in
+            self?.router.dismissModule(animated: false, completion: nil)
+        }
+        
+        
+        router.present(bagOutput, animated: false)
+    }
 
 }

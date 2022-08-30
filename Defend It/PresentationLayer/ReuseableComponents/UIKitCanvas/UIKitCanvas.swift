@@ -26,7 +26,7 @@ struct UIKitCanvas: PreviewProvider {
     struct UIViewControllerCanvas: UIViewControllerRepresentable {
         
         func makeUIViewController(context: Context) -> some UIViewController {
-            return FlowTabbarController()
+            return BagViewController()
         }
         
         func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {

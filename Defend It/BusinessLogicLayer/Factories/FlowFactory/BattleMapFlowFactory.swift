@@ -11,5 +11,4 @@ protocol BattleMapFlowFactory {
     
     func produceBattleMapOutput() -> BattleMapViewCoordinatorOutput
 
-
 }

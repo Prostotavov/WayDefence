@@ -1,5 +1,5 @@
 //
-//  BagView.swift
+//  BagButton.swift
 //  Defend It
 //
 //  Created by Роман Сенкевич on 30.08.22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BagViewButton: UIButton {
+class BagButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

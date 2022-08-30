@@ -13,6 +13,7 @@ class HomePageViewController: UIViewController, HomePageViewInput, HomePageViewD
     var assembler: HomePageAssemblyProtocol = HomePageAssembly()
     
     var onStartBattle: (() -> Void)?
+    var onBagButton: (() -> Void)?
     
     var homePageView = HomePageView()
     
@@ -28,6 +29,10 @@ class HomePageViewController: UIViewController, HomePageViewInput, HomePageViewD
     
     func startButtonPressed() {
         output.onStartBattle()
+    }
+    
+    func bagButtonPressed() {
+        output.onBagButton()
     }
     
 }

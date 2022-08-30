@@ -9,6 +9,7 @@ import UIKit
 
 protocol HomePageViewDelegate: AnyObject {
     func startButtonPressed()
+    func bagButtonPressed()
 }
 
 class HomePageView: UIView {
@@ -17,13 +18,15 @@ class HomePageView: UIView {
     let startButtonWidth: CGFloat = 130
     
     var startButton = UIButton()
+    var bagButton: BagButton!
+    
     weak var delegate: HomePageViewDelegate!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .gray
         setStartButton()
-        startButton.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
+        setupBagButton()
     }
     
     required init?(coder: NSCoder) {
@@ -45,10 +48,32 @@ class HomePageView: UIView {
         
         startButton.backgroundColor = .systemBlue
         startButton.setTitle("Start", for: .normal)
+        
+        startButton.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
     }
     
     @objc func startButtonPressed() {
         delegate.startButtonPressed()
     }
     
+}
+
+// bag view
+extension HomePageView {
+    func setupBagButton() {
+        bagButton = BagButton()
+        self.addSubview(bagButton)
+        bagButton.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            bagButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100),
+            bagButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -50)
+        ])
+
+        bagButton.addTarget(self, action: #selector(bagButtonPressed), for: .touchUpInside)
+    }
+
+    @objc func bagButtonPressed() {
+        delegate.bagButtonPressed()
+    }
 }

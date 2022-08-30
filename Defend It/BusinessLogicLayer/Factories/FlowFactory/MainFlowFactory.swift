@@ -10,5 +10,5 @@ import Foundation
 protocol MainFlowFactory {
     
     func produceHomePageOutput() -> HomePageViewCoordinatorOutput
-
+    func produceBagOutput() -> BagViewCoordinatorOutput
 }

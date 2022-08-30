@@ -10,4 +10,5 @@ import Foundation
 protocol HomePageViewCoordinatorOutput: Presentable {
     
     var onStartBattle: (() -> Void)? { get set }
+    var onBagButton: (() -> Void)? { get set }
 }
