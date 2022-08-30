@@ -140,6 +140,7 @@
 		879292F228BE2373003309FB /* ShieldThirdLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292F128BE2373003309FB /* ShieldThirdLevel.swift */; };
 		879292F428BE237F003309FB /* ShieldFourthLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292F328BE237F003309FB /* ShieldFourthLevel.swift */; };
 		879292F628BE2390003309FB /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292F528BE2390003309FB /* Equipment.swift */; };
+		879292F828BE3050003309FB /* BattleReward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292F728BE3050003309FB /* BattleReward.swift */; };
 		8797F77928A5C16D000D776E /* BattleMissionsEnemiesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F77828A5C16D000D776E /* BattleMissionsEnemiesData.swift */; };
 		8797F78828A7195C000D776E /* EnemiesManager_Iterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F78728A7195C000D776E /* EnemiesManager_Iterator.swift */; };
 		8797F78C28A7B23B000D776E /* EnemyWaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F78B28A7B23B000D776E /* EnemyWaveManager.swift */; };
@@ -400,6 +401,7 @@
 		879292F128BE2373003309FB /* ShieldThirdLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldThirdLevel.swift; sourceTree = "<group>"; };
 		879292F328BE237F003309FB /* ShieldFourthLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldFourthLevel.swift; sourceTree = "<group>"; };
 		879292F528BE2390003309FB /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
+		879292F728BE3050003309FB /* BattleReward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleReward.swift; sourceTree = "<group>"; };
 		8797F77828A5C16D000D776E /* BattleMissionsEnemiesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionsEnemiesData.swift; sourceTree = "<group>"; };
 		8797F78728A7195C000D776E /* EnemiesManager_Iterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesManager_Iterator.swift; sourceTree = "<group>"; };
 		8797F78B28A7B23B000D776E /* EnemyWaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyWaveManager.swift; sourceTree = "<group>"; };
@@ -538,7 +540,6 @@
 			children = (
 				AAFD65E927E4FFC500450C52 /* art.scnassets */,
 				AA7801BD27E200BA002C57E1 /* Assets.xcassets */,
-				8797F78E28A7D269000D776E /* BattleMissionsData */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -578,7 +579,6 @@
 				AA7801B427E200B6002C57E1 /* AppDelegate.swift */,
 				AA7801B627E200B6002C57E1 /* SceneDelegate.swift */,
 				AAE886D427EE112200CA4E5D /* Enums */,
-				878DDC99287ABE3800B37154 /* DataManagers */,
 				870B6769288E890E0089D3CB /* Utilities */,
 				870B6777288E8E2E0089D3CB /* Protocols */,
 				870B6780288E8E6B0089D3CB /* Coordinator */,
@@ -858,7 +858,10 @@
 		873F3F4928A2D1C300BF7FF9 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				873F3F4A28A2D1C800BF7FF9 /* EnemyManagers */,
+				875CB7DA283056F4003B4412 /* CamerasManager */,
+				AAE886E727EEFF9800CA4E5D /* MeadowManager */,
+				AAF4C9D227E8D98800D5B6F8 /* EnemiesManagers */,
+				AAF4C9D027E8D6D900D5B6F8 /* BuildingsManagers */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1184,14 +1187,6 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
-		878DDC99287ABE3800B37154 /* DataManagers */ = {
-			isa = PBXGroup;
-			children = (
-				87E12871289514A5006CEF02 /* CurrentBattle.swift */,
-			);
-			path = DataManagers;
-			sourceTree = "<group>";
-		};
 		879292B928BD0D24003309FB /* EquipmentCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1322,14 +1317,6 @@
 			path = BattleValuesManager;
 			sourceTree = "<group>";
 		};
-		87D51616285CC1AD00E3D7B8 /* Battle */ = {
-			isa = PBXGroup;
-			children = (
-				87D51617285CC1BD00E3D7B8 /* Battle.swift */,
-			);
-			path = Battle;
-			sourceTree = "<group>";
-		};
 		87E12867289468E0006CEF02 /* SpriteKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1344,6 +1331,10 @@
 		87ECCC522878E7DA00E66C09 /* BattleMission */ = {
 			isa = PBXGroup;
 			children = (
+				87D51617285CC1BD00E3D7B8 /* Battle.swift */,
+				87CA3D5528294F09000F952F /* BattleValuesManager */,
+				87E12871289514A5006CEF02 /* CurrentBattle.swift */,
+				8797F78E28A7D269000D776E /* BattleMissionsData */,
 				87B606C02878FF9E003549AF /* BattleCreators */,
 				87ECCC5B2878E8D600E66C09 /* Battles */,
 			);
@@ -1353,8 +1344,10 @@
 		87ECCC5B2878E8D600E66C09 /* Battles */ = {
 			isa = PBXGroup;
 			children = (
+				87ECCC552878E84F00E66C09 /* BattleMissionFactory.swift */,
 				87EB0D33289ADB2F00375CA4 /* BattleMissions.swift */,
 				87ECCC572878E87400E66C09 /* BattleMission.swift */,
+				879292F728BE3050003309FB /* BattleReward.swift */,
 			);
 			path = Battles;
 			sourceTree = "<group>";
@@ -1497,7 +1490,6 @@
 		AA78022927E20B8D002C57E1 /* BattleField */ = {
 			isa = PBXGroup;
 			children = (
-				AAF4C9CF27E8D6D300D5B6F8 /* Managers */,
 				AA78022A27E20B8D002C57E1 /* Assembly */,
 				AA78022D27E20B8D002C57E1 /* Presenter */,
 				AA78022F27E20B8D002C57E1 /* View */,
@@ -1541,7 +1533,6 @@
 				AA78023627E20B8D002C57E1 /* BattleFieldInteractor.swift */,
 				AA78023427E20B8D002C57E1 /* BattleFieldInteractorInput.swift */,
 				AA78023527E20B8D002C57E1 /* BattleFieldInteractorOutput.swift */,
-				87D51616285CC1AD00E3D7B8 /* Battle */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -1587,7 +1578,6 @@
 		AAE886EF27EF2D6900CA4E5D /* Factories */ = {
 			isa = PBXGroup;
 			children = (
-				87ECCC552878E84F00E66C09 /* BattleMissionFactory.swift */,
 				879292C328BE2133003309FB /* AbstractFactoryEquipment */,
 				AAE886F027EF2D9200CA4E5D /* AbstractFactoryEnemies */,
 				AA0B68B627E5B8750078003D /* AbstractFactoryBuildings */,
@@ -1656,18 +1646,6 @@
 			path = ThirdLevelEnemies;
 			sourceTree = "<group>";
 		};
-		AAF4C9CF27E8D6D300D5B6F8 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				875CB7DA283056F4003B4412 /* CamerasManager */,
-				87CA3D5528294F09000F952F /* BattleValuesManager */,
-				AAE886E727EEFF9800CA4E5D /* MeadowManager */,
-				AAF4C9D227E8D98800D5B6F8 /* EnemiesManagers */,
-				AAF4C9D027E8D6D900D5B6F8 /* BuildingsManagers */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
 		AAF4C9D027E8D6D900D5B6F8 /* BuildingsManagers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1680,6 +1658,7 @@
 		AAF4C9D227E8D98800D5B6F8 /* EnemiesManagers */ = {
 			isa = PBXGroup;
 			children = (
+				873F3F4A28A2D1C800BF7FF9 /* EnemyManagers */,
 				AAF4C9D627E8D9E500D5B6F8 /* EnemiesManager.swift */,
 				8797F78728A7195C000D776E /* EnemiesManager_Iterator.swift */,
 				8711C629286FACA300E84876 /* EnemyWave.swift */,
@@ -1898,6 +1877,7 @@
 				877F102F2890262B00571F26 /* PauseBattleView.swift in Sources */,
 				877F10062890083F00571F26 /* WinBattleAssemblyProtocol.swift in Sources */,
 				8797F77928A5C16D000D776E /* BattleMissionsEnemiesData.swift in Sources */,
+				879292F828BE3050003309FB /* BattleReward.swift in Sources */,
 				87E1286428946515006CEF02 /* BattleMapScene.swift in Sources */,
 				873F6545289325E900A67F43 /* FlowTabbar.swift in Sources */,
 				877F0FEA288FF32400571F26 /* LoseBattleInteractor.swift in Sources */,
