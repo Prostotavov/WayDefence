@@ -141,12 +141,12 @@
 		879292F428BE237F003309FB /* ShieldFourthLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292F328BE237F003309FB /* ShieldFourthLevel.swift */; };
 		879292F628BE2390003309FB /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292F528BE2390003309FB /* Equipment.swift */; };
 		879292F828BE3050003309FB /* BattleReward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292F728BE3050003309FB /* BattleReward.swift */; };
+		879292FA28BE3305003309FB /* BattleMissionsRewardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292F928BE3305003309FB /* BattleMissionsRewardData.swift */; };
 		8797F77928A5C16D000D776E /* BattleMissionsEnemiesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F77828A5C16D000D776E /* BattleMissionsEnemiesData.swift */; };
 		8797F78828A7195C000D776E /* EnemiesManager_Iterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F78728A7195C000D776E /* EnemiesManager_Iterator.swift */; };
 		8797F78C28A7B23B000D776E /* EnemyWaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F78B28A7B23B000D776E /* EnemyWaveManager.swift */; };
 		8797F79028A7D280000D776E /* BattleMissionsMeadowData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F78F28A7D280000D776E /* BattleMissionsMeadowData.swift */; };
 		8797F79228A7D28D000D776E /* BattleMissionsValuesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F79128A7D28D000D776E /* BattleMissionsValuesData.swift */; };
-		8797F79428A7D311000D776E /* BattleMissionValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F79328A7D311000D776E /* BattleMissionValues.swift */; };
 		8797F79A28ABD4E5000D776E /* UIKitCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F79928ABD4E5000D776E /* UIKitCanvas.swift */; };
 		87B606C228790173003549AF /* BattleMeadowCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B606C128790173003549AF /* BattleMeadowCreator.swift */; };
 		87CA3D4F2828FBE0000F952F /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D4E2828FBE0000F952F /* TopBarView.swift */; };
@@ -402,12 +402,12 @@
 		879292F328BE237F003309FB /* ShieldFourthLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldFourthLevel.swift; sourceTree = "<group>"; };
 		879292F528BE2390003309FB /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
 		879292F728BE3050003309FB /* BattleReward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleReward.swift; sourceTree = "<group>"; };
+		879292F928BE3305003309FB /* BattleMissionsRewardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionsRewardData.swift; sourceTree = "<group>"; };
 		8797F77828A5C16D000D776E /* BattleMissionsEnemiesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionsEnemiesData.swift; sourceTree = "<group>"; };
 		8797F78728A7195C000D776E /* EnemiesManager_Iterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesManager_Iterator.swift; sourceTree = "<group>"; };
 		8797F78B28A7B23B000D776E /* EnemyWaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyWaveManager.swift; sourceTree = "<group>"; };
 		8797F78F28A7D280000D776E /* BattleMissionsMeadowData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionsMeadowData.swift; sourceTree = "<group>"; };
 		8797F79128A7D28D000D776E /* BattleMissionsValuesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionsValuesData.swift; sourceTree = "<group>"; };
-		8797F79328A7D311000D776E /* BattleMissionValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMissionValues.swift; sourceTree = "<group>"; };
 		8797F79928ABD4E5000D776E /* UIKitCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitCanvas.swift; sourceTree = "<group>"; };
 		87B606C128790173003549AF /* BattleMeadowCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMeadowCreator.swift; sourceTree = "<group>"; };
 		87CA3D4E2828FBE0000F952F /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
@@ -1278,7 +1278,7 @@
 				8797F78F28A7D280000D776E /* BattleMissionsMeadowData.swift */,
 				8797F77828A5C16D000D776E /* BattleMissionsEnemiesData.swift */,
 				8797F79128A7D28D000D776E /* BattleMissionsValuesData.swift */,
-				8797F79328A7D311000D776E /* BattleMissionValues.swift */,
+				879292F928BE3305003309FB /* BattleMissionsRewardData.swift */,
 			);
 			path = BattleMissionsData;
 			sourceTree = "<group>";
@@ -1938,6 +1938,7 @@
 				870B67A0288E90470089D3CB /* FlowNavigationController.swift in Sources */,
 				AA7801FC27E20291002C57E1 /* HomePageViewOutput.swift in Sources */,
 				879292CE28BE21F0003309FB /* ArchFactory.swift in Sources */,
+				879292FA28BE3305003309FB /* BattleMissionsRewardData.swift in Sources */,
 				AAE8870D27EF35F400CA4E5D /* TrollFL.swift in Sources */,
 				AA0B68C427E5BC140078003D /* Building.swift in Sources */,
 				879292CC28BE21DA003309FB /* AbstractFactoryEquipment.swift in Sources */,
@@ -1947,7 +1948,6 @@
 				AACC7BEF27FB36D30022384E /* BuiltTowers.swift in Sources */,
 				870B6793288E8F530089D3CB /* CoordinatorFactory.swift in Sources */,
 				873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */,
-				8797F79428A7D311000D776E /* BattleMissionValues.swift in Sources */,
 				877F105028906BB800571F26 /* BattleMapViewController.swift in Sources */,
 				870B677D288E8E540089D3CB /* Presentable.swift in Sources */,
 				AAE8870327EF342D00CA4E5D /* GoblinFactory.swift in Sources */,

@@ -15,7 +15,8 @@ protocol BattleMission {
     
     var enemies: [EnemyWaveInput] {get set}
     var meadow: BattleMeadow {get set}
-    var battleValues: BattleMissionValues {get set}
+    var battleValues: EconomicBattleValues {get set}
+    var reward: BattleReward {get set}
 }
 
 class BattleMissionImp: BattleMission {
@@ -25,12 +26,14 @@ class BattleMissionImp: BattleMission {
 
     var enemies: [EnemyWaveInput]
     var meadow: BattleMeadow
-    var battleValues: BattleMissionValues
+    var battleValues: EconomicBattleValues
+    var reward: BattleReward
     
-    internal init(enemies: [EnemyWaveInput], meadow: BattleMeadow, battleValues: BattleMissionValues) {
+    internal init(enemies: [EnemyWaveInput], meadow: BattleMeadow, battleValues: EconomicBattleValues, reward: BattleReward) {
         self.meadow = meadow
         self.enemies = enemies
         self.battleValues = battleValues
+        self.reward = reward
         
         battleFieldSize = meadow.size
 

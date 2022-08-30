@@ -12,20 +12,20 @@ protocol BattleManagerDelegate: AnyObject {
 }
 
 protocol BattleManager {
-    var battleValues: BattleMissionValues! {get}
+    var battleValues: EconomicBattleValues! {get}
 }
 
 class BattleManagerImpl: BattleManager {
-    var battleValues: BattleMissionValues!
+    var battleValues: EconomicBattleValues!
     
     weak var delegate: BattleManagerDelegate!
     
-    init(battleValues: BattleMissionValues) {
+    init(battleValues: EconomicBattleValues) {
         self.battleValues = battleValues
     }
     
     func areLivesOver() -> Bool {
-        battleValues.economicBattleValues.get(.lives) <= 0
+        battleValues.get(.lives) <= 0
     }
 }
 

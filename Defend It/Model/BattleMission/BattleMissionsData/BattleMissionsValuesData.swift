@@ -11,7 +11,7 @@ struct BattleMissionsValuesData {
     
     static let shared = BattleMissionsValuesData()
     
-    func getMeadowForBattle(id: BattleMissions) -> BattleMissionValues {
+    func getMeadowForBattle(id: BattleMissions) -> EconomicBattleValues {
         switch id {
         case .first:
             return getValuesForBattle01()
@@ -28,33 +28,23 @@ struct BattleMissionsValuesData {
 }
 
 private extension BattleMissionsValuesData {
-    func getValuesForBattle01() -> BattleMissionValues {
-        BattleMissionValues(
-        economicBattleValues: EconomicBattleValuesImp(coins: 1500, points: 0, lives: 100),
-        economicAccountReward: EconomicAccountValuesImp(coins: 100, points: 150, gems: 10))
+    func getValuesForBattle01() -> EconomicBattleValues {
+        EconomicBattleValuesImp(coins: 1500, points: 0, lives: 100)
     }
     
-    func getValuesForBattle02() -> BattleMissionValues {
-        BattleMissionValues(
-        economicBattleValues: EconomicBattleValuesImp(coins: 750, points: 0, lives: 20),
-        economicAccountReward: EconomicAccountValuesImp(coins: 250, points: 350, gems: 15))
+    func getValuesForBattle02() -> EconomicBattleValues {
+        EconomicBattleValuesImp(coins: 750, points: 0, lives: 20)
     }
     
-    func getValuesForBattle03() -> BattleMissionValues {
-        BattleMissionValues(
-        economicBattleValues: EconomicBattleValuesImp(coins: 350, points: 0, lives: 30),
-        economicAccountReward: EconomicAccountValuesImp(coins: 400, points: 650, gems: 25))
+    func getValuesForBattle03() -> EconomicBattleValues {
+        EconomicBattleValuesImp(coins: 350, points: 0, lives: 30)
     }
     
-    func getValuesForBattle04() -> BattleMissionValues {
-        BattleMissionValues(
-        economicBattleValues: EconomicBattleValuesImp(coins: 450, points: 0, lives: 40),
-        economicAccountReward: EconomicAccountValuesImp(coins: 650, points: 950, gems: 35))
+    func getValuesForBattle04() -> EconomicBattleValues {
+        EconomicBattleValuesImp(coins: 450, points: 0, lives: 40)
     }
     
-    func getValuesForBattle05() -> BattleMissionValues {
-        BattleMissionValues(
-        economicBattleValues: EconomicBattleValuesImp(coins: 550, points: 0, lives: 50),
-        economicAccountReward: EconomicAccountValuesImp(coins: 800, points: 1500, gems: 50))
+    func getValuesForBattle05() -> EconomicBattleValues {
+        EconomicBattleValuesImp(coins: 550, points: 0, lives: 50)
     }
 }
