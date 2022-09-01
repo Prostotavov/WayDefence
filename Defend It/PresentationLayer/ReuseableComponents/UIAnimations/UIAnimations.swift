@@ -9,7 +9,15 @@ import UIKit
 
 struct UIAnimations {
     
+    
+    private static var counter: Int = 0
+    
     static func rapidIncreaseAndDecreaseAnimation(view: UIView) {
+        if counter == 0 {
+            counter += 1
+        } else {
+            return
+        }
         UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: .calculationModeLinear, animations: {
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.3) {
@@ -28,6 +36,7 @@ struct UIAnimations {
     }
     
     static func bagButtonSizeReductionAnimation(view: UIView) {
+        counter = 0
         UIView.animateKeyframes(withDuration: 0.2, delay: 0, options: .calculationModeLinear, animations: {
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {

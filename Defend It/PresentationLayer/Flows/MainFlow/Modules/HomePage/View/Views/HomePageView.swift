@@ -74,7 +74,7 @@ extension HomePageView {
         
         bagButton.addTarget(self, action: #selector(bagButtonSizeReductionAnimation), for: .touchDown)
         
-        bagButton.addTarget(self, action: #selector(rapidIncreaseAndDecreaseAnimation), for: .touchUpOutside)
+        bagButton.addTarget(self, action: #selector(rapidIncreaseAndDecreaseAnimation), for: .touchDragOutside)
     }
     
     @objc func rapidIncreaseAndDecreaseAnimation() {
