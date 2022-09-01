@@ -69,11 +69,26 @@ extension HomePageView {
             bagButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100),
             bagButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -50)
         ])
-
         bagButton.addTarget(self, action: #selector(bagButtonPressed), for: .touchUpInside)
+        
+        
+        bagButton.addTarget(self, action: #selector(bagButtonSizeReductionAnimation), for: .touchDown)
+        
+        bagButton.addTarget(self, action: #selector(rapidIncreaseAndDecreaseAnimation), for: .touchUpOutside)
+    }
+    
+    @objc func rapidIncreaseAndDecreaseAnimation() {
+        UIAnimations.rapidIncreaseAndDecreaseAnimation(view: bagButton)
+    }
+    
+    
+    @objc func bagButtonSizeReductionAnimation() {
+        UIAnimations.bagButtonSizeReductionAnimation(view: bagButton)
     }
 
     @objc func bagButtonPressed() {
+        rapidIncreaseAndDecreaseAnimation()
         delegate.bagButtonPressed()
     }
 }
+

@@ -67,6 +67,7 @@
 		873F6543289325DA00A67F43 /* FlowTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F6542289325DA00A67F43 /* FlowTabbarController.swift */; };
 		873F6545289325E900A67F43 /* FlowTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F6544289325E900A67F43 /* FlowTabbar.swift */; };
 		87425E46289B2BE4000BF422 /* SCNProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87425E45289B2BE4000BF422 /* SCNProgressBar.swift */; };
+		874A40EF28C03D0E006CD99D /* UIAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874A40EE28C03D0E006CD99D /* UIAnimations.swift */; };
 		874F307228BE920700DA4051 /* BagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F307128BE920700DA4051 /* BagView.swift */; };
 		874F307428BE973C00DA4051 /* BagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F307328BE973C00DA4051 /* BagCollectionView.swift */; };
 		874F307528BE9D2C00DA4051 /* BagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0C928BE4865001D3E67 /* BagButton.swift */; };
@@ -341,6 +342,7 @@
 		873F6542289325DA00A67F43 /* FlowTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbarController.swift; sourceTree = "<group>"; };
 		873F6544289325E900A67F43 /* FlowTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTabbar.swift; sourceTree = "<group>"; };
 		87425E45289B2BE4000BF422 /* SCNProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNProgressBar.swift; sourceTree = "<group>"; };
+		874A40EE28C03D0E006CD99D /* UIAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAnimations.swift; sourceTree = "<group>"; };
 		874F307128BE920700DA4051 /* BagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagView.swift; sourceTree = "<group>"; };
 		874F307328BE973C00DA4051 /* BagCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagCollectionView.swift; sourceTree = "<group>"; };
 		8762BED328AD48B700005445 /* EnemyRotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyRotationManager.swift; sourceTree = "<group>"; };
@@ -694,6 +696,7 @@
 		870B6797288E8FB00089D3CB /* ReuseableComponents */ = {
 			isa = PBXGroup;
 			children = (
+				874A40ED28C03D05006CD99D /* UIAnimations */,
 				879292B928BD0D24003309FB /* EquipmentCell */,
 				8797F79828ABD4D2000D776E /* UIKitCanvas */,
 				87425E44289B2BD1000BF422 /* SCNProgressBar */,
@@ -943,6 +946,14 @@
 				87425E45289B2BE4000BF422 /* SCNProgressBar.swift */,
 			);
 			path = SCNProgressBar;
+			sourceTree = "<group>";
+		};
+		874A40ED28C03D05006CD99D /* UIAnimations */ = {
+			isa = PBXGroup;
+			children = (
+				874A40EE28C03D0E006CD99D /* UIAnimations.swift */,
+			);
+			path = UIAnimations;
 			sourceTree = "<group>";
 		};
 		875CB7DA283056F4003B4412 /* CamerasManager */ = {
@@ -2034,6 +2045,7 @@
 				877F104A28906BB800571F26 /* BattleMapAssembly.swift in Sources */,
 				870B67A0288E90470089D3CB /* FlowNavigationController.swift in Sources */,
 				AA7801FC27E20291002C57E1 /* HomePageViewOutput.swift in Sources */,
+				874A40EF28C03D0E006CD99D /* UIAnimations.swift in Sources */,
 				879292CE28BE21F0003309FB /* ArchFactory.swift in Sources */,
 				879292FA28BE3305003309FB /* BattleMissionsRewardData.swift in Sources */,
 				AAE8870D27EF35F400CA4E5D /* TrollFL.swift in Sources */,

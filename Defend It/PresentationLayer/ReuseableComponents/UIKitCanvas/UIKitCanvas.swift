@@ -10,7 +10,7 @@ import SwiftUI
 
 struct UIKitCanvas: PreviewProvider {
     static var previews: some View {
-        UIViewControllerCanvas().edgesIgnoringSafeArea(.all)
+        UIViewCanvas().edgesIgnoringSafeArea(.all)
     }
     
     struct UIViewCanvas: UIViewRepresentable {

@@ -76,7 +76,6 @@ class BagView: UIView {
         let scaledImage = backImage.scalePreservingAspectRatio(targetSize: targetSize)
         
         backButton.setImage(scaledImage, for: .normal)
-        backButton.titleLabel?.text = "Back"
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
     }
     
