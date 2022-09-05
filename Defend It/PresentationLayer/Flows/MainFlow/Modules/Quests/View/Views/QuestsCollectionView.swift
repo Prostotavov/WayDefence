@@ -7,16 +7,13 @@
 
 import UIKit
 
-class QuestsCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
+class QuestsCollectionView: UIView, UITableViewDataSource, UITableViewDelegate {
+
     
-    let collectionViewHeight: CGFloat = 200
-    let collectionViewWidth: CGFloat = 300
-    var collectionView: UICollectionView?
+    var tableView: UITableView?
     
-    let testArrayOfRewardItems: [(EquipmentImageNames, String)] = [
-        (EquipmentImageNames.blade, "1"), (EquipmentImageNames.arch, "2"), (EquipmentImageNames.hammer, "1"),
-        (EquipmentImageNames.diamond, "10"), (EquipmentImageNames.money, "175"), (EquipmentImageNames.flask, "7")
-    ]
+    let testArrayOfRewardItems: [(String, String)] = [("press done button", "1 arch"), ("complete 1 mission", "2 arch"), ("complete 2 mission", "2 blade"), ("complete 3 mission", "4 hammer"), ("complete 4 mission", "7 points"),
+        ("complete 3 mission", "4 hammer"), ("complete 3 mission", "4 hammer"), ("complete 3 mission", "4 hammer")]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,44 +25,46 @@ class QuestsCollectionView: UIView, UICollectionViewDataSource, UICollectionView
     }
     
     func setCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: (collectionViewWidth / 5) - 1,
-                                 height: (collectionViewWidth / 5) - 1)
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        guard let collectionView = collectionView else {return}
-        collectionView.register(EquipmentCellImp.self, forCellWithReuseIdentifier: EquipmentCellImp.identifier)
-        collectionView.contentInset = UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7, right: 7.0)
+        tableView = UITableView(frame: .zero)
+        guard let tableView = tableView else {return}
+        tableView.register(QuestCellImp.self, forCellReuseIdentifier: QuestCellImp.identifier)
         
-        self.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            collectionView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            collectionView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 100),
-            collectionView.heightAnchor.constraint(equalToConstant: collectionViewHeight),
-            collectionView.widthAnchor.constraint(equalToConstant: collectionViewWidth)
+            tableView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            tableView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            tableView.heightAnchor.constraint(equalTo: self.heightAnchor),
+            tableView.widthAnchor.constraint(equalTo: self.widthAnchor)
         ])
         
-        collectionView.backgroundColor = .clear
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = false
+        
+        
+        tableView.backgroundColor = .green
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let bagItems = UserImp.shared.gameAccount?.equipmentBag?.bagItems else {return 0}
-        return bagItems.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EquipmentCellImp.identifier, for: indexPath) as! EquipmentCell
-        guard let bagItems = UserImp.shared.gameAccount?.equipmentBag?.bagItems else {return cell}
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let imageName = bagItems[indexPath.row].0.imageName
-        let text = String(bagItems[indexPath.row].1)
-        
-        cell.configure(image: imageName, text: text)
+        let cell = tableView.dequeueReusableCell(withIdentifier: QuestCellImp.identifier, for: indexPath) as! QuestCell
+        cell.backgroundColor = .white
+        cell.textLabel?.text = testArrayOfRewardItems[indexPath.row].0
+//        cell.configure(image: imageName, text: text)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        testArrayOfRewardItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
 

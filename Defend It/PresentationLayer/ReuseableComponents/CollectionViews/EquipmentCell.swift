@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 protocol EquipmentCell: UICollectionViewCell {
     func configure(image: EquipmentImageNames, text: String)
 }

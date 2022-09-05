@@ -52,6 +52,7 @@
 		871E00C828C64502001C1052 /* QuestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00C728C64502001C1052 /* QuestsView.swift */; };
 		871E00CA28C6451B001C1052 /* QuestsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00C928C6451B001C1052 /* QuestsCollectionView.swift */; };
 		871E00CC28C645AB001C1052 /* QuestsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00CB28C645AB001C1052 /* QuestsButton.swift */; };
+		871E00CE28C66F72001C1052 /* QuestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00CD28C66F72001C1052 /* QuestCell.swift */; };
 		873F3F19289D6E9700BF7FF9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F18289D6E9700BF7FF9 /* User.swift */; };
 		873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1A289D6EF400BF7FF9 /* UserSex.swift */; };
 		873F3F1D289D6F8E00BF7FF9 /* GameAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */; };
@@ -341,6 +342,7 @@
 		871E00C728C64502001C1052 /* QuestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsView.swift; sourceTree = "<group>"; };
 		871E00C928C6451B001C1052 /* QuestsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsCollectionView.swift; sourceTree = "<group>"; };
 		871E00CB28C645AB001C1052 /* QuestsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsButton.swift; sourceTree = "<group>"; };
+		871E00CD28C66F72001C1052 /* QuestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestCell.swift; sourceTree = "<group>"; };
 		873F3F18289D6E9700BF7FF9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		873F3F1A289D6EF400BF7FF9 /* UserSex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSex.swift; sourceTree = "<group>"; };
 		873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccount.swift; sourceTree = "<group>"; };
@@ -726,7 +728,7 @@
 			children = (
 				877DDC0328C21A3800C6ADFF /* CommonButtons */,
 				874A40ED28C03D05006CD99D /* UIAnimations */,
-				879292B928BD0D24003309FB /* EquipmentCell */,
+				879292B928BD0D24003309FB /* CollectionViews */,
 				8797F79828ABD4D2000D776E /* UIKitCanvas */,
 				87425E44289B2BD1000BF422 /* SCNProgressBar */,
 				870B679E288E903A0089D3CB /* FlowNavigationController */,
@@ -1324,12 +1326,13 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
-		879292B928BD0D24003309FB /* EquipmentCell */ = {
+		879292B928BD0D24003309FB /* CollectionViews */ = {
 			isa = PBXGroup;
 			children = (
 				879292BA28BD0D53003309FB /* EquipmentCell.swift */,
+				871E00CD28C66F72001C1052 /* QuestCell.swift */,
 			);
-			path = EquipmentCell;
+			path = CollectionViews;
 			sourceTree = "<group>";
 		};
 		879292C328BE2133003309FB /* AbstractFactoryEquipment */ = {
@@ -2078,6 +2081,7 @@
 				AACC7BE527FB2C940022384E /* WallSL.swift in Sources */,
 				AAE8870B27EF35AF00CA4E5D /* TrollFactory.swift in Sources */,
 				878DDC9C287B85CC00B37154 /* LoadBattleViewController.swift in Sources */,
+				871E00CE28C66F72001C1052 /* QuestCell.swift in Sources */,
 				873F3F5428A3B5E200BF7FF9 /* EnemyMovementManagerCommands.swift in Sources */,
 				870B67B3288E96590089D3CB /* LoadBattleInteractor.swift in Sources */,
 				877F102F2890262B00571F26 /* PauseBattleView.swift in Sources */,

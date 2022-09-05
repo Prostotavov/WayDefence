@@ -11,9 +11,9 @@ protocol QuestsViewDelegate: AnyObject {
     func backButtonPressed()
 }
 
-class QuestsView: UIView {
+class QuestsView: UIView, UITableViewDelegate {
 
-    let questsCollectionView = QuestsCollectionView()
+    var questsCollectionView: QuestsCollectionView!
     
     let mainView = UIView(frame: .zero)
     
@@ -50,13 +50,17 @@ class QuestsView: UIView {
     }
     
     func setCollectionView() {
+        questsCollectionView = QuestsCollectionView()
         self.addSubview(questsCollectionView)
         
         questsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             questsCollectionView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            questsCollectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 150)
+            questsCollectionView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            questsCollectionView.heightAnchor.constraint(equalToConstant: 350),
+            questsCollectionView.widthAnchor.constraint(equalToConstant: 285)
+
         ])
     }
     

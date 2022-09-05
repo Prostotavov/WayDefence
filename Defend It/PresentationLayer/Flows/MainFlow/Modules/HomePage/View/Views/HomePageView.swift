@@ -155,4 +155,3 @@ extension HomePageView {
         delegate.questsButtonPressed()
     }
 }
-
