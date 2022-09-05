@@ -17,7 +17,7 @@ class HomePageView: UIView {
     let startButtonHeight: CGFloat = 50
     let startButtonWidth: CGFloat = 130
     
-    var startButton = UIButton()
+    var startButton: RectangleButton!
     var bagButton: BagButton!
     
     weak var delegate: HomePageViewDelegate!
@@ -34,7 +34,9 @@ class HomePageView: UIView {
     }
     
     func setStartButton() {
-        
+        let size = CGSize(width: startButtonWidth, height: startButtonHeight)
+        let frame = CGRect(origin: .zero, size: size)
+        startButton = RectangleButton(frame: frame)
         self.addSubview(startButton)
         
         startButton.translatesAutoresizingMaskIntoConstraints = false
@@ -46,14 +48,30 @@ class HomePageView: UIView {
             startButton.widthAnchor.constraint(equalToConstant: startButtonWidth)
         ])
         
-        startButton.backgroundColor = .systemBlue
+        startButton.configure(size: size, colour: .green)
         startButton.setTitle("Start", for: .normal)
         
-        startButton.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
+        /// touch target
+        startButton.addTarget(self, action: #selector(startButtonTouchUpInside), for: .touchUpInside)
+        
+        startButton.addTarget(self, action: #selector(startButtonTouchDown), for: .touchDown)
+
+        startButton.addTarget(self, action: #selector(startButtonTouchDragExit), for: .touchDragExit)
+        
+
     }
     
-    @objc func startButtonPressed() {
+    @objc func startButtonTouchUpInside() {
+        UIAnimations.rapidIncreaseAndDecreaseAnimation(view: startButton)
         delegate.startButtonPressed()
+    }
+    
+    @objc func startButtonTouchDown() {
+        UIAnimations.bagButtonSizeReductionAnimation(view: startButton)
+    }
+    
+    @objc func startButtonTouchDragExit() {
+        UIAnimations.rapidIncreaseAndDecreaseAnimation(view: startButton)
     }
     
 }
@@ -61,16 +79,21 @@ class HomePageView: UIView {
 // bag view
 extension HomePageView {
     func setupBagButton() {
-        bagButton = BagButton()
+        let size = CGSize(width: 70, height: 70)
+        let frame = CGRect(origin: .zero, size: size)
+        bagButton = BagButton(frame: frame)
         self.addSubview(bagButton)
         bagButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             bagButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100),
-            bagButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -50)
+            bagButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -50),
+            bagButton.widthAnchor.constraint(equalToConstant: 70),
+            bagButton.heightAnchor.constraint(equalToConstant: 70)
         ])
-        bagButton.addTarget(self, action: #selector(bagButtonPressed), for: .touchUpInside)
         
+        
+        bagButton.addTarget(self, action: #selector(bagButtonPressed), for: .touchUpInside)
         
         bagButton.addTarget(self, action: #selector(bagButtonSizeReductionAnimation), for: .touchDown)
         

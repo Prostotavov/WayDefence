@@ -73,6 +73,7 @@
 		874F307528BE9D2C00DA4051 /* BagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0C928BE4865001D3E67 /* BagButton.swift */; };
 		8762BED428AD48B700005445 /* EnemyRotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762BED328AD48B700005445 /* EnemyRotationManager.swift */; };
 		8762BED828AD9B4900005445 /* EnemyAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762BED728AD9B4900005445 /* EnemyAnimationManager.swift */; };
+		877DDC0528C21A4900C6ADFF /* RectangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877DDC0428C21A4900C6ADFF /* RectangleButton.swift */; };
 		877F0FE2288FF32400571F26 /* LoseBattleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FD5288FF32400571F26 /* LoseBattleAssembly.swift */; };
 		877F0FE3288FF32400571F26 /* LoseBattleAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FD6288FF32400571F26 /* LoseBattleAssemblyProtocol.swift */; };
 		877F0FE4288FF32400571F26 /* LoseBattlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FD8288FF32400571F26 /* LoseBattlePresenter.swift */; };
@@ -347,6 +348,7 @@
 		874F307328BE973C00DA4051 /* BagCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagCollectionView.swift; sourceTree = "<group>"; };
 		8762BED328AD48B700005445 /* EnemyRotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyRotationManager.swift; sourceTree = "<group>"; };
 		8762BED728AD9B4900005445 /* EnemyAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyAnimationManager.swift; sourceTree = "<group>"; };
+		877DDC0428C21A4900C6ADFF /* RectangleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleButton.swift; sourceTree = "<group>"; };
 		877F0FD5288FF32400571F26 /* LoseBattleAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseBattleAssembly.swift; sourceTree = "<group>"; };
 		877F0FD6288FF32400571F26 /* LoseBattleAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseBattleAssemblyProtocol.swift; sourceTree = "<group>"; };
 		877F0FD8288FF32400571F26 /* LoseBattlePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseBattlePresenter.swift; sourceTree = "<group>"; };
@@ -696,6 +698,7 @@
 		870B6797288E8FB00089D3CB /* ReuseableComponents */ = {
 			isa = PBXGroup;
 			children = (
+				877DDC0328C21A3800C6ADFF /* CommonButtons */,
 				874A40ED28C03D05006CD99D /* UIAnimations */,
 				879292B928BD0D24003309FB /* EquipmentCell */,
 				8797F79828ABD4D2000D776E /* UIKitCanvas */,
@@ -972,6 +975,14 @@
 				8762BED728AD9B4900005445 /* EnemyAnimationManager.swift */,
 			);
 			path = EnemyAnamitaions;
+			sourceTree = "<group>";
+		};
+		877DDC0328C21A3800C6ADFF /* CommonButtons */ = {
+			isa = PBXGroup;
+			children = (
+				877DDC0428C21A4900C6ADFF /* RectangleButton.swift */,
+			);
+			path = CommonButtons;
 			sourceTree = "<group>";
 		};
 		877F0FD3288FF32400571F26 /* LoseBattle */ = {
@@ -1954,6 +1965,7 @@
 				870B67B1288E964B0089D3CB /* LoadBattleInteractorOutput.swift in Sources */,
 				870B6786288E8EF60089D3CB /* Router.swift in Sources */,
 				877F0FE4288FF32400571F26 /* LoseBattlePresenter.swift in Sources */,
+				877DDC0528C21A4900C6ADFF /* RectangleButton.swift in Sources */,
 				870B67A9288E95260089D3CB /* LoadBattleViewInput.swift in Sources */,
 				873F6543289325DA00A67F43 /* FlowTabbarController.swift in Sources */,
 				870B678F288E8F3E0089D3CB /* BattleFlowFactory.swift in Sources */,
