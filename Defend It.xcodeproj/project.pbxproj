@@ -39,6 +39,19 @@
 		870B67D0288FC6460089D3CB /* MainFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870B67CF288FC6460089D3CB /* MainFlowFactory.swift */; };
 		8711C628286F945500E84876 /* OneRaceWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711C627286F945500E84876 /* OneRaceWave.swift */; };
 		8711C62A286FACA300E84876 /* EnemyWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711C629286FACA300E84876 /* EnemyWave.swift */; };
+		871E00BC28C643F5001C1052 /* QuestsAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00AF28C643F5001C1052 /* QuestsAssemblyProtocol.swift */; };
+		871E00BD28C643F5001C1052 /* QuestsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00B028C643F5001C1052 /* QuestsAssembly.swift */; };
+		871E00BE28C643F5001C1052 /* QuestsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00B228C643F5001C1052 /* QuestsPresenter.swift */; };
+		871E00BF28C643F5001C1052 /* QuestsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00B428C643F5001C1052 /* QuestsViewInput.swift */; };
+		871E00C028C643F5001C1052 /* QuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00B528C643F5001C1052 /* QuestsViewController.swift */; };
+		871E00C128C643F5001C1052 /* QuestsViewCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00B628C643F5001C1052 /* QuestsViewCoordinatorOutput.swift */; };
+		871E00C228C643F5001C1052 /* QuestsViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00B728C643F5001C1052 /* QuestsViewOutput.swift */; };
+		871E00C328C643F5001C1052 /* QuestsInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00B928C643F5001C1052 /* QuestsInteractorOutput.swift */; };
+		871E00C428C643F5001C1052 /* QuestsInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00BA28C643F5001C1052 /* QuestsInteractorInput.swift */; };
+		871E00C528C643F5001C1052 /* QuestsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00BB28C643F5001C1052 /* QuestsInteractor.swift */; };
+		871E00C828C64502001C1052 /* QuestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00C728C64502001C1052 /* QuestsView.swift */; };
+		871E00CA28C6451B001C1052 /* QuestsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00C928C6451B001C1052 /* QuestsCollectionView.swift */; };
+		871E00CC28C645AB001C1052 /* QuestsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00CB28C645AB001C1052 /* QuestsButton.swift */; };
 		873F3F19289D6E9700BF7FF9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F18289D6E9700BF7FF9 /* User.swift */; };
 		873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1A289D6EF400BF7FF9 /* UserSex.swift */; };
 		873F3F1D289D6F8E00BF7FF9 /* GameAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */; };
@@ -315,6 +328,19 @@
 		870B67CF288FC6460089D3CB /* MainFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowFactory.swift; sourceTree = "<group>"; };
 		8711C627286F945500E84876 /* OneRaceWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRaceWave.swift; sourceTree = "<group>"; };
 		8711C629286FACA300E84876 /* EnemyWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyWave.swift; sourceTree = "<group>"; };
+		871E00AF28C643F5001C1052 /* QuestsAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestsAssemblyProtocol.swift; sourceTree = "<group>"; };
+		871E00B028C643F5001C1052 /* QuestsAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestsAssembly.swift; sourceTree = "<group>"; };
+		871E00B228C643F5001C1052 /* QuestsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestsPresenter.swift; sourceTree = "<group>"; };
+		871E00B428C643F5001C1052 /* QuestsViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestsViewInput.swift; sourceTree = "<group>"; };
+		871E00B528C643F5001C1052 /* QuestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestsViewController.swift; sourceTree = "<group>"; };
+		871E00B628C643F5001C1052 /* QuestsViewCoordinatorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestsViewCoordinatorOutput.swift; sourceTree = "<group>"; };
+		871E00B728C643F5001C1052 /* QuestsViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestsViewOutput.swift; sourceTree = "<group>"; };
+		871E00B928C643F5001C1052 /* QuestsInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestsInteractorOutput.swift; sourceTree = "<group>"; };
+		871E00BA28C643F5001C1052 /* QuestsInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestsInteractorInput.swift; sourceTree = "<group>"; };
+		871E00BB28C643F5001C1052 /* QuestsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestsInteractor.swift; sourceTree = "<group>"; };
+		871E00C728C64502001C1052 /* QuestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsView.swift; sourceTree = "<group>"; };
+		871E00C928C6451B001C1052 /* QuestsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsCollectionView.swift; sourceTree = "<group>"; };
+		871E00CB28C645AB001C1052 /* QuestsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsButton.swift; sourceTree = "<group>"; };
 		873F3F18289D6E9700BF7FF9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		873F3F1A289D6EF400BF7FF9 /* UserSex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSex.swift; sourceTree = "<group>"; };
 		873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccount.swift; sourceTree = "<group>"; };
@@ -729,6 +755,7 @@
 		870B679A288E8FD40089D3CB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				871E00AD28C643F5001C1052 /* Quests */,
 				87D0E0CE28BE8C99001D3E67 /* Bag */,
 				AA7801E727E20291002C57E1 /* HomePage */,
 			);
@@ -826,6 +853,66 @@
 			children = (
 				AA78022327E2043D002C57E1 /* HomePageView.swift */,
 				87D0E0C928BE4865001D3E67 /* BagButton.swift */,
+				871E00CB28C645AB001C1052 /* QuestsButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		871E00AD28C643F5001C1052 /* Quests */ = {
+			isa = PBXGroup;
+			children = (
+				871E00AE28C643F5001C1052 /* Assembly */,
+				871E00B128C643F5001C1052 /* Presenter */,
+				871E00B328C643F5001C1052 /* View */,
+				871E00B828C643F5001C1052 /* Interactor */,
+			);
+			path = Quests;
+			sourceTree = "<group>";
+		};
+		871E00AE28C643F5001C1052 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				871E00AF28C643F5001C1052 /* QuestsAssemblyProtocol.swift */,
+				871E00B028C643F5001C1052 /* QuestsAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		871E00B128C643F5001C1052 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				871E00B228C643F5001C1052 /* QuestsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		871E00B328C643F5001C1052 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				871E00B428C643F5001C1052 /* QuestsViewInput.swift */,
+				871E00B528C643F5001C1052 /* QuestsViewController.swift */,
+				871E00B628C643F5001C1052 /* QuestsViewCoordinatorOutput.swift */,
+				871E00B728C643F5001C1052 /* QuestsViewOutput.swift */,
+				871E00C628C644E3001C1052 /* Views */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		871E00B828C643F5001C1052 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				871E00B928C643F5001C1052 /* QuestsInteractorOutput.swift */,
+				871E00BA28C643F5001C1052 /* QuestsInteractorInput.swift */,
+				871E00BB28C643F5001C1052 /* QuestsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		871E00C628C644E3001C1052 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				871E00C728C64502001C1052 /* QuestsView.swift */,
+				871E00C928C6451B001C1052 /* QuestsCollectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1912,6 +1999,7 @@
 				AAE8870927EF350F00CA4E5D /* GoblinTL.swift in Sources */,
 				873F3F21289D742200BF7FF9 /* EconomicAccountValues.swift in Sources */,
 				877F0FEB288FF32400571F26 /* LoseBattleInteractorInput.swift in Sources */,
+				871E00C228C643F5001C1052 /* QuestsViewOutput.swift in Sources */,
 				AA0B68C027E5BA7D0078003D /* MagicTowerFactory.swift in Sources */,
 				87E1286928947031006CEF02 /* BattleMapIcon.swift in Sources */,
 				873F65302893224C00A67F43 /* BattleMapFlowFactory.swift in Sources */,
@@ -1929,6 +2017,7 @@
 				8797F79028A7D280000D776E /* BattleMissionsMeadowData.swift in Sources */,
 				AA7801FB27E20291002C57E1 /* HomePageViewInput.swift in Sources */,
 				877F100D2890083F00571F26 /* WinBattleInteractor.swift in Sources */,
+				871E00BE28C643F5001C1052 /* QuestsPresenter.swift in Sources */,
 				87B606C228790173003549AF /* BattleMeadowCreator.swift in Sources */,
 				AA0B68C627E5BD1E0078003D /* MagicTowerFL.swift in Sources */,
 				870B67AF288E963E0089D3CB /* LoadBattleInteractorInput.swift in Sources */,
@@ -1968,8 +2057,10 @@
 				877DDC0528C21A4900C6ADFF /* RectangleButton.swift in Sources */,
 				870B67A9288E95260089D3CB /* LoadBattleViewInput.swift in Sources */,
 				873F6543289325DA00A67F43 /* FlowTabbarController.swift in Sources */,
+				871E00CC28C645AB001C1052 /* QuestsButton.swift in Sources */,
 				870B678F288E8F3E0089D3CB /* BattleFlowFactory.swift in Sources */,
 				AA0B68BE27E5B95C0078003D /* AbstactFactoryBuildings.swift in Sources */,
+				871E00BC28C643F5001C1052 /* QuestsAssemblyProtocol.swift in Sources */,
 				AA78024127E20B8E002C57E1 /* BattleFieldInteractorOutput.swift in Sources */,
 				AACC7BDF27FB2C5D0022384E /* WallFL.swift in Sources */,
 				8797F78C28A7B23B000D776E /* EnemyWaveManager.swift in Sources */,
@@ -1981,6 +2072,7 @@
 				877F10092890083F00571F26 /* WinBattleViewCoordinatorOutput.swift in Sources */,
 				873F3F2F289E6B8300BF7FF9 /* FlowTabbarInteractorInput.swift in Sources */,
 				879292EA28BE233F003309FB /* BladeSecondLevel.swift in Sources */,
+				871E00BF28C643F5001C1052 /* QuestsViewInput.swift in Sources */,
 				87E1286628946535006CEF02 /* BattleMapCamera.swift in Sources */,
 				AAF4C9DD27E8E6A200D5B6F8 /* GroundSquare.swift in Sources */,
 				AACC7BE527FB2C940022384E /* WallSL.swift in Sources */,
@@ -2031,12 +2123,15 @@
 				870B676F288E896B0089D3CB /* Extensions.swift in Sources */,
 				AAE8870F27EF35FC00CA4E5D /* TrollSL.swift in Sources */,
 				879292E828BE232F003309FB /* HammerFourthLevel.swift in Sources */,
+				871E00C828C64502001C1052 /* QuestsView.swift in Sources */,
 				870B67C1288E97F20089D3CB /* BattleCoordinator.swift in Sources */,
 				AAE886EB27EEFF9800CA4E5D /* MeadowManager.swift in Sources */,
+				871E00C128C643F5001C1052 /* QuestsViewCoordinatorOutput.swift in Sources */,
 				AA0B68CC27E5BDFD0078003D /* ElphTowerSL.swift in Sources */,
 				AA7801FA27E20291002C57E1 /* HomePagePresenter.swift in Sources */,
 				AA7801B527E200B6002C57E1 /* AppDelegate.swift in Sources */,
 				879292EC28BE234B003309FB /* BladeThirdLevel.swift in Sources */,
+				871E00C428C643F5001C1052 /* QuestsInteractorInput.swift in Sources */,
 				AAE886F327EF2DC500CA4E5D /* AbstractFactoryEnemies.swift in Sources */,
 				870B676D288E89560089D3CB /* TestFunctions.swift in Sources */,
 				87FE431928994B6A002DFCEA /* SceneCameraConverter.swift in Sources */,
@@ -2053,6 +2148,7 @@
 				AAE886F827EF30B300CA4E5D /* OrcFL.swift in Sources */,
 				87D0E0DE28BE8C99001D3E67 /* BagAssemblyProtocol.swift in Sources */,
 				879292C228BE20F9003309FB /* EquipmentBag.swift in Sources */,
+				871E00BD28C643F5001C1052 /* QuestsAssembly.swift in Sources */,
 				874F307428BE973C00DA4051 /* BagCollectionView.swift in Sources */,
 				877F104A28906BB800571F26 /* BattleMapAssembly.swift in Sources */,
 				870B67A0288E90470089D3CB /* FlowNavigationController.swift in Sources */,
@@ -2104,6 +2200,7 @@
 				877F1023289025EE00571F26 /* PauseBattleAssembly.swift in Sources */,
 				879292F428BE237F003309FB /* ShieldFourthLevel.swift in Sources */,
 				877F100B2890083F00571F26 /* WinBattleViewInput.swift in Sources */,
+				871E00CA28C6451B001C1052 /* QuestsCollectionView.swift in Sources */,
 				8797F79A28ABD4E5000D776E /* UIKitCanvas.swift in Sources */,
 				879292D628BE226A003309FB /* ArchFirstLevel.swift in Sources */,
 				873F6541289325C900A67F43 /* FlowTabbarCoordinatorOutput.swift in Sources */,
@@ -2134,6 +2231,7 @@
 				87D0E0DD28BE8C99001D3E67 /* BagAssembly.swift in Sources */,
 				AA78023E27E20B8E002C57E1 /* BattleFieldViewOutput.swift in Sources */,
 				877F0FEE288FF5DE00571F26 /* LoseBattleView.swift in Sources */,
+				871E00C528C643F5001C1052 /* QuestsInteractor.swift in Sources */,
 				AACC7BE127FB2C850022384E /* BallistaSL.swift in Sources */,
 				873F3F23289DBFA500BF7FF9 /* FlowNavigationBarView.swift in Sources */,
 				877F1026289025EE00571F26 /* PauseBattleViewOutput.swift in Sources */,
@@ -2141,6 +2239,8 @@
 				870B67B9288E96BD0089D3CB /* LoadBattlePresenter.swift in Sources */,
 				877F0FE7288FF32400571F26 /* LoseBattleViewController.swift in Sources */,
 				870B67BF288E97E50089D3CB /* BattleCoordinatorOutput.swift in Sources */,
+				871E00C028C643F5001C1052 /* QuestsViewController.swift in Sources */,
+				871E00C328C643F5001C1052 /* QuestsInteractorOutput.swift in Sources */,
 				879292DA28BE2287003309FB /* BladeFirstLevel.swift in Sources */,
 				879292E628BE2323003309FB /* HammerThirdLevel.swift in Sources */,
 				873F65352893235B00A67F43 /* BattleMapCoordinatorOutput.swift in Sources */,

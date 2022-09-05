@@ -21,4 +21,8 @@ class HomePagePresenter: HomePageViewOutput, HomePageInteractorOutput {
         coordinator.onBagButton?()
     }
     
+    func onQuestsButton() {
+        coordinator.onQuestsButton?()
+    }
+    
 }

@@ -14,6 +14,7 @@ class HomePageViewController: UIViewController, HomePageViewInput, HomePageViewD
     
     var onStartBattle: (() -> Void)?
     var onBagButton: (() -> Void)?
+    var onQuestsButton: (() -> Void)?
     
     var homePageView = HomePageView()
     
@@ -33,6 +34,10 @@ class HomePageViewController: UIViewController, HomePageViewInput, HomePageViewD
     
     func bagButtonPressed() {
         output.onBagButton()
+    }
+    
+    func questsButtonPressed() {
+        output.onQuestsButton()
     }
     
 }

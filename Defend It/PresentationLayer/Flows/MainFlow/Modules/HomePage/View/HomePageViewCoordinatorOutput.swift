@@ -11,4 +11,5 @@ protocol HomePageViewCoordinatorOutput: Presentable {
     
     var onStartBattle: (() -> Void)? { get set }
     var onBagButton: (() -> Void)? { get set }
+    var onQuestsButton: (() -> Void)? { get set }
 }

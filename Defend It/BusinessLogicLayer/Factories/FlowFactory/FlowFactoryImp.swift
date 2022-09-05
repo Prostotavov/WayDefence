@@ -45,6 +45,10 @@ extension FlowFactoryImp: MainFlowFactory {
     func produceBagOutput() -> BagViewCoordinatorOutput {
         return BagViewController()
     }
+    
+    func produceQuestsOutput() -> QuestsViewCoordinatorOutput {
+        return QuestsViewController()
+    }
 }
 
 extension FlowFactoryImp: BattleMapFlowFactory {
