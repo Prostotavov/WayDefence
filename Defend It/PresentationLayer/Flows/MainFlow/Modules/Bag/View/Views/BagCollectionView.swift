@@ -55,16 +55,39 @@ class BagCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+        
+        
+        // real work -start-
         guard let bagItems = UserImp.shared.gameAccount?.equipmentBag?.bagItems else {return 0}
         return bagItems.count
+        // real work -end-
+        
+        
+        // test canvas -start-
+//        return testArrayOfRewardItems.count
+        // test canvas -end-
+        
+
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EquipmentCellImp.identifier, for: indexPath) as! EquipmentCell
-        guard let bagItems = UserImp.shared.gameAccount?.equipmentBag?.bagItems else {return cell}
+
         
+
+        
+        // real work -start-
+        guard let bagItems = UserImp.shared.gameAccount?.equipmentBag?.bagItems else {return cell}
         let imageName = bagItems[indexPath.row].0.imageName
         let text = String(bagItems[indexPath.row].1)
+        // real work -end-
+        
+        
+        // test canvas -start-
+//        let imageName = testArrayOfRewardItems[indexPath.row].0
+//        let text = String(testArrayOfRewardItems[indexPath.row].1)
+        // test canvas -end-
         
         cell.configure(image: imageName, text: text)
         return cell
