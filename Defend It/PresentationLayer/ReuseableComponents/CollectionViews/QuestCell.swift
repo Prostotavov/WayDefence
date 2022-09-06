@@ -22,7 +22,7 @@ class QuestCellImp: UITableViewCell, QuestCell {
     
     private var conditionLabel: UILabel!
     var reward: String = ""
-    var progressView: String = ""
+    private var progressView: TaskProgressView!
     var getButton: RectangleButton!
     weak var delegate: QuestCellDelegate!
     
@@ -54,20 +54,27 @@ class QuestCellImp: UITableViewCell, QuestCell {
     }
     
     private func setProgressView() {
-        let rectangle = UIView(frame: .zero)
+        let height: CGFloat = self.frame.height/4
+        let width: CGFloat = self.frame.width/1.9
+        let size = CGSize(width: width, height: height)
+        let frame = CGRect(origin: .zero, size: size)
+        
+        let progressView = TaskProgressView(frame: frame)
 
-        self.addSubview(rectangle)
-        rectangle.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(progressView)
+        progressView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            rectangle.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -self.frame.height/2),
-            rectangle.leftAnchor.constraint(equalTo: self.leftAnchor, constant: self.frame.width/12),
-            rectangle.heightAnchor.constraint(equalToConstant: self.frame.height/4),
-            rectangle.widthAnchor.constraint(equalToConstant: self.frame.width/1.9),
+            progressView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -self.frame.height/2),
+            progressView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: self.frame.width/12),
+            progressView.heightAnchor.constraint(equalToConstant: height),
+            progressView.widthAnchor.constraint(equalToConstant: width),
         ])
         
-        rectangle.layer.cornerRadius = 3
-        rectangle.backgroundColor = .green
+        progressView.goal = 7
+        progressView.completed = 3
+        progressView.trackTintColor = .brown
+        progressView.progressTintColor = .systemGreen
     }
     
     func setRewardView(indexPath: IndexPath, imageName: EquipmentImageNames, text: String) {

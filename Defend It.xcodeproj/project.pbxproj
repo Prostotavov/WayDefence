@@ -53,7 +53,7 @@
 		871E00CA28C6451B001C1052 /* QuestsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00C928C6451B001C1052 /* QuestsCollectionView.swift */; };
 		871E00CC28C645AB001C1052 /* QuestsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00CB28C645AB001C1052 /* QuestsButton.swift */; };
 		871E00CE28C66F72001C1052 /* QuestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00CD28C66F72001C1052 /* QuestCell.swift */; };
-		871E00D028C69500001C1052 /* TaskProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00CF28C69500001C1052 /* TaskProgressBar.swift */; };
+		871E00D028C69500001C1052 /* TaskProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E00CF28C69500001C1052 /* TaskProgressView.swift */; };
 		873F3F19289D6E9700BF7FF9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F18289D6E9700BF7FF9 /* User.swift */; };
 		873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1A289D6EF400BF7FF9 /* UserSex.swift */; };
 		873F3F1D289D6F8E00BF7FF9 /* GameAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */; };
@@ -344,7 +344,7 @@
 		871E00C928C6451B001C1052 /* QuestsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsCollectionView.swift; sourceTree = "<group>"; };
 		871E00CB28C645AB001C1052 /* QuestsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsButton.swift; sourceTree = "<group>"; };
 		871E00CD28C66F72001C1052 /* QuestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestCell.swift; sourceTree = "<group>"; };
-		871E00CF28C69500001C1052 /* TaskProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskProgressBar.swift; sourceTree = "<group>"; };
+		871E00CF28C69500001C1052 /* TaskProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskProgressView.swift; sourceTree = "<group>"; };
 		873F3F18289D6E9700BF7FF9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		873F3F1A289D6EF400BF7FF9 /* UserSex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSex.swift; sourceTree = "<group>"; };
 		873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccount.swift; sourceTree = "<group>"; };
@@ -1038,7 +1038,7 @@
 			isa = PBXGroup;
 			children = (
 				87425E45289B2BE4000BF422 /* SCNProgressBar.swift */,
-				871E00CF28C69500001C1052 /* TaskProgressBar.swift */,
+				871E00CF28C69500001C1052 /* TaskProgressView.swift */,
 			);
 			path = ProgressBars;
 			sourceTree = "<group>";
@@ -2224,7 +2224,7 @@
 				877F102C289025EE00571F26 /* PauseBattleInteractor.swift in Sources */,
 				AAF4C9D727E8D9E500D5B6F8 /* EnemiesManager.swift in Sources */,
 				AAE886FF27EF33A600CA4E5D /* OrcSL.swift in Sources */,
-				871E00D028C69500001C1052 /* TaskProgressBar.swift in Sources */,
+				871E00D028C69500001C1052 /* TaskProgressView.swift in Sources */,
 				87D0E0E128BE8C99001D3E67 /* BagViewCoordinatorOutput.swift in Sources */,
 				873F3F39289E6BCB00BF7FF9 /* FlowTabbarAssemblyProtocol.swift in Sources */,
 				879292DC28BE2291003309FB /* ShieldFirstLevel.swift in Sources */,
