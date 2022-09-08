@@ -12,6 +12,8 @@ class QuestsCollectionView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     var tableView: UITableView?
     
+    let dailyQuests = UserImp.shared.gameAccount?.dailyQuests
+    
     let testArrayOfRewardItems: [(String, EquipmentImageNames, String)] =
        [("press done button", EquipmentImageNames.blade, "1"),
         ("complete 1 mission", EquipmentImageNames.arch, "2"),
@@ -63,17 +65,18 @@ class QuestsCollectionView: UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        let currentQuest = testArrayOfRewardItems[indexPath.row]
+        let currentQuest = dailyQuests!.tasks[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestCellImp.identifier, for: indexPath) as! QuestCell
-        cell.backgroundColor = .white
-        cell.setConditionLabel(text: currentQuest.0)
-        cell.setRewardView(indexPath: indexPath, imageName: currentQuest.1, text: currentQuest.2)
+        cell.setConditionLabel(text: currentQuest.title)
+        
+        guard let item = currentQuest.reward.equipments.first else {return cell}
+        cell.setRewardView(indexPath: indexPath, imageName: item.item.imageName, text: String(item.quantity))
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        testArrayOfRewardItems.count
+        dailyQuests?.tasks.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

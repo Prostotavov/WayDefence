@@ -88,6 +88,7 @@
 		874F307528BE9D2C00DA4051 /* BagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0C928BE4865001D3E67 /* BagButton.swift */; };
 		8762BED428AD48B700005445 /* EnemyRotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762BED328AD48B700005445 /* EnemyRotationManager.swift */; };
 		8762BED828AD9B4900005445 /* EnemyAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762BED728AD9B4900005445 /* EnemyAnimationManager.swift */; };
+		8768DAF728C960530071D000 /* DailyQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8768DAF628C960530071D000 /* DailyQuest.swift */; };
 		877DDC0528C21A4900C6ADFF /* RectangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877DDC0428C21A4900C6ADFF /* RectangleButton.swift */; };
 		877F0FE2288FF32400571F26 /* LoseBattleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FD5288FF32400571F26 /* LoseBattleAssembly.swift */; };
 		877F0FE3288FF32400571F26 /* LoseBattleAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F0FD6288FF32400571F26 /* LoseBattleAssemblyProtocol.swift */; };
@@ -133,6 +134,7 @@
 		877F105128906BB800571F26 /* BattleMapInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F104728906BB700571F26 /* BattleMapInteractorOutput.swift */; };
 		877F105228906BB800571F26 /* BattleMapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F104828906BB700571F26 /* BattleMapInteractor.swift */; };
 		877F105328906BB800571F26 /* BattleMapInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877F104928906BB700571F26 /* BattleMapInteractorInput.swift */; };
+		8788DDEA28C80E110089B1B0 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788DDE928C80E110089B1B0 /* Task.swift */; };
 		878DDC97287AB62100B37154 /* EconomicBattleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC96287AB62100B37154 /* EconomicBattleValues.swift */; };
 		878DDC9C287B85CC00B37154 /* LoadBattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */; };
 		879292BC28BD0D53003309FB /* EquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879292BA28BD0D53003309FB /* EquipmentCell.swift */; };
@@ -378,6 +380,7 @@
 		874F307328BE973C00DA4051 /* BagCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagCollectionView.swift; sourceTree = "<group>"; };
 		8762BED328AD48B700005445 /* EnemyRotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyRotationManager.swift; sourceTree = "<group>"; };
 		8762BED728AD9B4900005445 /* EnemyAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyAnimationManager.swift; sourceTree = "<group>"; };
+		8768DAF628C960530071D000 /* DailyQuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyQuest.swift; sourceTree = "<group>"; };
 		877DDC0428C21A4900C6ADFF /* RectangleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleButton.swift; sourceTree = "<group>"; };
 		877F0FD5288FF32400571F26 /* LoseBattleAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseBattleAssembly.swift; sourceTree = "<group>"; };
 		877F0FD6288FF32400571F26 /* LoseBattleAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseBattleAssemblyProtocol.swift; sourceTree = "<group>"; };
@@ -423,6 +426,7 @@
 		877F104728906BB700571F26 /* BattleMapInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapInteractorOutput.swift; sourceTree = "<group>"; };
 		877F104828906BB700571F26 /* BattleMapInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapInteractor.swift; sourceTree = "<group>"; };
 		877F104928906BB700571F26 /* BattleMapInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMapInteractorInput.swift; sourceTree = "<group>"; };
+		8788DDE928C80E110089B1B0 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		878DDC96287AB62100B37154 /* EconomicBattleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomicBattleValues.swift; sourceTree = "<group>"; };
 		878DDC9B287B85CC00B37154 /* LoadBattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBattleViewController.swift; sourceTree = "<group>"; };
 		879292BA28BD0D53003309FB /* EquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCell.swift; sourceTree = "<group>"; };
@@ -928,6 +932,8 @@
 				873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */,
 				873F3F20289D742200BF7FF9 /* EconomicAccountValues.swift */,
 				879292C128BE20F8003309FB /* EquipmentBag.swift */,
+				8768DAF628C960530071D000 /* DailyQuest.swift */,
+				8788DDE928C80E110089B1B0 /* Task.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -2086,6 +2092,7 @@
 				878DDC9C287B85CC00B37154 /* LoadBattleViewController.swift in Sources */,
 				871E00CE28C66F72001C1052 /* QuestCell.swift in Sources */,
 				873F3F5428A3B5E200BF7FF9 /* EnemyMovementManagerCommands.swift in Sources */,
+				8788DDEA28C80E110089B1B0 /* Task.swift in Sources */,
 				870B67B3288E96590089D3CB /* LoadBattleInteractor.swift in Sources */,
 				877F102F2890262B00571F26 /* PauseBattleView.swift in Sources */,
 				877F10062890083F00571F26 /* WinBattleAssemblyProtocol.swift in Sources */,
@@ -2129,6 +2136,7 @@
 				873F653F289325A900A67F43 /* TabbarCoordinator.swift in Sources */,
 				870B676F288E896B0089D3CB /* Extensions.swift in Sources */,
 				AAE8870F27EF35FC00CA4E5D /* TrollSL.swift in Sources */,
+				8768DAF728C960530071D000 /* DailyQuest.swift in Sources */,
 				879292E828BE232F003309FB /* HammerFourthLevel.swift in Sources */,
 				871E00C828C64502001C1052 /* QuestsView.swift in Sources */,
 				870B67C1288E97F20089D3CB /* BattleCoordinator.swift in Sources */,
