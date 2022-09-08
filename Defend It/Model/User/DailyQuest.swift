@@ -10,12 +10,12 @@ import Foundation
 protocol DailyQuests {
     
     var tasks: [Task] {get set}
-    mutating func complete(type: TaskTypes, count: Int, object: TaskObjects, attribute: TaskObjectsAttributes?)
-    mutating func addTask(_ task: Task)
-    mutating func removeTask(_ taskToRemove: Task)
+    func complete(type: TaskTypes, count: Int, object: TaskObjects, attribute: TaskObjectsAttributes?)
+    func addTask(_ task: Task)
+    func removeTask(_ taskToRemove: Task)
 }
 
-struct DailyQuestsImp: DailyQuests {
+class DailyQuestsImp: DailyQuests {
     
     var tasks: [Task] = []
     
@@ -23,11 +23,11 @@ struct DailyQuestsImp: DailyQuests {
         resetQuests()
     }
     
-    mutating func addTask(_ task: Task) {
+    func addTask(_ task: Task) {
         tasks.append(task)
     }
     
-    mutating func removeTask(_ taskToRemove: Task) {
+    func removeTask(_ taskToRemove: Task) {
         for (index, task) in tasks.enumerated() {
             if task.description == taskToRemove.description {
                 tasks.remove(at: index)
@@ -36,11 +36,15 @@ struct DailyQuestsImp: DailyQuests {
         }
     }
     
-    mutating func complete(type: TaskTypes, count: Int, object: TaskObjects, attribute: TaskObjectsAttributes? = nil) {
+    func complete(type: TaskTypes, count: Int, object: TaskObjects, attribute: TaskObjectsAttributes? = nil) {
         for (index, task) in tasks.enumerated() {
-            if task.type != type {return}
-            if task.object != object {return}
-            if task.attribute != attribute {return }
+            if task.type != type {continue}
+            if task.object != object {continue}
+            if task.attribute == nil {
+                tasks[index].increaseProgress(by: count)
+                continue
+            }
+            if task.attribute != attribute {continue}
             tasks[index].increaseProgress(by: count)
         }
     }
@@ -48,7 +52,7 @@ struct DailyQuestsImp: DailyQuests {
 
 extension DailyQuestsImp {
     
-    private mutating func resetQuests() {
+    private func resetQuests() {
         
         // MARK: -1-
         /// reward
@@ -82,7 +86,7 @@ extension DailyQuestsImp {
         let reward_03 = BattleRewardImp(economicAccountVlues: valueReward_03, equipments: itemsReward_03)
         
         /// init
-        let title_03 = "receive thee shield"
+        let title_03 = "receive three shield"
         let task03 = TaskImp(title: title_03, reward: reward_03, type: .receive, count: 3, object: .equipmentTypes(.shield))
         addTask(task03)
     }

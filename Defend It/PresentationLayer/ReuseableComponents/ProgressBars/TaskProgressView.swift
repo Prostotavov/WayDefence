@@ -41,6 +41,7 @@ class TaskProgressView: UIView {
     var completed: CGFloat = 0 {
         didSet {
             progress = completed / goal
+            if completed > goal {completed = goal}
             updateCompletedPerGoalLabel()
         }
     }

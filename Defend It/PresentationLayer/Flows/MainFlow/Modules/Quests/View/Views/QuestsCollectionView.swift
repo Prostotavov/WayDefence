@@ -64,14 +64,10 @@ class QuestsCollectionView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
         let currentQuest = dailyQuests!.tasks[indexPath.row]
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestCellImp.identifier, for: indexPath) as! QuestCell
-        cell.setConditionLabel(text: currentQuest.title)
-        
-        guard let item = currentQuest.reward.equipments.first else {return cell}
-        cell.setRewardView(indexPath: indexPath, imageName: item.item.imageName, text: String(item.quantity))
+        cell.configure(task: currentQuest)
+        cell.setupDelegate(self)
         return cell
     }
     
@@ -82,5 +78,13 @@ class QuestsCollectionView: UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    
 }
 
+
+extension QuestsCollectionView: QuestCellDelegate {
+    
+    func getButtonPressed() {
+        print("getButtonPressed")
+    }
+}

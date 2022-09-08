@@ -20,6 +20,8 @@ struct EquipmentBagImp: EquipmentBag {
     var bagItems: [(item: Equipment, quantity: Int)] = []
 
     mutating func addItem(item: Equipment, in quantity: Int) {
+        /// complete a task
+        UserImp.shared.gameAccount?.dailyQuests?.complete(type: .receive, count: quantity, object: .equipmentTypes(item.type), attribute: .equipmentLevels(item.level))
         for (i, bagItem) in bagItems.enumerated() {
             if bagItem.item.name == item.name {
                 bagItems[i].quantity += quantity
@@ -36,6 +38,8 @@ struct EquipmentBagImp: EquipmentBag {
     }
     
     mutating func removeItem(item: Equipment, in quantity: Int) {
+        /// complete a task
+        UserImp.shared.gameAccount?.dailyQuests?.complete(type: .spend, count: quantity, object: .equipmentTypes(item.type), attribute: .equipmentLevels(item.level))
         for (i, bagItem) in bagItems.enumerated() {
             if bagItem.item.name == item.name {
                 if bagItems[i].quantity == quantity {

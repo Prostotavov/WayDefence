@@ -12,27 +12,33 @@ struct UIAnimations {
     
     private static var counter: Int = 0
     
-    static func rapidIncreaseAndDecreaseAnimation(view: UIView) {
+    static func rapidIncreaseAndDecreaseAnimation(view: UIView, completion: (() -> Void)? = nil) {
         if counter == 0 {
             counter += 1
         } else {
             return
         }
-        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: .calculationModeLinear, animations: {
-            
+        
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: .calculationModeLinear) {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.3) {
                 view.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             }
             
             UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.3) {
-                view.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+                view.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
             }
             
             UIView.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.3) {
                 view.transform = CGAffineTransform.identity
             }
-            
-        }, completion: nil)
+        } completion: { _ in
+            guard let completion = completion else {return}
+            UIView.addKeyframe(withRelativeStartTime: 1, relativeDuration: 0) {
+                completion()
+            }
+        }
+
+
     }
     
     static func bagButtonSizeReductionAnimation(view: UIView) {

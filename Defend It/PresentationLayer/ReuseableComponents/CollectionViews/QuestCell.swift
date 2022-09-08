@@ -12,8 +12,9 @@ protocol QuestCellDelegate: AnyObject {
 }
 
 protocol QuestCell: UITableViewCell {
-    func setConditionLabel(text: String)
-    func setRewardView(indexPath: IndexPath, imageName: EquipmentImageNames, text: String)
+    func configure(task: Task)
+    func increaseProgress(by value: Int)
+    func setupDelegate(_ delegate: QuestCellDelegate)
 }
 
 class QuestCellImp: UITableViewCell, QuestCell {
@@ -21,7 +22,7 @@ class QuestCellImp: UITableViewCell, QuestCell {
     static let identifier = "QuestCell"
     
     private var conditionLabel: UILabel!
-    var reward: String = ""
+    var task: Task?
     private var progressView: TaskProgressView!
     var getButton: RectangleButton!
     weak var delegate: QuestCellDelegate!
@@ -36,6 +37,23 @@ class QuestCellImp: UITableViewCell, QuestCell {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    func configure(task: Task) {
+        self.task = task
+        guard let reward = task.reward.equipments.first else {return}
+        setRewardView(imageName: reward.item.imageName, text: String(reward.quantity))
+        setConditionLabel(text: task.title)
+        setProgress(goalCount: task.goalCount, progressCount: task.progressCount)
+        
+        if task.isReceive {
+            getButton.changeColor(into: .grey)
+            getButton.isEnabled = false
+        }
+    }
+    
+    func setupDelegate(_ delegate: QuestCellDelegate) {
+        self.delegate = delegate
     }
     
     func setConditionLabel(text: String) {
@@ -59,8 +77,8 @@ class QuestCellImp: UITableViewCell, QuestCell {
         let size = CGSize(width: width, height: height)
         let frame = CGRect(origin: .zero, size: size)
         
-        let progressView = TaskProgressView(frame: frame)
-
+        progressView = TaskProgressView(frame: frame)
+        
         self.addSubview(progressView)
         progressView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -71,20 +89,29 @@ class QuestCellImp: UITableViewCell, QuestCell {
             progressView.widthAnchor.constraint(equalToConstant: width),
         ])
         
-        progressView.goal = 7
-        progressView.completed = 3
+        progressView.goal = 1
+        progressView.completed = 0
         progressView.trackTintColor = .brown
         progressView.progressTintColor = .systemGreen
     }
     
-    func setRewardView(indexPath: IndexPath, imageName: EquipmentImageNames, text: String) {
+    func setProgress(goalCount: Int, progressCount: Int) {
+        progressView.goal = CGFloat(goalCount)
+        progressView.completed = CGFloat(progressCount)
+    }
+    
+    func increaseProgress(by value: Int) {
+        progressView.completed += CGFloat(value)
+    }
+    
+    func setRewardView(imageName: EquipmentImageNames, text: String) {
         
         let size = CGSize(width: self.frame.height / 2, height: self.frame.height / 2)
         let frame = CGRect(origin: .zero, size: size)
         
         let rewardView = EquipmentView(frame: frame)
         rewardView.configure(image: imageName, text: text)
-
+        
         self.addSubview(rewardView)
         rewardView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -98,7 +125,7 @@ class QuestCellImp: UITableViewCell, QuestCell {
     
     private func firstBorder() {
         let rectangle = UIView(frame: .zero)
-
+        
         self.addSubview(rectangle)
         rectangle.translatesAutoresizingMaskIntoConstraints = false
         
@@ -138,15 +165,21 @@ extension QuestCellImp {
         getButton.addTarget(self, action: #selector(startButtonTouchUpInside), for: .touchUpInside)
         
         getButton.addTarget(self, action: #selector(startButtonTouchDown), for: .touchDown)
-
+        
         getButton.addTarget(self, action: #selector(startButtonTouchDragExit), for: .touchDragExit)
         
-
+        
     }
     
     @objc func startButtonTouchUpInside() {
+        if !task!.isCompleted {UIAnimations.rapidIncreaseAndDecreaseAnimation(view: getButton);return}
+        if task!.isReceive {return}
         UIAnimations.rapidIncreaseAndDecreaseAnimation(view: getButton)
-//        delegate.getButtonPressed()
+        task?.receiveReward()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.getButton.isEnabled = false
+            self?.getButton.changeColor(into: .grey)
+        }
     }
     
     @objc func startButtonTouchDown() {

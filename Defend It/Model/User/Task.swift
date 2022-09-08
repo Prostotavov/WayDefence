@@ -81,13 +81,14 @@ protocol Task {
     var object: TaskObjects {get set}
     var attribute: TaskObjectsAttributes? {get set}
     var isCompleted: Bool {get set}
+    var isReceive: Bool {get set}
     var description: String {get}
     
     mutating func increaseProgress(by value: Int)
-    func receiveReward()
+    mutating func receiveReward()
 }
 
-struct TaskImp: Task {
+class TaskImp: Task {
     
     var title: String
     var reward: BattleReward
@@ -97,13 +98,13 @@ struct TaskImp: Task {
     var object: TaskObjects
     var attribute: TaskObjectsAttributes?
     var isCompleted: Bool
+    var isReceive: Bool
     
     var description: String {
         "\(type.rawValue) \(goalCount) \(object.rawValue) \(attribute?.rawValue ?? "without attributes")"
     }
     
     init(title: String, reward: BattleReward, type: TaskTypes, count: Int, object: TaskObjects, attribute: TaskObjectsAttributes? = nil) {
-        
         self.title = title
         self.reward = reward
         self.goalCount =  count
@@ -113,17 +114,19 @@ struct TaskImp: Task {
         self.attribute = attribute
         
         self.isCompleted = false
+        self.isReceive = false
     }
     
-    mutating func increaseProgress(by value: Int) {
+    func increaseProgress(by value: Int) {
         progressCount += value
-        if progressCount < goalCount {
+        if progressCount >= goalCount {
             progressCount = goalCount
             isCompleted = true
         }
     }
     
     func receiveReward() {
+        self.isReceive = true
         
         let valueReward = reward.economicAccountVlues
         UserImp.shared.gameAccount?.gameAccountValues?.increase(.points, by: valueReward.get(.points))
