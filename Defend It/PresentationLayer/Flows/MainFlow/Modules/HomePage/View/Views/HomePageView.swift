@@ -11,6 +11,7 @@ protocol HomePageViewDelegate: AnyObject {
     func startButtonPressed()
     func bagButtonPressed()
     func questsButtonPressed()
+    func achieveButtonPressed()
 }
 
 class HomePageView: UIView {
@@ -21,6 +22,7 @@ class HomePageView: UIView {
     var startButton: RectangleButton!
     var bagButton: BagButton!
     var questsButton: QuestsButton!
+    var achieveButton: AchieveButton!
     
     weak var delegate: HomePageViewDelegate!
     
@@ -30,6 +32,7 @@ class HomePageView: UIView {
         setStartButton()
         setupBagButton()
         setupQuestsButton()
+        setupAchieveButton()
     }
     
     required init?(coder: NSCoder) {
@@ -134,24 +137,62 @@ extension HomePageView {
             questsButton.heightAnchor.constraint(equalToConstant: 70)
         ])
         
-        questsButton.addTarget(self, action: #selector(bagButtonTouchUpInside), for: .touchUpInside)
+        questsButton.addTarget(self, action: #selector(questsButtonTouchUpInside), for: .touchUpInside)
         
-        questsButton.addTarget(self, action: #selector(bagButtonTouchDown), for: .touchDown)
+        questsButton.addTarget(self, action: #selector(questsButtonTouchDown), for: .touchDown)
         
-        questsButton.addTarget(self, action: #selector(bagButtonTouchDragOutside), for: .touchDragOutside)
+        questsButton.addTarget(self, action: #selector(questsButtonTouchDragOutside), for: .touchDragOutside)
     }
     
-    @objc func bagButtonTouchDragOutside() {
+    @objc func questsButtonTouchDragOutside() {
         UIAnimations.rapidIncreaseAndDecreaseAnimation(view: questsButton)
     }
     
     
-    @objc func bagButtonTouchDown() {
+    @objc func questsButtonTouchDown() {
         UIAnimations.bagButtonSizeReductionAnimation(view: questsButton)
     }
 
-    @objc func bagButtonTouchUpInside() {
+    @objc func questsButtonTouchUpInside() {
         UIAnimations.rapidIncreaseAndDecreaseAnimation(view: questsButton)
         delegate.questsButtonPressed()
+    }
+}
+
+// achieve view
+extension HomePageView {
+    func setupAchieveButton() {
+        let size = CGSize(width: 70, height: 70)
+        let frame = CGRect(origin: .zero, size: size)
+        achieveButton = AchieveButton(frame: frame)
+        self.addSubview(achieveButton)
+        achieveButton.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            achieveButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
+            achieveButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -50),
+            achieveButton.widthAnchor.constraint(equalToConstant: 70),
+            achieveButton.heightAnchor.constraint(equalToConstant: 70)
+        ])
+        
+        achieveButton.addTarget(self, action: #selector(achieveButtonTouchUpInside), for: .touchUpInside)
+        
+        achieveButton.addTarget(self, action: #selector(achieveButtonTouchDown), for: .touchDown)
+        
+        achieveButton.addTarget(self, action: #selector(achieveButtonTouchDragOutside), for: .touchDragOutside)
+    }
+    
+    @objc func achieveButtonTouchDragOutside() {
+        UIAnimations.rapidIncreaseAndDecreaseAnimation(view: achieveButton)
+    }
+    
+    
+    @objc func achieveButtonTouchDown() {
+        UIAnimations.bagButtonSizeReductionAnimation(view: achieveButton)
+    }
+
+    @objc func achieveButtonTouchUpInside() {
+        UIAnimations.rapidIncreaseAndDecreaseAnimation(view: achieveButton)
+        delegate.achieveButtonPressed()
     }
 }

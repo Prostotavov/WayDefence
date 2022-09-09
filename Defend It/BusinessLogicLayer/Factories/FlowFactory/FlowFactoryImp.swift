@@ -49,6 +49,10 @@ extension FlowFactoryImp: MainFlowFactory {
     func produceQuestsOutput() -> QuestsViewCoordinatorOutput {
         return QuestsViewController()
     }
+    
+    func produceAchieveOutput() -> AchieveViewCoordinatorOutput {
+        return AchieveViewController()
+    }
 }
 
 extension FlowFactoryImp: BattleMapFlowFactory {
