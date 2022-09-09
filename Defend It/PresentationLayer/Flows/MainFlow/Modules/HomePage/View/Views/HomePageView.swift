@@ -92,8 +92,8 @@ extension HomePageView {
         bagButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            bagButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100),
-            bagButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -50),
+            bagButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -70),
+            bagButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
             bagButton.widthAnchor.constraint(equalToConstant: 70),
             bagButton.heightAnchor.constraint(equalToConstant: 70)
         ])
@@ -131,8 +131,8 @@ extension HomePageView {
         questsButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            questsButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
-            questsButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -50),
+            questsButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -160),
+            questsButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
             questsButton.widthAnchor.constraint(equalToConstant: 70),
             questsButton.heightAnchor.constraint(equalToConstant: 70)
         ])
@@ -169,8 +169,8 @@ extension HomePageView {
         achieveButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            achieveButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
-            achieveButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -50),
+            achieveButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -250),
+            achieveButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
             achieveButton.widthAnchor.constraint(equalToConstant: 70),
             achieveButton.heightAnchor.constraint(equalToConstant: 70)
         ])
