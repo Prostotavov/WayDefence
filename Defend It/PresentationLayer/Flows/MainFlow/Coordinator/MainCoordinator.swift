@@ -45,6 +45,10 @@ class MainCoordinator: BaseCoordinator , MainCoordinatorOutput {
             self?.showQuests()
         }
         
+        homePageOutput.onAchieveButton = { [weak self] in
+            self?.showAchieve()
+        }
+        
         router.setRootModule(homePageOutput, hideBar: true)
     }
     
@@ -65,6 +69,15 @@ class MainCoordinator: BaseCoordinator , MainCoordinatorOutput {
             self?.router.dismissModule(animated: false, completion: nil)
         }
         router.present(questsOutput, animated: false)
+    }
+    
+    private func showAchieve() {
+        let achieveOutput = factory.produceAchieveOutput()
+        
+        achieveOutput.onBack = { [weak self] in
+            self?.router.dismissModule(animated: false, completion: nil)
+        }
+        router.present(achieveOutput, animated: false)
     }
 
 }

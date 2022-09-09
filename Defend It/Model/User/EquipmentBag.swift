@@ -22,6 +22,8 @@ struct EquipmentBagImp: EquipmentBag {
     mutating func addItem(item: Equipment, in quantity: Int) {
         /// complete a task
         UserImp.shared.gameAccount?.dailyQuests?.complete(type: .receive, count: quantity, object: .equipmentTypes(item.type), attribute: .equipmentLevels(item.level))
+        UserImp.shared.gameAccount?.achievements?.complete(type: .receive, count: quantity, object: .equipmentTypes(item.type), attribute: .equipmentLevels(item.level))
+        /// complete a task -end-
         for (i, bagItem) in bagItems.enumerated() {
             if bagItem.item.name == item.name {
                 bagItems[i].quantity += quantity
@@ -38,8 +40,10 @@ struct EquipmentBagImp: EquipmentBag {
     }
     
     mutating func removeItem(item: Equipment, in quantity: Int) {
-        /// complete a task
+        /// complete a task -start-
         UserImp.shared.gameAccount?.dailyQuests?.complete(type: .spend, count: quantity, object: .equipmentTypes(item.type), attribute: .equipmentLevels(item.level))
+        UserImp.shared.gameAccount?.achievements?.complete(type: .spend, count: quantity, object: .equipmentTypes(item.type), attribute: .equipmentLevels(item.level))
+        /// complete a task -end-
         for (i, bagItem) in bagItems.enumerated() {
             if bagItem.item.name == item.name {
                 if bagItems[i].quantity == quantity {

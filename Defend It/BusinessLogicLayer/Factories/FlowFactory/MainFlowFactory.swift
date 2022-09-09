@@ -12,4 +12,5 @@ protocol MainFlowFactory {
     func produceHomePageOutput() -> HomePageViewCoordinatorOutput
     func produceBagOutput() -> BagViewCoordinatorOutput
     func produceQuestsOutput() -> QuestsViewCoordinatorOutput
+    func produceAchieveOutput() -> AchieveViewCoordinatorOutput
 }

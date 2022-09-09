@@ -15,6 +15,7 @@ class HomePageViewController: UIViewController, HomePageViewInput, HomePageViewD
     var onStartBattle: (() -> Void)?
     var onBagButton: (() -> Void)?
     var onQuestsButton: (() -> Void)?
+    var onAchieveButton: (() -> Void)?
     
     var homePageView = HomePageView()
     
@@ -38,6 +39,10 @@ class HomePageViewController: UIViewController, HomePageViewInput, HomePageViewD
     
     func questsButtonPressed() {
         output.onQuestsButton()
+    }
+    
+    func achieveButtonPressed() {
+        output.onAchieveButton()
     }
     
 }

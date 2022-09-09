@@ -25,4 +25,8 @@ class HomePagePresenter: HomePageViewOutput, HomePageInteractorOutput {
         coordinator.onQuestsButton?()
     }
     
+    func onAchieveButton() {
+        coordinator.onAchieveButton?()
+    }
+    
 }

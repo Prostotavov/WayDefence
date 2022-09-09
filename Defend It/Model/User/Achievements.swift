@@ -1,13 +1,13 @@
 //
-//  DailyQuest.swift
+//  Achievements.swift
 //  Defend It
 //
-//  Created by Роман Сенкевич on 8.09.22.
+//  Created by Роман Сенкевич on 9.09.22.
 //
 
 import Foundation
 
-protocol DailyQuests {
+protocol Achievements {
     
     var tasks: [Task] {get set}
     func complete(type: TaskTypes, count: Int, object: TaskObjects, attribute: TaskObjectsAttributes?)
@@ -15,7 +15,7 @@ protocol DailyQuests {
     func removeTask(_ taskToRemove: Task)
 }
 
-class DailyQuestsImp: DailyQuests {
+class AchievementsImp: Achievements {
     
     var tasks: [Task] = []
     
@@ -50,7 +50,7 @@ class DailyQuestsImp: DailyQuests {
     }
 }
 
-extension DailyQuestsImp {
+extension AchievementsImp {
     
     private func resetQuests() {
         
@@ -62,8 +62,8 @@ extension DailyQuestsImp {
         let reward_01 = BattleRewardImp(economicAccountVlues: valueReward_01, equipments: itemsReward_01)
         
         /// init
-        let title_01 = "receive one blade"
-        let task01 = TaskImp(title: title_01, reward: reward_01, type: .receive, count: 1, object: .equipmentTypes(.blade))
+        let title_01 = "receive twenty blade"
+        let task01 = TaskImp(title: title_01, reward: reward_01, type: .receive, count: 20, object: .equipmentTypes(.blade))
         addTask(task01)
         
         // MARK: -2-
@@ -74,8 +74,8 @@ extension DailyQuestsImp {
         let reward_02 = BattleRewardImp(economicAccountVlues: valueReward_02, equipments: itemsReward_02)
         
         /// init
-        let title_02 = "receive two arch"
-        let task02 = TaskImp(title: title_02, reward: reward_02, type: .receive, count: 2, object: .equipmentTypes(.arch))
+        let title_02 = "receive twenty arch"
+        let task02 = TaskImp(title: title_02, reward: reward_02, type: .receive, count: 20, object: .equipmentTypes(.arch))
         addTask(task02)
         
         // MARK: -3-
@@ -86,8 +86,20 @@ extension DailyQuestsImp {
         let reward_03 = BattleRewardImp(economicAccountVlues: valueReward_03, equipments: itemsReward_03)
         
         /// init
-        let title_03 = "receive three shield"
-        let task03 = TaskImp(title: title_03, reward: reward_03, type: .receive, count: 3, object: .equipmentTypes(.shield))
+        let title_03 = "receive twenty shield"
+        let task03 = TaskImp(title: title_03, reward: reward_03, type: .receive, count: 20, object: .equipmentTypes(.shield))
         addTask(task03)
+        
+        // MARK: -4-
+        /// reward
+        let valueReward_04 = EconomicAccountValuesImp()
+        let arch_04 = AbstractFactoryEquipmentImp.defaultFactory.create(.arch, with: .firstLevel)
+        let itemsReward_04: [(item: Equipment, quantity: Int)] = [(item: arch_04, quantity: 100)]
+        let reward_04 = BattleRewardImp(economicAccountVlues: valueReward_04, equipments: itemsReward_04)
+        
+        /// init
+        let title_04 = "receive twenty hammer"
+        let task04 = TaskImp(title: title_04, reward: reward_04, type: .receive, count: 20, object: .equipmentTypes(.hammer))
+        addTask(task04)
     }
 }
