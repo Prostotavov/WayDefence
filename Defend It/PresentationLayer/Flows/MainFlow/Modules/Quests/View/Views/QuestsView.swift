@@ -9,6 +9,7 @@ import UIKit
 
 protocol QuestsViewDelegate: AnyObject {
     func backButtonPressed()
+    func getButtonPressed(rewards: BattleReward)
 }
 
 class QuestsView: UIView, UITableViewDelegate {
@@ -51,6 +52,7 @@ class QuestsView: UIView, UITableViewDelegate {
     
     func setCollectionView() {
         questsCollectionView = QuestsCollectionView()
+        questsCollectionView.delegate = self
         self.addSubview(questsCollectionView)
         
         questsCollectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -88,4 +90,10 @@ class QuestsView: UIView, UITableViewDelegate {
     }
 }
 
+extension QuestsView: QuestsCollectionViewDelegate {
+    
+    func getButtonPressed(rewards: BattleReward) {
+        delegate.getButtonPressed(rewards: rewards)
+    }
+}
 

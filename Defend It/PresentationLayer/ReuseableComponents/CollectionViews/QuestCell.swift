@@ -8,7 +8,7 @@
 import UIKit
 
 protocol QuestCellDelegate: AnyObject {
-    func getButtonPressed()
+    func getButtonPressed(rewards: BattleReward)
 }
 
 protocol QuestCell: UITableViewCell {
@@ -117,7 +117,7 @@ class QuestCellImp: UITableViewCell, QuestCell {
         
         NSLayoutConstraint.activate([
             rewardView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            rewardView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -self.frame.width/3),
+            rewardView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: +self.frame.width/10),
             rewardView.heightAnchor.constraint(equalToConstant: self.frame.height/4),
             rewardView.widthAnchor.constraint(equalToConstant: self.frame.height/4),
         ])
@@ -172,7 +172,7 @@ extension QuestCellImp {
     }
     
     @objc func startButtonTouchUpInside() {
-        if !task!.isCompleted {UIAnimations.rapidIncreaseAndDecreaseAnimation(view: getButton);return}
+//        if !task!.isCompleted {UIAnimations.rapidIncreaseAndDecreaseAnimation(view: getButton);return}
         if task!.isReceive {return}
         UIAnimations.rapidIncreaseAndDecreaseAnimation(view: getButton)
         task?.receiveReward()
@@ -180,6 +180,7 @@ extension QuestCellImp {
             self?.getButton.isEnabled = false
             self?.getButton.changeColor(into: .grey)
         }
+        delegate.getButtonPressed(rewards: task!.reward)
     }
     
     @objc func startButtonTouchDown() {

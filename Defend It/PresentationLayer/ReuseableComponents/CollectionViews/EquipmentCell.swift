@@ -48,8 +48,8 @@ class EquipmentView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5),
-            label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -7)
+            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -self.frame.height/10),
+            label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -self.frame.width/7)
         ])
     }
     

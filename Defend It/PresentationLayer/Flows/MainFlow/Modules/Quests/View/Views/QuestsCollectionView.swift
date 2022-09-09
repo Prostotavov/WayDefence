@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol QuestsCollectionViewDelegate: AnyObject {
+    func getButtonPressed(rewards: BattleReward)
+}
+
 class QuestsCollectionView: UIView, UITableViewDataSource, UITableViewDelegate {
 
+    weak var delegate: QuestsCollectionViewDelegate!
     
     var tableView: UITableView?
     
@@ -29,7 +34,6 @@ class QuestsCollectionView: UIView, UITableViewDataSource, UITableViewDelegate {
         setCollectionView()
         
         self.tableView?.allowsSelection = false
-//        tableView?.delaysContentTouches = false
     }
     
     required init?(coder: NSCoder) {
@@ -84,7 +88,7 @@ class QuestsCollectionView: UIView, UITableViewDataSource, UITableViewDelegate {
 
 extension QuestsCollectionView: QuestCellDelegate {
     
-    func getButtonPressed() {
-        print("getButtonPressed")
+    func getButtonPressed(rewards: BattleReward) {
+        delegate.getButtonPressed(rewards: rewards)
     }
 }
