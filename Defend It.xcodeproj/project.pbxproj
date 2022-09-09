@@ -68,6 +68,7 @@
 		8738AC6D28CBACE0007FF531 /* AchieveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738AC6C28CBACE0007FF531 /* AchieveView.swift */; };
 		8738AC6F28CBACE9007FF531 /* AchieveTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738AC6E28CBACE9007FF531 /* AchieveTableView.swift */; };
 		8738AC7128CBB388007FF531 /* AchieveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738AC7028CBB388007FF531 /* AchieveButton.swift */; };
+		8738AC7328CBB861007FF531 /* Achievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738AC7228CBB861007FF531 /* Achievements.swift */; };
 		873F3F19289D6E9700BF7FF9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F18289D6E9700BF7FF9 /* User.swift */; };
 		873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1A289D6EF400BF7FF9 /* UserSex.swift */; };
 		873F3F1D289D6F8E00BF7FF9 /* GameAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */; };
@@ -375,6 +376,7 @@
 		8738AC6C28CBACE0007FF531 /* AchieveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveView.swift; sourceTree = "<group>"; };
 		8738AC6E28CBACE9007FF531 /* AchieveTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveTableView.swift; sourceTree = "<group>"; };
 		8738AC7028CBB388007FF531 /* AchieveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveButton.swift; sourceTree = "<group>"; };
+		8738AC7228CBB861007FF531 /* Achievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievements.swift; sourceTree = "<group>"; };
 		873F3F18289D6E9700BF7FF9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		873F3F1A289D6EF400BF7FF9 /* UserSex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSex.swift; sourceTree = "<group>"; };
 		873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccount.swift; sourceTree = "<group>"; };
@@ -1022,6 +1024,7 @@
 				873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */,
 				873F3F20289D742200BF7FF9 /* EconomicAccountValues.swift */,
 				879292C128BE20F8003309FB /* EquipmentBag.swift */,
+				8738AC7228CBB861007FF531 /* Achievements.swift */,
 				8768DAF628C960530071D000 /* DailyQuest.swift */,
 				8788DDE928C80E110089B1B0 /* Task.swift */,
 			);
@@ -2228,6 +2231,7 @@
 				877F0FF3288FFBBB00571F26 /* BattleFieldViewCoordinatorOutput.swift in Sources */,
 				AA78022427E2043D002C57E1 /* HomePageView.swift in Sources */,
 				873F653D2893258F00A67F43 /* TabbarCoordinatorOutput.swift in Sources */,
+				8738AC7328CBB861007FF531 /* Achievements.swift in Sources */,
 				87D0E0E228BE8C99001D3E67 /* BagViewController.swift in Sources */,
 				873F653F289325A900A67F43 /* TabbarCoordinator.swift in Sources */,
 				870B676F288E896B0089D3CB /* Extensions.swift in Sources */,

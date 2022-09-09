@@ -17,7 +17,7 @@ class AchieveTableView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     var tableView: UITableView?
     
-    let dailyQuests = UserImp.shared.gameAccount?.dailyQuests
+    let achievements = UserImp.shared.gameAccount?.achievements
     
     let testArrayOfRewardItems: [(String, EquipmentImageNames, String)] =
        [("press done button", EquipmentImageNames.blade, "1"),
@@ -68,7 +68,7 @@ class AchieveTableView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let currentQuest = dailyQuests!.tasks[indexPath.row]
+        let currentQuest = achievements!.tasks[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestCellImp.identifier, for: indexPath) as! QuestCell
         cell.configure(task: currentQuest)
         cell.setupDelegate(self)
@@ -76,7 +76,7 @@ class AchieveTableView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dailyQuests?.tasks.count ?? 0
+        achievements?.tasks.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
