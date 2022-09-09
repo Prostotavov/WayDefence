@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum EnemyRaces {
+enum EnemyRaces: String {
     case orc
     case goblin
     case troll

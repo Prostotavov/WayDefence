@@ -7,15 +7,12 @@
 
 import UIKit
 
-
-
 protocol EquipmentCell: UICollectionViewCell {
     func configure(image: EquipmentImageNames, text: String)
 }
 
-class EquipmentCellImp: UICollectionViewCell, EquipmentCell {
+class EquipmentView: UIView {
     
-    static let identifier = "EquipmentCell"
     private var label: UILabel?
     private var imageView: UIImageView?
     
@@ -51,8 +48,8 @@ class EquipmentCellImp: UICollectionViewCell, EquipmentCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5),
-            label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -7)
+            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -self.frame.height/10),
+            label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -self.frame.width/7)
         ])
     }
     
@@ -148,9 +145,44 @@ class EquipmentCellImp: UICollectionViewCell, EquipmentCell {
         configureLabel(text: text)
         configureImage(image: image)
     }
+}
+
+class EquipmentCellImp: UICollectionViewCell, EquipmentCell {
     
-    override func prepareForReuse() {
-        label = nil
-        imageView = nil
+    static let identifier = "EquipmentCell"
+    
+    private var equipmentView: EquipmentView!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addEquipmentView()
     }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    func addEquipmentView() {
+        
+        let size = CGSize(width: self.frame.width, height: self.frame.height)
+        let frame = CGRect(origin: .zero, size: size)
+        
+        equipmentView = EquipmentView(frame: frame)
+
+        addSubview(equipmentView)
+        equipmentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            equipmentView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            equipmentView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            equipmentView.heightAnchor.constraint(equalTo: self.heightAnchor),
+            equipmentView.widthAnchor.constraint(equalTo: self.widthAnchor)
+        ])
+    }
+    
+    func configure(image: EquipmentImageNames, text: String) {
+        equipmentView.configure(image: image, text: text)
+    }
+ 
+
 }

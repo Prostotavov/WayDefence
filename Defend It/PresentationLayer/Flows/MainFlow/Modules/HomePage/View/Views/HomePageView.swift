@@ -10,6 +10,7 @@ import UIKit
 protocol HomePageViewDelegate: AnyObject {
     func startButtonPressed()
     func bagButtonPressed()
+    func questsButtonPressed()
 }
 
 class HomePageView: UIView {
@@ -19,6 +20,7 @@ class HomePageView: UIView {
     
     var startButton: RectangleButton!
     var bagButton: BagButton!
+    var questsButton: QuestsButton!
     
     weak var delegate: HomePageViewDelegate!
     
@@ -27,6 +29,7 @@ class HomePageView: UIView {
         backgroundColor = .gray
         setStartButton()
         setupBagButton()
+        setupQuestsButton()
     }
     
     required init?(coder: NSCoder) {
@@ -110,8 +113,45 @@ extension HomePageView {
     }
 
     @objc func bagButtonPressed() {
-        rapidIncreaseAndDecreaseAnimation()
+        UIAnimations.rapidIncreaseAndDecreaseAnimation(view: bagButton)
         delegate.bagButtonPressed()
     }
 }
 
+// quests view
+extension HomePageView {
+    func setupQuestsButton() {
+        let size = CGSize(width: 70, height: 70)
+        let frame = CGRect(origin: .zero, size: size)
+        questsButton = QuestsButton(frame: frame)
+        self.addSubview(questsButton)
+        questsButton.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            questsButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
+            questsButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -50),
+            questsButton.widthAnchor.constraint(equalToConstant: 70),
+            questsButton.heightAnchor.constraint(equalToConstant: 70)
+        ])
+        
+        questsButton.addTarget(self, action: #selector(bagButtonTouchUpInside), for: .touchUpInside)
+        
+        questsButton.addTarget(self, action: #selector(bagButtonTouchDown), for: .touchDown)
+        
+        questsButton.addTarget(self, action: #selector(bagButtonTouchDragOutside), for: .touchDragOutside)
+    }
+    
+    @objc func bagButtonTouchDragOutside() {
+        UIAnimations.rapidIncreaseAndDecreaseAnimation(view: questsButton)
+    }
+    
+    
+    @objc func bagButtonTouchDown() {
+        UIAnimations.bagButtonSizeReductionAnimation(view: questsButton)
+    }
+
+    @objc func bagButtonTouchUpInside() {
+        UIAnimations.rapidIncreaseAndDecreaseAnimation(view: questsButton)
+        delegate.questsButtonPressed()
+    }
+}

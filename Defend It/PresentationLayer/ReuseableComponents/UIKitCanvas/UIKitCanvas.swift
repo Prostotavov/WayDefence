@@ -16,7 +16,7 @@ struct UIKitCanvas: PreviewProvider {
     struct UIViewCanvas: UIViewRepresentable {
         
         func makeUIView(context: Context) -> some UIView {
-            return HomePageView(frame: CGRect.zero)
+            return QuestsCollectionView(frame: CGRect.zero)
         }
         
         func updateUIView(_ uiView: UIViewType, context: Context) {

@@ -11,4 +11,5 @@ protocol HomePageViewOutput: AnyObject {
     
     func onStartBattle()
     func onBagButton()
+    func onQuestsButton()
 }

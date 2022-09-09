@@ -41,6 +41,10 @@ class MainCoordinator: BaseCoordinator , MainCoordinatorOutput {
             self?.showBag()
         }
         
+        homePageOutput.onQuestsButton = { [weak self] in
+            self?.showQuests()
+        }
+        
         router.setRootModule(homePageOutput, hideBar: true)
     }
     
@@ -51,8 +55,16 @@ class MainCoordinator: BaseCoordinator , MainCoordinatorOutput {
             self?.router.dismissModule(animated: false, completion: nil)
         }
         
-        
         router.present(bagOutput, animated: false)
+    }
+    
+    private func showQuests() {
+        let questsOutput = factory.produceQuestsOutput()
+        
+        questsOutput.onBack = { [weak self] in
+            self?.router.dismissModule(animated: false, completion: nil)
+        }
+        router.present(questsOutput, animated: false)
     }
 
 }
