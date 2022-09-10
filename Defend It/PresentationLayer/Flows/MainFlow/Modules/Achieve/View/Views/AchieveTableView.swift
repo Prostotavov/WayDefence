@@ -34,6 +34,7 @@ class AchieveTableView: UIView, UITableViewDataSource, UITableViewDelegate {
         setCollectionView()
         
         self.tableView?.allowsSelection = false
+        self.tableView?.delaysContentTouches = false
     }
     
     required init?(coder: NSCoder) {

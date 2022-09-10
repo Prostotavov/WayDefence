@@ -32,8 +32,8 @@ class QuestsCollectionView: UIView, UITableViewDataSource, UITableViewDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setCollectionView()
-        
         self.tableView?.allowsSelection = false
+        self.tableView?.delaysContentTouches = false
     }
     
     required init?(coder: NSCoder) {

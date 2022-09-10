@@ -36,8 +36,6 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput,
         sceneView.delegate = self
         addGestureRecognizers()
     }
- 
-    
     
     func assemblyModule(delegate: BattleFieldAssemblyDelagate) {
         assembler.setDelegate(delegate: delegate)
@@ -167,6 +165,7 @@ extension BattleFieldViewController: UIGestureRecognizerDelegate {
     func addDoubleTapGestureRecognizer() {
         let doubleTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
         doubleTap.numberOfTapsRequired = 2
+        doubleTap.delaysTouchesEnded = false
         self.view.addGestureRecognizer(doubleTap)
     }
     

@@ -331,27 +331,28 @@ extension BattleImpl {
         let parentNode = getParentNodeFor(node)
         let coordinate = Converter.toCoordinate(from: parentNode.position)
         // node.name? must be
+        guard let nodeName = node.name else {return}
         switch node.name {
-        case _ where node.name! == RecognitionNodes.sellSelectIcon.rawValue:
+        case _ where nodeName == RecognitionNodes.sellSelectIcon.rawValue:
             sellTower(by: coordinate)
             hideTowerSelectionPanel()
             
-        case _ where node.name! == RecognitionNodes.repairSelectIcon.rawValue:
+        case _ where nodeName == RecognitionNodes.repairSelectIcon.rawValue:
             repairTower(by: coordinate)
             hideTowerSelectionPanel()
             
-        case _ where node.name!.contains(RecognitionNodes.floor.rawValue):
+        case _ where nodeName.contains(RecognitionNodes.floor.rawValue):
             hideTowerSelectionPanel()
             
-        case _ where node.name!.contains(RecognitionNodes.groundSquare.rawValue):
+        case _ where nodeName.contains(RecognitionNodes.groundSquare.rawValue):
             showTowerSelectionPanel(by: coordinate)
             
-        case _ where node.name!.contains(RecognitionNodes.selectIcon.rawValue):
-            let buildingType = Converter.toBuildingType(from: node.name!)!
+        case _ where nodeName.contains(RecognitionNodes.selectIcon.rawValue):
+            let buildingType = Converter.toBuildingType(from: nodeName)!
             isExistTower(on: coordinate) ? upgradeTower(by: coordinate) : buildTower(type: buildingType, by: coordinate)
             hideTowerSelectionPanel()
             
-        case _ where node.name!.contains(RecognitionNodes.builtTower.rawValue):
+        case _ where nodeName.contains(RecognitionNodes.builtTower.rawValue):
             showTowerSelectionPanel(by: coordinate)
         default:
             print("default case in BattleFieldPresenter")
