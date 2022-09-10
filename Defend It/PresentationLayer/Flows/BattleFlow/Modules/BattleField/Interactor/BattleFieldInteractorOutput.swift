@@ -24,7 +24,6 @@ protocol BattleFieldInteractorOutput: AnyObject {
     func finishBattle()
     func battleIsWon()
     func battleIsLost()
-    
-
+    func battleSpeedChanged(into newSpeed: Int)
 }
 

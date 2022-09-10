@@ -9,6 +9,7 @@ import UIKit
 
 protocol TopBarViewDelegate: AnyObject {
     func pauseButtonPressed()
+    func speedButtonPressed()
 }
 
 class TopBarView: UIView {
@@ -17,6 +18,7 @@ class TopBarView: UIView {
     private var livesStatusBar: GameStatusBar!
     
     var pauseButton: UIButton!
+    var speedButton: SpeedButton!
     
     weak var delegate: TopBarViewDelegate!
     
@@ -27,6 +29,7 @@ class TopBarView: UIView {
         setupCoinsLabel(size: size)
         setupLivesLabel(size: size)
         setupPauseButton(size: size)
+        setupSpeedButton(size: size)
     }
     
     required init?(coder: NSCoder) {
@@ -95,6 +98,44 @@ class TopBarView: UIView {
     
     @objc func pauseButtonTouchDragExit() {
         UIAnimations.rapidIncreaseAndDecreaseAnimation(view: pauseButton)
+    }
+    
+    func setupSpeedButton(size: CGSize) {
+        speedButton = SpeedButton(frame: CGRect(origin: .zero, size: size))
+        self.addSubview(speedButton)
+        
+        speedButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            speedButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            speedButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -self.frame.width / 25),
+            speedButton.heightAnchor.constraint(equalToConstant: size.height * 2),
+            speedButton.widthAnchor.constraint(equalToConstant: size.height * 2)
+        ])
+        
+        /// touch target
+        speedButton.addTarget(self, action: #selector(speedButtonTouchUpInside), for: .touchUpInside)
+        
+        speedButton.addTarget(self, action: #selector(speedButtonTouchDown), for: .touchDown)
+        
+        speedButton.addTarget(self, action: #selector(speedButtonTouchDragExit), for: .touchDragExit)
+        
+    }
+    
+    @objc func speedButtonTouchUpInside() {
+        delegate.speedButtonPressed()
+        UIAnimations.rapidIncreaseAndDecreaseAnimation(view: speedButton)
+    }
+    
+    @objc func speedButtonTouchDown() {
+        UIAnimations.bagButtonSizeReductionAnimation(view: speedButton)
+    }
+    
+    @objc func speedButtonTouchDragExit() {
+        UIAnimations.rapidIncreaseAndDecreaseAnimation(view: speedButton)
+    }
+    
+    func battleSpeedChanged(into newSpeed: Int) {
+        speedButton.changeBattleSpeed(into: newSpeed)
     }
 }
 

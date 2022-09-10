@@ -28,7 +28,6 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput,
     var scene: SCNScene!
     
     var topBarView: TopBarView!
-    var bottomBarView: BottomBarView!
     
     override func loadView() {
         setupScene()
@@ -47,7 +46,6 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput,
     
     override func viewDidAppear(_ animated: Bool) {
         setupTopBarView()
-        setupBottomBarView()
         output.viewDidAppear()
         runRender()
     }
@@ -132,34 +130,17 @@ extension BattleFieldViewController {
     }
 }
 
-
-// bottomBarView
-extension BattleFieldViewController: BottomBarViewDelegate {
-    func playButtonPressed() {
-        output.playButtonPressed()
-    }
-    
-    func stopButtonPressed() {
-        output.stopButtonPressed()
-    }
-    
-    func setupBottomBarView() {
-        bottomBarView = BottomBarView(frame: view.frame)
-        bottomBarView.delegate = self
-        view.addSubview(bottomBarView)
-        bottomBarView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            bottomBarView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            bottomBarView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
-            bottomBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            bottomBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
-    }
-}
-
 extension BattleFieldViewController: TopBarViewDelegate {
     func pauseButtonPressed() {
         output.onPauseTap()
+    }
+    
+    func speedButtonPressed() {
+        output.speedButtonPressed()
+    }
+    
+    func battleSpeedChanged(into newSpeed: Int) {
+        topBarView.battleSpeedChanged(into: newSpeed)
     }
 }
 

@@ -19,6 +19,7 @@ protocol BattleOutput: AnyObject {
     func finishBattle()
     func battleIsWon()
     func battleIsLost()
+    func battleSpeedChanged(into newSpeed: Int)
 }
 
 protocol BattleDelegate: AnyObject {
@@ -32,7 +33,6 @@ protocol Battle {
     func playBattle()
     func stopBattle()
     func finishBattle()
-    func speedUpBattle(by times: Int)
     func exitAndSaveBattle()
     
     
@@ -49,6 +49,7 @@ protocol Battle {
     func update()
     
     func displayBattleValues()
+    func changeBattleSpeed()
     
     var output: BattleOutput! {get set}
 }
@@ -68,10 +69,22 @@ class BattleImpl: MeadowManagerDelagate, BuildingsManagerDelegate, Battle {
     weak var output: BattleOutput!
     
     var battleCounter: Int = 0
+    var battleSpeed: Int = 0
     
     init() {
         battleState = .pause
 //        loadBuildngs()
+    }
+    
+    func changeBattleSpeed() {
+        if (battleSpeed == 1) {
+            battleSpeed = 0
+            stopBattle()
+        } else {
+            battleSpeed += 1
+            playBattle()
+        }
+        output.battleSpeedChanged(into: battleSpeed)
     }
     
     func getBattleCounter() -> Int {
@@ -135,9 +148,6 @@ extension BattleImpl {
         default: output.finishBattle()
         }
         stopBattle()
-    }
-    func speedUpBattle(by times: Int) {
-        print("add this later")
     }
     func exitAndSaveBattle() {
         changeBattleState(into: .pause)

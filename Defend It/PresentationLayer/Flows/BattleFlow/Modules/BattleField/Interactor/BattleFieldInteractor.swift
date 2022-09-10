@@ -21,6 +21,14 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
         setupCamera()
     }
     
+    func battleSpeedChanged(into newSpeed: Int) {
+        output.battleSpeedChanged(into: newSpeed)
+    }
+    
+    func speedButtonPressed() {
+        battle.changeBattleSpeed()
+    }
+    
     func playGame() {
         battle.playBattle()
     }

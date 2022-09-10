@@ -21,9 +21,9 @@ protocol BattleFieldViewOutput: AnyObject {
     func update()
         
     /// game state
-    func playButtonPressed()
-    func stopButtonPressed()
+    func speedButtonPressed()
     func onPauseTap()
+
     
     /// handle pressed node
     func pressedNode(_ node: SCNNode)

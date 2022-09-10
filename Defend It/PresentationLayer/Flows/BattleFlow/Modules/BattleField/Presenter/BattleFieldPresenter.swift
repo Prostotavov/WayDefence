@@ -75,11 +75,12 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     }
 
     /// user can stop and play the game
-    func playButtonPressed() {
-        interactor.playGame()
+    func speedButtonPressed() {
+        interactor.speedButtonPressed()
     }
-    func stopButtonPressed() {
-        interactor.stopGame()
+    
+    func battleSpeedChanged(into newSpeed: Int) {
+        view.battleSpeedChanged(into: newSpeed)
     }
     
     /// func for handle pressed node by user
