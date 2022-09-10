@@ -9,16 +9,15 @@ import UIKit
 
 class FlowTabbarTopBarView: UIView {
     
-    private var coinsLabel: UILabel!
-    private var gemsLabel: UILabel!
-    private var pointsLabel: UILabel!
+    private var coinStatusBar: GameStatusBar!
+    private var gemsStatusBar: GameStatusBar!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .brown
-        setupCoinsLabel()
-        setupGemsLabel()
-        setupPointsLabel()
+        backgroundColor = .clear
+        let size = CGSize(width: self.frame.width / 3, height: self.frame.height / 27)
+        setupCoinsLabel(size: size)
+        setupGemsLabel(size: size)
     }
     
     required init?(coder: NSCoder) {
@@ -27,71 +26,44 @@ class FlowTabbarTopBarView: UIView {
     
     func displayValue(of valueType: EconomicAccountValueTypes, to value: Int) {
         switch valueType {
-        case .coins: coinsLabel.text = "🤑 \(value)"
-        case .gems: gemsLabel.text = "💎 \(value)"
-        case .points: pointsLabel.text = "⭐️ \(value)"
+        case .coins: coinStatusBar.configureValue(value: value)
+        case .gems: gemsStatusBar.configureValue(value: value)
+        case .points: return
         }
     }
 }
 
 extension FlowTabbarTopBarView {
     
-    private func setupCoinsLabel() {
-        coinsLabel = UILabel()
-        coinsLabel.text = "coins"
-        coinsLabel.backgroundColor = .blue
-        coinsLabel.textColor = .brown
+    private func setupCoinsLabel(size: CGSize) {
         
-        self.addSubview(coinsLabel)
-        coinsLabel.translatesAutoresizingMaskIntoConstraints = false
+        coinStatusBar = GameStatusBar(frame: CGRect(origin: .zero, size: size))
+        coinStatusBar.configure(imageName: "money", value: 0, isPlusButton: true)
+        
+        self.addSubview(coinStatusBar)
+        coinStatusBar.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            coinsLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            coinsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            coinsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor,
-                                                constant: self.frame.width / 4),
-            coinsLabel.trailingAnchor.constraint(equalTo: self.leadingAnchor,
-                                                 constant: self.frame.width / 2)
+            coinStatusBar.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            coinStatusBar.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -self.frame.width / 4),
+            coinStatusBar.widthAnchor.constraint(equalToConstant: size.width),
+            coinStatusBar.heightAnchor.constraint(equalToConstant: size.height)
         ])
-        coinsLabel.textAlignment = .center
     }
     
-    private func setupGemsLabel() {
-        gemsLabel = UILabel()
-        gemsLabel.text = "gems"
-        gemsLabel.backgroundColor = .red
-        gemsLabel.textColor = .white
+    private func setupGemsLabel(size: CGSize) {
         
-        self.addSubview(gemsLabel)
-        gemsLabel.translatesAutoresizingMaskIntoConstraints = false
+        gemsStatusBar = GameStatusBar(frame: CGRect(origin: .zero, size: size))
+        gemsStatusBar.configure(imageName: "diamond", value: 0, isPlusButton: true)
         
-        NSLayoutConstraint.activate([
-            gemsLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            gemsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            gemsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor,
-                                                 constant: self.frame.width / 2),
-            gemsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor,
-                                                 constant: -self.frame.width/4)
-        ])
-        gemsLabel.textAlignment = .center
-    }
-    
-    private func setupPointsLabel() {
-        pointsLabel = UILabel()
-        pointsLabel.text = "points"
-        pointsLabel.backgroundColor = .darkGray
-        pointsLabel.textColor = .white
-        
-        self.addSubview(pointsLabel)
-        pointsLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(gemsStatusBar)
+        gemsStatusBar.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            pointsLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            pointsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            pointsLabel.leadingAnchor.constraint(equalTo: self.trailingAnchor,
-                                                 constant: -self.frame.width / 4),
-            pointsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            gemsStatusBar.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            gemsStatusBar.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: self.frame.width / 4),
+            gemsStatusBar.widthAnchor.constraint(equalToConstant: size.width),
+            gemsStatusBar.heightAnchor.constraint(equalToConstant: size.height)
         ])
-        pointsLabel.textAlignment = .center
     }
 }

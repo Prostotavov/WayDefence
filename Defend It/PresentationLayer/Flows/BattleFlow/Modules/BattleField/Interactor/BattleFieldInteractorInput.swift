@@ -16,6 +16,7 @@ protocol BattleFieldInteractorInput: AnyObject {
     /// funcs for handle user taps
     func playGame()
     func stopGame()
+    func speedButtonPressed()
     func pressedNode(_ node: SCNNode)
     
     /// funcs for handle nodes collisions

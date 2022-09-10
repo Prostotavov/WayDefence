@@ -20,4 +20,6 @@ protocol BattleFieldViewInput: AnyObject {
     
     /// funcs for display battle values on the TopBarView
     func displayValue(of valueType: EconomicBattleValueTypes, to number: Int)
+    
+    func battleSpeedChanged(into newSpeed: Int)
 }

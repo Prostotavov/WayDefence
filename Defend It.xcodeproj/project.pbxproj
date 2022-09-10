@@ -69,6 +69,10 @@
 		8738AC6F28CBACE9007FF531 /* AchieveTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738AC6E28CBACE9007FF531 /* AchieveTableView.swift */; };
 		8738AC7128CBB388007FF531 /* AchieveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738AC7028CBB388007FF531 /* AchieveButton.swift */; };
 		8738AC7328CBB861007FF531 /* Achievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738AC7228CBB861007FF531 /* Achievements.swift */; };
+		8738AC7828CBE14D007FF531 /* GameStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738AC7728CBE14D007FF531 /* GameStatusBar.swift */; };
+		8738AC7A28CC73FE007FF531 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738AC7928CC73FE007FF531 /* PlusButton.swift */; };
+		8738AC7C28CC787D007FF531 /* PauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738AC7B28CC787D007FF531 /* PauseButton.swift */; };
+		8738AC7E28CCA328007FF531 /* SpeedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738AC7D28CCA328007FF531 /* SpeedButton.swift */; };
 		873F3F19289D6E9700BF7FF9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F18289D6E9700BF7FF9 /* User.swift */; };
 		873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1A289D6EF400BF7FF9 /* UserSex.swift */; };
 		873F3F1D289D6F8E00BF7FF9 /* GameAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */; };
@@ -187,7 +191,6 @@
 		8797F79A28ABD4E5000D776E /* UIKitCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797F79928ABD4E5000D776E /* UIKitCanvas.swift */; };
 		87B606C228790173003549AF /* BattleMeadowCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B606C128790173003549AF /* BattleMeadowCreator.swift */; };
 		87CA3D4F2828FBE0000F952F /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D4E2828FBE0000F952F /* TopBarView.swift */; };
-		87CA3D512829024C000F952F /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D502829024C000F952F /* BottomBarView.swift */; };
 		87CA3D5728294F17000F952F /* BattleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA3D5628294F17000F952F /* BattleManager.swift */; };
 		87D0E0DD28BE8C99001D3E67 /* BagAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0D028BE8C99001D3E67 /* BagAssembly.swift */; };
 		87D0E0DE28BE8C99001D3E67 /* BagAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0E0D128BE8C99001D3E67 /* BagAssemblyProtocol.swift */; };
@@ -377,6 +380,10 @@
 		8738AC6E28CBACE9007FF531 /* AchieveTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveTableView.swift; sourceTree = "<group>"; };
 		8738AC7028CBB388007FF531 /* AchieveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveButton.swift; sourceTree = "<group>"; };
 		8738AC7228CBB861007FF531 /* Achievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievements.swift; sourceTree = "<group>"; };
+		8738AC7728CBE14D007FF531 /* GameStatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatusBar.swift; sourceTree = "<group>"; };
+		8738AC7928CC73FE007FF531 /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
+		8738AC7B28CC787D007FF531 /* PauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseButton.swift; sourceTree = "<group>"; };
+		8738AC7D28CCA328007FF531 /* SpeedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedButton.swift; sourceTree = "<group>"; };
 		873F3F18289D6E9700BF7FF9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		873F3F1A289D6EF400BF7FF9 /* UserSex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSex.swift; sourceTree = "<group>"; };
 		873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccount.swift; sourceTree = "<group>"; };
@@ -494,7 +501,6 @@
 		8797F79928ABD4E5000D776E /* UIKitCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitCanvas.swift; sourceTree = "<group>"; };
 		87B606C128790173003549AF /* BattleMeadowCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMeadowCreator.swift; sourceTree = "<group>"; };
 		87CA3D4E2828FBE0000F952F /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
-		87CA3D502829024C000F952F /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
 		87CA3D5628294F17000F952F /* BattleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleManager.swift; sourceTree = "<group>"; };
 		87D0E0C928BE4865001D3E67 /* BagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagButton.swift; sourceTree = "<group>"; };
 		87D0E0D028BE8C99001D3E67 /* BagAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagAssembly.swift; sourceTree = "<group>"; };
@@ -762,13 +768,13 @@
 		870B6797288E8FB00089D3CB /* ReuseableComponents */ = {
 			isa = PBXGroup;
 			children = (
+				8738AC7628CBCAFD007FF531 /* UniqueViews */,
 				877DDC0328C21A3800C6ADFF /* CommonButtons */,
 				874A40ED28C03D05006CD99D /* UIAnimations */,
 				879292B928BD0D24003309FB /* CollectionViews */,
 				8797F79828ABD4D2000D776E /* UIKitCanvas */,
 				87425E44289B2BD1000BF422 /* ProgressBars */,
 				870B679E288E903A0089D3CB /* FlowNavigationController */,
-				8738AC4D28CA891E007FF531 /* GameAlertView.swift */,
 			);
 			path = ReuseableComponents;
 			sourceTree = "<group>";
@@ -1017,6 +1023,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8738AC7628CBCAFD007FF531 /* UniqueViews */ = {
+			isa = PBXGroup;
+			children = (
+				8738AC4D28CA891E007FF531 /* GameAlertView.swift */,
+				8738AC7728CBE14D007FF531 /* GameStatusBar.swift */,
+			);
+			path = UniqueViews;
+			sourceTree = "<group>";
+		};
 		873F3F17289D6E8B00BF7FF9 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -1172,6 +1187,9 @@
 			isa = PBXGroup;
 			children = (
 				877DDC0428C21A4900C6ADFF /* RectangleButton.swift */,
+				8738AC7928CC73FE007FF531 /* PlusButton.swift */,
+				8738AC7B28CC787D007FF531 /* PauseButton.swift */,
+				8738AC7D28CCA328007FF531 /* SpeedButton.swift */,
 			);
 			path = CommonButtons;
 			sourceTree = "<group>";
@@ -1545,7 +1563,6 @@
 			isa = PBXGroup;
 			children = (
 				87CA3D4E2828FBE0000F952F /* TopBarView.swift */,
-				87CA3D502829024C000F952F /* BottomBarView.swift */,
 			);
 			path = GameUtilitsView;
 			sourceTree = "<group>";
@@ -2127,6 +2144,7 @@
 				87B606C228790173003549AF /* BattleMeadowCreator.swift in Sources */,
 				AA0B68C627E5BD1E0078003D /* MagicTowerFL.swift in Sources */,
 				870B67AF288E963E0089D3CB /* LoadBattleInteractorInput.swift in Sources */,
+				8738AC7E28CCA328007FF531 /* SpeedButton.swift in Sources */,
 				877F0FE8288FF32400571F26 /* LoseBattleViewOutput.swift in Sources */,
 				879292D828BE227D003309FB /* HammerFirstLevel.swift in Sources */,
 				87425E46289B2BE4000BF422 /* SCNProgressBar.swift in Sources */,
@@ -2158,6 +2176,7 @@
 				877F102B289025EE00571F26 /* PauseBattleInteractorInput.swift in Sources */,
 				877F1027289025EE00571F26 /* PauseBattleViewCoordinatorOutput.swift in Sources */,
 				87D0E0E628BE8C99001D3E67 /* BagInteractorOutput.swift in Sources */,
+				8738AC7C28CC787D007FF531 /* PauseButton.swift in Sources */,
 				870B67B1288E964B0089D3CB /* LoadBattleInteractorOutput.swift in Sources */,
 				870B6786288E8EF60089D3CB /* Router.swift in Sources */,
 				8738AC6828CBAC60007FF531 /* AchieveInteractor.swift in Sources */,
@@ -2216,6 +2235,7 @@
 				870B6795288E8F5C0089D3CB /* CoordinatorFactoryImpl.swift in Sources */,
 				87EB0D322899E19600375CA4 /* CustomVisualEffectView.swift in Sources */,
 				AA7801FD27E20291002C57E1 /* HomePageViewController.swift in Sources */,
+				8738AC7A28CC73FE007FF531 /* PlusButton.swift in Sources */,
 				AA78023A27E20B8E002C57E1 /* BattleFieldAssembly.swift in Sources */,
 				877F10082890083F00571F26 /* WinBattleViewController.swift in Sources */,
 				870B67CC288FC5BE0089D3CB /* MainCoordinatorOutput.swift in Sources */,
@@ -2252,7 +2272,6 @@
 				87FE431928994B6A002DFCEA /* SceneCameraConverter.swift in Sources */,
 				87E1286B2894707C006CEF02 /* BattleMapScene_BattleIcons.swift in Sources */,
 				8738AC6428CBAC60007FF531 /* AchieveViewCoordinatorOutput.swift in Sources */,
-				87CA3D512829024C000F952F /* BottomBarView.swift in Sources */,
 				AAE886EA27EEFF9800CA4E5D /* BattleMeadow.swift in Sources */,
 				8711C62A286FACA300E84876 /* EnemyWave.swift in Sources */,
 				87D0E0E328BE8C99001D3E67 /* BagViewInput.swift in Sources */,
@@ -2277,6 +2296,7 @@
 				879292CC28BE21DA003309FB /* AbstractFactoryEquipment.swift in Sources */,
 				AA78023B27E20B8E002C57E1 /* BattleFieldAssemblyProtocol.swift in Sources */,
 				877F10072890083F00571F26 /* WinBattlePresenter.swift in Sources */,
+				8738AC7828CBE14D007FF531 /* GameStatusBar.swift in Sources */,
 				870B67BB288E97290089D3CB /* LoadBattleAssembly.swift in Sources */,
 				AACC7BEF27FB36D30022384E /* BuiltTowers.swift in Sources */,
 				870B6793288E8F530089D3CB /* CoordinatorFactory.swift in Sources */,
