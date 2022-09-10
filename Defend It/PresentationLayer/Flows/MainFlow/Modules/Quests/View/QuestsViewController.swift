@@ -71,6 +71,10 @@ class QuestsViewController: UIViewController, QuestsViewInput, QuestsViewCoordin
             alertView.removeFromSuperview()
         }
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
 
 extension QuestsViewController: QuestsViewDelegate {

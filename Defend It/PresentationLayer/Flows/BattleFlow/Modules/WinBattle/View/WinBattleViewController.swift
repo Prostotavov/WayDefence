@@ -30,6 +30,10 @@ class WinBattleViewController: UIViewController, WinBattleViewInput, WinBattleVi
     func setupInitialState() {
         
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
 
 extension WinBattleViewController: WinBattleViewDelegate {

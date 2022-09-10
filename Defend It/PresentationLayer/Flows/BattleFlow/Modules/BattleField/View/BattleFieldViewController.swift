@@ -78,6 +78,10 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput,
         output.pressedNode(node)
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
 }
 
 // cameras

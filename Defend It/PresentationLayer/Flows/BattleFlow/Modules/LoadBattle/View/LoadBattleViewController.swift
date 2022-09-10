@@ -51,6 +51,10 @@ class LoadBattleViewController: UIViewController, LoadBattleViewInput, LoadBattl
         battleFieldVC.modalPresentationStyle = .fullScreen
         self.present(battleFieldVC, animated: true)
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
 
 

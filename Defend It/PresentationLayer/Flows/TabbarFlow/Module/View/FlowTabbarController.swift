@@ -69,6 +69,10 @@ class FlowTabbarController: UITabBarController , UITabBarControllerDelegate, Flo
             item.selectedImage = UIImage(systemName: "pencil.tip.crop.circle")
         })
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
 
 // topBarView

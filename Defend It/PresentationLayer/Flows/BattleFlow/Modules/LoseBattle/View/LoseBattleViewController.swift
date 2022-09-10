@@ -30,6 +30,10 @@ class LoseBattleViewController: UIViewController, LoseBattleViewInput, LoseBattl
     func setupInitialState() {
         
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
 
 extension LoseBattleViewController: LoseBattleViewDelegate {

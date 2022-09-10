@@ -72,6 +72,10 @@ class AchieveViewController: UIViewController, AchieveViewInput, AchieveViewCoor
             alertView.removeFromSuperview()
         }
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
 
 extension AchieveViewController: AchieveViewDelegate {

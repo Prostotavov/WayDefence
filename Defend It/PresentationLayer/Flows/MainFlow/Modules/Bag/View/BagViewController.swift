@@ -41,6 +41,10 @@ class BagViewController: UIViewController, BagViewInput, BagViewCoordinatorOutpu
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
 
 extension BagViewController: BagViewDelegate {

@@ -45,5 +45,9 @@ class HomePageViewController: UIViewController, HomePageViewInput, HomePageViewD
         output.onAchieveButton()
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
 }
 

@@ -44,12 +44,6 @@ class BattleMapViewController: UIViewController, BattleMapViewInput, BattleMapVi
         skView.presentScene(battleMapScene)
         
         assembler.assemblyModuleForViewInput(viewInput: self)
-        
-        
-        
-        
-        
-        
         output.viewDidLoad()
     }
     
