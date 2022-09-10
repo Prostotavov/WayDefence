@@ -40,7 +40,7 @@ class SpeedButton: UIButton {
         ])
         
         rectangle.layer.cornerRadius = 7
-        rectangle.backgroundColor = .purple
+        rectangle.backgroundColor = .darkGray
     }
     
     private func setupLabel(size: CGSize) {

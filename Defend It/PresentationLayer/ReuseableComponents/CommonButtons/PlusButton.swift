@@ -12,6 +12,7 @@ class PlusButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         firstBorder(size: frame.size)
+        setPlusImageView(size: frame.size)
     }
     
     required init?(coder: NSCoder) {
@@ -33,6 +34,26 @@ class PlusButton: UIButton {
         ])
         
         rectangle.layer.cornerRadius = 7
-        rectangle.backgroundColor = .green
+        rectangle.backgroundColor = .systemGreen
+    }
+    
+    private func setPlusImageView(size: CGSize) {
+        
+        let image = UIImage(named: "blackPlus")
+        
+        let imageView = UIImageView(image: image)
+
+        self.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isUserInteractionEnabled = false
+        
+        NSLayoutConstraint.activate([
+            imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: size.height * 0.7),
+            imageView.widthAnchor.constraint(equalToConstant: size.height * 0.7)
+        ])
+        
+        imageView.sizeToFit()
     }
 }

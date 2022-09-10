@@ -38,7 +38,7 @@ class TopBarView: UIView {
     
     func setupCoinsLabel(size: CGSize) {
         coinStatusBar = GameStatusBar(frame: CGRect(origin: .zero, size: size))
-        coinStatusBar.configure(imageName: "bag", value: 0, isPlusButton: true)
+        coinStatusBar.configure(imageName: "money", value: 0, isPlusButton: true)
         
         self.addSubview(coinStatusBar)
         coinStatusBar.translatesAutoresizingMaskIntoConstraints = false

@@ -104,7 +104,6 @@ class GameStatusBar: UIView {
         ])
         
         imageView.layer.cornerRadius = 7
-        imageView.backgroundColor = .yellow.withAlphaComponent(0.5)
         imageView.sizeToFit()
     }
     
