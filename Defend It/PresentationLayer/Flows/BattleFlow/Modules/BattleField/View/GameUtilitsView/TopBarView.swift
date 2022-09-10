@@ -13,9 +13,8 @@ protocol TopBarViewDelegate: AnyObject {
 
 class TopBarView: UIView {
     
-    var coinsLabel: UILabel!
-    var livesLabel: UILabel!
-    var pointsLabel: UILabel!
+    private var coinStatusBar: GameStatusBar!
+    private var livesStatusBar: GameStatusBar!
     
     var pauseButton: UIButton!
     
@@ -23,99 +22,79 @@ class TopBarView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .brown
-        setupCoinsLabel()
-        setupLivesLabel()
-        setupPointsLabel()
-        setupPauseButton()
+        backgroundColor = .clear
+        let size = CGSize(width: self.frame.width / 3.7, height: self.frame.height / 27)
+        setupCoinsLabel(size: size)
+        setupLivesLabel(size: size)
+        setupPauseButton(size: size)
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    func setupCoinsLabel() {
-        coinsLabel = UILabel()
-        coinsLabel.text = "coins"
-        coinsLabel.backgroundColor = .blue
-        coinsLabel.textColor = .brown
+    func setupCoinsLabel(size: CGSize) {
+        coinStatusBar = GameStatusBar(frame: CGRect(origin: .zero, size: size))
+        coinStatusBar.configure(imageName: "bag", value: 0, isPlusButton: true)
         
-        self.addSubview(coinsLabel)
-        coinsLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(coinStatusBar)
+        coinStatusBar.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            coinsLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            coinsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            coinsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor,
-                                                constant: self.frame.width / 4),
-            coinsLabel.trailingAnchor.constraint(equalTo: self.leadingAnchor,
-                                                 constant: self.frame.width / 2)
+            coinStatusBar.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            coinStatusBar.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: self.frame.width / 6),
+            coinStatusBar.widthAnchor.constraint(equalToConstant: size.width),
+            coinStatusBar.heightAnchor.constraint(equalToConstant: size.height)
         ])
-        coinsLabel.textAlignment = .center
     }
     
-    func setupLivesLabel() {
-        livesLabel = UILabel()
-        livesLabel.text = "lives"
-        livesLabel.backgroundColor = .red
-        livesLabel.textColor = .white
+    func setupLivesLabel(size: CGSize) {
+        livesStatusBar = GameStatusBar(frame: CGRect(origin: .zero, size: size))
+        livesStatusBar.configure(imageName: "shield", value: 0, isPlusButton: true)
         
-        self.addSubview(livesLabel)
-        livesLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(livesStatusBar)
+        livesStatusBar.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            livesLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            livesLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            livesLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor,
-                                                 constant: self.frame.width / 2),
-            livesLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor,
-                                                 constant: -self.frame.width/4)
+            livesStatusBar.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            livesStatusBar.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -self.frame.width / 6),
+            livesStatusBar.widthAnchor.constraint(equalToConstant: size.width),
+            livesStatusBar.heightAnchor.constraint(equalToConstant: size.height)
         ])
-        livesLabel.textAlignment = .center
     }
     
-    func setupPointsLabel() {
-        pointsLabel = UILabel()
-        pointsLabel.text = "points"
-        pointsLabel.backgroundColor = .darkGray
-        pointsLabel.textColor = .white
-        
-        self.addSubview(pointsLabel)
-        pointsLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            pointsLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            pointsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            pointsLabel.leadingAnchor.constraint(equalTo: self.trailingAnchor,
-                                                 constant: -self.frame.width / 4),
-            pointsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
-        ])
-        pointsLabel.textAlignment = .center
-    }
-    
-    func setupPauseButton() {
-        pauseButton = UIButton()
-        pauseButton.backgroundColor = .gray
-        pauseButton.setTitle("Pause", for: .normal)
-        pauseButton.setTitleColor(.white, for: .normal)
-        pauseButton.titleLabel?.textColor = .green
-        pauseButton.titleLabel?.textAlignment = .left
+    func setupPauseButton(size: CGSize) {
+        pauseButton = PauseButton(frame: CGRect(origin: .zero, size: size))
         self.addSubview(pauseButton)
-        pauseButton.addTarget(self, action: #selector(pauseButtonPressed), for: .touchUpInside)
         
         pauseButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            pauseButton.topAnchor.constraint(equalTo: self.topAnchor),
-            pauseButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            pauseButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            pauseButton.trailingAnchor.constraint(equalTo: self.leadingAnchor,
-                                                  constant: self.frame.width / 4)
+            pauseButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            pauseButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: self.frame.width / 25),
+            pauseButton.heightAnchor.constraint(equalToConstant: size.height * 2),
+            pauseButton.widthAnchor.constraint(equalToConstant: size.height * 2)
         ])
+        
+        /// touch target
+        pauseButton.addTarget(self, action: #selector(pauseButtonTouchUpInside), for: .touchUpInside)
+        
+        pauseButton.addTarget(self, action: #selector(pauseButtonTouchDown), for: .touchDown)
+        
+        pauseButton.addTarget(self, action: #selector(pauseButtonTouchDragExit), for: .touchDragExit)
         
     }
     
-    @objc func pauseButtonPressed() {
+    @objc func pauseButtonTouchUpInside() {
         delegate.pauseButtonPressed()
+        UIAnimations.rapidIncreaseAndDecreaseAnimation(view: pauseButton)
+    }
+    
+    @objc func pauseButtonTouchDown() {
+        UIAnimations.bagButtonSizeReductionAnimation(view: pauseButton)
+    }
+    
+    @objc func pauseButtonTouchDragExit() {
+        UIAnimations.rapidIncreaseAndDecreaseAnimation(view: pauseButton)
     }
 }
 
@@ -123,9 +102,9 @@ extension TopBarView {
     
     func displayValue(of value: EconomicBattleValueTypes, to number: Int) {
         switch value {
-        case .coins: coinsLabel.text = "🤑 \(number)"
-        case .lives: livesLabel.text = "❤️ \(number)"
-        case .points: pointsLabel.text = "⭐️ \(number)"
+        case .coins: coinStatusBar.configureValue(value: number)
+        case .lives: livesStatusBar.configureValue(value: number)
+        case .points: return
         }
     }
 }
