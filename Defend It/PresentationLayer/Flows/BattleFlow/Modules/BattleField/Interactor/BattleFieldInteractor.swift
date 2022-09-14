@@ -93,6 +93,7 @@ extension BattleFieldInteractor {
     
     func panGestureOccurred(recognizer: UIPanGestureRecognizer, view: inout UIView) {
         mainCamera.handlePanGesture(recognizer: recognizer, view: &view)
+        battle.panGestureOccurred()
     }
     
     func pinchGestureOccurred(recognizer: UIPinchGestureRecognizer, view: inout UIView) {
@@ -111,7 +112,7 @@ extension BattleFieldInteractor {
 
 // funs for building by pan a BuildingCard on BattleFieldView
 extension BattleFieldInteractor {
-    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) {
+    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) -> Bool {
         battle.showBuilding(type, with: level, on: position)
     }
     

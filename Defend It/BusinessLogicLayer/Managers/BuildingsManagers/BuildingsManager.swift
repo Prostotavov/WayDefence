@@ -37,7 +37,7 @@ protocol BuildingsManager {
     func resetPhysicsBody(by coordinate: (Int, Int))
 
     
-    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3)
+    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) -> Bool
     func pan(towerNode: SCNNode, by position: SCNVector3)
     func getBuildingCards() -> [BuildingCard]
 }
@@ -86,15 +86,21 @@ extension BuildingsManagerImpl {
         buildingCards.append(BuildingCard(building: wallTower))
     }
     
-    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) {
+    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) -> Bool {
         let building = AbstactFactoryBuildingsImpl.defaultFactory.create(type, with: level)
-        building.info.buildingNode.position = position
+        
+        let coordinate = Converter.toCoordinate(from: position)
+        if buildings[coordinate.0][coordinate.1] != nil {return false}
+        building.info.buildingNode.position = Converter.toPosition(from: coordinate)
         building.info.buildingNode.name = "shownTower"
         delegate.addNodeToScene(building.info.buildingNode)
+        return true
     }
+
     
     func pan(towerNode: SCNNode, by position: SCNVector3) {
         let coordinate = Converter.toCoordinate(from: position)
+        if buildings[coordinate.0][coordinate.1] != nil {return}
         towerNode.position = Converter.toPosition(from: coordinate)
     }
 }
@@ -105,6 +111,7 @@ extension BuildingsManagerImpl {
 
     
     func buildTower(with type: BuildingTypes, by coordinate: (Int, Int)) {
+        if buildings[coordinate.0][coordinate.1] != nil {return}
         let building = AbstactFactoryBuildingsImpl.defaultFactory.create(type, with: .firstLevel)
         buildings[coordinate.0][coordinate.1] = building
         building.info.buildingNode.position = Converter.toPosition(from: coordinate)

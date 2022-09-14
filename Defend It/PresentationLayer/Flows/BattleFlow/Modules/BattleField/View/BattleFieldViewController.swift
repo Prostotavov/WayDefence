@@ -218,6 +218,35 @@ extension BattleFieldViewController: UIGestureRecognizerDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         output.touchesBegan(touches, with: event)
+        
+        
+        guard let touch = touches.first else {return}
+        let location = touch.location(in: sceneView)
+        
+        if isBuildingCardPicked {
+            let hitResults = sceneView.hitTest(location, options: nil)
+            guard let hitPosition = hitResults.first?.worldCoordinates else {return}
+            
+            // show building
+            if !isBuildingShows && isBuildingCardPicked {
+                guard let buildingInfo = chosenBuildingCell?.buildingCard?.info else {return}
+                
+                
+                
+                if !showBuilding(buildingInfo.type, with: buildingInfo.level, on: hitPosition) {return}
+                buildingCardView?.isHidden = true
+                isBuildingShows = true
+            }
+        }
+        
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if isBuildingCardPicked {
+            buildTower()
+            resetAllCardProperties()
+            return
+        }
     }
     
 }
@@ -226,10 +255,65 @@ extension BattleFieldViewController: UIGestureRecognizerDelegate {
 extension BattleFieldViewController {
     
     @objc func tapHandler(recognizer:UITapGestureRecognizer) {
-        let location = recognizer.location(in: sceneView)
+        // we need two touch locations
+        let sceneViewLocation = recognizer.location(in: sceneView)
+        let towersPanelViewLocation = recognizer.location(in: towersPanelView)
         // if touch in towersPanelView
-        if location.y > towersPanelViewSpace {return}
-        let hitResults = sceneView.hitTest(location, options: nil)
+        if sceneViewLocation.y > towersPanelViewSpace {
+        
+            if buildingCardView != nil {
+                buildingCardView?.isHidden = true
+                chosenBuildingCell?.isHidden = false
+            }
+            // pick a cell
+            guard let cardCell = towersPanelView.cellForItem(at: towersPanelViewLocation) else {
+                resetAllCardProperties()
+                return
+            }
+            cardCell.isHidden = true
+            chosenBuildingCell = cardCell
+            guard let cardViewFrame = cardCell.towerCardView?.frame else {return}
+            
+            // create new view. This view we can move around the all sceneView
+            if buildingCardView != nil {
+                buildingCardView?.removeFromSuperview()
+                buildingCardView = nil
+            }
+            buildingCardView = TowerCardView(frame: cardViewFrame)
+            guard let imageName = cardCell.buildingCard?.info.upgradeSelection.first?.rawValue else {return}
+            guard let costInt = cardCell.buildingCard?.parameter.buildingCost else {return}
+            let costSting = String(costInt)
+            buildingCardView?.configure(image: imageName, text: costSting)
+            self.sceneView.addSubview(buildingCardView!)
+            
+            self.buildingCardView!.frame.origin = CGPoint(x: cardCell.frame.origin.x,
+                                                     y: self.sceneView.frame.height - cardCell.frame.height - cardCell.frame.origin.y)
+            
+            UIView.animate(withDuration: 0.2, delay: 0) {
+                self.buildingCardView!.frame.origin = CGPoint(x: cardCell.frame.origin.x,
+                                                         y: self.sceneView.frame.height - cardCell.frame.height * 1.2 - cardCell.frame.origin.y)
+            }
+            
+            
+            // inactive camera because we need to pan a view
+            output.inactivateCamera()
+            // tell that card was picked
+            isBuildingCardPicked = true
+            
+            UIAnimations.increase(view: buildingCardView!)
+            
+            return
+        }
+        
+        // build a tower by tap when the card is picked
+        if isBuildingCardPicked {
+            buildTower()
+            resetAllCardProperties()
+            return
+        }
+        
+        
+        let hitResults = sceneView.hitTest(sceneViewLocation, options: nil)
         guard let node = hitResults.first?.node else {return}
         pressedNode(node)
     }
@@ -269,7 +353,7 @@ extension BattleFieldViewController {
             // show building
             if !isBuildingShows && isBuildingCardPicked {
                 guard let buildingInfo = chosenBuildingCell?.buildingCard?.info else {return}
-                showBuilding(buildingInfo.type, with: buildingInfo.level, on: hitPosition)
+                if !showBuilding(buildingInfo.type, with: buildingInfo.level, on: hitPosition) {return}
                 buildingCardView?.isHidden = true
                 isBuildingShows = true
             }
@@ -284,13 +368,28 @@ extension BattleFieldViewController {
         
         switch recognizer.state {
         case .began:
+            
+            // show previos picked cell
+            chosenBuildingCell?.isHidden = false
+            
             // pick a cell
-            guard let cardCell = towersPanelView.cellForItem(at: towersPanelViewLocation) else {return}
+            // this condition work if we pick a card by tap and then pan building around the sceneView
+            guard let cardCell = towersPanelView.cellForItem(at: towersPanelViewLocation) else {
+                if isBuildingCardPicked {chosenBuildingCell?.isHidden = true}
+                return
+            }
+            
+            
             cardCell.isHidden = true
             chosenBuildingCell = cardCell
             guard let cardViewFrame = cardCell.towerCardView?.frame else {return}
             
             // create new view. This view we can move around the all sceneView
+            //MARK: Need to comment
+            if buildingCardView != nil {
+                buildingCardView?.removeFromSuperview()
+                buildingCardView = nil
+            }
             buildingCardView = TowerCardView(frame: cardViewFrame)
             guard let imageName = cardCell.buildingCard?.info.upgradeSelection.first?.rawValue else {return}
             guard let costInt = cardCell.buildingCard?.parameter.buildingCost else {return}
@@ -298,6 +397,9 @@ extension BattleFieldViewController {
             buildingCardView?.configure(image: imageName, text: costSting)
             self.sceneView.addSubview(buildingCardView!)
             buildingCardView!.center = sceneViewLocation
+            
+            // increase picked view
+            UIAnimations.increase(view: buildingCardView!)
             
             // inactive camera because we need to pan a view
             output.inactivateCamera()
@@ -310,48 +412,36 @@ extension BattleFieldViewController {
             buildingCardView.center = sceneViewLocation
             
         case .ended:
-            // show cell
-            chosenBuildingCell?.isHidden = false
-            // remove temp buildingCardView
-            buildingCardView?.removeFromSuperview()
-            // activate camera
-            output.activateCamera()
-            
-            // builing tower if building was shown
             if isBuildingShows {buildTower()}
-            
-            // remove fictional buildigNode which we used to show
-            shownTowerNode?.removeFromParentNode()
-            shownTowerNode = nil
-            
-            // reset bool vars
-            isBuildingShows = false
-            isBuildingCardPicked = false
-            
+            resetAllCardProperties()
         default:
-            // show cell
-            chosenBuildingCell?.isHidden = false
-            // remove temp buildingCardView
-            buildingCardView?.removeFromSuperview()
-            // activate camera
-            output.activateCamera()
-            
-            // builing tower if building was shown
             if isBuildingShows {buildTower()}
-            
-            // remove fictional buildigNode which we used to show
-            shownTowerNode?.removeFromParentNode()
-            shownTowerNode = nil
-            
-            // reset bool vars
-            isBuildingShows = false
-            isBuildingCardPicked = false
+            resetAllCardProperties()
         }
     }
 }
 
 //MARK: func for building by pan a BuildlingCard
 extension BattleFieldViewController {
+    func resetAllCardProperties() {
+        // show cell
+        chosenBuildingCell?.isHidden = false
+        // remove temp buildingCardView
+        buildingCardView?.removeFromSuperview()
+        buildingCardView = nil
+        // activate camera
+        output.activateCamera()
+        
+        // remove fictional buildigNode which we used to show
+        shownTowerNode?.removeFromParentNode()
+        shownTowerNode = nil
+        
+        // reset bool vars
+        isBuildingShows = false
+        isBuildingCardPicked = false
+    }
+    
+    
     func buildTower() {
         guard let shownTowerNode = shownTowerNode else {return}
         let coordinate = Converter.toCoordinate(from: shownTowerNode.position)
@@ -361,13 +451,15 @@ extension BattleFieldViewController {
     
     // create fictional tower and adding in the scene. Write this node to shownTowerNode
     // if shownTowerNode is exist, then we need to show this tower
-    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) {
+    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) -> Bool {
+        var isSuccessShown: Bool = true
         if shownTowerNode == nil {
-            output.showBuilding(type, with: level, on: position)
+            isSuccessShown = output.showBuilding(type, with: level, on: position)
             shownTowerNode = scene.rootNode.childNode(withName: "shownTower", recursively: true)
-            return
+            return isSuccessShown
         }
         shownTowerNode?.isHidden = true
+        return isSuccessShown
     }
     
     // move buildingNode
