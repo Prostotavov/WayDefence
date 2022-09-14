@@ -10,21 +10,16 @@ import SceneKit
 class ElphTowerFL: Building {
     
     var id: UUID
-    var type: BuildingTypes = .elphTower
-    var level: BuildingLevels = .firstLevel
-    var buildingNode: SCNNode
-    var radius: CGFloat = 2.5
-    var upgradeSelection: [BuildingIcons] = [.elphTowerSelectIcon]
-    var upgrades: [BuiltTowers] = [.elphTowerSL]
-    @Weak var enemiesInRadius: [AnyEnemy]
-    var damage: CGFloat = 25
-    var attackSpeed: CGFloat = 0.5
-    var counter: Int = 0
-    var buildingCost: Int = 30
-    var saleCost: Int = 15
+    var info: BuildingInfo
+    var parameter: BuildingParameter
+    var battleInfo: BuildingBattleInfo
     
     required init(_ buildingNode: SCNNode) {
-        self.buildingNode = buildingNode
         id = UUID()
+        info = BuildingInfo(type: .elphTower, level: .firstLevel,
+                            upgrades: [.elphTowerSL], upgradeSelection: [.elphTowerSelectIcon],
+                            buildingNode: buildingNode)
+        parameter = BuildingParameter(radius: 2.5, damage: 25, attackSpeed: 0.3, buildingCost: 60, saleCost: 7)
+        battleInfo = BuildingBattleInfo()
     }
 }

@@ -50,11 +50,18 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     }
     
     /// func for device change orientation
+    //MARK: Camera
     func setupPointOfView(from cameraNode: SCNNode) {
         view.setupPointOfView(from: cameraNode)
     }
     
-    /// func for map and pan camera
+    func activateCamera() {
+        interactor.activateCamera()
+    }
+    
+    func inactivateCamera() {
+        interactor.inactivateCamera()
+    }
     
     /// game run loop
     func update() {
@@ -70,11 +77,18 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     }
     
     /// func for display values to the topBarView
+    //MARK: Display
     func displayValue(of valueType: EconomicBattleValueTypes, to number: Int) {
         view.displayValue(of: valueType, to: number)
     }
-
+    
+    func displayBuildingCards(_ buildingCards: [BuildingCard]) {
+        view.displayBuildingCards(buildingCards)
+    }
+    
+    
     /// user can stop and play the game
+    //MARK: User Interactions
     func speedButtonPressed() {
         interactor.speedButtonPressed()
     }
@@ -103,7 +117,20 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     func pinchGestureOccurred(recognizer: UIPinchGestureRecognizer, view: inout UIView) {
         interactor.pinchGestureOccurred(recognizer: recognizer, view: &view)
     }
+    
 
+    //MARK: func for building by pan a BuildingCard
+    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) {
+        interactor.showBuilding(type, with: level, on: position)
+    }
+    
+    func pan(towerNode: SCNNode, by position: SCNVector3) {
+        interactor.pan(towerNode: towerNode, by: position)
+    }
+    
+    func buildTower(with type: BuildingTypes, by coordinate: (Int, Int)) {
+        interactor.buildTower(with: type, by: coordinate)
+    }
 }
 
 

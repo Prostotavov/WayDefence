@@ -51,6 +51,10 @@ protocol Battle {
     func displayBattleValues()
     func changeBattleSpeed()
     
+    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3)
+    func pan(towerNode: SCNNode, by position: SCNVector3)
+    func getBuildingCards() -> [BuildingCard]
+    
     var output: BattleOutput! {get set}
 }
 
@@ -73,7 +77,7 @@ class BattleImpl: MeadowManagerDelagate, BuildingsManagerDelegate, Battle {
     
     init() {
         battleState = .pause
-//        loadBuildngs()
+        loadBuildngs()
     }
     
     func changeBattleSpeed() {
@@ -154,6 +158,22 @@ extension BattleImpl {
     }
 }
 
+//MARK: func for building by pan a buildingCard
+extension BattleImpl {
+    func getBuildingCards() -> [BuildingCard] {
+        return buildingsManager.getBuildingCards()
+    }
+    
+    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) {
+        buildingsManager.showBuilding(type, with: level, on: position)
+    }
+    
+    func pan(towerNode: SCNNode, by position: SCNVector3) {
+        buildingsManager.pan(towerNode: towerNode, by: position)
+    }
+}
+
+
 // capabilities
 extension BattleImpl {
     func buildTower(type: BuildingTypes, by coordinate: (Int, Int)) {
@@ -165,19 +185,19 @@ extension BattleImpl {
         buildingsManager.buildTower(with: type, by: coordinate)
         enemiesManager.prohibitWalking(On: coordinate)
         /// battle values
-        battleValuesManager.battleValues.reduce(.coins, by: tempTower.buildingCost)
+        battleValuesManager.battleValues.reduce(.coins, by: tempTower.parameter.buildingCost)
         displayBattleValues()
     }
     func upgradeTower(by coordinate: (Int, Int)) {
         let oldTower = buildingsManager.getBuilding(by: coordinate)
-        let type = oldTower.type
-        let nextLevel: BuildingLevels = BuildingLevels(rawValue: oldTower.level.rawValue + 1) ?? .thirdLevel
+        let type = oldTower.info.type
+        let nextLevel: BuildingLevels = BuildingLevels(rawValue: oldTower.info.level.rawValue + 1) ?? .thirdLevel
         let upTower = AbstactFactoryBuildingsImpl.defaultFactory.create(type, with: nextLevel)
         /// check
         if !isThereEnoughMoney(for: upTower) {return}
         buildingsManager.updateTower(by: coordinate)
         /// battle values
-        battleValuesManager.battleValues.reduce(.coins, by: upTower.buildingCost)
+        battleValuesManager.battleValues.reduce(.coins, by: upTower.parameter.buildingCost)
         displayBattleValues()
     }
     func sellTower(by coordinate: (Int, Int)) {
@@ -185,7 +205,7 @@ extension BattleImpl {
         buildingsManager.deleteBuilding(with: coordinate)
         enemiesManager.allowWalking(On: coordinate)
         /// battle values
-        battleValuesManager.battleValues.increase(.coins, by: oldTower.saleCost)
+        battleValuesManager.battleValues.increase(.coins, by: oldTower.parameter.saleCost)
         displayBattleValues()
     }
     func repairTower(by coordinate: (Int, Int)) {
@@ -263,7 +283,7 @@ extension BattleImpl: EnemiesManagerOutput, BattleManagerDelegate {
 // checks
 extension BattleImpl {
     func isThereEnoughMoney(for tower: Building) -> Bool {
-        if (battleValuesManager.battleValues.get(.coins) - tower.buildingCost) > 0 {
+        if (battleValuesManager.battleValues.get(.coins) - tower.parameter.buildingCost) > 0 {
             return true
         } else {
             return false

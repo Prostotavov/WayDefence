@@ -39,10 +39,19 @@ class BattleFieldInteractor: BattleFieldInteractorInput {
     
     func viewDidAppear() {
         battle.displayBattleValues()
+        displayBuildingCards()
     }
     
     func displayValues(of valueType: EconomicBattleValueTypes, to number: Int) {
         output.displayValue(of: valueType, to: number)
+    }
+    
+    func getBuildingCards() -> [BuildingCard] {
+        battle.getBuildingCards()
+    }
+    
+    func displayBuildingCards() {
+        output.displayBuildingCards(getBuildingCards())
     }
 }
 
@@ -88,6 +97,30 @@ extension BattleFieldInteractor {
     
     func pinchGestureOccurred(recognizer: UIPinchGestureRecognizer, view: inout UIView) {
         mainCamera.handlePinchGesture(recognizer: recognizer, view: &view)
+    }
+    
+    func activateCamera() {
+        mainCamera.isActive = true
+    }
+    
+    func inactivateCamera() {
+        mainCamera.isActive = false
+    }
+}
+
+
+// funs for building by pan a BuildingCard on BattleFieldView
+extension BattleFieldInteractor {
+    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) {
+        battle.showBuilding(type, with: level, on: position)
+    }
+    
+    func pan(towerNode: SCNNode, by position: SCNVector3) {
+        battle.pan(towerNode: towerNode, by: position)
+    }
+    
+    func buildTower(with type: BuildingTypes, by coordinate: (Int, Int)) {
+        battle.buildTower(type: type, by: coordinate)
     }
 }
 

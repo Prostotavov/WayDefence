@@ -35,6 +35,11 @@ protocol BuildingsManager {
     func remove(_ enemy: AnyEnemy, fromBuildingWith coordinate: (Int, Int))
 
     func resetPhysicsBody(by coordinate: (Int, Int))
+
+    
+    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3)
+    func pan(towerNode: SCNNode, by position: SCNVector3)
+    func getBuildingCards() -> [BuildingCard]
 }
 
 class BuildingsManagerImpl: BuildingsManager {
@@ -44,6 +49,8 @@ class BuildingsManagerImpl: BuildingsManager {
     var buildings: [[Building?]]!
     var buildingState: BuildingStates!
     
+    var buildingCards: [BuildingCard] = []
+    
     weak var delegate: BuildingsManagerDelegate!
     
     init(_ battleFieldSize: Int) {
@@ -51,6 +58,7 @@ class BuildingsManagerImpl: BuildingsManager {
         buildingState = .inactive
         createBuildingsArray()
         setupBuildingSelectionPanel()
+        createBuildingCards()
     }
     
     private func createBuildingsArray() {
@@ -59,36 +67,71 @@ class BuildingsManagerImpl: BuildingsManager {
     }
 }
 
+//MARK: func for building by pan a buildingCard
+extension BuildingsManagerImpl {
+    
+    func getBuildingCards() -> [BuildingCard] {
+        return buildingCards
+    }
+    
+    private func createBuildingCards() {
+        let elphTower = AbstactFactoryBuildingsImpl.defaultFactory.create(.elphTower, with: .firstLevel)
+        let magicTower = AbstactFactoryBuildingsImpl.defaultFactory.create(.magicTower, with: .firstLevel)
+        let ballistaTower = AbstactFactoryBuildingsImpl.defaultFactory.create(.ballista, with: .firstLevel)
+        let wallTower = AbstactFactoryBuildingsImpl.defaultFactory.create(.wall, with: .firstLevel)
+        
+        buildingCards.append(BuildingCard(building: elphTower))
+        buildingCards.append(BuildingCard(building: magicTower))
+        buildingCards.append(BuildingCard(building: ballistaTower))
+        buildingCards.append(BuildingCard(building: wallTower))
+    }
+    
+    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) {
+        let building = AbstactFactoryBuildingsImpl.defaultFactory.create(type, with: level)
+        building.info.buildingNode.position = position
+        building.info.buildingNode.name = "shownTower"
+        delegate.addNodeToScene(building.info.buildingNode)
+    }
+    
+    func pan(towerNode: SCNNode, by position: SCNVector3) {
+        let coordinate = Converter.toCoordinate(from: position)
+        towerNode.position = Converter.toPosition(from: coordinate)
+    }
+}
+
 // funcs for build, upgrage and remove towers
 extension BuildingsManagerImpl {
+    
+
+    
     func buildTower(with type: BuildingTypes, by coordinate: (Int, Int)) {
         let building = AbstactFactoryBuildingsImpl.defaultFactory.create(type, with: .firstLevel)
         buildings[coordinate.0][coordinate.1] = building
-        building.buildingNode.position = Converter.toPosition(from: coordinate)
+        building.info.buildingNode.position = Converter.toPosition(from: coordinate)
         addPhysicsBody(for: building)
-        delegate.addNodeToScene(building.buildingNode)
+        delegate.addNodeToScene(building.info.buildingNode)
     }
     
     func updateTower(by coordinate: (Int, Int)) {
         let oldBuilding = getBuilding(by: coordinate)
-        let type = oldBuilding.type
-        let nextLevel = BuildingLevels(rawValue: oldBuilding.level.rawValue + 1) ?? .thirdLevel
+        let type = oldBuilding.info.type
+        let nextLevel = BuildingLevels(rawValue: oldBuilding.info.level.rawValue + 1) ?? .thirdLevel
         var newBuilding = AbstactFactoryBuildingsImpl.defaultFactory.create(type, with: nextLevel)
         copyJointDataFrom(oldBuilding, to: &newBuilding)
-        oldBuilding.buildingNode.removeFromParentNode()
+        oldBuilding.info.buildingNode.removeFromParentNode()
         buildings[coordinate.0][coordinate.1] = newBuilding
         addPhysicsBody(for: newBuilding)
-        delegate.addNodeToScene(newBuilding.buildingNode)
+        delegate.addNodeToScene(newBuilding.info.buildingNode)
     }
     
     private func copyJointDataFrom(_ oldBuilding: Building, to newBuilding: inout Building) {
         newBuilding.id = oldBuilding.id
-        newBuilding.enemiesInRadius = oldBuilding.enemiesInRadius
-        newBuilding.buildingNode.position = oldBuilding.buildingNode.position
+        newBuilding.battleInfo.enemiesInRadius = oldBuilding.battleInfo.enemiesInRadius
+        newBuilding.info.buildingNode.position = oldBuilding.info.buildingNode.position
     }
     
     func deleteBuilding(with coordinate: (Int, Int)) {
-        buildings[coordinate.0][coordinate.1]?.buildingNode.removeFromParentNode()
+        buildings[coordinate.0][coordinate.1]?.info.buildingNode.removeFromParentNode()
         buildings[coordinate.0][coordinate.1] = nil
     }
     
@@ -123,15 +166,15 @@ extension BuildingsManagerImpl {
 extension BuildingsManagerImpl {
     func add(_ enemy: AnyEnemy, toBuildingWith coordinate: (Int, Int)) {
         guard let _ = buildings[coordinate.0][coordinate.1] else {return}
-        if buildings[coordinate.0][coordinate.1]!.enemiesInRadius
+        if buildings[coordinate.0][coordinate.1]!.battleInfo.enemiesInRadius
             .contains(where: {$0.id == enemy.id}){return}
-        buildings[coordinate.0][coordinate.1]!.enemiesInRadius.append(enemy)
+        buildings[coordinate.0][coordinate.1]!.battleInfo.enemiesInRadius.append(enemy)
     }
     
     func remove(_ enemy: AnyEnemy, fromBuildingWith coordinate: (Int, Int)) {
         guard let _ = buildings[coordinate.0][coordinate.1] else {return}
-        let remainingEnemies = buildings[coordinate.0][coordinate.1]!.enemiesInRadius.filter{$0.id != enemy.id}
-        buildings[coordinate.0][coordinate.1]!.enemiesInRadius = remainingEnemies
+        let remainingEnemies = buildings[coordinate.0][coordinate.1]!.battleInfo.enemiesInRadius.filter{$0.id != enemy.id}
+        buildings[coordinate.0][coordinate.1]!.battleInfo.enemiesInRadius = remainingEnemies
     }
     
     func updateCounter() {
@@ -139,9 +182,9 @@ extension BuildingsManagerImpl {
         for (x, _) in buildings.enumerated() {
             for (z, _) in buildings[x].enumerated() {
                 if buildings[x][z] == nil  { continue }
-                if buildings[x][z]!.counter != 0 { buildings[x][z]?.counter -= 1; continue }
-                if buildings[x][z]!.enemiesInRadius == [] { continue }
-                buildings[x][z]!.counter = Converter.toCounter(from: buildings[x][z]!.attackSpeed)
+                if buildings[x][z]!.battleInfo.counter != 0 { buildings[x][z]?.battleInfo.counter -= 1; continue }
+                if buildings[x][z]!.battleInfo.enemiesInRadius == [] { continue }
+                buildings[x][z]!.battleInfo.counter = Converter.toCounter(from: buildings[x][z]!.parameter.attackSpeed)
                 attackEnemy(by: buildings[x][z]!)
             }
         }
@@ -149,8 +192,8 @@ extension BuildingsManagerImpl {
     
     func attackEnemy(by building: Building) {
         pushProjectileNodeFrom(building)
-        guard let attackedEnemy = building.enemiesInRadius.first else {return}
-        attackedEnemy.currentHealthPoints -= building.damage
+        guard let attackedEnemy = building.battleInfo.enemiesInRadius.first else {return}
+        attackedEnemy.currentHealthPoints -= building.parameter.damage
         delegate.enemyWounded(enemy: attackedEnemy)
         if attackedEnemy.currentHealthPoints <= 0 {
             delegate.enemyMurdered(enemy: attackedEnemy)
@@ -169,7 +212,7 @@ extension BuildingsManagerImpl {
 // funcs for add physics
 extension BuildingsManagerImpl {
     func addPhysicsBody(for building: Building) {
-        let physicsShape = SCNPhysicsShape(geometry: SCNSphere(radius: building.radius / 3))
+        let physicsShape = SCNPhysicsShape(geometry: SCNSphere(radius: building.parameter.radius / 3))
         let physicsBody = SCNPhysicsBody(type: .kinematic, shape: physicsShape)
         
         physicsBody.isAffectedByGravity = false
@@ -179,12 +222,12 @@ extension BuildingsManagerImpl {
         let physicsRadiusNode = SCNNode()
         physicsRadiusNode.name = NodeNames.physicsRadiusNode.rawValue
         physicsRadiusNode.physicsBody = physicsBody
-        building.buildingNode.addChildNode(physicsRadiusNode)
+        building.info.buildingNode.addChildNode(physicsRadiusNode)
     }
     
     func resetPhysicsBody(by coordinate: (Int, Int)) {
         guard let _ = buildings[coordinate.0][coordinate.1] else {return}
-        buildings[coordinate.0][coordinate.1]!.buildingNode.childNode(withName: NodeNames.physicsRadiusNode.rawValue, recursively: true)?.removeFromParentNode()
+        buildings[coordinate.0][coordinate.1]!.info.buildingNode.childNode(withName: NodeNames.physicsRadiusNode.rawValue, recursively: true)?.removeFromParentNode()
         addPhysicsBody(for: buildings[coordinate.0][coordinate.1]!)
     }
     
@@ -193,10 +236,10 @@ extension BuildingsManagerImpl {
 // animations
 extension BuildingsManagerImpl {
     func pushProjectileNodeFrom(_ building: Building) {
-        let projectileNode = building.buildingNode.childNode(withName: NodeNames.projectileNode.rawValue, recursively: true)
+        let projectileNode = building.info.buildingNode.childNode(withName: NodeNames.projectileNode.rawValue, recursively: true)
         projectileNode!.removeAllActions()
-        guard let enemyPosition = building.enemiesInRadius.first?.enemyNode.position else {return}
-        let buildingPosition = building.buildingNode.position
+        guard let enemyPosition = building.battleInfo.enemiesInRadius.first?.enemyNode.position else {return}
+        let buildingPosition = building.info.buildingNode.position
         let endPosition = SCNVector3(enemyPosition.x - buildingPosition.x, enemyPosition.y, enemyPosition.z - buildingPosition.z)
         let duration = 0.3
         projectileNode!.position = SCNVector3(0, 0.5, 0)

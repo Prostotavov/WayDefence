@@ -73,6 +73,14 @@
 		8738AC7A28CC73FE007FF531 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738AC7928CC73FE007FF531 /* PlusButton.swift */; };
 		8738AC7C28CC787D007FF531 /* PauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738AC7B28CC787D007FF531 /* PauseButton.swift */; };
 		8738AC7E28CCA328007FF531 /* SpeedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738AC7D28CCA328007FF531 /* SpeedButton.swift */; };
+		873B2A7528CE9780004CFCF8 /* TowersPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B2A7428CE977F004CFCF8 /* TowersPanelView.swift */; };
+		873B2A7728CF789D004CFCF8 /* TowerCardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B2A7628CF789D004CFCF8 /* TowerCardCollectionView.swift */; };
+		873B2A7928CF7984004CFCF8 /* TowerCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B2A7828CF7984004CFCF8 /* TowerCardView.swift */; };
+		873B2A7B28CF93B7004CFCF8 /* TowerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B2A7A28CF93B7004CFCF8 /* TowerCardCell.swift */; };
+		873B2A7D28D114FD004CFCF8 /* BuildingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B2A7C28D114FD004CFCF8 /* BuildingCard.swift */; };
+		873B2A7F28D11A56004CFCF8 /* BuildingParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B2A7E28D11A56004CFCF8 /* BuildingParameter.swift */; };
+		873B2A8128D11A81004CFCF8 /* BuildingBattleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B2A8028D11A81004CFCF8 /* BuildingBattleInfo.swift */; };
+		873B2A8328D11A9A004CFCF8 /* BuildingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B2A8228D11A9A004CFCF8 /* BuildingInfo.swift */; };
 		873F3F19289D6E9700BF7FF9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F18289D6E9700BF7FF9 /* User.swift */; };
 		873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1A289D6EF400BF7FF9 /* UserSex.swift */; };
 		873F3F1D289D6F8E00BF7FF9 /* GameAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */; };
@@ -384,6 +392,14 @@
 		8738AC7928CC73FE007FF531 /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
 		8738AC7B28CC787D007FF531 /* PauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseButton.swift; sourceTree = "<group>"; };
 		8738AC7D28CCA328007FF531 /* SpeedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedButton.swift; sourceTree = "<group>"; };
+		873B2A7428CE977F004CFCF8 /* TowersPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowersPanelView.swift; sourceTree = "<group>"; };
+		873B2A7628CF789D004CFCF8 /* TowerCardCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerCardCollectionView.swift; sourceTree = "<group>"; };
+		873B2A7828CF7984004CFCF8 /* TowerCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerCardView.swift; sourceTree = "<group>"; };
+		873B2A7A28CF93B7004CFCF8 /* TowerCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerCardCell.swift; sourceTree = "<group>"; };
+		873B2A7C28D114FD004CFCF8 /* BuildingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingCard.swift; sourceTree = "<group>"; };
+		873B2A7E28D11A56004CFCF8 /* BuildingParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingParameter.swift; sourceTree = "<group>"; };
+		873B2A8028D11A81004CFCF8 /* BuildingBattleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingBattleInfo.swift; sourceTree = "<group>"; };
+		873B2A8228D11A9A004CFCF8 /* BuildingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingInfo.swift; sourceTree = "<group>"; };
 		873F3F18289D6E9700BF7FF9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		873F3F1A289D6EF400BF7FF9 /* UserSex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSex.swift; sourceTree = "<group>"; };
 		873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccount.swift; sourceTree = "<group>"; };
@@ -1042,6 +1058,7 @@
 				8738AC7228CBB861007FF531 /* Achievements.swift */,
 				8768DAF628C960530071D000 /* DailyQuest.swift */,
 				8788DDE928C80E110089B1B0 /* Task.swift */,
+				873B2A7C28D114FD004CFCF8 /* BuildingCard.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1563,6 +1580,10 @@
 			isa = PBXGroup;
 			children = (
 				87CA3D4E2828FBE0000F952F /* TopBarView.swift */,
+				873B2A7428CE977F004CFCF8 /* TowersPanelView.swift */,
+				873B2A7628CF789D004CFCF8 /* TowerCardCollectionView.swift */,
+				873B2A7A28CF93B7004CFCF8 /* TowerCardCell.swift */,
+				873B2A7828CF7984004CFCF8 /* TowerCardView.swift */,
 			);
 			path = GameUtilitsView;
 			sourceTree = "<group>";
@@ -1686,6 +1707,9 @@
 			isa = PBXGroup;
 			children = (
 				AA0B68C327E5BC140078003D /* Building.swift */,
+				873B2A7E28D11A56004CFCF8 /* BuildingParameter.swift */,
+				873B2A8028D11A81004CFCF8 /* BuildingBattleInfo.swift */,
+				873B2A8228D11A9A004CFCF8 /* BuildingInfo.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -2198,11 +2222,13 @@
 				873F3F4C28A2D1D900BF7FF9 /* EnemyHealthBarManager.swift in Sources */,
 				870B67C6288ECA150089D3CB /* HomePageViewCoordinatorOutput.swift in Sources */,
 				877F105128906BB800571F26 /* BattleMapInteractorOutput.swift in Sources */,
+				873B2A7F28D11A56004CFCF8 /* BuildingParameter.swift in Sources */,
 				877F10092890083F00571F26 /* WinBattleViewCoordinatorOutput.swift in Sources */,
 				873F3F2F289E6B8300BF7FF9 /* FlowTabbarInteractorInput.swift in Sources */,
 				879292EA28BE233F003309FB /* BladeSecondLevel.swift in Sources */,
 				871E00BF28C643F5001C1052 /* QuestsViewInput.swift in Sources */,
 				87E1286628946535006CEF02 /* BattleMapCamera.swift in Sources */,
+				873B2A7D28D114FD004CFCF8 /* BuildingCard.swift in Sources */,
 				AAF4C9DD27E8E6A200D5B6F8 /* GroundSquare.swift in Sources */,
 				AACC7BE527FB2C940022384E /* WallSL.swift in Sources */,
 				AAE8870B27EF35AF00CA4E5D /* TrollFactory.swift in Sources */,
@@ -2268,6 +2294,7 @@
 				879292EC28BE234B003309FB /* BladeThirdLevel.swift in Sources */,
 				871E00C428C643F5001C1052 /* QuestsInteractorInput.swift in Sources */,
 				AAE886F327EF2DC500CA4E5D /* AbstractFactoryEnemies.swift in Sources */,
+				873B2A7B28CF93B7004CFCF8 /* TowerCardCell.swift in Sources */,
 				870B676D288E89560089D3CB /* TestFunctions.swift in Sources */,
 				87FE431928994B6A002DFCEA /* SceneCameraConverter.swift in Sources */,
 				87E1286B2894707C006CEF02 /* BattleMapScene_BattleIcons.swift in Sources */,
@@ -2280,6 +2307,7 @@
 				879292C028BD3BD8003309FB /* RewardsCollectionView.swift in Sources */,
 				877F104B28906BB800571F26 /* BattleMapAssemblyProtocol.swift in Sources */,
 				AA78020027E20291002C57E1 /* HomePageInteractorOutput.swift in Sources */,
+				873B2A7928CF7984004CFCF8 /* TowerCardView.swift in Sources */,
 				AAE886F827EF30B300CA4E5D /* OrcFL.swift in Sources */,
 				87D0E0DE28BE8C99001D3E67 /* BagAssemblyProtocol.swift in Sources */,
 				879292C228BE20F9003309FB /* EquipmentBag.swift in Sources */,
@@ -2314,6 +2342,7 @@
 				AAE886D627EE115A00CA4E5D /* NodeNames.swift in Sources */,
 				AACC7BE727FB2C9B0022384E /* WallTL.swift in Sources */,
 				877F1024289025EE00571F26 /* PauseBattleAssemblyProtocol.swift in Sources */,
+				873B2A7728CF789D004CFCF8 /* TowerCardCollectionView.swift in Sources */,
 				879292E228BE22CC003309FB /* ArchFourthLevel.swift in Sources */,
 				870B67AD288E95590089D3CB /* LoadBattleViewCoordinatorOutput.swift in Sources */,
 				AACC7BE927FB2CFF0022384E /* BallistaFactory.swift in Sources */,
@@ -2334,6 +2363,7 @@
 				AA78023F27E20B8E002C57E1 /* BattleFieldViewInput.swift in Sources */,
 				AACC7BEB27FB2D0B0022384E /* WallFactory.swift in Sources */,
 				87D51618285CC1BD00E3D7B8 /* Battle.swift in Sources */,
+				873B2A8128D11A81004CFCF8 /* BuildingBattleInfo.swift in Sources */,
 				8711C628286F945500E84876 /* OneRaceWave.swift in Sources */,
 				AA7801B727E200B6002C57E1 /* SceneDelegate.swift in Sources */,
 				877F1023289025EE00571F26 /* PauseBattleAssembly.swift in Sources */,
@@ -2359,6 +2389,7 @@
 				AAE886FF27EF33A600CA4E5D /* OrcSL.swift in Sources */,
 				871E00D028C69500001C1052 /* TaskProgressView.swift in Sources */,
 				87D0E0E128BE8C99001D3E67 /* BagViewCoordinatorOutput.swift in Sources */,
+				873B2A7528CE9780004CFCF8 /* TowersPanelView.swift in Sources */,
 				873F3F39289E6BCB00BF7FF9 /* FlowTabbarAssemblyProtocol.swift in Sources */,
 				8738AC6628CBAC60007FF531 /* AchieveViewController.swift in Sources */,
 				879292DC28BE2291003309FB /* ShieldFirstLevel.swift in Sources */,
@@ -2383,6 +2414,7 @@
 				877F0FE7288FF32400571F26 /* LoseBattleViewController.swift in Sources */,
 				8738AC6128CBAC60007FF531 /* AchieveAssemblyProtocol.swift in Sources */,
 				870B67BF288E97E50089D3CB /* BattleCoordinatorOutput.swift in Sources */,
+				873B2A8328D11A9A004CFCF8 /* BuildingInfo.swift in Sources */,
 				871E00C028C643F5001C1052 /* QuestsViewController.swift in Sources */,
 				871E00C328C643F5001C1052 /* QuestsInteractorOutput.swift in Sources */,
 				879292DA28BE2287003309FB /* BladeFirstLevel.swift in Sources */,

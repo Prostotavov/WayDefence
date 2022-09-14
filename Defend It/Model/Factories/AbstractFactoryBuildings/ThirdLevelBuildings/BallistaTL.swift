@@ -10,21 +10,16 @@ import SceneKit
 class BallistaTL: Building {
     
     var id: UUID
-    var type: BuildingTypes = .ballista
-    var level: BuildingLevels = .thirdLevel
-    var buildingNode: SCNNode
-    var radius: CGFloat = 2.5
-    var upgradeSelection: [BuildingIcons] = [.ballistaSelectIcon]
-    var upgrades: [BuiltTowers] = []
-    @Weak var enemiesInRadius: [AnyEnemy]
-    var damage: CGFloat = 50
-    var attackSpeed: CGFloat = 0.2
-    var counter: Int = 0
-    var buildingCost: Int = 45
-    var saleCost: Int = 22
+    var info: BuildingInfo
+    var parameter: BuildingParameter
+    var battleInfo: BuildingBattleInfo
     
     required init(_ buildingNode: SCNNode) {
-        self.buildingNode = buildingNode
         id = UUID()
+        info = BuildingInfo(type: .ballista, level: .thirdLevel,
+                            upgrades: [], upgradeSelection: [.ballistaSelectIcon],
+                            buildingNode: buildingNode)
+        parameter = BuildingParameter(radius: 3, damage: 40, attackSpeed: 0.3, buildingCost: 10, saleCost: 7)
+        battleInfo = BuildingBattleInfo()
     }
 }
