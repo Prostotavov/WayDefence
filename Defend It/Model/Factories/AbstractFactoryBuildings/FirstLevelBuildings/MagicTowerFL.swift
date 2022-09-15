@@ -10,21 +10,24 @@ import SceneKit
 class MagicTowerFL: Building {
     
     var id: UUID
-    var type: BuildingTypes = .magicTower
-    var level: BuildingLevels = .firstLevel
-    var buildingNode: SCNNode
-    var radius: CGFloat = 3
-    var upgradeSelection: [BuildingIcons] = [.magicTowerSelectIcon]
-    var upgrades: [BuiltTowers] = [.magicTowerSL]
-    @Weak var enemiesInRadius: [AnyEnemy]
-    var damage: CGFloat = 25
-    var attackSpeed: CGFloat = 0.5
-    var counter: Int = 0
-    var buildingCost: Int = 30
-    var saleCost: Int = 15
+    var info: BuildingInfo
+    var parameter: BuildingParameter
+    var battleInfo: BuildingBattleInfo
     
     required init(_ buildingNode: SCNNode) {
-        self.buildingNode = buildingNode
         id = UUID()
+        info = BuildingInfo(type: .magicTower, level: .firstLevel,
+                            upgrades: [.magicTowerSL], upgradeSelection: [.magicTowerSelectIcon],
+                            buildingNode: buildingNode)
+        parameter = BuildingParameter(radius: 3, damage: 40, attackSpeed: 0.3, buildingCost: 90, saleCost: 7)
+        battleInfo = BuildingBattleInfo()
     }
 }
+
+
+
+
+
+
+
+

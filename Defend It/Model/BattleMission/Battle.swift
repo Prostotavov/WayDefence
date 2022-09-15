@@ -43,6 +43,7 @@ protocol Battle {
     func showTowerSelectionPanel(by coordinate: (Int, Int))
     func useBoost()
     
+    func panGestureOccurred()
     func recognizePressedNode(_ node: SCNNode)
     func didBegin(_ nodeA: SCNNode, contactWith nodeB: SCNNode)
     func didEnd(_ nodeA: SCNNode, contactWith nodeB: SCNNode)
@@ -50,6 +51,10 @@ protocol Battle {
     
     func displayBattleValues()
     func changeBattleSpeed()
+    
+    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) -> Bool
+    func pan(towerNode: SCNNode, by position: SCNVector3)
+    func getBuildingCards() -> [BuildingCard]
     
     var output: BattleOutput! {get set}
 }
@@ -73,7 +78,7 @@ class BattleImpl: MeadowManagerDelagate, BuildingsManagerDelegate, Battle {
     
     init() {
         battleState = .pause
-//        loadBuildngs()
+        loadBuildngs()
     }
     
     func changeBattleSpeed() {
@@ -154,6 +159,22 @@ extension BattleImpl {
     }
 }
 
+//MARK: func for building by pan a buildingCard
+extension BattleImpl {
+    func getBuildingCards() -> [BuildingCard] {
+        return buildingsManager.getBuildingCards()
+    }
+    
+    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) -> Bool {
+        buildingsManager.showBuilding(type, with: level, on: position)
+    }
+    
+    func pan(towerNode: SCNNode, by position: SCNVector3) {
+        buildingsManager.pan(towerNode: towerNode, by: position)
+    }
+}
+
+
 // capabilities
 extension BattleImpl {
     func buildTower(type: BuildingTypes, by coordinate: (Int, Int)) {
@@ -162,22 +183,23 @@ extension BattleImpl {
         if !isThereEnoughMoney(for: tempTower) {return}
         if !isThereAnEnemy(by: coordinate) {return}
         if !willTheEnemiesBeAbleToFindAWay(coordinate: coordinate) {return}
+        if buildingsManager.isExistBuiling(on: coordinate) {return}
         buildingsManager.buildTower(with: type, by: coordinate)
         enemiesManager.prohibitWalking(On: coordinate)
         /// battle values
-        battleValuesManager.battleValues.reduce(.coins, by: tempTower.buildingCost)
+        battleValuesManager.battleValues.reduce(.coins, by: tempTower.parameter.buildingCost)
         displayBattleValues()
     }
     func upgradeTower(by coordinate: (Int, Int)) {
         let oldTower = buildingsManager.getBuilding(by: coordinate)
-        let type = oldTower.type
-        let nextLevel: BuildingLevels = BuildingLevels(rawValue: oldTower.level.rawValue + 1) ?? .thirdLevel
+        let type = oldTower.info.type
+        let nextLevel: BuildingLevels = BuildingLevels(rawValue: oldTower.info.level.rawValue + 1) ?? .thirdLevel
         let upTower = AbstactFactoryBuildingsImpl.defaultFactory.create(type, with: nextLevel)
         /// check
         if !isThereEnoughMoney(for: upTower) {return}
         buildingsManager.updateTower(by: coordinate)
         /// battle values
-        battleValuesManager.battleValues.reduce(.coins, by: upTower.buildingCost)
+        battleValuesManager.battleValues.reduce(.coins, by: upTower.parameter.buildingCost)
         displayBattleValues()
     }
     func sellTower(by coordinate: (Int, Int)) {
@@ -185,7 +207,7 @@ extension BattleImpl {
         buildingsManager.deleteBuilding(with: coordinate)
         enemiesManager.allowWalking(On: coordinate)
         /// battle values
-        battleValuesManager.battleValues.increase(.coins, by: oldTower.saleCost)
+        battleValuesManager.battleValues.increase(.coins, by: oldTower.parameter.saleCost)
         displayBattleValues()
     }
     func repairTower(by coordinate: (Int, Int)) {
@@ -263,7 +285,7 @@ extension BattleImpl: EnemiesManagerOutput, BattleManagerDelegate {
 // checks
 extension BattleImpl {
     func isThereEnoughMoney(for tower: Building) -> Bool {
-        if (battleValuesManager.battleValues.get(.coins) - tower.buildingCost) > 0 {
+        if (battleValuesManager.battleValues.get(.coins) - tower.parameter.buildingCost) > 0 {
             return true
         } else {
             return false
@@ -286,6 +308,10 @@ extension BattleImpl {
 }
 
 extension BattleImpl {
+    func panGestureOccurred() {
+        hideTowerSelectionPanel()
+    }
+    
     func didBegin(_ nodeA: SCNNode, contactWith nodeB: SCNNode) {
         var enemyNode: SCNNode!
         var towerRadiusNode: SCNNode!

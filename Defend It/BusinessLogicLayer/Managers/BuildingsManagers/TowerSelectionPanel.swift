@@ -62,9 +62,9 @@ class TowerSelectionPanelImpl: TowerSelectionPanel {
     func show(for building: Building) -> SCNNode {
         removeRadius()
         boardNode.childNodes.map{$0.removeFromParentNode()}
-        panelNode.position = building.buildingNode.position
+        panelNode.position = building.info.buildingNode.position
         addIconToBoard(for: building)
-        showBuilderRadius(radius: building.radius/3)
+        showBuilderRadius(radius: building.parameter.radius/3)
         return panelNode
     }
     
@@ -128,7 +128,7 @@ extension TowerSelectionPanelImpl {
     func addIconToBoard(for building: Building) {
         add(.repairSelectIcon, to: .repairTowerButton)
         add(.sellSelectIcon, to: .sellTowerButton)
-        add(building.upgradeSelection[0], to: .upMiddlePlace)
+        add(building.info.upgradeSelection[0], to: .upMiddlePlace)
     }
     
     func getPositionFor(_ place: BuildingIconPlaces) -> SCNVector3 {

@@ -8,6 +8,8 @@
 import SceneKit
 
 class SceneCamera: SCNNode {
+    
+    var isActive: Bool = true
     var childNode: SCNNode!
     var mainCamera: SCNCamera!
     var zoomScale: Float {
@@ -223,10 +225,13 @@ extension SceneCamera {
         
     }
     func handleDoubleTap() {
+        if !isActive {return}
         applyCurrentInitialPosition()
     }
     
     func handlePanGesture(recognizer: UIPanGestureRecognizer, view: inout UIView) {
+        if !isActive {return}
+        
         let xMyltiplayer: Float = cos(-xAngle)
         let yMyltiplayer: Float = sin(xAngle)
         let zMyltiplayer: Float = sin(yAngle)
@@ -294,6 +299,8 @@ extension SceneCamera {
     }
     
     func handlePinchGesture(recognizer: UIPinchGestureRecognizer, view: inout UIView) {
+        if !isActive {return}
+        
         if (recognizer.state == .changed) {
             
             let deltaScale: Float = Float(recognizer.scale) - 1.0

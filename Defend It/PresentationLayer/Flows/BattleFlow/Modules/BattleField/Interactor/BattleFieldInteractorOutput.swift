@@ -15,8 +15,9 @@ protocol BattleFieldInteractorOutput: AnyObject {
     func removeNodeFromScene(_ node: SCNNode)
     func removeNodeFromScene(with name: String)
 
-    // set the battle Values
+    // set the battle Values and BuildingCards
     func displayValue(of valueType: EconomicBattleValueTypes, to number: Int)
+    func displayBuildingCards(_ buildingCards: [BuildingCard])
     
     // funcs for set the camera
     func setupPointOfView(from cameraNode: SCNNode)

@@ -10,21 +10,16 @@ import SceneKit
 class WallFL: Building {
     
     var id: UUID
-    var type: BuildingTypes = .wall
-    var level: BuildingLevels = .firstLevel
-    var buildingNode: SCNNode
-    var radius: CGFloat = 2.5
-    var upgradeSelection: [BuildingIcons] = [.wallSelectIcon]
-    var upgrades: [BuiltTowers] = [.wallSL]
-    @Weak var enemiesInRadius: [AnyEnemy]
-    var damage: CGFloat = 0
-    var attackSpeed: CGFloat = 0.05
-    var counter: Int = 0
-    var buildingCost: Int = 30
-    var saleCost: Int = 15
+    var info: BuildingInfo
+    var parameter: BuildingParameter
+    var battleInfo: BuildingBattleInfo
     
     required init(_ buildingNode: SCNNode) {
-        self.buildingNode = buildingNode
         id = UUID()
+        info = BuildingInfo(type: .wall, level: .firstLevel,
+                            upgrades: [.wallSL], upgradeSelection: [.wallSelectIcon],
+                            buildingNode: buildingNode)
+        parameter = BuildingParameter(radius: 3, damage: 40, attackSpeed: 0.3, buildingCost: 35, saleCost: 7)
+        battleInfo = BuildingBattleInfo()
     }
 }

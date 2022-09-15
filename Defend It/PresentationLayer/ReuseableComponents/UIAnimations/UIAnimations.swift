@@ -51,4 +51,14 @@ struct UIAnimations {
             
         }, completion: nil)
     }
+    
+    static func increase(view: UIView) {
+        UIView.animateKeyframes(withDuration: 0.1, delay: 0, options: .calculationModeLinear, animations: {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {
+                view.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            }
+            
+        }, completion: nil)
+    }
 }

@@ -32,4 +32,13 @@ protocol BattleFieldViewOutput: AnyObject {
     func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     func panGestureOccurred(recognizer: UIPanGestureRecognizer, view: inout UIView)
     func pinchGestureOccurred(recognizer: UIPinchGestureRecognizer, view: inout UIView)
+    
+    //MARK: camera
+    func activateCamera()
+    func inactivateCamera()
+    
+    //MARK: building by pan a BuildingCard
+    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) -> Bool
+    func pan(towerNode: SCNNode, by potision: SCNVector3)
+    func buildTower(with type: BuildingTypes, by coordinate: (Int, Int))
 }
