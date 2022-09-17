@@ -15,8 +15,8 @@ enum EnemiesStates {
 protocol EnemiesManager {
     
     func removeEnemy(_ enemy: AnyEnemy)
-    func prohibitWalking(On coordination: (Int, Int))
-    func allowWalking(On coordination: (Int, Int))
+    func prohibitWalking(on coordinate: (Int, Int), byBuildingWith size: (Int, Int))
+    func allowWalking(on coordinate: (Int, Int), byBuildingWith size: (Int, Int))
     func updateCounter()
     func getEnemyBy(_ enemyNode: SCNNode) -> AnyEnemy?
     func stopAllEnemies()
@@ -59,13 +59,13 @@ class EnemiesManagerImpl: EnemiesManager, OneRaceWaveOutput {
         }
     }
     
-    func prohibitWalking(On coordination: (Int, Int)) {
-        EnemyPathManager.shared.prohibitWalking(On: coordination)
+    func prohibitWalking(on coordinate: (Int, Int), byBuildingWith size: (Int, Int)) {
+        EnemyPathManager.shared.prohibitWalking(on: coordinate, byBuildingWith: size)
         sendEnemyMovementManager(command: .runByNewPath)
     }
     
-    func allowWalking(On coordination: (Int, Int)) {
-        EnemyPathManager.shared.allowWalking(On: coordination)
+    func allowWalking(on coordinate: (Int, Int), byBuildingWith size: (Int, Int)) {
+        EnemyPathManager.shared.allowWalking(on: coordinate, byBuildingWith: size)
         sendEnemyMovementManager(command: .runByNewPath)
     }
     

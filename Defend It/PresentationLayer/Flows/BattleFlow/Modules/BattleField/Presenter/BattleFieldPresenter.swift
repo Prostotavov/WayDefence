@@ -120,12 +120,12 @@ class BattleFieldPresenter: BattleFieldViewOutput, BattleFieldInteractorOutput {
     
 
     //MARK: func for building by pan a BuildingCard
-    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) -> Bool {
-        interactor.showBuilding(type, with: level, on: position)
+    func showBuilding(_ card: BuildingCard, on position: SCNVector3) -> Bool {
+        interactor.showBuilding(card, on: position)
     }
     
-    func pan(towerNode: SCNNode, by position: SCNVector3) {
-        interactor.pan(towerNode: towerNode, by: position)
+    func pan(_ buildingCard: BuildingCard, by position: SCNVector3) {
+        interactor.pan(buildingCard, by: position)
     }
     
     func buildTower(with type: BuildingTypes, by coordinate: (Int, Int)) {

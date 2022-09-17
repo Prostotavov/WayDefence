@@ -29,15 +29,15 @@ class BallistaFactory: AbstactFactoryBuildings {
     
     static let defaultFactory = BallistaFactory()
     
-    func createFirstLevelBuildings() -> Building {
-        return BallistaFL(ballistaNodeFL.clone())
+    func createFirstLevelBuildings() -> AnyBuilding {
+        return AnyBuilding(BallistaFL(ballistaNodeFL.clone()))
     }
     
-    func createSecondLevelBuildings() -> Building {
-        return BallistaSL(ballistaNodeSL.clone())
+    func createSecondLevelBuildings() -> AnyBuilding {
+        return AnyBuilding(BallistaSL(ballistaNodeSL.clone()))
     }
     
-    func createThirdLevelBuildings() -> Building {
-        return BallistaSL(ballistaNodeTL.clone())
+    func createThirdLevelBuildings() -> AnyBuilding {
+        return AnyBuilding(BallistaSL(ballistaNodeTL.clone()))
     }
 }

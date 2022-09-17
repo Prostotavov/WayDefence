@@ -81,6 +81,7 @@
 		873B2A7F28D11A56004CFCF8 /* BuildingParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B2A7E28D11A56004CFCF8 /* BuildingParameter.swift */; };
 		873B2A8128D11A81004CFCF8 /* BuildingBattleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B2A8028D11A81004CFCF8 /* BuildingBattleInfo.swift */; };
 		873B2A8328D11A9A004CFCF8 /* BuildingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B2A8228D11A9A004CFCF8 /* BuildingInfo.swift */; };
+		873B2A8728D30FDA004CFCF8 /* BuildingAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B2A8628D30FDA004CFCF8 /* BuildingAppearance.swift */; };
 		873F3F19289D6E9700BF7FF9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F18289D6E9700BF7FF9 /* User.swift */; };
 		873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1A289D6EF400BF7FF9 /* UserSex.swift */; };
 		873F3F1D289D6F8E00BF7FF9 /* GameAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */; };
@@ -400,6 +401,7 @@
 		873B2A7E28D11A56004CFCF8 /* BuildingParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingParameter.swift; sourceTree = "<group>"; };
 		873B2A8028D11A81004CFCF8 /* BuildingBattleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingBattleInfo.swift; sourceTree = "<group>"; };
 		873B2A8228D11A9A004CFCF8 /* BuildingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingInfo.swift; sourceTree = "<group>"; };
+		873B2A8628D30FDA004CFCF8 /* BuildingAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingAppearance.swift; sourceTree = "<group>"; };
 		873F3F18289D6E9700BF7FF9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		873F3F1A289D6EF400BF7FF9 /* UserSex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSex.swift; sourceTree = "<group>"; };
 		873F3F1C289D6F8E00BF7FF9 /* GameAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAccount.swift; sourceTree = "<group>"; };
@@ -1710,6 +1712,7 @@
 				873B2A7E28D11A56004CFCF8 /* BuildingParameter.swift */,
 				873B2A8028D11A81004CFCF8 /* BuildingBattleInfo.swift */,
 				873B2A8228D11A9A004CFCF8 /* BuildingInfo.swift */,
+				873B2A8628D30FDA004CFCF8 /* BuildingAppearance.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -2328,6 +2331,7 @@
 				870B67BB288E97290089D3CB /* LoadBattleAssembly.swift in Sources */,
 				AACC7BEF27FB36D30022384E /* BuiltTowers.swift in Sources */,
 				870B6793288E8F530089D3CB /* CoordinatorFactory.swift in Sources */,
+				873B2A8728D30FDA004CFCF8 /* BuildingAppearance.swift in Sources */,
 				873F3F1B289D6EF400BF7FF9 /* UserSex.swift in Sources */,
 				877F105028906BB800571F26 /* BattleMapViewController.swift in Sources */,
 				870B677D288E8E540089D3CB /* Presentable.swift in Sources */,

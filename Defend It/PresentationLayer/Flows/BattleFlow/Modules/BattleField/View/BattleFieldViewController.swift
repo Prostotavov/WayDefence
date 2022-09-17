@@ -229,11 +229,9 @@ extension BattleFieldViewController: UIGestureRecognizerDelegate {
             
             // show building
             if !isBuildingShows && isBuildingCardPicked {
-                guard let buildingInfo = chosenBuildingCell?.buildingCard?.info else {return}
+                guard let buildingCard = chosenBuildingCell?.buildingCard else {return}
                 
-                
-                
-                if !showBuilding(buildingInfo.type, with: buildingInfo.level, on: hitPosition) {return}
+                if !showBuilding(buildingCard, on: hitPosition) {return}
                 buildingCardView?.isHidden = true
                 isBuildingShows = true
             }
@@ -280,7 +278,7 @@ extension BattleFieldViewController {
                 buildingCardView = nil
             }
             buildingCardView = TowerCardView(frame: cardViewFrame)
-            guard let imageName = cardCell.buildingCard?.info.upgradeSelection.first?.rawValue else {return}
+            guard let imageName = cardCell.buildingCard?.appearance.icons.first?.rawValue else {return}
             guard let costInt = cardCell.buildingCard?.parameter.buildingCost else {return}
             let costSting = String(costInt)
             buildingCardView?.configure(image: imageName, text: costSting)
@@ -352,16 +350,16 @@ extension BattleFieldViewController {
             
             // show building
             if !isBuildingShows && isBuildingCardPicked {
-                guard let buildingInfo = chosenBuildingCell?.buildingCard?.info else {return}
-                if !showBuilding(buildingInfo.type, with: buildingInfo.level, on: hitPosition) {return}
+                guard let buildingCard = chosenBuildingCell?.buildingCard else {return}
+                if !showBuilding(buildingCard, on: hitPosition) {return}
                 buildingCardView?.isHidden = true
                 isBuildingShows = true
             }
             
             // pan building by scene
             if isBuildingShows {
-                guard let shownTowerNode = shownTowerNode else {return}
-                pan(towerNode: shownTowerNode, by: hitPosition)
+                guard let buildingCard = chosenBuildingCell?.buildingCard else {return}
+                pan(buildingCard, by: hitPosition)
             }
         }
         
@@ -391,7 +389,7 @@ extension BattleFieldViewController {
                 buildingCardView = nil
             }
             buildingCardView = TowerCardView(frame: cardViewFrame)
-            guard let imageName = cardCell.buildingCard?.info.upgradeSelection.first?.rawValue else {return}
+            guard let imageName = cardCell.buildingCard?.appearance.icons.first?.rawValue else {return}
             guard let costInt = cardCell.buildingCard?.parameter.buildingCost else {return}
             let costSting = String(costInt)
             buildingCardView?.configure(image: imageName, text: costSting)
@@ -451,10 +449,10 @@ extension BattleFieldViewController {
     
     // create fictional tower and adding in the scene. Write this node to shownTowerNode
     // if shownTowerNode is exist, then we need to show this tower
-    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) -> Bool {
+    func showBuilding(_ card: BuildingCard, on position: SCNVector3) -> Bool {
         var isSuccessShown: Bool = true
         if shownTowerNode == nil {
-            isSuccessShown = output.showBuilding(type, with: level, on: position)
+            isSuccessShown = output.showBuilding(card, on: position)
             shownTowerNode = scene.rootNode.childNode(withName: "shownTower", recursively: true)
             return isSuccessShown
         }
@@ -463,7 +461,7 @@ extension BattleFieldViewController {
     }
     
     // move buildingNode
-    func pan(towerNode: SCNNode, by position: SCNVector3) {
-        output.pan(towerNode: towerNode, by: position)
+    func pan(_ buildingCard: BuildingCard, by position: SCNVector3) {
+        output.pan(buildingCard, by: position)
     }
 }

@@ -8,6 +8,7 @@
 struct BuildingBattleInfo {
 
     var counter: Int = 0
+    var coordinate: (Int, Int)?
     @Weak var enemiesInRadius: [AnyEnemy]
     
     internal init(counter: Int = 0) {

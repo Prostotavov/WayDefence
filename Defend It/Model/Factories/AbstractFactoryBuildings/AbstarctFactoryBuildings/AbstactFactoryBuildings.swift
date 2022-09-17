@@ -22,16 +22,16 @@ enum BuildingLevels: Int, CaseIterable {
 
 protocol AbstactFactoryBuildings {
         
-    func createFirstLevelBuildings() -> Building
-    func createSecondLevelBuildings() -> Building
-    func createThirdLevelBuildings() -> Building
+    func createFirstLevelBuildings() -> AnyBuilding
+    func createSecondLevelBuildings() -> AnyBuilding
+    func createThirdLevelBuildings() -> AnyBuilding
 }
 
 class AbstactFactoryBuildingsImpl {
     
     static let defaultFactory = AbstactFactoryBuildingsImpl()
     
-    func create(_ building: BuildingTypes, with level: BuildingLevels) -> Building {
+    func create(_ building: BuildingTypes, with level: BuildingLevels) -> AnyBuilding {
         switch building {
         case .elphTower:
             switch level {

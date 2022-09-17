@@ -38,7 +38,7 @@ protocol BattleFieldViewOutput: AnyObject {
     func inactivateCamera()
     
     //MARK: building by pan a BuildingCard
-    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) -> Bool
-    func pan(towerNode: SCNNode, by potision: SCNVector3)
+    func showBuilding(_ card: BuildingCard, on position: SCNVector3) -> Bool
+    func pan(_ buildingCard: BuildingCard, by potision: SCNVector3)
     func buildTower(with type: BuildingTypes, by coordinate: (Int, Int))
 }

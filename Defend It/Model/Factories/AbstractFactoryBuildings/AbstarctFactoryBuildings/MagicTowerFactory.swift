@@ -29,15 +29,15 @@ class MagicTowerFactory: AbstactFactoryBuildings {
     
     static let defaultFactory = MagicTowerFactory()
     
-    func createFirstLevelBuildings() -> Building {
-        return MagicTowerFL(magicTowerNodeFL.clone())
+    func createFirstLevelBuildings() -> AnyBuilding {
+        return AnyBuilding(MagicTowerFL(magicTowerNodeFL.clone()))
     }
     
-    func createSecondLevelBuildings() -> Building {
-        return MagicTowerSL(magicTowerNodeSL.clone())
+    func createSecondLevelBuildings() -> AnyBuilding {
+        return AnyBuilding(MagicTowerSL(magicTowerNodeSL.clone()))
     }
     
-    func createThirdLevelBuildings() -> Building {
-        return MagicTowerTL(magicTowerNodeTL.clone())
+    func createThirdLevelBuildings() -> AnyBuilding {
+        return AnyBuilding(MagicTowerTL(magicTowerNodeTL.clone()))
     }
 }

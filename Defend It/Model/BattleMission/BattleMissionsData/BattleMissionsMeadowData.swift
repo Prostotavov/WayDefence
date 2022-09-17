@@ -37,7 +37,7 @@ private extension BattleMissionsMeadowData {
     }
     
     mutating func getMeadowForBattle01() -> BattleMeadow {
-        let size = 10
+        let size = 30
         let start: (Int, Int) = (5, 5)
         let target: (Int, Int) = (size - 1, size - 1)
         meadowCreator = BattleMeadowCreatorImpl(size: size)
@@ -50,7 +50,7 @@ private extension BattleMissionsMeadowData {
     }
     
     mutating func getMeadowForBattle02() -> BattleMeadow {
-        let size = 9
+        let size = 27
         let start: (Int, Int) = (0, 0)
         let target: (Int, Int) = (size - 1, size - 1)
         meadowCreator = BattleMeadowCreatorImpl(size: size)
@@ -62,7 +62,7 @@ private extension BattleMissionsMeadowData {
     }
     
     mutating func getMeadowForBattle03() -> BattleMeadow {
-        let size = 8
+        let size = 24
         let start: (Int, Int) = (0, 0)
         let target: (Int, Int) = (size - 1, size - 1)
         meadowCreator = BattleMeadowCreatorImpl(size: size)
@@ -74,7 +74,7 @@ private extension BattleMissionsMeadowData {
     }
     
     mutating func getMeadowForBattle04() -> BattleMeadow {
-        let size = 7
+        let size = 21
         let start: (Int, Int) = (0, 0)
         let target: (Int, Int) = (size - 1, size - 1)
         meadowCreator = BattleMeadowCreatorImpl(size: size)
@@ -86,7 +86,7 @@ private extension BattleMissionsMeadowData {
     }
     
     mutating func getMeadowForBattle05() -> BattleMeadow {
-        let size = 12
+        let size = 36
         let start: (Int, Int) = (0, 0)
         let target: (Int, Int) = (size - 1, size - 1)
         meadowCreator = BattleMeadowCreatorImpl(size: size)
