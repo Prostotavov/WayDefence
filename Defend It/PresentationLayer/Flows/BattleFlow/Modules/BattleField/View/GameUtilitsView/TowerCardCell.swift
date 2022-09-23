@@ -44,7 +44,7 @@ class TowerCardCell: UICollectionViewCell {
     
     func configure(_ buildingCard: BuildingCard) {
         self.buildingCard = buildingCard
-        guard let imageName = buildingCard.info.upgradeSelection.first?.rawValue else {return}
+        guard let imageName = buildingCard.appearance.icons.first?.rawValue else {return}
         let text = String(buildingCard.parameter.buildingCost)
         towerCardView.configure(image: imageName, text: text)
     }

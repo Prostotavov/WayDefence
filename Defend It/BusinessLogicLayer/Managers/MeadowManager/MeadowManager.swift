@@ -14,6 +14,10 @@ protocol MeadowManagerDelagate: AnyObject {
 protocol MeadowManager {
     func getGroundSquares() -> [[GroundSquareImpl]]
     func addGroundToScene()
+    
+    func isEmpty(coordinate: inout (Int, Int), forBuildingWith size: (Int, Int)) -> Bool
+    func oppury(coordinate: (Int, Int), byBuildingWith size: (Int, Int))
+    func free(coordinate: (Int, Int), byBuildingWith size: (Int, Int))
 }
 
 class MeadowManagerImpl: MeadowManager {
@@ -35,5 +39,14 @@ class MeadowManagerImpl: MeadowManager {
     
     func getGroundSquares() ->  [[GroundSquareImpl]] {
         battleMeadow.squares
+    }
+    func isEmpty(coordinate: inout (Int, Int), forBuildingWith size: (Int, Int)) -> Bool {
+        battleMeadow.isEmpty(coordinate: &coordinate, forBuildingWith: size)
+    }
+    func oppury(coordinate: (Int, Int), byBuildingWith size: (Int, Int)) {
+        battleMeadow.oppury(coordinate: coordinate, byBuildingWith: size)
+    }
+    func free(coordinate: (Int, Int), byBuildingWith size: (Int, Int)) {
+        battleMeadow.free(coordinate: coordinate, byBuildingWith: size)
     }
 }

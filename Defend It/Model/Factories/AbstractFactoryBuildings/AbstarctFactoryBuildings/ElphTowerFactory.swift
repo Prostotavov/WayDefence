@@ -29,15 +29,15 @@ class ElphTowerFactory: AbstactFactoryBuildings {
     
     static let defaultFactory = ElphTowerFactory()
     
-    func createFirstLevelBuildings() -> Building {
-        return ElphTowerFL(elphTowerNodeFL.clone())
+    func createFirstLevelBuildings() -> AnyBuilding {
+        return AnyBuilding(ElphTowerFL(elphTowerNodeFL.clone()))
     }
     
-    func createSecondLevelBuildings() -> Building {
-        return ElphTowerSL(elphTowerNodeSL.clone())
+    func createSecondLevelBuildings() -> AnyBuilding {
+        return AnyBuilding(ElphTowerSL(elphTowerNodeSL.clone()))
     }
     
-    func createThirdLevelBuildings() -> Building {
-        return ElphTowerSL(elphTowerNodeTL.clone())
+    func createThirdLevelBuildings() -> AnyBuilding {
+        return AnyBuilding(ElphTowerSL(elphTowerNodeTL.clone()))
     }
 }

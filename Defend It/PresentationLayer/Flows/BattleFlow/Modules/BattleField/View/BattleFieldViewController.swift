@@ -39,6 +39,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput,
     // gestures
     let panGesture = UIPanGestureRecognizer()
     let tapRecognizer = UITapGestureRecognizer()
+    let deepGesture = DeepPressGestureRecognizer()
     
     // vars for handle pan BuildingCard
     var isBuildingShows: Bool = false
@@ -66,6 +67,17 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput,
         output.viewDidAppear()
         runRender()
         towersPanelViewSpace = view.frame.height - towersPanelViewHeight
+        loadNodes()
+    }
+    
+    func loadNodes() {
+        let testBuildingNode = MagicTowerFactory.defaultFactory.createFirstLevelBuildings().appearance.buildingNode
+        addNodeToScene(testBuildingNode)
+        testBuildingNode.removeFromParentNode()
+        
+        let testEnemyNode = GoblinFactory.defaultFactory.createFirstLevelEnemy().enemyNode
+        addNodeToScene(testEnemyNode)
+        testEnemyNode.removeFromParentNode()
     }
     
     func setupScene() {
@@ -188,6 +200,7 @@ extension BattleFieldViewController: UIGestureRecognizerDelegate {
         addPinchGestureRecognizer()
         addDoubleTapGestureRecognizer()
         addSingleTapGestoreRecognizer()
+        addDeepPressGestureRecognizer()
     }
     
     func addSingleTapGestoreRecognizer() {
@@ -216,24 +229,43 @@ extension BattleFieldViewController: UIGestureRecognizerDelegate {
         self.view!.addGestureRecognizer(panGesture)
     }
     
+
+    
+}
+
+//MARK: handle touches
+extension BattleFieldViewController {
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         output.touchesBegan(touches, with: event)
         
-        
         guard let touch = touches.first else {return}
-        let location = touch.location(in: sceneView)
+        var location = touch.location(in: sceneView)
         
+        
+        //MARK: half screen
+        if  GameSettings.shared.battleSettings.isHalfScreenModeActive {
+        if location.y < sceneView.frame.height/2 {
+            // top
+            GameSettings.shared.battleSettings.touchingScreenPart = .topОfTheScreen
+            location.y -= sceneView.frame.height * GameSettings.shared.battleSettings.raiseTouchFactor / 2
+        } else {
+            // bottom
+            GameSettings.shared.battleSettings.touchingScreenPart = .bottomОfTheScreen
+            location.y += sceneView.frame.height * GameSettings.shared.battleSettings.lowerTouchFactor / 2
+        }
+        }
+        
+        // hanlde picked card
         if isBuildingCardPicked {
             let hitResults = sceneView.hitTest(location, options: nil)
             guard let hitPosition = hitResults.first?.worldCoordinates else {return}
             
             // show building
             if !isBuildingShows && isBuildingCardPicked {
-                guard let buildingInfo = chosenBuildingCell?.buildingCard?.info else {return}
+                guard let buildingCard = chosenBuildingCell?.buildingCard else {return}
                 
-                
-                
-                if !showBuilding(buildingInfo.type, with: buildingInfo.level, on: hitPosition) {return}
+                if !showBuilding(buildingCard, on: hitPosition) {return}
                 buildingCardView?.isHidden = true
                 isBuildingShows = true
             }
@@ -242,14 +274,38 @@ extension BattleFieldViewController: UIGestureRecognizerDelegate {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        isBuildingShows = false
         if isBuildingCardPicked {
             buildTower()
             resetAllCardProperties()
             return
         }
     }
-    
 }
+
+//MARK: Force
+extension BattleFieldViewController {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer == self.panGesture && otherGestureRecognizer == deepGesture {
+            return true
+        }
+        return false
+    }
+    
+    func addDeepPressGestureRecognizer() {
+        deepGesture.delegate = self
+        deepGesture.onDeepPress = onDeepPress
+        self.view!.addGestureRecognizer(deepGesture)
+    }
+    
+    func onDeepPress() {
+        GameSettings.shared.battleSettings.isHalfScreenModeActive = true
+        GameSettings.shared.battleSettings.touchingScreenPart.toggleBetweenParts()
+    }
+}
+
+
 
 //MARK: handle gestures
 extension BattleFieldViewController {
@@ -280,7 +336,7 @@ extension BattleFieldViewController {
                 buildingCardView = nil
             }
             buildingCardView = TowerCardView(frame: cardViewFrame)
-            guard let imageName = cardCell.buildingCard?.info.upgradeSelection.first?.rawValue else {return}
+            guard let imageName = cardCell.buildingCard?.appearance.icons.first?.rawValue else {return}
             guard let costInt = cardCell.buildingCard?.parameter.buildingCost else {return}
             let costSting = String(costInt)
             buildingCardView?.configure(image: imageName, text: costSting)
@@ -329,9 +385,28 @@ extension BattleFieldViewController {
     @objc func handlePanGesture(recognizer: UIPanGestureRecognizer) {
         output.panGestureOccurred(recognizer: recognizer, view: &self.view)
         
+        
         // we need two touch locations
-        let sceneViewLocation = recognizer.location(in: sceneView)
+        var sceneViewLocation = recognizer.location(in: sceneView)
         let towersPanelViewLocation = recognizer.location(in: towersPanelView)
+        
+        
+        //MARK: top screen
+        if GameSettings.shared.battleSettings.touchingScreenPart == .topОfTheScreen {
+            // top
+            if sceneViewLocation.y > towersPanelViewSpace {
+                buildingCardView?.isHidden = false
+                shownTowerNode?.isHidden = true
+                isBuildingShows = false
+            } else {
+                buildingCardView?.isHidden = true
+                shownTowerNode?.isHidden = false
+                sceneViewLocation.y -= view.frame.height * GameSettings.shared.battleSettings.raiseTouchFactor
+            }
+            
+            
+        }
+        
         
         // touch in towersPanelView
         if sceneViewLocation.y > towersPanelViewSpace {
@@ -346,22 +421,36 @@ extension BattleFieldViewController {
         // touch above towersPanelView
         if sceneViewLocation.y < towersPanelViewSpace {
             
+            //MARK: Bottom screen
+            if GameSettings.shared.battleSettings.touchingScreenPart == .bottomОfTheScreen {
+               if sceneViewLocation.y > towersPanelViewSpace {
+                   buildingCardView?.isHidden = false
+                   shownTowerNode?.isHidden = true
+                   isBuildingShows = false
+               } else {
+                   buildingCardView?.isHidden = true
+                   shownTowerNode?.isHidden = false
+                   sceneViewLocation.y += view.frame.height * GameSettings.shared.battleSettings.lowerTouchFactor
+               }
+           }
+            
             // coordinate of touch in scene
             let hitResults = sceneView.hitTest(sceneViewLocation, options: nil)
             guard let hitPosition = hitResults.first?.worldCoordinates else {return}
             
+            
             // show building
             if !isBuildingShows && isBuildingCardPicked {
-                guard let buildingInfo = chosenBuildingCell?.buildingCard?.info else {return}
-                if !showBuilding(buildingInfo.type, with: buildingInfo.level, on: hitPosition) {return}
+                guard let buildingCard = chosenBuildingCell?.buildingCard else {return}
+                if !showBuilding(buildingCard, on: hitPosition) {return}
                 buildingCardView?.isHidden = true
                 isBuildingShows = true
             }
             
             // pan building by scene
             if isBuildingShows {
-                guard let shownTowerNode = shownTowerNode else {return}
-                pan(towerNode: shownTowerNode, by: hitPosition)
+                guard let buildingCard = chosenBuildingCell?.buildingCard else {return}
+                pan(buildingCard, by: hitPosition)
             }
         }
         
@@ -391,7 +480,7 @@ extension BattleFieldViewController {
                 buildingCardView = nil
             }
             buildingCardView = TowerCardView(frame: cardViewFrame)
-            guard let imageName = cardCell.buildingCard?.info.upgradeSelection.first?.rawValue else {return}
+            guard let imageName = cardCell.buildingCard?.appearance.icons.first?.rawValue else {return}
             guard let costInt = cardCell.buildingCard?.parameter.buildingCost else {return}
             let costSting = String(costInt)
             buildingCardView?.configure(image: imageName, text: costSting)
@@ -410,6 +499,7 @@ extension BattleFieldViewController {
             // move card
             guard let buildingCardView = buildingCardView else {return}
             buildingCardView.center = sceneViewLocation
+            
             
         case .ended:
             if isBuildingShows {buildTower()}
@@ -439,6 +529,10 @@ extension BattleFieldViewController {
         // reset bool vars
         isBuildingShows = false
         isBuildingCardPicked = false
+        
+        // reset half part vars
+        GameSettings.shared.battleSettings.touchingScreenPart = .touchPlace
+        GameSettings.shared.battleSettings.isHalfScreenModeActive = false
     }
     
     
@@ -451,10 +545,10 @@ extension BattleFieldViewController {
     
     // create fictional tower and adding in the scene. Write this node to shownTowerNode
     // if shownTowerNode is exist, then we need to show this tower
-    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) -> Bool {
+    func showBuilding(_ card: BuildingCard, on position: SCNVector3) -> Bool {
         var isSuccessShown: Bool = true
         if shownTowerNode == nil {
-            isSuccessShown = output.showBuilding(type, with: level, on: position)
+            isSuccessShown = output.showBuilding(card, on: position)
             shownTowerNode = scene.rootNode.childNode(withName: "shownTower", recursively: true)
             return isSuccessShown
         }
@@ -463,7 +557,7 @@ extension BattleFieldViewController {
     }
     
     // move buildingNode
-    func pan(towerNode: SCNNode, by position: SCNVector3) {
-        output.pan(towerNode: towerNode, by: position)
+    func pan(_ buildingCard: BuildingCard, by position: SCNVector3) {
+        output.pan(buildingCard, by: position)
     }
 }

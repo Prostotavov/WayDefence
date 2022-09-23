@@ -7,14 +7,21 @@
 
 import SceneKit
 
+struct GameConstants {
+    
+    static let goundSquareSize: CGFloat = 1 / 8 // smallest unit of length
+}
+
 struct Converter {
     
     static func toCoordinate(from position: SCNVector3) -> (Int, Int) {
-        (Int(round(position.x * 2)), Int(round(position.z * 2)))
+        (Int(round(CGFloat(position.x) / GameConstants.goundSquareSize)),
+         Int(round(CGFloat(position.z) / GameConstants.goundSquareSize)))
     }
     
     static func toPosition(from coordinate: (Int, Int)) -> SCNVector3 {
-        SCNVector3(Float(coordinate.0)/2, 0, Float(coordinate.1)/2)
+        SCNVector3(CGFloat(coordinate.0) * GameConstants.goundSquareSize, 0,
+                   CGFloat(coordinate.1) * GameConstants.goundSquareSize)
     }
     
     static func toCoordinates(from positions: [SCNVector3]) -> [(Int, Int)] {

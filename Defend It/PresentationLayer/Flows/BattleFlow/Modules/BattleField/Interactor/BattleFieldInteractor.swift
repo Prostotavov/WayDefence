@@ -112,12 +112,12 @@ extension BattleFieldInteractor {
 
 // funs for building by pan a BuildingCard on BattleFieldView
 extension BattleFieldInteractor {
-    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) -> Bool {
-        battle.showBuilding(type, with: level, on: position)
+    func showBuilding(_ card: BuildingCard, on position: SCNVector3) -> Bool {
+        battle.showBuilding(card, on: position)
     }
     
-    func pan(towerNode: SCNNode, by position: SCNVector3) {
-        battle.pan(towerNode: towerNode, by: position)
+    func pan(_ buildingCard: BuildingCard, by position: SCNVector3) {
+        battle.pan(buildingCard, by: position)
     }
     
     func buildTower(with type: BuildingTypes, by coordinate: (Int, Int)) {

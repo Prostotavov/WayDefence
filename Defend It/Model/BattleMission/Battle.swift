@@ -52,8 +52,8 @@ protocol Battle {
     func displayBattleValues()
     func changeBattleSpeed()
     
-    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) -> Bool
-    func pan(towerNode: SCNNode, by position: SCNVector3)
+    func showBuilding(_ card: BuildingCard, on position: SCNVector3) -> Bool
+    func pan(_ buildingCard: BuildingCard, by position: SCNVector3)
     func getBuildingCards() -> [BuildingCard]
     
     var output: BattleOutput! {get set}
@@ -165,33 +165,85 @@ extension BattleImpl {
         return buildingsManager.getBuildingCards()
     }
     
-    func showBuilding(_ type: BuildingTypes, with level: BuildingLevels, on position: SCNVector3) -> Bool {
-        buildingsManager.showBuilding(type, with: level, on: position)
+    func showBuilding(_ card: BuildingCard, on position: SCNVector3) -> Bool {
+        var coordinate = Converter.toCoordinate(from: position)
+        if !meadowManager.isEmpty(coordinate: &coordinate, forBuildingWith: card.appearance.size) {return false}
+        return buildingsManager.showBuilding(card, on: position)
     }
     
-    func pan(towerNode: SCNNode, by position: SCNVector3) {
-        buildingsManager.pan(towerNode: towerNode, by: position)
+    func pan(_ buildingCard: BuildingCard, by position: SCNVector3) {
+        
+        let previouslyCoordinate =  Converter.toCoordinate(from: buildingCard.appearance.buildingNode.position)
+        var newCoordinate: (Int, Int)
+        var currentCoordinate = Converter.toCoordinate(from: position)
+        
+        if meadowManager.isEmpty(coordinate: &currentCoordinate, forBuildingWith: buildingCard.appearance.size) {
+            buildingCard.appearance.buildingNode.position = Converter.toPosition(from: currentCoordinate)
+            return
+        }
+        
+        guard let building = buildingsManager.getBuilding(by: currentCoordinate)  else {return}
+        
+        let differenceByX = previouslyCoordinate.0 - currentCoordinate.0
+        let differenceByY = previouslyCoordinate.1 - currentCoordinate.1
+        
+        if abs(differenceByX) > abs(differenceByY) { // sticking to the left or right side
+             
+            if differenceByX > 0 {
+                /// attach the new tower to the **RIGHT** side of the old tower
+                newCoordinate = (building.battleInfo.coordinate.0 + building.appearance.size.0,
+                                 building.battleInfo.coordinate.1)
+                
+            } else {
+                /// attach the new tower to the **LEFT** side of the old tower
+                newCoordinate = (building.battleInfo.coordinate.0 - building.appearance.size.0,
+                                 building.battleInfo.coordinate.1)
+            }
+            
+        } else { // sticking to the top or bottom side
+            
+            if differenceByY > 0 {
+                /// attach the new tower to the **BOTTOM** side of the old tower
+                newCoordinate = (building.battleInfo.coordinate.0,
+                                 building.battleInfo.coordinate.1 + building.appearance.size.1)
+            } else {
+                /// attach the new tower to the **TOP** side of the old tower
+                newCoordinate = (building.battleInfo.coordinate.0,
+                                 building.battleInfo.coordinate.1 - building.appearance.size.1)
+            }
+            
+        }
+        /// **Moving A Building**
+        buildingCard.appearance.buildingNode.position = Converter.toPosition(from: newCoordinate)
+        return
+
     }
+    
+    
 }
 
 
 // capabilities
 extension BattleImpl {
     func buildTower(type: BuildingTypes, by coordinate: (Int, Int)) {
-        /// checks
+        /// temp tower for provide the checks
         let tempTower = AbstactFactoryBuildingsImpl.defaultFactory.create(type, with: .firstLevel)
+        var coordinate = coordinate // create var coordinate because we need to mutate this value
+        /// checks
+        if !meadowManager.isEmpty(coordinate: &coordinate, forBuildingWith: tempTower.appearance.size) {return}
         if !isThereEnoughMoney(for: tempTower) {return}
         if !isThereAnEnemy(by: coordinate) {return}
         if !willTheEnemiesBeAbleToFindAWay(coordinate: coordinate) {return}
-        if buildingsManager.isExistBuiling(on: coordinate) {return}
+        /// actions
         buildingsManager.buildTower(with: type, by: coordinate)
-        enemiesManager.prohibitWalking(On: coordinate)
+        enemiesManager.prohibitWalking(on: coordinate, byBuildingWith: tempTower.appearance.size)
+        meadowManager.oppury(coordinate: coordinate, byBuildingWith: tempTower.appearance.size)
         /// battle values
         battleValuesManager.battleValues.reduce(.coins, by: tempTower.parameter.buildingCost)
         displayBattleValues()
     }
     func upgradeTower(by coordinate: (Int, Int)) {
-        let oldTower = buildingsManager.getBuilding(by: coordinate)
+        guard let oldTower = buildingsManager.getBuilding(by: coordinate) else {return}
         let type = oldTower.info.type
         let nextLevel: BuildingLevels = BuildingLevels(rawValue: oldTower.info.level.rawValue + 1) ?? .thirdLevel
         let upTower = AbstactFactoryBuildingsImpl.defaultFactory.create(type, with: nextLevel)
@@ -203,9 +255,10 @@ extension BattleImpl {
         displayBattleValues()
     }
     func sellTower(by coordinate: (Int, Int)) {
-        let oldTower = buildingsManager.getBuilding(by: coordinate)
+        guard let oldTower = buildingsManager.getBuilding(by: coordinate) else {return}
         buildingsManager.deleteBuilding(with: coordinate)
-        enemiesManager.allowWalking(On: coordinate)
+        enemiesManager.allowWalking(on: coordinate, byBuildingWith: oldTower.appearance.size)
+        meadowManager.free(coordinate: coordinate, byBuildingWith: oldTower.appearance.size)
         /// battle values
         battleValuesManager.battleValues.increase(.coins, by: oldTower.parameter.saleCost)
         displayBattleValues()
@@ -284,7 +337,7 @@ extension BattleImpl: EnemiesManagerOutput, BattleManagerDelegate {
 
 // checks
 extension BattleImpl {
-    func isThereEnoughMoney(for tower: Building) -> Bool {
+    func isThereEnoughMoney(for tower: AnyBuilding) -> Bool {
         if (battleValuesManager.battleValues.get(.coins) - tower.parameter.buildingCost) > 0 {
             return true
         } else {

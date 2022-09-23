@@ -29,15 +29,15 @@ class WallFactory: AbstactFactoryBuildings {
     
     static let defaultFactory = WallFactory()
     
-    func createFirstLevelBuildings() -> Building {
-        return WallFL(wallNodeFL.clone())
+    func createFirstLevelBuildings() -> AnyBuilding {
+        return AnyBuilding(WallFL(wallNodeFL.clone()))
     }
     
-    func createSecondLevelBuildings() -> Building {
-        return WallSL(wallNodeSL.clone())
+    func createSecondLevelBuildings() -> AnyBuilding {
+        return AnyBuilding(WallSL(wallNodeSL.clone()))
     }
     
-    func createThirdLevelBuildings() -> Building {
-        return WallSL(wallNodeTL.clone())
+    func createThirdLevelBuildings() -> AnyBuilding {
+        return AnyBuilding(WallSL(wallNodeTL.clone()))
     }
 }

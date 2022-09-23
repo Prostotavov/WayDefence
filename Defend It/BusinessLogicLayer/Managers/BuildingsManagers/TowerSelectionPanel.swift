@@ -10,7 +10,7 @@ import SceneKit
 
 protocol TowerSelectionPanel {
     func show(on position: SCNVector3) -> SCNNode
-    func show(for building: Building) -> SCNNode
+    func show(for building: AnyBuilding) -> SCNNode
 }
 
 class TowerSelectionPanelImpl: TowerSelectionPanel {
@@ -54,15 +54,15 @@ class TowerSelectionPanelImpl: TowerSelectionPanel {
     func show(on position: SCNVector3) -> SCNNode {
         removeRadius()
         panelNode.position = position
-        boardNode.childNodes.map{$0.removeFromParentNode()}
+        let _ = boardNode.childNodes.map{$0.removeFromParentNode()}
         addDefaultTowersToBoard()
         return panelNode
     }
     
-    func show(for building: Building) -> SCNNode {
+    func show(for building: AnyBuilding) -> SCNNode {
         removeRadius()
-        boardNode.childNodes.map{$0.removeFromParentNode()}
-        panelNode.position = building.info.buildingNode.position
+        let _ = boardNode.childNodes.map{$0.removeFromParentNode()}
+        panelNode.position = building.appearance.buildingNode.position
         addIconToBoard(for: building)
         showBuilderRadius(radius: building.parameter.radius/3)
         return panelNode
@@ -125,10 +125,10 @@ extension TowerSelectionPanelImpl {
         add(.ballistaSelectIcon, to: .downRightPlace)     // 6
     }
     
-    func addIconToBoard(for building: Building) {
+    func addIconToBoard(for building: AnyBuilding) {
         add(.repairSelectIcon, to: .repairTowerButton)
         add(.sellSelectIcon, to: .sellTowerButton)
-        add(building.info.upgradeSelection[0], to: .upMiddlePlace)
+        add(building.appearance.icons[0], to: .upMiddlePlace)
     }
     
     func getPositionFor(_ place: BuildingIconPlaces) -> SCNVector3 {
