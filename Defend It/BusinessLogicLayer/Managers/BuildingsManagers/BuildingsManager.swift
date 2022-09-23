@@ -136,7 +136,7 @@ extension BuildingsManagerImpl {
         buildings.remove(building)
     }
     
-    //MARK: unnecessary func
+    
     func isExistBuiling(on coordinate: (Int, Int)) -> Bool {
         guard let _ = getBuilding(by: coordinate) else {return false}
         return true
@@ -144,8 +144,16 @@ extension BuildingsManagerImpl {
     
     func getBuilding(by coordinate: (Int, Int)) -> AnyBuilding? {
         for building in buildings {
-            if building.battleInfo.coordinate! != coordinate {continue}
-            return building
+            let buildingCoordinate = building.battleInfo.coordinate
+            let size = building.appearance.size
+            let oppositeCoordinate: (Int, Int) = (buildingCoordinate.0 - size.0 + 1,
+                                                  buildingCoordinate.1 - size.1 + 1)
+            
+            if (oppositeCoordinate.0...buildingCoordinate.0).contains(coordinate.0) {
+                if (oppositeCoordinate.1...buildingCoordinate.1).contains(coordinate.1) {
+                    return building
+                }
+            }
         }
         return nil
     }
