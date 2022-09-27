@@ -8,13 +8,14 @@
 import UIKit
 import SceneKit
 import SpriteKit
+import ARKit
 
 protocol BattleFieldLoadDelegate: UIViewController {
     func assemblyModule(delegate: BattleFieldAssemblyDelagate)
 }
 
 class BattleFieldViewController: UIViewController, BattleFieldViewInput,
-                                 BattleFieldLoadDelegate, BattleFieldViewCoordinatorOutput {
+                                 BattleFieldLoadDelegate, BattleFieldViewCoordinatorOutput, ARSCNViewDelegate {
     
     // flow coordinator
     var onPauseBattle: (() -> Void)?
@@ -27,6 +28,7 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput,
     var assembler: BattleFieldAssemblyProtocol = BattleFieldAssembly()
     
     // main views
+//    var sceneView: ARSCNView!
     var sceneView: SCNView!
     var scene: SCNScene!
     
@@ -70,6 +72,13 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput,
         loadNodes()
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        let configuration = ARWorldTrackingConfiguration()
+//        sceneView.session.run(configuration)
+//        
+//    }
+    
     func loadNodes() {
         let testBuildingNode = MagicTowerFactory.defaultFactory.createFirstLevelBuildings().appearance.buildingNode
         addNodeToScene(testBuildingNode)
@@ -81,8 +90,10 @@ class BattleFieldViewController: UIViewController, BattleFieldViewInput,
     }
     
     func setupScene() {
+//        self.view = ARSCNView()
         self.view = SCNView()
         scene = SCNScene(named: ScenePaths.battleField.rawValue)!
+//        sceneView = self.view as? ARSCNView
         sceneView = self.view as? SCNView
         sceneView.scene = scene
         sceneView.autoenablesDefaultLighting = true

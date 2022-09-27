@@ -19,14 +19,14 @@ class TowerSelectionPanelImpl: TowerSelectionPanel {
     var panelNode: SCNNode!
     var boardNode: SCNNode!
     
-    let boardWidth: CGFloat = 1
-    let boardHeight: CGFloat = 1
-    let boardLength: CGFloat = 0.01
+    let boardWidth: CGFloat = 0.3
+    let boardHeight: CGFloat = 0.3
+    let boardLength: CGFloat = 0.003
     
-    let flagWidth: CGFloat = 0.05
-    let flagHeight: CGFloat = 0.4
+    let flagWidth: CGFloat = 0.01
+    let flagHeight: CGFloat = 0.1
     
-    let distanceFromGround: CGFloat = 1.3
+    let distanceFromGround: CGFloat = 0.5
     
     init() {
         setupScene()
@@ -36,8 +36,8 @@ class TowerSelectionPanelImpl: TowerSelectionPanel {
     
     func createIconFor(_ icon: BuildingIcons) -> SCNNode {
         let planeNode = SCNNode()
-        let plane = SCNPlane(width: 0.5, height: 0.5)
-        plane.cornerRadius = 1
+        let plane = SCNPlane(width: 0.2, height: 0.2)
+        plane.cornerRadius = 0.2
         planeNode.geometry = plane
         
         let planeMaterial = SCNMaterial()
@@ -46,7 +46,7 @@ class TowerSelectionPanelImpl: TowerSelectionPanel {
         plane.materials = [planeMaterial]
         planeNode.name = icon.rawValue
         
-        planeNode.position = SCNVector3(0, 0, 0)
+        planeNode.position = SCNVector3(0, 0.2, 0)
         
         return planeNode
     }
@@ -76,7 +76,7 @@ class TowerSelectionPanelImpl: TowerSelectionPanel {
     
     func addBoard() {
         boardNode = SCNNode()
-        boardNode.position = SCNVector3(0, 1.3, 0)
+        boardNode.position = SCNVector3(0, distanceFromGround, 0)
         panelNode.addChildNode(boardNode)
     }
     

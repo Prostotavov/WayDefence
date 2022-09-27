@@ -435,6 +435,7 @@ extension BattleImpl {
             showTowerSelectionPanel(by: coordinate)
         default:
             print("default case in BattleFieldPresenter")
+            print(node.name)
             break
         }
     }

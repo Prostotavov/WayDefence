@@ -33,9 +33,9 @@ private extension BattleMissionsEnemyData {
         let creator = EnemyCreationManager()
         // wave 1
         creator.addWave(startFrame: 0)
-        creator.addOneRaceWave(.goblin, .firstLevel, count: 1, interval: 60, startFrame: 10)
-//        creator.addOneRaceWave(.orc, .secondLevel, count: 3, interval: 60, startFrame: 210)
-//        creator.addOneRaceWave(.goblin, .secondLevel, count: 3, interval: 60, startFrame: 430)
+        creator.addOneRaceWave(.goblin, .firstLevel, count: 5, interval: 180, startFrame: 10)
+//        creator.addOneRaceWave(.orc, .secondLevel, count: 5, interval: 60, startFrame: 2100)
+//        creator.addOneRaceWave(.goblin, .secondLevel, count: 7, interval: 60, startFrame: 4300)
         return creator.getWaves()
     }
     

@@ -252,11 +252,27 @@ extension BuildingsManagerImpl {
         projectileNode!.removeAllActions()
         guard let enemyPosition = building.battleInfo.enemiesInRadius.first?.enemyNode.position else {return}
         let buildingPosition = building.appearance.buildingNode.position
-        let endPosition = SCNVector3(enemyPosition.x - buildingPosition.x, enemyPosition.y, enemyPosition.z - buildingPosition.z)
+        var endPosition = SCNVector3(enemyPosition.x - buildingPosition.x, enemyPosition.y, enemyPosition.z - buildingPosition.z)
+        
+        if building.info.type == .magicTower &&  building.info.level == .firstLevel {
+            endPosition = endPosition * 500
+            endPosition.z = -endPosition.z
+            projectileNode!.position = SCNVector3(0, -250, 0)
+        } else {
+            projectileNode!.position = SCNVector3(0, 0.5, 0)
+        }
+
         let duration = 0.3
-        projectileNode!.position = SCNVector3(0, 0.5, 0)
         let action = SCNAction.move(to: endPosition, duration: duration)
         projectileNode!.runAction(action)
     }
+}
+
+extension SCNVector3 {
+    
+    static func *(_ scnVector3: SCNVector3, _ value: Float) -> SCNVector3 {
+        SCNVector3(scnVector3.x * value, scnVector3.y * value, scnVector3.z * value)
+    }
+    
 }
 
